@@ -1,0 +1,5 @@
+amap:
+    resource: "@AMAPBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
