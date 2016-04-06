@@ -4,7 +4,7 @@ namespace AMAPBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class ControlConsumer extends Controller
+class ControlController extends Controller
 {
     public function indexAction()
     {

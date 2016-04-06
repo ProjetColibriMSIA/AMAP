@@ -4,7 +4,7 @@ namespace AMAPBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class ControlBDD extends Controller
+class BDDController extends Controller
 {
     public function indexAction()
     {

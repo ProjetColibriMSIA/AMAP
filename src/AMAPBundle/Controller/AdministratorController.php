@@ -4,7 +4,7 @@ namespace AMAPBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class ControlSupply extends Controller
+class AdministratorController extends Controller
 {
     public function indexAction()
     {

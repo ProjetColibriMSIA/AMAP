@@ -4,7 +4,7 @@ namespace AMAPBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class Control extends Controller
+class SurferController extends Controller
 {
     public function indexAction()
     {

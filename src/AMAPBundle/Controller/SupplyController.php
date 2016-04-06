@@ -4,7 +4,7 @@ namespace AMAPBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class ControlStore extends Controller
+class SupplyController extends Controller
 {
     public function indexAction()
     {

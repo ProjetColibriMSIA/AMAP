@@ -4,7 +4,7 @@ namespace AMAPBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class ControlProducer extends Controller
+class AMAPController extends Controller
 {
     public function indexAction()
     {
