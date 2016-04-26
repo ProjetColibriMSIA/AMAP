@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Entity;
+namespace AMAPBundle\Entity\LocalStoreManager;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -32,4 +32,3 @@ class Store
         return $this->id;
     }
 }
-
