@@ -5,24 +5,19 @@
 $(window).load(function() {
 
 	$('#bgSlider').bgSlider({
-		duration:100,
+		duration:1000,
 		pagination:'.pagination',
 		preload:true,
-		slideshow:300,
+		slideshow:10000,
 		spinner:'.bg_spinner'
 	});
-	
-	
-	
-	// Au chargement initial   
-    redimensionnement();
-     
+
     // En cas de redimensionnement de la fenêtre
     $(window).resize(function(){ 
         redimensionnement(); 
     }); 
-
-
+	
+	
 	$('a.poplight[href^=#]').click(function() {
 		var popID = $(this).attr('rel'); //Trouver la pop-up correspondante
 		var popURL = $(this).attr('href'); //Retrouver la largeur dans le href
@@ -57,13 +52,13 @@ $(window).load(function() {
 		return false;
 	});
 
-	//Fermeture de la pop-up et du fond
-	$('a.close, #fade').live('click', function() { //Au clic sur le bouton ou sur le calque...
-		$('#fade , .popup_block').fadeOut(function() {
-			$('#fade, a.close').remove();  //...ils disparaissent ensemble
-		});
-		return false;
+//Fermeture de la pop-up et du fond
+$('a.close, #fade').live('click', function() { //Au clic sur le bouton ou sur le calque...
+	$('#fade , .popup_block').fadeOut(function() {
+		$('#fade, a.close').remove();  //...ils disparaissent ensemble
 	});
+	return false;
+});
 	
 	
 });
@@ -101,4 +96,3 @@ function redimensionnement(){
       }); 
     } 
 } 
-      

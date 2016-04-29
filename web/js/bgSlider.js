@@ -117,7 +117,7 @@ $.extend(_fw.meth,{
 				opt.img.each(function(){
 					var _f=function(){
 								opt.resizeFu()
-								opt.img.data({})						
+								opt.img.data({width:opt.img.width(),height:opt.img.height()})						
 							}
 					if(this.complete)
 						_f()
@@ -127,7 +127,6 @@ $.extend(_fw.meth,{
 				})
 					
 				opt.holder
-
 					.append(opt.img)
 				if(opt.spinner)
 					opt.spinner.hide()
@@ -142,7 +141,7 @@ $.extend(_fw.meth,{
 					bw=document.body.offsetWidth-opt.padding,
 					bh=document.body.offsetHeight,
 					k=w/h
-				if(opt.method=='fit')
+			/*	if(opt.method=='fit')
 					if(bw/bh<k)
 						img.width('auto').height(bh).css({top:t,left:l})
 					else
@@ -151,7 +150,9 @@ $.extend(_fw.meth,{
 					if(!(bw/bh<k))
 						img.width('auto').height(bh).css({top:t,left:l})
 					else
-						img.width(bw).height('auto').css({top:t,left:l})
+						img.width(bw).height('auto').css({top:t,left:l})*/
+
+				redimensionnement()
 			},
 			changeFu:function(n){
 				var opt=this
@@ -163,13 +164,13 @@ $.extend(_fw.meth,{
 			nextFu:function(){
 				var opt=this,
 					n=opt.currN
-				//opt.changeFu(++n<opt.images.length?n:n=0)
+				opt.changeFu(++n<opt.images.length?n:n=0)
 				opt.pags.eq(n).addClass(opt.pagActiveCl).siblings().removeClass(opt.pagActiveCl)
 			},
 			prevFu:function(){
 				var opt=this,
 					n=opt.currN
-				//opt.changeFu(--n>=0?n:n=opt.images.length-1)
+				opt.changeFu(--n>=0?n:n=opt.images.length-1)
 				opt.pags.eq(n).addClass(opt.pagActiveCl).siblings().removeClass(opt.pagActiveCl)
 			},
 			showFu:function(src){
@@ -178,19 +179,20 @@ $.extend(_fw.meth,{
 				if(opt.slideshow)
 					clearInterval(_timer[0])
 				clone
-					/*.css({
+					.css({
 						 opacity:0,
 						 left:0,
 						 top:0
-						 })*/
+						 })
 					.appendTo(opt.holder)	
+					.width(opt.img.width())
 					.load(function(){
 						var th=$(this)
 						opt.holder.find('>*').stop()						
 						setTimeout(function(){
 							opt.spinner.hide()
-							//opt.wi=th.width()
-							//opt.he=th.height()
+							opt.wi=th.width()
+							opt.he=th.height()
 							clone
 								.stop()
 								.animate({
@@ -202,7 +204,6 @@ $.extend(_fw.meth,{
 											var tmp=opt.holder.find('img')
 											opt.img=$(this)
 											tmp.not(tmp.last()).remove()
-											opt.resizeFu()
 										}
 										})
 						},opt.minSpinnerWait)
@@ -225,9 +226,8 @@ $.extend(_fw.meth,{
 				if(opt.preload)
 					opt.preloadFu()
 				window.onresize=function(){
-					opt.resizeFu()
+				//	opt.resizeFu()
 				}
-				
 				if(opt.slideshow)
 					_timer[0]=setInterval(function(){
 						opt.nextFu()
