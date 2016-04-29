@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="account")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\AccountRepository")
  */
-class Account
-{
+abstract class Account {
+
     /**
      * @var int
      *
@@ -21,14 +21,49 @@ class Account
      */
     private $id;
 
-
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
+    /**
+     *
+     */
+    public function __construct() {
+        
+    }
+
+    /**
+     * @return string
+     */
+    public abstract function getName();
+
+    /**
+     * @param string $name
+     */
+    public abstract function setName($name);
+
+    /**
+     * @return string
+     */
+    public abstract function getFirstName();
+
+    /**
+     * @param string $firstName
+     */
+    public abstract function setFirstName($firstName);
+
+    /**
+     * @return string
+     */
+    public abstract function getAdress();
+
+    /**
+     * @param string $adress
+     */
+    public abstract function setAdress($adress);
 }

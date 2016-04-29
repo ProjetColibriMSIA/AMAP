@@ -225,10 +225,10 @@ padding-right: 20px;
 	z-index: 9999;
 }
 /*--Gérer la position fixed pour IE6--*/
-*html #fade {
+html #fade {
 position: absolute;
 }
-*html .popup_block {
+html .popup_block {
 position: absolute;
 }
 .popup_block {
