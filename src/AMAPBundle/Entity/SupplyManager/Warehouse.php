@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="warehouse")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\WarehouseRepository")
  */
-class Warehouse
-{
+class Warehouse implements InterfaceWarehouse {
+
     /**
      * @var int
      *
@@ -21,14 +21,44 @@ class Warehouse
      */
     private $id;
 
+    /**
+     * @var \Supply Package\WarehouseInfos
+     */
+    private $warehouseInfos;
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
+    /**
+     *
+     */
+    public function __construct() {
+        
+    }
+
+    /**
+     * @param int $idWarehouse
+     * @return \Supply Package\WarehouseInfos
+     */
+    public function getSupplyInfos($idWarehouse) {
+// TODO: implement here
+        return null;
+    }
+
+    /**
+     * @param int $idWarehouse
+     * @param string $nameWarehouse
+     * @param string $adressWarehouse
+     * @param string $descriptionWarehouse
+     */
+    public function setSupplyInfos($idWarehouse, $nameWarehouse, $adressWarehouse, $descriptionWarehouse) {
+// TODO: implement here
+    }
+
 }
