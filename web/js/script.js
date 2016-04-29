@@ -5,10 +5,10 @@
 $(window).load(function() {
 
 	$('#bgSlider').bgSlider({
-		duration:100,
+		duration:1000,
 		pagination:'.pagination',
 		preload:true,
-		slideshow:300,
+		slideshow:3000,
 		spinner:'.bg_spinner'
 	});
 	
