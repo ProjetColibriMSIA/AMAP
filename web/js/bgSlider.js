@@ -80,7 +80,6 @@ $.extend(_fw.meth,{
 			preloadFu:function(){
 				var opt=this,
 					img=$('<img>')
-							.css({position:'absolute',left:'-999%'})
 							.appendTo('body'),
 					num=opt.images.length
 				;(function(){
@@ -113,17 +112,12 @@ $.extend(_fw.meth,{
 			preFu:function(){
 				var opt=this
 				opt.img
-					/*.css({
-						position:'absolute',
-						left:0,
-						top:0
-						})*/
 					.css(opt.altCSS)
 					.attr({src:opt.images[opt.current]})					
 				opt.img.each(function(){
 					var _f=function(){
 								opt.resizeFu()
-								opt.img.data({width:opt.img.width(),height:opt.img.height()})						
+								opt.img.data({})						
 							}
 					if(this.complete)
 						_f()
@@ -133,14 +127,7 @@ $.extend(_fw.meth,{
 				})
 					
 				opt.holder
-					/*.css({
-						position:'fixed',
-						left:0,
-						right:0,
-						top:0,
-						bottom:0,
-						zIndex:-1
-						})*/
+
 					.append(opt.img)
 				if(opt.spinner)
 					opt.spinner.hide()
@@ -152,10 +139,10 @@ $.extend(_fw.meth,{
 					h=opt.he,
 					l=img.css('left'),
 					t=img.css('top'),
-					//bw=document.body.offsetWidth-opt.padding,
-					//bh=document.body.offsetHeight,
+					bw=document.body.offsetWidth-opt.padding,
+					bh=document.body.offsetHeight,
 					k=w/h
-				/*if(opt.method=='fit')
+				if(opt.method=='fit')
 					if(bw/bh<k)
 						img.width('auto').height(bh).css({top:t,left:l})
 					else
@@ -164,7 +151,7 @@ $.extend(_fw.meth,{
 					if(!(bw/bh<k))
 						img.width('auto').height(bh).css({top:t,left:l})
 					else
-						img.width(bw).height('auto').css({top:t,left:l})*/
+						img.width(bw).height('auto').css({top:t,left:l})
 			},
 			changeFu:function(n){
 				var opt=this
@@ -176,13 +163,13 @@ $.extend(_fw.meth,{
 			nextFu:function(){
 				var opt=this,
 					n=opt.currN
-				opt.changeFu(++n<opt.images.length?n:n=0)
+				//opt.changeFu(++n<opt.images.length?n:n=0)
 				opt.pags.eq(n).addClass(opt.pagActiveCl).siblings().removeClass(opt.pagActiveCl)
 			},
 			prevFu:function(){
 				var opt=this,
 					n=opt.currN
-				opt.changeFu(--n>=0?n:n=opt.images.length-1)
+				//opt.changeFu(--n>=0?n:n=opt.images.length-1)
 				opt.pags.eq(n).addClass(opt.pagActiveCl).siblings().removeClass(opt.pagActiveCl)
 			},
 			showFu:function(src){
@@ -197,7 +184,6 @@ $.extend(_fw.meth,{
 						 top:0
 						 })*/
 					.appendTo(opt.holder)	
-					.width(opt.img.width())
 					.load(function(){
 						var th=$(this)
 						opt.holder.find('>*').stop()						
@@ -238,7 +224,7 @@ $.extend(_fw.meth,{
 				opt.preFu()
 				if(opt.preload)
 					opt.preloadFu()
-				/*window.onresize=function(){
+				window.onresize=function(){
 					opt.resizeFu()
 				}
 				
@@ -246,7 +232,7 @@ $.extend(_fw.meth,{
 					_timer[0]=setInterval(function(){
 						opt.nextFu()
 					},opt.slideshow)
-				holder.data({opt:opt})*/
+				holder.data({opt:opt})
 			}
 		}
 })
