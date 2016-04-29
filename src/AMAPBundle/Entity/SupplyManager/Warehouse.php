@@ -22,7 +22,7 @@ class Warehouse implements InterfaceWarehouse {
     private $id;
 
     /**
-     * @var \Supply Package\WarehouseInfos
+     * @var \AMAPBundle\Entity\SupplyManager\WarehouseInfos
      */
     private $warehouseInfos;
 
