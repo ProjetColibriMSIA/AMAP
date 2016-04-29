@@ -12,19 +12,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Warehouse implements InterfaceWarehouse {
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
-    private $id;
-
-    /**
-     * @var \Supply Package\WarehouseInfos
-     */
-    private $warehouseInfos;
+	private int $idWarehouse;
+    private string $nameWarehouse;
+    private string $adressWarehouse;
+    private string $descriptionWarehouse;
 
     /**
      * Get id
@@ -35,11 +26,11 @@ class Warehouse implements InterfaceWarehouse {
         return $this->id;
     }
 
-    /**
-     *
-     */
-    public function __construct() {
-        
+    public function __construct($idWarehouse, $nameWarehouse, $adressWarehouse, $descriptionWarehouse) {
+        $this->idWarehouse = $idWarehouse;
+		$this->nameWarehouse = $nameWarehouse;
+		$this->adressWarehouse = $adressWarehouse;
+		$this->descriptionWarehouse = $descriptionWarehouse;
     }
 
     /**
@@ -47,8 +38,7 @@ class Warehouse implements InterfaceWarehouse {
      * @return \Supply Package\WarehouseInfos
      */
     public function getSupplyInfos($idWarehouse) {
-// TODO: implement here
-        return null;
+        return $nameWarehouse.";".$adressWarehouse.";".$descriptionWarehouse;
     }
 
     /**
@@ -58,7 +48,10 @@ class Warehouse implements InterfaceWarehouse {
      * @param string $descriptionWarehouse
      */
     public function setSupplyInfos($idWarehouse, $nameWarehouse, $adressWarehouse, $descriptionWarehouse) {
-// TODO: implement here
+		$this->idWarehouse = $idWarehouse;
+		$this->nameWarehouse = $nameWarehouse;
+		$this->adressWarehouse = $adressWarehouse;
+		$this->descriptionWarehouse = $descriptionWarehouse;
     }
 
 }
