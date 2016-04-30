@@ -12,7 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Warehouse implements InterfaceWarehouse {
 
-<<<<<<< HEAD
     /**
      * @var int
      *
@@ -26,12 +25,6 @@ class Warehouse implements InterfaceWarehouse {
      * @var \AMAPBundle\Entity\SupplyManager\WarehouseInfos
      */
     private $warehouseInfos;
-=======
-	private int $idWarehouse;
-    private string $nameWarehouse;
-    private string $adressWarehouse;
-    private string $descriptionWarehouse;
->>>>>>> 163bafff0d11498f27af057665c07a88fc3e3262
 
     /**
      * Get id
