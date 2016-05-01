@@ -24,36 +24,28 @@ class AccountSupplyManager extends \AMAPBundle\Entity\Account\Account {
     /**
      * @var string
      * 
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(name="nameSupplyManager", type="string", length=200)
      */
     private $nameSupplyManager;
 
     /**
      * @var string
      * 
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(name="firstNameSupplyManager", type="string", length=200)
      */
     private $firstNameSupplyManager;
 
     /**
      * @var string
      * 
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(name="adressSupplyManager", type="string", length=200)
      */
     private $adressSupplyManager;
 
     /**
      * @var int[]
      * 
-     * @ORM\Column(name="idAMAP", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(name="idAMAP", type="array")
      */
     private $idAMAP;
 

@@ -2,8 +2,6 @@
 
 namespace AMAPBundle\Entity\SupplyManager;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  *
  */
