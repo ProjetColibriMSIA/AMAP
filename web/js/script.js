@@ -8,11 +8,7 @@ $(window).load(function() {
 		duration:1000,
 		pagination:'.pagination',
 		preload:true,
-<<<<<<< HEAD
 		slideshow:10000,
-=======
-		slideshow:3000,
->>>>>>> origin/master
 		spinner:'.bg_spinner'
 	});
 
