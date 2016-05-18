@@ -132,4 +132,45 @@ class AccountStoreManager
    
    
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->listAMAP = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add listAMAP
+     *
+     * @param \AMAPBundle\Entity\AMAP\AMAP $listAMAP
+     *
+     * @return AccountStoreManager
+     */
+    public function addListAMAP(\AMAPBundle\Entity\AMAP\AMAP $listAMAP)
+    {
+        $this->listAMAP[] = $listAMAP;
+
+        return $this;
+    }
+
+    /**
+     * Remove listAMAP
+     *
+     * @param \AMAPBundle\Entity\AMAP\AMAP $listAMAP
+     */
+    public function removeListAMAP(\AMAPBundle\Entity\AMAP\AMAP $listAMAP)
+    {
+        $this->listAMAP->removeElement($listAMAP);
+    }
+
+    /**
+     * Get listAMAP
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getListAMAP()
+    {
+        return $this->listAMAP;
+    }
 }
