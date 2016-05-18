@@ -10,4 +10,8 @@ class DefaultController extends Controller
     {
         return $this->render('AMAPBundle:Default:index.html.twig');
     }
+    public function accueilAction()
+    {
+        return $this->render('AMAPBundle:Default:accueil.html.twig');
+    }
 }

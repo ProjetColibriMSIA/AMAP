@@ -141,7 +141,7 @@ $.extend(_fw.meth,{
 					bw=document.body.offsetWidth-opt.padding,
 					bh=document.body.offsetHeight,
 					k=w/h
-			/*	if(opt.method=='fit')
+				if(opt.method=='fit')
 					if(bw/bh<k)
 						img.width('auto').height(bh).css({top:t,left:l})
 					else
@@ -150,9 +150,7 @@ $.extend(_fw.meth,{
 					if(!(bw/bh<k))
 						img.width('auto').height(bh).css({top:t,left:l})
 					else
-						img.width(bw).height('auto').css({top:t,left:l})*/
-
-				redimensionnement()
+						img.width(bw).height('auto').css({top:t,left:l})
 			},
 			changeFu:function(n){
 				var opt=this
@@ -204,6 +202,7 @@ $.extend(_fw.meth,{
 											var tmp=opt.holder.find('img')
 											opt.img=$(this)
 											tmp.not(tmp.last()).remove()
+											opt.resizeFu()
 										}
 										})
 						},opt.minSpinnerWait)
@@ -226,7 +225,7 @@ $.extend(_fw.meth,{
 				if(opt.preload)
 					opt.preloadFu()
 				window.onresize=function(){
-				//	opt.resizeFu()
+					opt.resizeFu()
 				}
 				if(opt.slideshow)
 					_timer[0]=setInterval(function(){

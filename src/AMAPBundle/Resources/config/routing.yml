@@ -4,3 +4,10 @@ amap_homepage:
 amap_basket:
     path:     /basket
     defaults: { _controller: AMAPBundle:Consumer:index }
+amap_accueil:
+    path:     /accueil
+    defaults: { _controller: AMAPBundle:Default:accueil }   
+
+# app/config/routing.yml
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
