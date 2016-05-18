@@ -107,4 +107,100 @@ class AccountSupplyManager extends \AMAPBundle\Entity\Account\Account {
         
     }
 
+
+    /**
+     * Set nameSupplyManager
+     *
+     * @param string $nameSupplyManager
+     *
+     * @return AccountSupplyManager
+     */
+    public function setNameSupplyManager($nameSupplyManager)
+    {
+        $this->nameSupplyManager = $nameSupplyManager;
+
+        return $this;
+    }
+
+    /**
+     * Get nameSupplyManager
+     *
+     * @return string
+     */
+    public function getNameSupplyManager()
+    {
+        return $this->nameSupplyManager;
+    }
+
+    /**
+     * Set firstNameSupplyManager
+     *
+     * @param string $firstNameSupplyManager
+     *
+     * @return AccountSupplyManager
+     */
+    public function setFirstNameSupplyManager($firstNameSupplyManager)
+    {
+        $this->firstNameSupplyManager = $firstNameSupplyManager;
+
+        return $this;
+    }
+
+    /**
+     * Get firstNameSupplyManager
+     *
+     * @return string
+     */
+    public function getFirstNameSupplyManager()
+    {
+        return $this->firstNameSupplyManager;
+    }
+
+    /**
+     * Set adressSupplyManager
+     *
+     * @param string $adressSupplyManager
+     *
+     * @return AccountSupplyManager
+     */
+    public function setAdressSupplyManager($adressSupplyManager)
+    {
+        $this->adressSupplyManager = $adressSupplyManager;
+
+        return $this;
+    }
+
+    /**
+     * Get adressSupplyManager
+     *
+     * @return string
+     */
+    public function getAdressSupplyManager()
+    {
+        return $this->adressSupplyManager;
+    }
+
+    /**
+     * Set idAMAP
+     *
+     * @param array $idAMAP
+     *
+     * @return AccountSupplyManager
+     */
+    public function setIdAMAP($idAMAP)
+    {
+        $this->idAMAP = $idAMAP;
+
+        return $this;
+    }
+
+    /**
+     * Get idAMAP
+     *
+     * @return array
+     */
+    public function getIdAMAP()
+    {
+        return $this->idAMAP;
+    }
 }
