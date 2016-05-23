@@ -87,5 +87,9 @@
 
   .offset-by-one-half.column,
   .offset-by-one-half.columns     { margin-left: 52%; }
+	.centreblanc{
+		height:100%;
+		width:70%;
 
+	}
 }
