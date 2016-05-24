@@ -75,7 +75,7 @@
       <div class="main">
 		
         <div class="wrapper">
-          	<a href="index.html">
+          	<a href="accueil">
           	<div class="logo">
           	<img src="{{ asset('./images/logo/logo.png')}}" width="375px" height="138px">
           	</div>
@@ -87,7 +87,7 @@
 					{% else %}
 					class="navAccueil"
 					{% endif %}>
-					<a href="">Accueil</a>
+					<a href="accueil">Accueil</a>
 				</li>
 				
 				<li {% if app.request.attributes.get('_route')=="amap_actualite" %}
