@@ -82,11 +82,42 @@
           	</a>
            <div id="nav" class="right">
 			<ul>
-				<li class="navAccueilActif"><a href="../">Accueil</a></li>
-				<li class="navActus" ><a href="actualites">Actualités</a></li>
-				<li class="navProducteurs" ><a href="producteur">Producteurs</a></li>
-				<li class="navAMAP" ><a href="amap">L'AMAP</a></li>
-				<li class="navRecettes"><a href="produit">Produits</a></li>
+				<li {% if app.request.attributes.get('_route')=="amap_homepage" %}
+					class="navAccueilActif"
+					{% else %}
+					class="navAccueil"
+					{% endif %}>
+					<a href="">Accueil</a>
+				</li>
+				
+				<li {% if app.request.attributes.get('_route')=="amap_actualite" %}
+					class="navActusActif"
+					{% else %}
+					class="navActus"
+					{% endif %}>
+					<a href="actualites">Actualités</a>
+				</li>
+				<li {% if app.request.attributes.get('_route')=="amap_producteur" %}
+					class="navProducteursActif" 
+					{% else %}
+					class="navProducteurs" 
+					{% endif %}>
+					<a href="producteur">Producteurs</a>
+				</li>
+				<li {% if app.request.attributes.get('_route')=="amap_amap" %}
+					class="navAMAPActif"
+					{% else %}
+					class="navAMAP"
+					{% endif %}>
+					<a href="amap">L'AMAP</a>
+				</li>
+				<li {% if app.request.attributes.get('_route')=="amap_produit" %}
+					class="navRecettesActif"
+					{% else %}
+					class="navRecettes"
+					{% endif %}>
+					<a href="produit">Produits</a>
+				</li>
 			</ul>
 		</div>
 		<!-- Liste qui permet de faire le diapo -->

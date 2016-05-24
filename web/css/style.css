@@ -425,7 +425,7 @@ body  #nav > ul > li.navActus > a {
 body #nav > ul > li.navActusActif > a, body  #nav > ul > li.navActus > a:hover {
     background-image: url(../images/nav/navActusActif.png);
 }
-#nav > ul > li.navRecettes > a:hover {
+body  #nav > ul > li.navRecettesActif > a, body #nav > ul > li.navRecettes > a:hover {
     background-image: url(../images/nav/navRecettesActif.png);
 }
 body  #nav > ul > li.navRecettes > a {
