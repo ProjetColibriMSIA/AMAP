@@ -1,6 +1,6 @@
 amap_homepage:
-    path:     /
-    defaults: { _controller: AMAPBundle:Default:index }
+    path:     /accueil
+    defaults: { _controller: AMAPBundle:Default:accueil }
 amap_basket:
     path:     /basket
     defaults: { _controller: AMAPBundle:Consumer:index }
