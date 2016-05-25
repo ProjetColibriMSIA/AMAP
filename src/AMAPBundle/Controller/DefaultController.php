@@ -9,7 +9,7 @@ class DefaultController extends Controller
 {
     public function accueilAction()
     {
-<<<<<<< HEAD
+
         //exemple Anthony
         /*$em = $this->getDoctrine()->getEntityManager();
         $rep = $em->getRepository("AMAPBundle:Basket\Basket");
@@ -20,10 +20,8 @@ class DefaultController extends Controller
         
         return new \Symfony\Component\HttpFoundation\Response();
         */
-        return $this->render('AMAPBundle:Default:index.html.twig');
-=======
         return $this->render('AMAPBundle:Default:accueil.html.twig');
->>>>>>> 04295ab378373d376dbc1bedab0c140dd46507ad
+
     }
     public function producteurAction()
     {
