@@ -8,9 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
  * AccountAdministrator
  *
  * @ORM\Table(name="account_administrator")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\AccountAdministratorRepository")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\ApplicationManager\AccountAdministratorRepository")
  */
-class AccountAdministrator
+class AccountAdministrator extends \AMAPBundle\Entity\Account\Account
 {
     /**
      * @var int

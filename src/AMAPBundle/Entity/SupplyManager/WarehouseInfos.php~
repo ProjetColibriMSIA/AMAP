@@ -7,8 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * WarehouseInfos
  *
- * @ORM\Table(name="WarehouseInfos")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\WarehouseInfosRepository")
+ * @ORM\Table(name="warehouse_infos")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\SupplyManager\WarehouseInfosRepository")
  */
 class WarehouseInfos {
 
@@ -22,26 +22,32 @@ class WarehouseInfos {
     private $id;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="idWarehouse", type="integer")
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $idWarehouse;
+    private $name;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="adress", type="text")
      */
-    private $nameWarehouse;
+    private $adress;
 
     /**
      * @var string
+     *
+     * @ORM\Column(name="description", type="text")
      */
-    private $adressWarehouse;
+    private $description;
 
     /**
-     * @var string
+     * @var Arraycollection
+     * 
+     * @ORM\OneToOne(targetEntity="Warehouse", inversedBy="warehouseInfos")
      */
-    private $descriptionWarehouse;
+    private $warehouse;
 
     /**
      * Get id
@@ -53,72 +59,92 @@ class WarehouseInfos {
     }
 
     /**
+     * Set name
      *
-     */
-    public function __construct() {
-        
-    }
-
-    /**
-     * Get idWarehouse
+     * @param string $name
      *
-     * @return int
+     * @return WarehouseInfos
      */
-    public function getIdWarehouse() {
-        // TODO: implement here
-        return 0;
+    public function setName($name) {
+        $this->name = $name;
+
+        return $this;
     }
 
     /**
-     * @param int $idWarehouse
-     */
-    public function setIdWarehouse($idWarehouse) {
-        // TODO: implement here
-    }
-
-    /**
+     * Get name
+     *
      * @return string
      */
-    public function getNameWarehouse() {
-        // TODO: implement here
-        return "";
+    public function getName() {
+        return $this->name;
     }
 
     /**
-     * @param string $nameWarehouse
+     * Set adress
+     *
+     * @param string $adress
+     *
+     * @return WarehouseInfos
      */
-    public function setNameWarehouse($nameWarehouse) {
-        // TODO: implement here
+    public function setAdress($adress) {
+        $this->adress = $adress;
+
+        return $this;
     }
 
     /**
+     * Get adress
+     *
      * @return string
      */
-    public function getAdressWarehouse() {
-        // TODO: implement here
-        return "";
+    public function getAdress() {
+        return $this->adress;
     }
 
     /**
-     * @param string $adressWarehouse
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return WarehouseInfos
      */
-    public function setAdressWarehouse($adressWarehouse) {
-        // TODO: implement here
+    public function setDescription($description) {
+        $this->description = $description;
+
+        return $this;
     }
 
     /**
+     * Get description
+     *
      * @return string
      */
-    public function getDescriptionWarehouse() {
-        // TODO: implement here
-        return "";
+    public function getDescription() {
+        return $this->description;
     }
 
     /**
-     * @param string $descriptionWarehouse
+     * Set warehouse
+     *
+     * @param \AMAPBundle\Entity\SupplyManager\Warehouse $warehouse
+     *
+     * @return WarehouseInfos
      */
-    public function setDescriptionWarehouse($descriptionWarehouse) {
-        // TODO: implement here
+    public function setWarehouse(\AMAPBundle\Entity\SupplyManager\Warehouse $warehouse = null)
+    {
+        $this->warehouse = $warehouse;
+
+        return $this;
     }
 
+    /**
+     * Get warehouse
+     *
+     * @return \AMAPBundle\Entity\SupplyManager\Warehouse
+     */
+    public function getWarehouse()
+    {
+        return $this->warehouse;
+    }
 }

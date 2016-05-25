@@ -8,9 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
  * Warehouse
  *
  * @ORM\Table(name="warehouse")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\WarehouseRepository")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\SupplyManager\WarehouseRepository")
  */
-class Warehouse implements InterfaceWarehouse {
+class Warehouse /*implements InterfaceWarehouse */
+{
 
     /**
      * @var int
@@ -22,7 +23,9 @@ class Warehouse implements InterfaceWarehouse {
     private $id;
 
     /**
-     * @var \AMAPBundle\Entity\SupplyManager\WarehouseInfos
+     * @var Arraycollection
+     * 
+     * @ORM\OneToOne(targetEntity="Warehouse", mappedBy="warehouseInfos")
      */
     private $warehouseInfos;
 
@@ -35,32 +38,27 @@ class Warehouse implements InterfaceWarehouse {
         return $this->id;
     }
 
-    public function __construct($idWarehouse, $nameWarehouse, $adressWarehouse, $descriptionWarehouse) {
-        $this->idWarehouse = $idWarehouse;
-		$this->nameWarehouse = $nameWarehouse;
-		$this->adressWarehouse = $adressWarehouse;
-		$this->descriptionWarehouse = $descriptionWarehouse;
+    /**
+     * Set warehouseInfos
+     *
+     * @param \AMAPBundle\Entity\SupplyManager\Warehouse $warehouseInfos
+     *
+     * @return Warehouse
+     */
+    public function setWarehouseInfos(\AMAPBundle\Entity\SupplyManager\Warehouse $warehouseInfos = null)
+    {
+        $this->warehouseInfos = $warehouseInfos;
+
+        return $this;
     }
 
     /**
-     * @param int $idWarehouse
-     * @return \Supply Package\WarehouseInfos
+     * Get warehouseInfos
+     *
+     * @return \AMAPBundle\Entity\SupplyManager\Warehouse
      */
-    public function getSupplyInfos($idWarehouse) {
-        return $nameWarehouse.";".$adressWarehouse.";".$descriptionWarehouse;
+    public function getWarehouseInfos()
+    {
+        return $this->warehouseInfos;
     }
-
-    /**
-     * @param int $idWarehouse
-     * @param string $nameWarehouse
-     * @param string $adressWarehouse
-     * @param string $descriptionWarehouse
-     */
-    public function setSupplyInfos($idWarehouse, $nameWarehouse, $adressWarehouse, $descriptionWarehouse) {
-		$this->idWarehouse = $idWarehouse;
-		$this->nameWarehouse = $nameWarehouse;
-		$this->adressWarehouse = $adressWarehouse;
-		$this->descriptionWarehouse = $descriptionWarehouse;
-    }
-
 }

@@ -10,8 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="account_store_manager")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\LocalStoreManager\AccountStoreManagerRepository")
  */
-class AccountStoreManager
-{
+class AccountStoreManager extends \AMAPBundle\Entity\Account\Account {
 
     /**
      * @var int
@@ -23,38 +22,24 @@ class AccountStoreManager
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nameStoreManager", type="string", length=255)
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\AMAP\AMAP", inversedBy="listAccountStoreManager", cascade={"persist"})
      */
-    private $nameStoreManager;
+    private $listAMAP;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="firstNameStoreManager", type="string", length=255)
+     * Constructor
      */
-    private $firstNameStoreManager;
+    public function __construct() {
+        parent::__construct();
+        $this->listAMAP = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="adressStoreManager", type="string", length=255)
-     */
-    private $adressStoreManager;
-
-
-     /**
-       * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\AMAP\AMAP", inversedBy="listAccountStoreManager", cascade={"persist"})
-       */
-      private $listAMAP;
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -65,8 +50,7 @@ class AccountStoreManager
      *
      * @return AccountStoreManager
      */
-    public function setNameStoreManager($nameStoreManager)
-    {
+    public function setNameStoreManager($nameStoreManager) {
         $this->nameStoreManager = $nameStoreManager;
 
         return $this;
@@ -77,67 +61,8 @@ class AccountStoreManager
      *
      * @return string
      */
-    public function getNameStoreManager()
-    {
+    public function getNameStoreManager() {
         return $this->nameStoreManager;
-    }
-
-    /**
-     * Set firstNameStoreManager
-     *
-     * @param string $firstNameStoreManager
-     *
-     * @return AccountStoreManager
-     */
-    public function setFirstNameStoreManager($firstNameStoreManager)
-    {
-        $this->firstNameStoreManager = $firstNameStoreManager;
-
-        return $this;
-    }
-
-    /**
-     * Get firstNameStoreManager
-     *
-     * @return string
-     */
-    public function getFirstNameStoreManager()
-    {
-        return $this->firstNameStoreManager;
-    }
-
-    /**
-     * Set adressStoreManager
-     *
-     * @param string $adressStoreManager
-     *
-     * @return AccountStoreManager
-     */
-    public function setAdressStoreManager($adressStoreManager)
-    {
-        $this->adressStoreManager = $adressStoreManager;
-
-        return $this;
-    }
-
-    /**
-     * Get adressStoreManager
-     *
-     * @return string
-     */
-    public function getAdressStoreManager()
-    {
-        return $this->adressStoreManager;
-    }
-   
-   
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->listAMAP = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -147,8 +72,7 @@ class AccountStoreManager
      *
      * @return AccountStoreManager
      */
-    public function addListAMAP(\AMAPBundle\Entity\AMAP\AMAP $listAMAP)
-    {
+    public function addListAMAP(\AMAPBundle\Entity\AMAP\AMAP $listAMAP) {
         $this->listAMAP[] = $listAMAP;
 
         return $this;
@@ -159,8 +83,7 @@ class AccountStoreManager
      *
      * @param \AMAPBundle\Entity\AMAP\AMAP $listAMAP
      */
-    public function removeListAMAP(\AMAPBundle\Entity\AMAP\AMAP $listAMAP)
-    {
+    public function removeListAMAP(\AMAPBundle\Entity\AMAP\AMAP $listAMAP) {
         $this->listAMAP->removeElement($listAMAP);
     }
 
@@ -169,8 +92,8 @@ class AccountStoreManager
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getListAMAP()
-    {
+    public function getListAMAP() {
         return $this->listAMAP;
     }
+
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Repository;
+namespace AMAPBundle\Repository\LocalStoreManager;
 
 /**
  * StoreRepository

@@ -1,16 +1,16 @@
 <?php
 
-namespace AMAPBundle\Entity\AmapManager;
+namespace AMAPBundle\Entity\Farmer;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * AccountAMAPManager
+ * AccountFarmer
  *
- * @ORM\Table(name="account_a_m_a_p_manager")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\AmapManager\AccountAMAPManagerRepository")
+ * @ORM\Table(name="account_farmer")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Farmer\AccountFarmerRepository")
  */
-class AccountAMAPManager extends \AMAPBundle\Entity\Account\Account
+class AccountFarmer extends \AMAPBundle\Entity\Account\Account
 {
     /**
      * @var int

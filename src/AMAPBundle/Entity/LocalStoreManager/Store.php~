@@ -8,10 +8,10 @@ use Doctrine\ORM\Mapping as ORM;
  * Store
  *
  * @ORM\Table(name="store")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\StoreRepository")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\LocalStoreManager\StoreRepository")
  */
-class Store
-{
+class Store {
+
     /**
      * @var int
      *
@@ -21,14 +21,44 @@ class Store
      */
     private $id;
 
+    /**
+     * @var Arraycollection
+     * 
+     * @ORM\OneToOne(targetEntity="StoreInfos", mappedBy="store")
+     */
+    private $storeInfos;
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
+    }
+
+
+    /**
+     * Set storeInfos
+     *
+     * @param \AMAPBundle\Entity\LocalStoreManager\StoreInfos $storeInfos
+     *
+     * @return Store
+     */
+    public function setStoreInfos(\AMAPBundle\Entity\LocalStoreManager\StoreInfos $storeInfos = null)
+    {
+        $this->storeInfos = $storeInfos;
+
+        return $this;
+    }
+
+    /**
+     * Get storeInfos
+     *
+     * @return \AMAPBundle\Entity\LocalStoreManager\StoreInfos
+     */
+    public function getStoreInfos()
+    {
+        return $this->storeInfos;
     }
 }

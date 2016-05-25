@@ -8,9 +8,9 @@ use Doctrine\ORM\Mapping as ORM;
  * AccountConsumer
  *
  * @ORM\Table(name="account_consumer")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\AccountConsumerRepository")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Consumer\AccountConsumerRepository")
  */
-class AccountConsumer
+class AccountConsumer extends \AMAPBundle\Entity\Account\Account
 {
     /**
      * @var int

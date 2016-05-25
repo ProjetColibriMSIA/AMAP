@@ -1,17 +1,17 @@
 <?php
 
-namespace AMAPBundle\Entity\SupplyManager;
+namespace AMAPBundle\Entity\LocalStoreManager;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * WarehouseInfos
+ * StoreInfos
  *
- * @ORM\Table(name="warehouse_infos")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\SupplyManager\WarehouseInfosRepository")
+ * @ORM\Table(name="store_infos")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\LocalStoreManager\StoreInfosRepository")
  */
-class WarehouseInfos {
-
+class StoreInfos
+{
     /**
      * @var int
      *
@@ -45,16 +45,16 @@ class WarehouseInfos {
     /**
      * @var Arraycollection
      * 
-     * @ORM\OneToOne(targetEntity="Warehouse", inversedBy="warehouseInfos")
+     * @ORM\OneToOne(targetEntity="Store", inversedBy="storeInfos")
      */
-    private $warehouse;
-
+    private $store;
     /**
      * Get id
      *
      * @return int
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -63,9 +63,10 @@ class WarehouseInfos {
      *
      * @param string $name
      *
-     * @return WarehouseInfos
+     * @return StoreInfos
      */
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
 
         return $this;
@@ -76,7 +77,8 @@ class WarehouseInfos {
      *
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
@@ -85,9 +87,10 @@ class WarehouseInfos {
      *
      * @param string $adress
      *
-     * @return WarehouseInfos
+     * @return StoreInfos
      */
-    public function setAdress($adress) {
+    public function setAdress($adress)
+    {
         $this->adress = $adress;
 
         return $this;
@@ -98,7 +101,8 @@ class WarehouseInfos {
      *
      * @return string
      */
-    public function getAdress() {
+    public function getAdress()
+    {
         return $this->adress;
     }
 
@@ -107,9 +111,10 @@ class WarehouseInfos {
      *
      * @param string $description
      *
-     * @return WarehouseInfos
+     * @return StoreInfos
      */
-    public function setDescription($description) {
+    public function setDescription($description)
+    {
         $this->description = $description;
 
         return $this;
@@ -120,31 +125,32 @@ class WarehouseInfos {
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
     /**
-     * Set warehouse
+     * Set store
      *
-     * @param \AMAPBundle\Entity\SupplyManager\Warehouse $warehouse
+     * @param \AMAPBundle\Entity\LocalStoreManager\Store $store
      *
-     * @return WarehouseInfos
+     * @return StoreInfos
      */
-    public function setWarehouse(\AMAPBundle\Entity\SupplyManager\Warehouse $warehouse = null)
+    public function setStore(\AMAPBundle\Entity\LocalStoreManager\Store $store = null)
     {
-        $this->warehouse = $warehouse;
+        $this->store = $store;
 
         return $this;
     }
 
     /**
-     * Get warehouse
+     * Get store
      *
-     * @return \AMAPBundle\Entity\SupplyManager\Warehouse
+     * @return \AMAPBundle\Entity\LocalStoreManager\Store
      */
-    public function getWarehouse()
+    public function getStore()
     {
-        return $this->warehouse;
+        return $this->store;
     }
 }
