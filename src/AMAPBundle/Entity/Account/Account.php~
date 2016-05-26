@@ -24,21 +24,21 @@ abstract class Account {
     /**
      * @var string
      *
-     * @ORM\Column(name="$username", type="string", length=255)
+     * @ORM\Column(name="username", type="string", length=255)
      */
     private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="$password", type="string", length=255)
+     * @ORM\Column(name="password", type="string", length=255)
      */
     private $password;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="$name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
     private $name;
 

@@ -75,6 +75,13 @@ class Basket
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="repIMG", type="text")
+     */
+    private $repIMG;
 
     /**
      * @var Arraycollection
@@ -327,4 +334,28 @@ class Basket
     }
     
 
+
+    /**
+     * Set repIMG
+     *
+     * @param string $repIMG
+     *
+     * @return Basket
+     */
+    public function setRepIMG($repIMG)
+    {
+        $this->repIMG = $repIMG;
+
+        return $this;
+    }
+
+    /**
+     * Get repIMG
+     *
+     * @return string
+     */
+    public function getRepIMG()
+    {
+        return $this->repIMG;
+    }
 }
