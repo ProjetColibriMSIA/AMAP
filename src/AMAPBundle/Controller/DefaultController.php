@@ -3,7 +3,8 @@
 namespace AMAPBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use AMAPBundle\Entity\Basket\Basket;
+//use AMAPBundle\Entity\Basket\Basket;
+use AMAPBundle\Entity\Basket\Product;
 
 class DefaultController extends Controller
 {
@@ -19,6 +20,7 @@ class DefaultController extends Controller
         var_dump($bask->getProducts()[0]);
         
         return new \Symfony\Component\HttpFoundation\Response();
+
         */
         return $this->render('AMAPBundle:Default:accueil.html.twig');
 
@@ -37,6 +39,12 @@ class DefaultController extends Controller
     }
 	public function produitAction()
     {
-        return $this->render('AMAPBundle:Default:produit.html.twig');
+		$em = $this->getDoctrine()->getEntityManager();
+        $rep = $em->getRepository("AMAPBundle:Basket\Product");
+        $products = $rep->findAll();
+
+		 //ar_dump($product[0]->getName());
+		
+        return $this->render('AMAPBundle:Default:produit.html.twig',array('products' => $products));
     }
 }
