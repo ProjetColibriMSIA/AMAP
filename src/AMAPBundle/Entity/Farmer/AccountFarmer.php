@@ -3,7 +3,6 @@
 namespace AMAPBundle\Entity\Farmer;
 
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * AccountFarmer
  *
@@ -21,7 +20,12 @@ class AccountFarmer extends \AMAPBundle\Entity\Account\Account
      */
     private $id;
 
-
+    /**
+     * @var Arraycollection
+     *
+     * @ORM\OneToOne(targetEntity="\AMAPBundle\Entity\Basket\Basket", mappedBy="productBy")
+     */
+    private $basketMakeBy;
     /**
      * Get id
      *
@@ -30,5 +34,29 @@ class AccountFarmer extends \AMAPBundle\Entity\Account\Account
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set basketMakeBy
+     *
+     * @param \AMAPBundle\Entity\Farmer\Basket $basketMakeBy
+     *
+     * @return AccountFarmer
+     */
+    public function setBasketMakeBy(\AMAPBundle\Entity\Farmer\Basket $basketMakeBy = null)
+    {
+        $this->basketMakeBy = $basketMakeBy;
+
+        return $this;
+    }
+
+    /**
+     * Get basketMakeBy
+     *
+     * @return \AMAPBundle\Entity\Farmer\Basket
+     */
+    public function getBasketMakeBy()
+    {
+        return $this->basketMakeBy;
     }
 }

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="stats_consumer")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Farmer\StatsConsumerRepository")
  */
-class StatsConsumer
-{
+class StatsConsumer {
+
     /**
      * @var int
      *
@@ -20,15 +20,19 @@ class StatsConsumer
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
+    
+    private $AMAPConsumers;
+    
+    private $AMAPFarmer;
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
+
 }

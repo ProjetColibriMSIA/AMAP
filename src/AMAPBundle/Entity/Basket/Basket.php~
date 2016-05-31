@@ -91,6 +91,26 @@ class Basket
     private $products;
     
     /**
+     * @var Arraycollection
+     *
+     * @ORM\OneToOne(targetEntity="AMAPBundle\Entity\Consumer\AccountConsumer", inversedBy="basketOwnedBy")
+     */
+    private $ownerConsumer;
+
+    /**
+     * @var Arraycollection
+     *
+     * @ORM\OneToOne(targetEntity="AMAPBundle\Entity\Farmer\AccountFarmer", inversedBy="basketMakeBy")
+     */
+    private $productBy;
+    
+    /**
+     * @var Arraycollection
+     *
+     * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\Farmer\Inventory", inversedBy="inventoryBaskets")
+     */
+    private $inventory;
+    /**
      * Get id
      *
      * @return int
@@ -291,71 +311,5 @@ class Basket
     {
         return $this->weight;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
-    /**
-     * Add product
-     *
-     * @param \AMAPBundle\Entity\Basket\Product $product
-     *
-     * @return Basket
-     */
-    public function addProduct(\AMAPBundle\Entity\Basket\Product $product)
-    {
-        $this->products[] = $product;
-
-        return $this;
-    }
-
-    /**
-     * Remove product
-     *
-     * @param \AMAPBundle\Entity\Basket\Product $product
-     */
-    public function removeProduct(\AMAPBundle\Entity\Basket\Product $product)
-    {
-        $this->products->removeElement($product);
-    }
-
-    /**
-     * Get products
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProducts()
-    {
-        return $this->products;
-    }
-    
-
-
-    /**
-     * Set repIMG
-     *
-     * @param string $repIMG
-     *
-     * @return Basket
-     */
-    public function setRepIMG($repIMG)
-    {
-        $this->repIMG = $repIMG;
-
-        return $this;
-    }
-
-    /**
-     * Get repIMG
-     *
-     * @return string
-     */
-    public function getRepIMG()
-    {
-        return $this->repIMG;
-    }
 }

@@ -3,7 +3,6 @@
 namespace AMAPBundle\Entity\Consumer;
 
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * AccountConsumer
  *
@@ -21,7 +20,13 @@ class AccountConsumer extends \AMAPBundle\Entity\Account\Account
      */
     private $id;
 
-
+    /**
+     * @var Arraycollection
+     *
+     * @ORM\OneToOne(targetEntity="\AMAPBundle\Entity\Basket\Basket", mappedBy="ownerConsumer")
+     */
+    private $basketOwnedBy;
+    
     /**
      * Get id
      *
@@ -31,4 +36,6 @@ class AccountConsumer extends \AMAPBundle\Entity\Account\Account
     {
         return $this->id;
     }
+
+
 }

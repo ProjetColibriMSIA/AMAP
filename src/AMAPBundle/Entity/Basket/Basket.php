@@ -91,6 +91,26 @@ class Basket
     private $products;
     
     /**
+     * @var Arraycollection
+     *
+     * @ORM\OneToOne(targetEntity="AMAPBundle\Entity\Consumer\AccountConsumer", inversedBy="basketOwnedBy")
+     */
+    private $ownerConsumer;
+
+    /**
+     * @var Arraycollection
+     *
+     * @ORM\OneToOne(targetEntity="AMAPBundle\Entity\Farmer\AccountFarmer", inversedBy="basketMakeBy")
+     */
+    private $productBy;
+    
+    /**
+     * @var Arraycollection
+     *
+     * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\Farmer\Inventory", inversedBy="inventoryBaskets")
+     */
+    private $inventory;
+    /**
      * Get id
      *
      * @return int
@@ -291,12 +311,37 @@ class Basket
     {
         return $this->weight;
     }
+
     /**
      * Constructor
      */
     public function __construct()
     {
         $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set repIMG
+     *
+     * @param string $repIMG
+     *
+     * @return Basket
+     */
+    public function setRepIMG($repIMG)
+    {
+        $this->repIMG = $repIMG;
+
+        return $this;
+    }
+
+    /**
+     * Get repIMG
+     *
+     * @return string
+     */
+    public function getRepIMG()
+    {
+        return $this->repIMG;
     }
 
     /**
@@ -332,30 +377,76 @@ class Basket
     {
         return $this->products;
     }
-    
-
 
     /**
-     * Set repIMG
+     * Set ownerConsumer
      *
-     * @param string $repIMG
+     * @param \AMAPBundle\Entity\Consumer\AccountConsumer $ownerConsumer
      *
      * @return Basket
      */
-    public function setRepIMG($repIMG)
+    public function setOwnerConsumer(\AMAPBundle\Entity\Consumer\AccountConsumer $ownerConsumer = null)
     {
-        $this->repIMG = $repIMG;
+        $this->ownerConsumer = $ownerConsumer;
 
         return $this;
     }
 
     /**
-     * Get repIMG
+     * Get ownerConsumer
      *
-     * @return string
+     * @return \AMAPBundle\Entity\Consumer\AccountConsumer
      */
-    public function getRepIMG()
+    public function getOwnerConsumer()
     {
-        return $this->repIMG;
+        return $this->ownerConsumer;
+    }
+
+    /**
+     * Set productBy
+     *
+     * @param \AMAPBundle\Entity\Farmer\AccountFarmer $productBy
+     *
+     * @return Basket
+     */
+    public function setProductBy(\AMAPBundle\Entity\Farmer\AccountFarmer $productBy = null)
+    {
+        $this->productBy = $productBy;
+
+        return $this;
+    }
+
+    /**
+     * Get productBy
+     *
+     * @return \AMAPBundle\Entity\Farmer\AccountFarmer
+     */
+    public function getProductBy()
+    {
+        return $this->productBy;
+    }
+
+    /**
+     * Set inventory
+     *
+     * @param \AMAPBundle\Entity\Farmer\Inventory $inventory
+     *
+     * @return Basket
+     */
+    public function setInventory(\AMAPBundle\Entity\Farmer\Inventory $inventory = null)
+    {
+        $this->inventory = $inventory;
+
+        return $this;
+    }
+
+    /**
+     * Get inventory
+     *
+     * @return \AMAPBundle\Entity\Farmer\Inventory
+     */
+    public function getInventory()
+    {
+        return $this->inventory;
     }
 }

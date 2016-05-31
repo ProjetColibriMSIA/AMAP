@@ -3,15 +3,14 @@
 namespace AMAPBundle\Entity\Farmer;
 
 use Doctrine\ORM\Mapping as ORM;
-
 /**
  * Inventory
  *
  * @ORM\Table(name="inventory")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Farmer\InventoryRepository")
  */
-class Inventory
-{
+class Inventory {
+
     /**
      * @var int
      *
@@ -21,14 +20,26 @@ class Inventory
      */
     private $id;
 
+    /**
+     * @ORM\OneToMany(targetEntity="\AMAPBundle\Entity\Basket\Basket", mappedBy="inventory")
+     */
+    private $inventoryBaskets;
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
+    /**
+     *
+     */
+    public function startInventory() {
+        // TODO: implement here
+    }
+
+
 }

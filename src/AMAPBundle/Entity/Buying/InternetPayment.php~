@@ -32,4 +32,3 @@ class InternetPayment extends Payment
         return $this->id;
     }
 }
-
