@@ -312,4 +312,141 @@ class Basket
         return $this->weight;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set repIMG
+     *
+     * @param string $repIMG
+     *
+     * @return Basket
+     */
+    public function setRepIMG($repIMG)
+    {
+        $this->repIMG = $repIMG;
+
+        return $this;
+    }
+
+    /**
+     * Get repIMG
+     *
+     * @return string
+     */
+    public function getRepIMG()
+    {
+        return $this->repIMG;
+    }
+
+    /**
+     * Add product
+     *
+     * @param \AMAPBundle\Entity\Basket\Product $product
+     *
+     * @return Basket
+     */
+    public function addProduct(\AMAPBundle\Entity\Basket\Product $product)
+    {
+        $this->products[] = $product;
+
+        return $this;
+    }
+
+    /**
+     * Remove product
+     *
+     * @param \AMAPBundle\Entity\Basket\Product $product
+     */
+    public function removeProduct(\AMAPBundle\Entity\Basket\Product $product)
+    {
+        $this->products->removeElement($product);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+
+    /**
+     * Set ownerConsumer
+     *
+     * @param \AMAPBundle\Entity\Consumer\AccountConsumer $ownerConsumer
+     *
+     * @return Basket
+     */
+    public function setOwnerConsumer(\AMAPBundle\Entity\Consumer\AccountConsumer $ownerConsumer = null)
+    {
+        $this->ownerConsumer = $ownerConsumer;
+
+        return $this;
+    }
+
+    /**
+     * Get ownerConsumer
+     *
+     * @return \AMAPBundle\Entity\Consumer\AccountConsumer
+     */
+    public function getOwnerConsumer()
+    {
+        return $this->ownerConsumer;
+    }
+
+    /**
+     * Set productBy
+     *
+     * @param \AMAPBundle\Entity\Farmer\AccountFarmer $productBy
+     *
+     * @return Basket
+     */
+    public function setProductBy(\AMAPBundle\Entity\Farmer\AccountFarmer $productBy = null)
+    {
+        $this->productBy = $productBy;
+
+        return $this;
+    }
+
+    /**
+     * Get productBy
+     *
+     * @return \AMAPBundle\Entity\Farmer\AccountFarmer
+     */
+    public function getProductBy()
+    {
+        return $this->productBy;
+    }
+
+    /**
+     * Set inventory
+     *
+     * @param \AMAPBundle\Entity\Farmer\Inventory $inventory
+     *
+     * @return Basket
+     */
+    public function setInventory(\AMAPBundle\Entity\Farmer\Inventory $inventory = null)
+    {
+        $this->inventory = $inventory;
+
+        return $this;
+    }
+
+    /**
+     * Get inventory
+     *
+     * @return \AMAPBundle\Entity\Farmer\Inventory
+     */
+    public function getInventory()
+    {
+        return $this->inventory;
+    }
 }

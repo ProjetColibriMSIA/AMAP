@@ -39,11 +39,11 @@ class AccountFarmer extends \AMAPBundle\Entity\Account\Account
     /**
      * Set basketMakeBy
      *
-     * @param \AMAPBundle\Entity\Farmer\Basket $basketMakeBy
+     * @param \AMAPBundle\Entity\Basket\Basket $basketMakeBy
      *
      * @return AccountFarmer
      */
-    public function setBasketMakeBy(\AMAPBundle\Entity\Farmer\Basket $basketMakeBy = null)
+    public function setBasketMakeBy(\AMAPBundle\Entity\Basket\Basket $basketMakeBy = null)
     {
         $this->basketMakeBy = $basketMakeBy;
 
@@ -53,7 +53,7 @@ class AccountFarmer extends \AMAPBundle\Entity\Account\Account
     /**
      * Get basketMakeBy
      *
-     * @return \AMAPBundle\Entity\Farmer\Basket
+     * @return \AMAPBundle\Entity\Basket\Basket
      */
     public function getBasketMakeBy()
     {

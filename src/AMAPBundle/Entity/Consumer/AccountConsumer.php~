@@ -38,4 +38,28 @@ class AccountConsumer extends \AMAPBundle\Entity\Account\Account
     }
 
 
+
+    /**
+     * Set basketOwnedBy
+     *
+     * @param \AMAPBundle\Entity\Basket\Basket $basketOwnedBy
+     *
+     * @return AccountConsumer
+     */
+    public function setBasketOwnedBy(\AMAPBundle\Entity\Basket\Basket $basketOwnedBy = null)
+    {
+        $this->basketOwnedBy = $basketOwnedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get basketOwnedBy
+     *
+     * @return \AMAPBundle\Entity\Basket\Basket
+     */
+    public function getBasketOwnedBy()
+    {
+        return $this->basketOwnedBy;
+    }
 }

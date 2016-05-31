@@ -35,28 +35,4 @@ class AccountFarmer extends \AMAPBundle\Entity\Account\Account
     {
         return $this->id;
     }
-
-    /**
-     * Set basketMakeBy
-     *
-     * @param \AMAPBundle\Entity\Farmer\Basket $basketMakeBy
-     *
-     * @return AccountFarmer
-     */
-    public function setBasketMakeBy(\AMAPBundle\Entity\Farmer\Basket $basketMakeBy = null)
-    {
-        $this->basketMakeBy = $basketMakeBy;
-
-        return $this;
-    }
-
-    /**
-     * Get basketMakeBy
-     *
-     * @return \AMAPBundle\Entity\Farmer\Basket
-     */
-    public function getBasketMakeBy()
-    {
-        return $this->basketMakeBy;
-    }
 }

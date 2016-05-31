@@ -3,6 +3,7 @@
 namespace AMAPBundle\Entity\Account;
 
 use Doctrine\ORM\Mapping as ORM;
+//use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * Account
@@ -48,14 +49,14 @@ abstract class Account {
      * @ORM\Column(name="firstName", type="string", length=255)
      */
     private $firstName;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="mail", type="text")
      */
     private $mail;
-    
+
     /**
      * @var string
      *
@@ -76,7 +77,8 @@ abstract class Account {
      *
      */
     public function __construct() {
-        
+        parent::__construct();
+        // your own logic
     }
 
     /**
@@ -123,7 +125,6 @@ abstract class Account {
         return $this->adress;
     }
 
-
     /**
      * Set username
      *
@@ -131,8 +132,7 @@ abstract class Account {
      *
      * @return Account
      */
-    public function setUsername($username)
-    {
+    public function setUsername($username) {
         $this->username = $username;
 
         return $this;
@@ -143,8 +143,7 @@ abstract class Account {
      *
      * @return string
      */
-    public function getUsername()
-    {
+    public function getUsername() {
         return $this->username;
     }
 
@@ -155,8 +154,7 @@ abstract class Account {
      *
      * @return Account
      */
-    public function setPassword($password)
-    {
+    public function setPassword($password) {
         $this->password = $password;
 
         return $this;
@@ -167,8 +165,7 @@ abstract class Account {
      *
      * @return string
      */
-    public function getPassword()
-    {
+    public function getPassword() {
         return $this->password;
     }
 
@@ -179,8 +176,7 @@ abstract class Account {
      *
      * @return Account
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -191,8 +187,7 @@ abstract class Account {
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -203,8 +198,7 @@ abstract class Account {
      *
      * @return Account
      */
-    public function setMail($mail)
-    {
+    public function setMail($mail) {
         $this->mail = $mail;
 
         return $this;
@@ -215,8 +209,8 @@ abstract class Account {
      *
      * @return string
      */
-    public function getMail()
-    {
+    public function getMail() {
         return $this->mail;
     }
+
 }
