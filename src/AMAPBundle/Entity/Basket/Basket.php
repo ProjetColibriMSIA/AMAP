@@ -91,16 +91,20 @@ class Basket
     private $products;
     
     /**
-     * @var Arraycollection
-     *
-     * @ORM\OneToOne(targetEntity="AMAPBundle\Entity\Consumer\AccountConsumer", inversedBy="basketOwnedBy")
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Account\Group")
+     * @ORM\JoinTable(name="basket_consumer",
+     *      joinColumns={@ORM\JoinColumn(name="basket_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     * )
      */
     private $ownerConsumer;
 
     /**
-     * @var Arraycollection
-     *
-     * @ORM\OneToOne(targetEntity="AMAPBundle\Entity\Farmer\AccountFarmer", inversedBy="basketMakeBy")
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Account\Group")
+     * @ORM\JoinTable(name="basket_farmer",
+     *      joinColumns={@ORM\JoinColumn(name="basket_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     * )
      */
     private $productBy;
     
@@ -118,6 +122,16 @@ class Basket
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ownerConsumer = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->productBy = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -185,11 +199,35 @@ class Basket
     /**
      * Get barCode
      *
-     * @return int
+     * @return integer
      */
     public function getBarCode()
     {
         return $this->barCode;
+    }
+
+    /**
+     * Set weight
+     *
+     * @param string $weight
+     *
+     * @return Basket
+     */
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Get weight
+     *
+     * @return string
+     */
+    public function getWeight()
+    {
+        return $this->weight;
     }
 
     /**
@@ -289,38 +327,6 @@ class Basket
     }
 
     /**
-     * Set weight
-     *
-     * @param string $weight
-     *
-     * @return Basket
-     */
-    public function setWeight($weight)
-    {
-        $this->weight = $weight;
-
-        return $this;
-    }
-
-    /**
-     * Get weight
-     *
-     * @return string
-     */
-    public function getWeight()
-    {
-        return $this->weight;
-    }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
      * Set repIMG
      *
      * @param string $repIMG
@@ -379,23 +385,33 @@ class Basket
     }
 
     /**
-     * Set ownerConsumer
+     * Add ownerConsumer
      *
-     * @param \AMAPBundle\Entity\Consumer\AccountConsumer $ownerConsumer
+     * @param \AMAPBundle\Entity\Account\Group $ownerConsumer
      *
      * @return Basket
      */
-    public function setOwnerConsumer(\AMAPBundle\Entity\Consumer\AccountConsumer $ownerConsumer = null)
+    public function addOwnerConsumer(\AMAPBundle\Entity\Account\Group $ownerConsumer)
     {
-        $this->ownerConsumer = $ownerConsumer;
+        $this->ownerConsumer[] = $ownerConsumer;
 
         return $this;
     }
 
     /**
+     * Remove ownerConsumer
+     *
+     * @param \AMAPBundle\Entity\Account\Group $ownerConsumer
+     */
+    public function removeOwnerConsumer(\AMAPBundle\Entity\Account\Group $ownerConsumer)
+    {
+        $this->ownerConsumer->removeElement($ownerConsumer);
+    }
+
+    /**
      * Get ownerConsumer
      *
-     * @return \AMAPBundle\Entity\Consumer\AccountConsumer
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getOwnerConsumer()
     {
@@ -403,23 +419,33 @@ class Basket
     }
 
     /**
-     * Set productBy
+     * Add productBy
      *
-     * @param \AMAPBundle\Entity\Farmer\AccountFarmer $productBy
+     * @param \AMAPBundle\Entity\Account\Group $productBy
      *
      * @return Basket
      */
-    public function setProductBy(\AMAPBundle\Entity\Farmer\AccountFarmer $productBy = null)
+    public function addProductBy(\AMAPBundle\Entity\Account\Group $productBy)
     {
-        $this->productBy = $productBy;
+        $this->productBy[] = $productBy;
 
         return $this;
     }
 
     /**
+     * Remove productBy
+     *
+     * @param \AMAPBundle\Entity\Account\Group $productBy
+     */
+    public function removeProductBy(\AMAPBundle\Entity\Account\Group $productBy)
+    {
+        $this->productBy->removeElement($productBy);
+    }
+
+    /**
      * Get productBy
      *
-     * @return \AMAPBundle\Entity\Farmer\AccountFarmer
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProductBy()
     {

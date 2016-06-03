@@ -20,10 +20,6 @@ class Inventory {
      */
     private $id;
 
-    /**
-     * @ORM\OneToMany(targetEntity="\AMAPBundle\Entity\Basket\Basket", mappedBy="inventory")
-     */
-    private $inventoryBaskets;
 
     /**
      * Get id
@@ -34,53 +30,4 @@ class Inventory {
         return $this->id;
     }
 
-    /**
-     *
-     */
-    public function startInventory() {
-        // TODO: implement here
-    }
-
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->inventoryBaskets = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add inventoryBasket
-     *
-     * @param \AMAPBundle\Entity\Basket\Basket $inventoryBasket
-     *
-     * @return Inventory
-     */
-    public function addInventoryBasket(\AMAPBundle\Entity\Basket\Basket $inventoryBasket)
-    {
-        $this->inventoryBaskets[] = $inventoryBasket;
-
-        return $this;
-    }
-
-    /**
-     * Remove inventoryBasket
-     *
-     * @param \AMAPBundle\Entity\Basket\Basket $inventoryBasket
-     */
-    public function removeInventoryBasket(\AMAPBundle\Entity\Basket\Basket $inventoryBasket)
-    {
-        $this->inventoryBaskets->removeElement($inventoryBasket);
-    }
-
-    /**
-     * Get inventoryBaskets
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getInventoryBaskets()
-    {
-        return $this->inventoryBaskets;
-    }
 }

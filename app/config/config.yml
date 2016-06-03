@@ -68,9 +68,12 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
-
+#fos user /group
 fos_user:
     db_driver: orm
     firewall_name: main
-    user_class: AMAPBundle\Entity\Account\Users
+    user_class: AMAPBundle\Entity\Account\User
+    group:
+        group_class: AMAPBundle\Entity\Account\Account\Group
+
 

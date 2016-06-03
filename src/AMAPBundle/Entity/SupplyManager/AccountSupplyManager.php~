@@ -19,14 +19,14 @@ class AccountSupplyManager extends \AMAPBundle\Entity\Account\Account {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var int[]
      * 
      * @ORM\Column(name="idAMAP", type="array")
      */
-    private $idAMAP;
+    protected $idAMAP;
 
     /**
      * Get id
@@ -60,5 +60,77 @@ class AccountSupplyManager extends \AMAPBundle\Entity\Account\Account {
     public function getIdAMAP()
     {
         return $this->idAMAP;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return AccountSupplyManager
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return AccountSupplyManager
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set adress
+     *
+     * @param string $adress
+     *
+     * @return AccountSupplyManager
+     */
+    public function setAdress($adress)
+    {
+        $this->adress = $adress;
+
+        return $this;
+    }
+
+    /**
+     * Get adress
+     *
+     * @return string
+     */
+    public function getAdress()
+    {
+        return $this->adress;
     }
 }

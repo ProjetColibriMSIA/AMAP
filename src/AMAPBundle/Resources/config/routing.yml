@@ -1,21 +1,10 @@
-amap_homepage:
-    path:     /accueil
-    defaults: { _controller: AMAPBundle:Default:accueil }
-amap_basket:
-    path:     /basket
-    defaults: { _controller: AMAPBundle:Consumer:index }
-amap_producteur:
-    path:     /producteur
-    defaults: { _controller: AMAPBundle:Default:producteur }   
-amap_actualite:
-    path:     /actualites
-    defaults: { _controller: AMAPBundle:Default:actualites }  
-amap_amap:
-    path:     /amap
-    defaults: { _controller: AMAPBundle:Default:amap }  
-amap_produit:
-    path:     /produit
-    defaults: { _controller: AMAPBundle:Default:produit }  
+amap_farmer_produit:
+    path:     /monAMAP
+    defaults: { _controller: AMAPBundle:Farmer:myamap }  
 # app/config/routing.yml
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+# app/config/routing.yml
+fos_user_group:
+    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+    prefix: /group

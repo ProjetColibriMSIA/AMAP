@@ -19,12 +19,12 @@ class AccountStoreManager extends \AMAPBundle\Entity\Account\Account {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\AMAP\AMAP", inversedBy="listAccountStoreManager", cascade={"persist"})
      */
-    private $listAMAP;
+    protected $listAMAP;
 
     /**
      * Constructor
@@ -96,4 +96,76 @@ class AccountStoreManager extends \AMAPBundle\Entity\Account\Account {
         return $this->listAMAP;
     }
 
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return AccountStoreManager
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return AccountStoreManager
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set adress
+     *
+     * @param string $adress
+     *
+     * @return AccountStoreManager
+     */
+    public function setAdress($adress)
+    {
+        $this->adress = $adress;
+
+        return $this;
+    }
+
+    /**
+     * Get adress
+     *
+     * @return string
+     */
+    public function getAdress()
+    {
+        return $this->adress;
+    }
 }

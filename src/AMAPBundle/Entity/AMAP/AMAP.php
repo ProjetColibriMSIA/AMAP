@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="a_m_a_p")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\AMAP\AMAPRepository")
  */
-class AMAP
-{
+class AMAP {
+
     /**
      * @var int
      *
@@ -38,24 +38,35 @@ class AMAP
     /**
      * @var int
      *
-     * @ORM\Column(name="nbMember", type="integer")
+     * Nombre de membre dans l'AMAP
      */
-    private $nbMember;
-
+    private $nbMembers;
 
     /**
-       * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\LocalStoreManager\AccountStoreManager", mappedBy="listAMAP", cascade={"persist"})
-       */
-      private $listAccountStoreManager;
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Account\Group")
+     * @ORM\JoinTable(name="a_m_a_p_user_group",
+     *      joinColumns={@ORM\JoinColumn(name="amap_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     * )
+     */
+    private $listAccountStoreManager;
 
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
+    }
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->listAccountStoreManager = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -107,44 +118,13 @@ class AMAP
     }
 
     /**
-     * Set nbMember
-     *
-     * @param integer $nbMember
-     *
-     * @return AMAP
-     */
-    public function setNbMember($nbMember)
-    {
-        $this->nbMember = $nbMember;
-
-        return $this;
-    }
-
-    /**
-     * Get nbMember
-     *
-     * @return int
-     */
-    public function getNbMember()
-    {
-        return $this->nbMember;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->listAccountStoreManager = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
      * Add listAccountStoreManager
      *
-     * @param \AMAPBundle\Entity\LocalStoreManager\AccountStoreManager $listAccountStoreManager
+     * @param \AMAPBundle\Entity\Account\Group $listAccountStoreManager
      *
      * @return AMAP
      */
-    public function addListAccountStoreManager(\AMAPBundle\Entity\LocalStoreManager\AccountStoreManager $listAccountStoreManager)
+    public function addListAccountStoreManager(\AMAPBundle\Entity\Account\Group $listAccountStoreManager)
     {
         $this->listAccountStoreManager[] = $listAccountStoreManager;
 
@@ -154,9 +134,9 @@ class AMAP
     /**
      * Remove listAccountStoreManager
      *
-     * @param \AMAPBundle\Entity\LocalStoreManager\AccountStoreManager $listAccountStoreManager
+     * @param \AMAPBundle\Entity\Account\Group $listAccountStoreManager
      */
-    public function removeListAccountStoreManager(\AMAPBundle\Entity\LocalStoreManager\AccountStoreManager $listAccountStoreManager)
+    public function removeListAccountStoreManager(\AMAPBundle\Entity\Account\Group $listAccountStoreManager)
     {
         $this->listAccountStoreManager->removeElement($listAccountStoreManager);
     }

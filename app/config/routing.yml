@@ -1,7 +1,15 @@
 amap:
     resource: "@AMAPBundle/Resources/config/routing.yml"
     prefix:   /
-
+blog:
+    resource: "@AMAPBundle/Controller"
+    type:     annotation
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
+# redirecting the root
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /accueil
+        permanent: true

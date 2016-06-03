@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
 		<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
    	    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 		<link rel="stylesheet" href="{{ asset('css/reset.css')}}" type="text/css" media="screen">
 		<link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css" media="screen">
@@ -13,7 +13,8 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.min.css')}}">
 
 		<link href='http://fonts.googleapis.com/css?family=Adamina' rel='stylesheet' type='text/css'>
-		
+		{% endblock %}
+                
 		<script type="text/javascript" language="javascript" src="{{ asset('//code.jquery.com/jquery-1.12.3.min.js')}}">
 		</script>
 
@@ -69,7 +70,9 @@
 						</div>
 						</a>
 					   <div id="nav" class="right">
-						<ul>
+                                               
+						<ul id="navigation">
+                                                    {% block navigation %}
 							<li {% if app.request.attributes.get('_route')=="amap_homepage" %}
 								class="navAccueilActif"
 								{% else %}
@@ -106,7 +109,9 @@
 								{% endif %}>
 								<a href="produit">Produits</a>
 							</li>
+                                                    {% endblock %}
 						</ul>
+                                            
 					</div>
 					<!-- Liste qui permet de faire le diapo -->
 					<ul class="pagination ">

@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Resources/views/Default/producteur.html.twig</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Entity/Account/Group.php</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Controller/DefaultController.php</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Entity/Farmer/Inventory.php</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Entity/Account/User.php</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Controller/AdministratorController.php</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Entity/Basket/Basket.php</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Entity/AMAP/AMAP.php</file>
+        </group>
     </open-files>
 </project-private>

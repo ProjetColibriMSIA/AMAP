@@ -11,7 +11,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  * @ORM\Table(name="fos_user")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Account\AccountRepository")
  */
-abstract class Account extends BaseUser {
+class User extends BaseUser {
 
     /**
      * @var int
@@ -35,6 +35,7 @@ abstract class Account extends BaseUser {
      * @ORM\Column(name="firstName", type="string", length=255)
      */
     protected $firstName;
+
     /**
      * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Account\Group")
      * @ORM\JoinTable(name="fos_user_user_group",
@@ -43,6 +44,15 @@ abstract class Account extends BaseUser {
      * )
      */
     protected $groups;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\AMAP\AMAP")
+     * @ORM\JoinTable(name="fos_user_amap",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="amap_id", referencedColumnName="id")}
+     * )
+     */
+    protected $amap;
 
     /**
      * @var string
@@ -134,4 +144,38 @@ abstract class Account extends BaseUser {
         return $this->adress;
     }
 
+
+    /**
+     * Add amap
+     *
+     * @param \AMAPBundle\Entity\AMAP\AMAP $amap
+     *
+     * @return User
+     */
+    public function addAmap(\AMAPBundle\Entity\AMAP\AMAP $amap)
+    {
+        $this->amap[] = $amap;
+
+        return $this;
+    }
+
+    /**
+     * Remove amap
+     *
+     * @param \AMAPBundle\Entity\AMAP\AMAP $amap
+     */
+    public function removeAmap(\AMAPBundle\Entity\AMAP\AMAP $amap)
+    {
+        $this->amap->removeElement($amap);
+    }
+
+    /**
+     * Get amap
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAmap()
+    {
+        return $this->amap;
+    }
 }

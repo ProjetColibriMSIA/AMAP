@@ -18,14 +18,14 @@ class AccountConsumer extends \AMAPBundle\Entity\Account\Account
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var Arraycollection
      *
      * @ORM\OneToOne(targetEntity="\AMAPBundle\Entity\Basket\Basket", mappedBy="ownerConsumer")
      */
-    private $basketOwnedBy;
+    protected $basketOwnedBy;
     
     /**
      * Get id
@@ -61,5 +61,77 @@ class AccountConsumer extends \AMAPBundle\Entity\Account\Account
     public function getBasketOwnedBy()
     {
         return $this->basketOwnedBy;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return AccountConsumer
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return AccountConsumer
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set adress
+     *
+     * @param string $adress
+     *
+     * @return AccountConsumer
+     */
+    public function setAdress($adress)
+    {
+        $this->adress = $adress;
+
+        return $this;
+    }
+
+    /**
+     * Get adress
+     *
+     * @return string
+     */
+    public function getAdress()
+    {
+        return $this->adress;
     }
 }

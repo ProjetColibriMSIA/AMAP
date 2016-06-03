@@ -1,0 +1,13 @@
+{%extends '::base.html.twig' %}
+
+{% block navigation %}
+    {{ parent() }}
+    <li {% if app.request.attributes.get('_route')=="amap_produit" %}
+        class="navRecettesActif"
+        {% else %}
+            class="navRecettes"
+        {% endif %}>
+        <a href="produit">Produits</a>
+    </li>
+{% endblock %}
+
