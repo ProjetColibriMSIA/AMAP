@@ -594,7 +594,6 @@ a .logo{
 	background:url(../images/content-tail.png) left top repeat;
 	position:relative;
 	z-index:1;
-        min-height: 300px;
 }
 .padding-2 {
 	padding:0 20px 0 39px;
@@ -822,4 +821,22 @@ html, body {
 	margin: auto;
 	width:80%;
 	
+}
+.lesactus{
+	border-radius: 10px;
+	background: #d9dfd9; 
+}
+.actu{
+	text-align:center;
+	padding: 0 0 0 0px;
+	float: none;
+	
+}
+.uneactu:hover{
+	background:#E6E2AF;
+}
+.uneactu{
+	margin:5px 10px 0 10px;
+	border-bottom:1px dashed green;
+	background: #d9dfd9; 
 }

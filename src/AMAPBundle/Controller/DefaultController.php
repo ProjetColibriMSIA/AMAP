@@ -47,7 +47,17 @@ class DefaultController extends Controller {
      * @Route("/actualites")
      */
     public function actualitesAction() {
-        return $this->render('AMAPBundle:Default:actualites.html.twig');
+        $em = $this->getDoctrine()->getEntityManager();
+        $rep = $em->getRepository("AMAPBundle:Actualites\actualites");
+
+        if (isset($_GET["id"])) {
+            $id = $_GET["id"];
+            $uneactu = $rep->find($id);
+            return $this->render('AMAPBundle:Default:actualites.html.twig', array('actualite' => $uneactu));
+        } else {
+            $actus = $rep->findAll();
+            return $this->render('AMAPBundle:Default:actualites.html.twig', array('actualites' => $actus));
+        }
     }
 
     /**
