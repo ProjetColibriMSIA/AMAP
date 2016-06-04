@@ -75,7 +75,7 @@
 
                                 <ul id="navigation">
                                     {% block navigation %}
-                                        {% include 'admin_component/nav.html.twig' %}
+                                        {% include 'component/nav.html.twig' %}
                                     {% endblock %}
                                 </ul>
 
@@ -94,7 +94,7 @@
                 <div class="main centreblanc">
                     <section id="content">
                         <!--==============================content================================-->
-                    {% block contenu %}{% endblock %} 
+                    {% block content %}{% endblock %} 
                     <!--==============================footer=================================-->
                 </section> 
             </div>
@@ -124,7 +124,6 @@
             </div>
         </div>
         <script>
-
             $('a.poplight').click(function () {
                 var popID = $(this).attr('rel'); //Trouver la pop-up correspondante
                 var popURL = $(this).attr('href'); //Retrouver la largeur dans le href
