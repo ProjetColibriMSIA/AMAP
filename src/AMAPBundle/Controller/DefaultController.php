@@ -58,7 +58,11 @@ class DefaultController extends Controller {
      * @Route("/amap")
      */
     public function amapAction() {
-        return $this->render('AMAPBundle:Default:amap.html.twig');
+        $em = $this->getDoctrine()->getManager();
+	    $rep = $em->getRepository("AMAPBundle:AMAP\AMAP");
+	    $amaps = $rep->findAll();
+		
+		return $this->render('AMAPBundle:Default:amap.html.twig', array('amaps' => $amaps));
     }
 
     /**
