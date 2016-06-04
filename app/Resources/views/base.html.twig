@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+        {% set titletab=((path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))|split('/'))|last) %}
         <title>
-            {% block title %}AMAP - {{(((path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))|split('/'))|last)|upper)}}{% endblock %}
+            {% block title %}AMAP - {{titletab|upper}}{% endblock %}
         </title>
         {% block stylesheets %}
             <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
@@ -75,7 +76,7 @@
 
                                 <ul id="navigation">
                                     {% block navigation %}
-                                        {% include 'admin_component/nav.html.twig' %}
+                                        {% include 'component/nav.html.twig' %}
                                     {% endblock %}
                                 </ul>
 

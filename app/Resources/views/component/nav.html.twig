@@ -1,5 +1,5 @@
 {% block navigation %}
-    							<li {% if app.request.attributes.get('_route')=="amap_homepage" %}
+    							<li {% if titletab=="accueil" %}
 								class="navAccueilActif"
 								{% else %}
 								class="navAccueil"
@@ -7,28 +7,28 @@
 								<a href="accueil">Accueil</a>
 							</li>
 							
-							<li {% if app.request.attributes.get('_route')=="amap_actualite" %}
+							<li {% if titletab=="actualites" %}
 								class="navActusActif"
 								{% else %}
 								class="navActus"
 								{% endif %}>
 								<a href="actualites">Actualités</a>
 							</li>
-							<li {% if app.request.attributes.get('_route')=="amap_producteur" %}
+							<li {% if titletab=="amap_producteur" %}
 								class="navProducteursActif" 
 								{% else %}
 								class="navProducteurs" 
 								{% endif %}>
 								<a href="producteurs">Producteurs</a>
 							</li>
-							<li {% if app.request.attributes.get('_route')=="amap_amap" %}
+							<li {% if titletab=="amap" %}
 								class="navAMAPActif"
 								{% else %}
 								class="navAMAP"
 								{% endif %}>
 								<a href="amap">L'AMAP</a>
 							</li>
-							<li {% if app.request.attributes.get('_route')=="amap_produit" %}
+							<li {% if titletab=="produit" %}
 								class="navRecettesActif"
 								{% else %}
 								class="navRecettes"
