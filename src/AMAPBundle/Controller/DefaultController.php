@@ -24,23 +24,17 @@ class DefaultController extends Controller {
 
          */
 
-        /*
-          $group = new \AMAPBundle\Entity\Account\Group('Farmer');
-
-          $group->addRole('ROLE_USER');
-         */
-
-        return $this->render('AMAPBundle:Default:accueil.html.twig');
+        return $this->render('AMAPBundle:Default:home.html.twig');
     }
 
     /**
      * @Route("/producteur")
      */
-    public function producteurAction() {
+    public function farmerAction() {
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository("AMAPBundle:Account\User");
         $users = $rep->findAll();
-        return $this->render('AMAPBundle:Default:producteur.html.twig', array('users' => $users));
+        return $this->render('AMAPBundle:Default:farmer.html.twig', array('users' => $users));
     }
 
     /**
@@ -48,15 +42,15 @@ class DefaultController extends Controller {
      */
     public function actualitesAction() {
         $em = $this->getDoctrine()->getEntityManager();
-        $rep = $em->getRepository("AMAPBundle:Actualites\actualites");
+        $rep = $em->getRepository("AMAPBundle:Announcement\News");
 
         if (isset($_GET["id"])) {
             $id = $_GET["id"];
             $uneactu = $rep->find($id);
-            return $this->render('AMAPBundle:Default:actualites.html.twig', array('actualite' => $uneactu));
+            return $this->render('AMAPBundle:Default:news.html.twig', array('actualite' => $uneactu));
         } else {
             $actus = $rep->findAll();
-            return $this->render('AMAPBundle:Default:actualites.html.twig', array('actualites' => $actus));
+            return $this->render('AMAPBundle:Default:news.html.twig', array('actualites' => $actus));
         }
     }
 
@@ -70,14 +64,14 @@ class DefaultController extends Controller {
     /**
      * @Route("/produit")
      */
-    public function produitAction() {
+    public function productAction() {
         $em = $this->getDoctrine()->getEntityManager();
         $rep = $em->getRepository("AMAPBundle:Basket\Product");
         $products = $rep->findAll();
 
         //ar_dump($product[0]->getName());
 
-        return $this->render('AMAPBundle:Default:produit.html.twig', array('products' => $products));
+        return $this->render('AMAPBundle:Default:product.html.twig', array('products' => $products));
     }
 
 }

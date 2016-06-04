@@ -7,13 +7,17 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class AdministratorController extends Controller {
 
-    public function indexAction() {
-        return $this->render('AMAPBundle:Default:index.html.twig');
-    }
     /**
-     * @Route("/admin/adduser")
+     * @Route("/admin")
      */
-    public function addUserAction() {
+    public function indexAction() {
+        return $this->render('AMAPBundle:ApplicationManager:index.html.twig');
+    }
+
+    /**
+     * @Route("/admin/config_utilisateur")
+     */
+    public function managerUserAction() {
         $userManager = $this->container->get('fos_user.user_manager');
         $user = new \AMAPBundle\Entity\Account\User();
         $user->setUsername('user12');
@@ -25,16 +29,31 @@ class AdministratorController extends Controller {
         $user->setEnabled(true);
         $user->setSuperAdmin(false);
         $userManager->updateUser($user);
-        return $this->render('AMAPBundle:ApplicationManager:accueil.html.twig');
+        return $this->render('AMAPBundle:ApplicationManager:manageUser.html.twig');
     }
-    public function addGroupAction($nameGroup)
-    {
+    /**
+     * @Route("/admin/config_groupe")
+     */
+    public function manageGroupAction($nameGroup) {
         $em = $this->getDoctrine()->getEntityManager();
         $farmerGroup = new \AMAPBundle\Entity\Account\Group($nameGroup);
         $farmerGroup->addRole('ROLE_USER');
         $em->persist($farmerGroup);
- 
+
         $em->flush();
-        return $this->render('AMAPBundle:ApplicationManager:accueil.html.twig');
+        return $this->render('AMAPBundle:ApplicationManager:manageGroup.html.twig');
     }
+    /**
+     * @Route("/admin/config_amap")
+     */
+    public function manageAMAPAction($nameGroup) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $farmerGroup = new \AMAPBundle\Entity\Account\Group($nameGroup);
+        $farmerGroup->addRole('ROLE_USER');
+        $em->persist($farmerGroup);
+
+        $em->flush();
+        return $this->render('AMAPBundle:ApplicationManager:manageAMAP.html.twig');
+    }
+
 }

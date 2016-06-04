@@ -1,16 +1,16 @@
 <?php
 
-namespace AMAPBundle\Entity\Actualites;
+namespace AMAPBundle\Entity\Announcement;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * actualites
+ * News
  *
- * @ORM\Table(name="actualites")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Actualites\actualitesRepository")
+ * @ORM\Table(name="news")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Announcement\NewsRepository")
  */
-class actualites
+class News
 {
     /**
      * @var int
@@ -55,8 +55,7 @@ class actualites
      * @ORM\Column(name="isAfficher", type="boolean")
      */
     private $isAfficher;
-
-
+    
     /**
      * Get id
      *
@@ -72,7 +71,7 @@ class actualites
      *
      * @param string $name
      *
-     * @return actualites
+     * @return News
      */
     public function setName($name)
     {
@@ -96,7 +95,7 @@ class actualites
      *
      * @param string $description
      *
-     * @return actualites
+     * @return News
      */
     public function setDescription($description)
     {
@@ -120,7 +119,7 @@ class actualites
      *
      * @param \DateTime $dateDebut
      *
-     * @return actualites
+     * @return News
      */
     public function setDateDebut($dateDebut)
     {
@@ -144,7 +143,7 @@ class actualites
      *
      * @param \DateTime $dateFin
      *
-     * @return actualites
+     * @return News
      */
     public function setDateFin($dateFin)
     {
@@ -168,7 +167,7 @@ class actualites
      *
      * @param boolean $isAfficher
      *
-     * @return actualites
+     * @return News
      */
     public function setIsAfficher($isAfficher)
     {
@@ -180,11 +179,10 @@ class actualites
     /**
      * Get isAfficher
      *
-     * @return bool
+     * @return boolean
      */
     public function getIsAfficher()
     {
         return $this->isAfficher;
     }
 }
-
