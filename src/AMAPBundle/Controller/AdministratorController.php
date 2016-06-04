@@ -4,18 +4,20 @@ namespace AMAPBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-
+    /**
+     * @Route("/admin")
+     */
 class AdministratorController extends Controller {
 
     /**
-     * @Route("/admin")
+     * @Route("/")
      */
     public function indexAction() {
         return $this->render('AMAPBundle:ApplicationManager:index.html.twig');
     }
 
     /**
-     * @Route("/admin/config_utilisateur")
+     * @Route("/gestion_utilisateur")
      */
     public function managerUserAction() {
         $userManager = $this->container->get('fos_user.user_manager');
@@ -31,23 +33,25 @@ class AdministratorController extends Controller {
         $userManager->updateUser($user);
         return $this->render('AMAPBundle:ApplicationManager:manageUser.html.twig');
     }
+
     /**
-     * @Route("/admin/config_groupe")
+     * @Route("/gestion_groupe")
      */
     public function manageGroupAction($nameGroup) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $farmerGroup = new \AMAPBundle\Entity\Account\Group($nameGroup);
-        $farmerGroup->addRole('ROLE_USER');
+        $farmerGroup->addRole('ROLE_FARMER');
         $em->persist($farmerGroup);
 
         $em->flush();
         return $this->render('AMAPBundle:ApplicationManager:manageGroup.html.twig');
     }
+
     /**
-     * @Route("/admin/config_amap")
+     * @Route("/gestion_amap")
      */
     public function manageAMAPAction($nameGroup) {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $farmerGroup = new \AMAPBundle\Entity\Account\Group($nameGroup);
         $farmerGroup->addRole('ROLE_USER');
         $em->persist($farmerGroup);

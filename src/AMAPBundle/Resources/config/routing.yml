@@ -1,6 +1,3 @@
-amap_farmer_produit:
-    path:     /monAMAP
-    defaults: { _controller: AMAPBundle:Farmer:myamap }  
 # app/config/routing.yml
 fos_js_routing:
     resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

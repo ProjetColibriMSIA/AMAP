@@ -10,10 +10,10 @@ class DefaultController extends Controller {
     /**
      * @Route("/accueil")
      */
-    public function accueilAction() {
+    public function homeAction() {
 
         //exemple Anthony
-        /* $em = $this->getDoctrine()->getEntityManager();
+        /* $em = $this->getDoctrine()->getManager();
           $rep = $em->getRepository("AMAPBundle:Basket\Basket");
 
           $bask = $rep->find(1);
@@ -28,7 +28,7 @@ class DefaultController extends Controller {
     }
 
     /**
-     * @Route("/producteur")
+     * @Route("/producteurs")
      */
     public function farmerAction() {
         $em = $this->getDoctrine()->getManager();
@@ -40,8 +40,8 @@ class DefaultController extends Controller {
     /**
      * @Route("/actualites")
      */
-    public function actualitesAction() {
-        $em = $this->getDoctrine()->getEntityManager();
+    public function newsAction() {
+        $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository("AMAPBundle:Announcement\News");
 
         if (isset($_GET["id"])) {
@@ -65,7 +65,7 @@ class DefaultController extends Controller {
      * @Route("/produit")
      */
     public function productAction() {
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository("AMAPBundle:Basket\Product");
         $products = $rep->findAll();
 

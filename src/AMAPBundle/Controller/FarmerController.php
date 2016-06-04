@@ -5,14 +5,19 @@ namespace AMAPBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class FarmerController extends Controller
-{
-    public function indexAction()
-    {
+class FarmerController extends Controller {
+
+    /**
+     * @Route("/producteur")
+     */
+    public function indexAction() {
         return $this->render('AMAPBundle:Farmer:index.html.twig');
     }
-    public function amapAction()
-    {
-        return $this->render('AMAPBundle:Farmer:index.html.twig',array('products' => $products));
+    /**
+     * @Route("/producteur/gestion_AMAP")
+     */
+    public function amapAction() {
+        return $this->render('AMAPBundle:Farmer:index.html.twig', array('products' => $products));
     }
+
 }

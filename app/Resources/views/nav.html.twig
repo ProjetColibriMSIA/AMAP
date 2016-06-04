@@ -1,0 +1,47 @@
+{% block navigation %}
+    							<li {% if app.request.attributes.get('_route')=="amap_homepage" %}
+								class="navAccueilActif"
+								{% else %}
+								class="navAccueil"
+								{% endif %}>
+								<a href="accueil">Accueil</a>
+							</li>
+							
+							<li {% if app.request.attributes.get('_route')=="amap_actualite" %}
+								class="navActusActif"
+								{% else %}
+								class="navActus"
+								{% endif %}>
+								<a href="actualites">Actualités</a>
+							</li>
+							<li {% if app.request.attributes.get('_route')=="amap_producteur" %}
+								class="navProducteursActif" 
+								{% else %}
+								class="navProducteurs" 
+								{% endif %}>
+								<a href="producteurs">Producteurs</a>
+							</li>
+							<li {% if app.request.attributes.get('_route')=="amap_amap" %}
+								class="navAMAPActif"
+								{% else %}
+								class="navAMAP"
+								{% endif %}>
+								<a href="amap">L'AMAP</a>
+							</li>
+							<li {% if app.request.attributes.get('_route')=="amap_produit" %}
+								class="navRecettesActif"
+								{% else %}
+								class="navRecettes"
+								{% endif %}>
+								<a href="produit">Produits</a>
+							</li>
+                                                        {%if is_granted("ROLE_FARMER")%}
+                                                        <li {% if app.request.attributes.get('_route')=="amap_produit" %}
+                                                        class="navRecettesActif"
+                                                        {% else %}
+                                                            class="navRecettes"
+                                                        {% endif %}>
+                                                            <a href="produit">Gestion</a>
+                                                        </li>
+                                                        {% endif %}
+{% endblock %}
