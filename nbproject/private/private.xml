@@ -3,14 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Resources/views/Default/producteur.html.twig</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Entity/Account/Group.php</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Controller/DefaultController.php</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Entity/Farmer/Inventory.php</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Entity/Account/User.php</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Controller/AdministratorController.php</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Entity/Basket/Basket.php</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Entity/AMAP/AMAP.php</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Admin/PostAdmin.php</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/app/config/routing_dev.yml</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/app/config/routing.yml</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/AMAPBundle.php</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/app/autoload.php</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/app/config/admin.yml</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/app/config/config.yml</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Entity/Sonata/BlogPost.php</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/app/AppKernel.php</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/DependencyInjection/AppExtension.php</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/app/config/services.yml</file>
+            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Entity/Sonata/Category.php</file>
         </group>
     </open-files>
 </project-private>

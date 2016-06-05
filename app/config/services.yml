@@ -3,14 +3,9 @@
 parameters:
 #    parameter_name: value
 
-services:
+#services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
 services:
-    # sonata
-    admin.category:
-        class: AMAPBundle\Admin\PostAdmin
-        arguments: [~, AMAPBundle\Entity\Sonata\Category, ~]
-        tags:
-            - { name: sonata.admin, manager_type: orm, label: Category }
+

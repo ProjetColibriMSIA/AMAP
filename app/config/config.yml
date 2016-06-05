@@ -11,7 +11,7 @@ parameters:
 
 framework:
     #esi:             ~
-    translator: { fallbacks: [en] }
+    translator:      { fallback: ['%locale%']  }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -142,3 +142,10 @@ sonata_doctrine_orm_admin:
                 percent:    SonataAdminBundle:CRUD:base_percent.html.twig
                 choice:     SonataAdminBundle:CRUD:show_choice.html.twig
                 url:        SonataAdminBundle:CRUD:show_url.html.twig
+sonata_admin:
+    title:      AMAP
+    title_logo: images/web-logo.png      
+    security:
+
+        # the default value
+        handler: sonata.admin.security.handler.role

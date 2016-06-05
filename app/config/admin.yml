@@ -2,13 +2,25 @@
 # src/AppBundle/Resources/config/admin.yml
 
 services:
-    app.admin.post:
+    # sonata
+    admin.post:
         class: AMAPBundle\Admin\PostAdmin
+        arguments: [~, AMAPBundle\Entity\Sonata\BlogPost, AMAPBundle:PostAdmin]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Post" }
-        arguments:
-            - ~
-            - AMAPBundle\Entity\Sonata\BlogPost
-            - ~
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: Post, label_translator_strategy: sonata.admin.label.strategy.underscore}
+        calls:
+            - [ setTranslationDomain, [AMAPBundle]]
+    admin.job:
+        class: AMAPBundle\Admin\JobAdmin
+        arguments: [~, AMAPBundle\Entity\Sonata\Job, AMAPBundle:JobAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Work", label: Job, label_translator_strategy: sonata.admin.label.strategy.underscore }
+        calls:
+            - [ setTranslationDomain, [AMAPBundle]]
+    admin.category:
+        class: AMAPBundle\Admin\CategoryAdmin
+        arguments: [~, AMAPBundle\Entity\Sonata\Category, AMAPBundle:CategoryAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Work", label: Category, label_translator_strategy: sonata.admin.label.strategy.underscore }
         calls:
             - [ setTranslationDomain, [AMAPBundle]]

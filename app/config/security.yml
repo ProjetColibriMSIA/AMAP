@@ -9,7 +9,7 @@ security:
         ROLE_ADMIN:       [ROLE_AUTEUR, ROLE_MODERATEUR]
         # On garde ce rôle superadmin, il nous resservira par la suite
         ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
-    
+            
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         fos_userbundle:
@@ -22,7 +22,6 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-    
         main:
             anonymous: ~
             http_basic: ~
