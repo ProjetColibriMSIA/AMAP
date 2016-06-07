@@ -42,7 +42,7 @@ class DefaultController extends Controller {
      */
     public function newsAction() {
         $em = $this->getDoctrine()->getManager();
-        $rep = $em->getRepository("AMAPBundle:Announcement\News");
+        $rep = $em->getRepository("AMAPBundle:Announcement\news");
 
         if (isset($_GET["id"])) {
             $id = $_GET["id"];
