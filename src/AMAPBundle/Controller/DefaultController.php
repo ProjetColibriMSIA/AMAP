@@ -46,11 +46,11 @@ class DefaultController extends Controller {
 
         if (isset($_GET["id"])) {
             $id = $_GET["id"];
-            $uneactu = $rep->find($id);
-            return $this->render('AMAPBundle:Default:news.html.twig', array('actualite' => $uneactu));
+            $anew = $rep->find($id);
+            return $this->render('AMAPBundle:Default:news.html.twig', array('new' => $anew));
         } else {
-            $actus = $rep->findAll();
-            return $this->render('AMAPBundle:Default:news.html.twig', array('actualites' => $actus));
+            $news = $rep->findAll();
+            return $this->render('AMAPBundle:Default:news.html.twig', array('news' => $news));
         }
     }
 

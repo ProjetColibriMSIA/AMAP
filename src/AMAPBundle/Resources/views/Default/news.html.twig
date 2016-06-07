@@ -3,20 +3,20 @@
     <div class="container">
 		
 		<section>
-			{% if actualites is defined %}
+			{% if news is defined %}
 				<h1 class="actu">Les Actualites</h1>
 				<br/>
 				<ul class="lesactus">
-					{% for actu in actualites %}				
-						{% if actu.getisAfficher == 1 %}
-							<li class='uneactu actu{{ actu.getId }}'> 
-								<a href="actualites?id={{ actu.getId }}">
-									<h6>{{ actu.getName }}</h6>
+					{% for n in news %}				
+						{% if n.getisAfficher == 1 %}
+							<li class='uneactu actu{{ n.getId }}'> 
+								<a href="actualites?id={{ n.getId }}">
+									<h6>{{ n.getName }}</h6>
 									<p>
-										{% if not actu.getDateFin is null %} 
-											Du {{ actu.getDateDebut|date("l j F Y", "Europe/Paris") }} au {{ actu.getDateFin|date("l j F Y", "Europe/Paris")}}
+										{% if not n.getDateFin is null %} 
+											Du {{ n.getDateDebut|date("l j F Y", "Europe/Paris") }} au {{ n.getDateFin|date("l j F Y", "Europe/Paris")}}
 											{% else %} 
-												Le {{ actu.getDateDebut|date("l j F Y", "Europe/Paris") }}	
+												Le {{ n.getDateDebut|date("l j F Y", "Europe/Paris") }}	
 										{% endif %}	
 										
 									</p>
@@ -26,16 +26,16 @@
 					{% endfor %}	
 				</ul>
 			{% else %}	
-				<h6>{{ actualite.getName }}</h6>
+				<h6>{{ new.getName }}</h6>
 				<p>
-					{% if not actualite.getDateFin is null %} 
-						Du {{ actualite.getDateDebut|date("l j F Y", "Europe/Paris") }} au {{ actualite.getDateFin|date("l j F Y", "Europe/Paris")}}
+					{% if not new.getDateFin is null %} 
+						Du {{ new.getDateDebut|date("l j F Y", "Europe/Paris") }} au {{ new.getDateFin|date("l j F Y", "Europe/Paris")}}
 						{% else %} 
-							Le {{ actualite.getDateDebut|date("l j F Y", "Europe/Paris") }}	
+							Le {{ new.getDateDebut|date("l j F Y", "Europe/Paris") }}	
 					{% endif %}	
 					
 				</p>
-				<p>{{ actualite.getDescription }}</p>
+				<p>{{ new.getDescription }}</p>
 				<input type="button" value="Retour" onclick="history.go(-1)">
 			{% endif %}
 		</section>
