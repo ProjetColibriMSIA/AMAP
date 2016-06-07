@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Entity\Sonata;
+namespace AMAPBundle\Entity\Admin;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Category
  *
  * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Sonata\CategoryRepository")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Admin\CategoryRepository")
  */
 class Category
 {
@@ -44,6 +44,14 @@ class Category
     }
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->blogPosts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Set name
      *
      * @param string $name
@@ -66,22 +74,15 @@ class Category
     {
         return $this->name;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->blogPosts = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Add blogPost
      *
-     * @param \AMAPBundle\Entity\Sonata\BlogPost $blogPost
+     * @param \AMAPBundle\Entity\Admin\BlogPost $blogPost
      *
      * @return Category
      */
-    public function addBlogPost(\AMAPBundle\Entity\Sonata\BlogPost $blogPost)
+    public function addBlogPost(\AMAPBundle\Entity\Admin\BlogPost $blogPost)
     {
         $this->blogPosts[] = $blogPost;
 
@@ -91,9 +92,9 @@ class Category
     /**
      * Remove blogPost
      *
-     * @param \AMAPBundle\Entity\Sonata\BlogPost $blogPost
+     * @param \AMAPBundle\Entity\Admin\BlogPost $blogPost
      */
-    public function removeBlogPost(\AMAPBundle\Entity\Sonata\BlogPost $blogPost)
+    public function removeBlogPost(\AMAPBundle\Entity\Admin\BlogPost $blogPost)
     {
         $this->blogPosts->removeElement($blogPost);
     }

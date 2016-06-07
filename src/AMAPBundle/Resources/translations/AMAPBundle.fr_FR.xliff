@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="amap_post">
+                <source>Post</source>
+                <target>Poste</target>
+            </trans-unit>
+            <trans-unit id="amap_news">
+                <source>News</source>
+                <target>Actualités</target>
+            </trans-unit>
+            <trans-unit id="amap_user">
+                <source>User</source>
+                <target>Utilisateur</target>
+            </trans-unit>
+            <trans-unit id="amap_users">
+                <source>Users</source>
+                <target>Utilisateurs</target>
+            </trans-unit>
+            <trans-unit id="amap_group">
+                <source>Group</source>
+                <target>Groupe</target>
+            </trans-unit>
+            <trans-unit id="amap_amap">
+                <source>AMAP</source>
+                <target>AMAP</target>
+            </trans-unit>
+            <trans-unit id="amap_contract">
+                <source>Contract</source>
+                <target>Contrat</target>
+            </trans-unit>
+            <trans-unit id="amap_product">
+                <source>Product</source>
+                <target>Produit</target>
+            </trans-unit>
+            <trans-unit id="amap_basket">
+                <source>Basket</source>
+                <target>Panier</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

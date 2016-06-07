@@ -5,22 +5,57 @@ services:
     # sonata
     admin.post:
         class: AMAPBundle\Admin\PostAdmin
-        arguments: [~, AMAPBundle\Entity\Sonata\BlogPost, AMAPBundle:PostAdmin]
+        arguments: [~, AMAPBundle\Entity\Announcement\News, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Content", label: Post, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - { name: sonata.admin, manager_type: orm, group: "News", label: "News"}
         calls:
             - [ setTranslationDomain, [AMAPBundle]]
-    admin.job:
-        class: AMAPBundle\Admin\JobAdmin
-        arguments: [~, AMAPBundle\Entity\Sonata\Job, AMAPBundle:JobAdmin]
+            - [ setLabelTranslatorStrategy, [ "@sonata.admin.label.strategy.underscore" ]]
+    admin.user:
+        class: AMAPBundle\Admin\UserAdmin
+        arguments: [~, AMAPBundle\Entity\Account\User, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Work", label: Job, label_translator_strategy: sonata.admin.label.strategy.underscore }
+            - { name: sonata.admin, manager_type: orm, group: "Users", label: "User"}
         calls:
             - [ setTranslationDomain, [AMAPBundle]]
-    admin.category:
-        class: AMAPBundle\Admin\CategoryAdmin
-        arguments: [~, AMAPBundle\Entity\Sonata\Category, AMAPBundle:CategoryAdmin]
+            - [ setLabelTranslatorStrategy, [ "@sonata.admin.label.strategy.underscore" ]]
+    admin.group:
+        class: AMAPBundle\Admin\GroupAdmin
+        arguments: [~, AMAPBundle\Entity\Account\Group, ~]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "Work", label: Category, label_translator_strategy: sonata.admin.label.strategy.underscore }
+            - { name: sonata.admin, manager_type: orm, group: "Users", label: "Group"}
         calls:
             - [ setTranslationDomain, [AMAPBundle]]
+            - [ setLabelTranslatorStrategy, [ "@sonata.admin.label.strategy.underscore" ]]
+    admin.amap:
+        class: AMAPBundle\Admin\AMAPAdmin
+        arguments: [~, AMAPBundle\Entity\AMAP\AMAP, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "AMAP", label: "AMAP" }
+        calls:
+            - [ setTranslationDomain, [AMAPBundle]]
+            - [ setLabelTranslatorStrategy, [ "@sonata.admin.label.strategy.underscore" ]]
+    admin.basket:
+        class: AMAPBundle\Admin\BasketAdmin
+        arguments: [~, AMAPBundle\Entity\Basket\Basket, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Basket", label: "Basket" }
+        calls:
+            - [ setTranslationDomain, [AMAPBundle]]
+            - [ setLabelTranslatorStrategy, [ "@sonata.admin.label.strategy.underscore" ]]
+    admin.product:
+        class: AMAPBundle\Admin\ProductAdmin
+        arguments: [~, AMAPBundle\Entity\Basket\Prodct, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Basket", label: "Product" }
+        calls:
+            - [ setTranslationDomain, [AMAPBundle]]
+            - [ setLabelTranslatorStrategy, [ "@sonata.admin.label.strategy.underscore" ]]
+    admin.contract:
+        class: AMAPBundle\Admin\ContractAdmin
+        arguments: [~, AMAPBundle\Entity\Contract\Contract, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Users", label: "Contract" }
+        calls:
+            - [ setTranslationDomain, [AMAPBundle]]
+            - [ setLabelTranslatorStrategy, [ "@sonata.admin.label.strategy.underscore" ]]

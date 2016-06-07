@@ -7,11 +7,14 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr_FR
 
 framework:
     #esi:             ~
-    translator:      { fallback: ['%locale%']  }
+    translator:       
+        fallback: [%locale%]  
+        paths:
+            - '%kernel.root_dir%/../src/AMAPBundle/Resources/translations'
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -74,7 +77,7 @@ fos_user:
     firewall_name: main
     user_class: AMAPBundle\Entity\Account\User
     group:
-        group_class: AMAPBundle\Entity\Account\Account\Group
+        group_class: AMAPBundle\Entity\Account\Group
 # knp menu
 knp_menu:
     # use "twig: false" to disable the Twig extension and the TwigRenderer
@@ -144,8 +147,9 @@ sonata_doctrine_orm_admin:
                 url:        SonataAdminBundle:CRUD:show_url.html.twig
 sonata_admin:
     title:      AMAP
-    title_logo: images/web-logo.png      
+    title_logo: images/web-logo.png    
+    templates:
+        dashboard: SonataAdminBundle:Core:dashboard.html.twig
     security:
-
         # the default value
         handler: sonata.admin.security.handler.role

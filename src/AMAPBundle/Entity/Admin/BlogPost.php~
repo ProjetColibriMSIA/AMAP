@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Entity\Sonata;
+namespace AMAPBundle\Entity\Admin;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * BlogPost
  *
  * @ORM\Table(name="blog_post")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Sonata\BlogPostRepository")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Admin\BlogPostRepository")
  */
 class BlogPost
 {

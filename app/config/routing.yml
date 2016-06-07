@@ -1,7 +1,4 @@
 amap:
-    resource: "@AMAPBundle/Resources/config/routing.yml"
-    prefix:   /
-blog:
     resource: "@AMAPBundle/Controller"
     type:     annotation   
 admin:

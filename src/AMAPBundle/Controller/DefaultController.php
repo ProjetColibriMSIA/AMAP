@@ -23,7 +23,6 @@ class DefaultController extends Controller {
           return new \Symfony\Component\HttpFoundation\Response();
 
          */
-
         return $this->render('AMAPBundle:Default:home.html.twig');
     }
 

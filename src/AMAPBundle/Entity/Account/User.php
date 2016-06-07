@@ -25,14 +25,14 @@ class User extends BaseUser {
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=50)
      */
     protected $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="firstName", type="string", length=255)
+     * @ORM\Column(name="firstName", type="string", length=50)
      */
     protected $firstName;
 
@@ -60,7 +60,13 @@ class User extends BaseUser {
      * @ORM\Column(name="adress", type="text")
      */
     protected $adress;
-
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="locale", type="string", length=50)
+     */
+    protected $locale;
     /**
      * Get id
      *
@@ -177,5 +183,29 @@ class User extends BaseUser {
     public function getAmap()
     {
         return $this->amap;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     *
+     * @return User
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 }

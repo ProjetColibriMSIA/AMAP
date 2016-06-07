@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Entity\Sonata;
+namespace AMAPBundle\Entity\Admin;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Job
  *
  * @ORM\Table(name="job")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Sonata\JobRepository")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Admin\JobRepository")
  */
 class Job
 {
