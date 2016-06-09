@@ -26,6 +26,13 @@ class AMAPAdmin extends Admin {
                 ->addIdentifier('name')
                 ->add('adress')
                 ->add('nbMembers')
+                ->add('_action', 'actions', array(
+                    'actions' => array(
+                        'show' => array(),
+                        'edit' => array(),
+                        'delete' => array(),
+                    )
+                ))
         ;
     }
 

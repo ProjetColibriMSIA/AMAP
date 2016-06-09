@@ -2,102 +2,172 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
-            <trans-unit id="amap_post">
-                <source>Post</source>
-                <target>Poste</target>
-            </trans-unit>
-            <trans-unit id="amap_news">
-                <source>News</source>
+            <trans-unit id="label_news">
+                <source>label_news</source>
                 <target>Actualités</target>
             </trans-unit>
-            <trans-unit id="amap_user">
-                <source>User</source>
+            <trans-unit id="label_user">
+                <source>label_user</source>
                 <target>Utilisateur</target>
             </trans-unit>
-            <trans-unit id="amap_users">
-                <source>Users</source>
+            <trans-unit id="label_users">
+                <source>label_users</source>
                 <target>Utilisateurs</target>
             </trans-unit>
-            <trans-unit id="amap_group">
-                <source>Group</source>
+            <trans-unit id="label_group">
+                <source>label_group</source>
                 <target>Groupe</target>
             </trans-unit>
-            <trans-unit id="amap_amap">
-                <source>AMAP</source>
+            <trans-unit id="label_amap">
+                <source>label_amap</source>
                 <target>AMAP</target>
             </trans-unit>
-            <trans-unit id="amap_contract">
-                <source>Contract</source>
+            <trans-unit id="label_contract">
+                <source>label_contract</source>
                 <target>Contrat</target>
             </trans-unit>
-            <trans-unit id="amap_product">
-                <source>Product</source>
+            <trans-unit id="label_product">
+                <source>label_product</source>
                 <target>Produit</target>
             </trans-unit>
-            <trans-unit id="amap_basket">
-                <source>Basket</source>
+            <trans-unit id="label_basket">
+                <source>label_basket</source>
                 <target>Panier</target>
             </trans-unit>
-			<trans-unit id="list.label_name_a_m_a_p">
+            <trans-unit id="list.label_email">
+                <source>list.label_email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="list.label_username">
+                <source>list.label_username</source>
+                <target>Pseudonyme</target>
+            </trans-unit>
+            <trans-unit id="list.label_first_name">
+                <source>list.label_first_name</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="list.label_password">
+                <source>list.label_password</source>
+                <target>Mot de passe</target>
+            </trans-unit>
+            <trans-unit id="list.label_roles">
+                <source>list.label_roles</source>
+                <target>Rôles</target>
+            </trans-unit>
+            <trans-unit id="list.label_name_a_m_a_p">
                 <source>list.label_name_a_m_a_p</source>
                 <target>Nom</target>
             </trans-unit>
-			<trans-unit id="list.label_adress_a_m_a_p">
+            <trans-unit id="list.label_adress_a_m_a_p">
                 <source>list.label_adress_a_m_a_p</source>
                 <target>Adresse</target>
             </trans-unit>
-			<trans-unit id="list.label_nb_members">
+            <trans-unit id="list.label_nb_members">
                 <source>list.label_nb_members</source>
                 <target>Nombre d'adhérents</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_a_m_a_p_list">
+            <trans-unit id="breadcrumb.link_a_m_a_p_list">
                 <source>breadcrumb.link_a_m_a_p_list</source>
-                <target>Liste AMAP</target>
+                <target>Configuration associations AMAP</target>
             </trans-unit>
-			<trans-unit id="list.label_name">
+            <trans-unit id="list.label_name">
                 <source>list.label_name</source>
                 <target>Nom</target>
             </trans-unit>
-			<trans-unit id="list.label_price">
+            <trans-unit id="list.label_price">
                 <source>list.label_price</source>
                 <target>Prix (en €)</target>
             </trans-unit>
-			<trans-unit id="list.label_description">
+            <trans-unit id="list.label_description">
                 <source>list.label_description</source>
                 <target>Description</target>
             </trans-unit>
-			<trans-unit id="list.label_baskets">
+            <trans-unit id="list.label_baskets">
                 <source>list.label_baskets</source>
                 <target>Liste AMAP</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_basket_list">
+            <trans-unit id="breadcrumb.link_basket_list">
                 <source>breadcrumb.link_basket_list</source>
-                <target>Liste des paniers</target>
+                <target>Configuration Paniers</target>
             </trans-unit>
-			<trans-unit id="list.label_bar_code">
+            <trans-unit id="list.label_bar_code">
                 <source>list.label_bar_code</source>
                 <target>Code barre</target>
             </trans-unit>
-			<trans-unit id="list.label_weight">
+            <trans-unit id="list.label_weight">
                 <source>list.label_weight</source>
                 <target>Poids (en kg)</target>
             </trans-unit>
-			<trans-unit id="list.label_expiration_date">
+            <trans-unit id="list.label_expiration_date">
                 <source>list.label_expiration_date</source>
                 <target>Date d'expiration</target>
             </trans-unit>
-			<trans-unit id="list.label_store_date">
+            <trans-unit id="list.label_store_date">
                 <source>list.label_store_date</source>
                 <target>Date de mise en magasin</target>
             </trans-unit>
-			<trans-unit id="list.label_rep_i_m_g">
+            <trans-unit id="list.label_rep_i_m_g">
                 <source>list.label_rep_i_m_g</source>
                 <target>Répertoire Images</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_product_list">
+            <trans-unit id="breadcrumb.link_product_list">
                 <source>breadcrumb.link_product_list</source>
-                <target>Liste des produits</target>
+                <target>Configuration Produits</target>
             </trans-unit>
+            <trans-unit id="list.label__action">
+                <source>list.label__action</source>
+                <target>Liste des actions</target>
+            </trans-unit>
+            <trans-unit id="list.label_adress">
+                <source>list.label_adress</source>
+                <target>Liste des adresses</target>
+            </trans-unit>
+            <trans-unit id="list.label_products">
+                <source>list.label_products</source>
+                <target>Liste des produits</target>
+            </trans-unit>    
+            <trans-unit id="list.label_id">
+                <source>list.label_id</source>
+                <target>Identifiants</target>
+            </trans-unit>
+            
+            <trans-unit id="list.label_sign_date">
+                <source>list.label_sign_date</source>
+                <target>Date de signature</target>
+            </trans-unit>
+            <trans-unit id="list.label_rep_p_d_f">
+                <source>list.label_rep_p_d_f</source>
+                <target>Chemin d'accés PDF</target>
+            </trans-unit>
+                        <trans-unit id="list.label_groups">
+                <source>list.label_groups</source>
+                <target>Liste des groupes</target>
+            </trans-unit>
+                        <trans-unit id="list.label_amap">
+                <source>list.label_amap</source>
+                <target>Liste des AMAP</target>
+            </trans-unit>
+                                    <trans-unit id="list.label_locale">
+                <source>list.label_locale</source>
+                <target>Langue du navigateur</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_contract_list">
+                <source>breadcrumb.link_contract_list</source>
+                <target>Configuration Contrats</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_group_list">
+                <source>breadcrumb.link_group_list</source>
+                <target>Configuration Groupes</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_user_list">
+                <source>breadcrumb.link_user_list</source>
+                <target>Configuration Utilisateurs</target>
+            </trans-unit>
+                        <trans-unit id="breadcrumb.link_news_list">
+                <source>breadcrumb.link_news_list</source>
+                <target>Configuration Actualités</target>
+            </trans-unit>
+            
         </body>
     </file>
 </xliff>

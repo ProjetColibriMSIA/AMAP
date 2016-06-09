@@ -25,17 +25,19 @@ class ProductAdmin extends Admin {
         $listMapper
                 ->addIdentifier('name')
                 ->add('price')
-                ->add('barCode')
                 ->add('description')
-                ->add('weight')
-                ->add('expirationDate')
-                ->add('storeDate')
-                ->add('repIMG')
-                ->add('products', null, array(
+                ->add('baskets', null, array(
                     'class' => 'AMAPBundle:Basket\Product',
                     'associated_property' => function ($baskets) {
                         return $baskets->getName();
                     }))
+                ->add('_action', 'actions', array(
+                    'actions' => array(
+                        'show' => array(),
+                        'edit' => array(),
+                        'delete' => array(),
+                    )
+                ))
         ;
     }
 

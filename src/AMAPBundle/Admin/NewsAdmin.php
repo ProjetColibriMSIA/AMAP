@@ -8,13 +8,14 @@
 
 namespace AMAPBundle\Admin;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Sonata\AdminBundle\Admin\AbstractAdmin as Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class BasketAdmin extends Admin {
+class NewsAdmin extends Admin {
 
     /**
      * @param \Sonata\AdminBundle\Datagrid\ListMapper $listMapper
@@ -23,19 +24,12 @@ class BasketAdmin extends Admin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-                ->addIdentifier('name')
-                ->add('price')
+                ->addIdentifier('id')
+                ->add('name')
                 ->add('description')
-                ->add('barCode')
-                ->add('weight')
-                ->add('expirationDate')
-                ->add('storeDate')
-                ->add('repIMG')
-                ->add('products', null, array(
-                    'class' => 'AMAPBundle:Basket\Product',
-                    'associated_property' => function ($products) {
-                        return $products->getName();
-                    }))
+                ->add('dateDebut')
+                ->add('dateFin')
+                ->add('isAfficher')
                 ->add('_action', 'actions', array(
                     'actions' => array(
                         'show' => array(),

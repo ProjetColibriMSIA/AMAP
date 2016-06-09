@@ -24,8 +24,8 @@
                                     <td>
                                         {%if user.getAmap()|length >0 %}
                                             {% for amap in user.getAmap() %}
-                                                {%if amap.getNameAMAP() != null and amap.getNameAMAP() is not empty and amap|length >0 %}
-                                                    {{ amap.getNameAMAP() }}
+                                                {%if amap.getName() != null and amap.getName() is not empty and amap|length >0 %}
+                                                    {{ amap.getName() }}
                                                 {%endif%}
                                             {% endfor %}
                                         {% else %}

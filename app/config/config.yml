@@ -146,7 +146,7 @@ sonata_doctrine_orm_admin:
                 choice:     SonataAdminBundle:CRUD:show_choice.html.twig
                 url:        SonataAdminBundle:CRUD:show_url.html.twig
 sonata_admin:
-    title:      AMAP
+    title:      MIRAMAP
     title_logo: images/web-logo.png    
     templates:
         dashboard: SonataAdminBundle:Core:dashboard.html.twig

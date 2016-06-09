@@ -1,26 +1,26 @@
 {%extends '::base.html.twig' %}
 {% block contenu %}
     <div class="container">
-	
-		<h1>AMAP</h1>
-		<section>
-			<table id="example" class="display" cellspacing="0" width="100%">
-				<thead>
-					<tr>
-						<th>Nom</th>
+
+        <h1>AMAP</h1>
+        <section>
+            <table id="example" class="display" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
                         <th>Adresse</th>
-					</tr>
-				</thead>
-				<tbody>   
-					{% for amap in amaps %}
-						<tr>
-							<td> {{ amap.getName() }}</td>
-							<td> {{ amap.getAdress() }}</td>
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
-		</section>
-	</div>
+                    </tr>
+                </thead>
+                <tbody>   
+                    {% for amap in amaps %}
+                        <tr>
+                            <td> {{ amap.getName() }}</td>
+                            <td> {{ amap.getAdress() }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </div>
 {% endblock %}
 
