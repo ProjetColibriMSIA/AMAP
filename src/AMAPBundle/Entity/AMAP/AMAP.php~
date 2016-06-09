@@ -24,16 +24,16 @@ class AMAP {
     /**
      * @var string
      *
-     * @ORM\Column(name="nameAMAP", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $nameAMAP;
+    private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adressAMAP", type="string", length=255)
+     * @ORM\Column(name="adress", type="string", length=255)
      */
-    private $adressAMAP;
+    private $adress;
 
     /**
      * @var int

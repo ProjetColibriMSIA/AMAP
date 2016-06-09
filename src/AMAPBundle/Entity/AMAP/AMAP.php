@@ -24,16 +24,16 @@ class AMAP {
     /**
      * @var string
      *
-     * @ORM\Column(name="nameAMAP", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $nameAMAP;
+    private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="adressAMAP", type="string", length=255)
+     * @ORM\Column(name="adress", type="string", length=255)
      */
-    private $adressAMAP;
+    private $adress;
 
     /**
      * @var int
@@ -67,50 +67,6 @@ class AMAP {
      */
     public function getNbMembers() {
         return count($this->users);
-    }
-
-    /**
-     * Set nameAMAP
-     *
-     * @param string $nameAMAP
-     *
-     * @return AMAP
-     */
-    public function setNameAMAP($nameAMAP) {
-        $this->nameAMAP = $nameAMAP;
-
-        return $this;
-    }
-
-    /**
-     * Get nameAMAP
-     *
-     * @return string
-     */
-    public function getNameAMAP() {
-        return $this->nameAMAP;
-    }
-
-    /**
-     * Set adressAMAP
-     *
-     * @param string $adressAMAP
-     *
-     * @return AMAP
-     */
-    public function setAdressAMAP($adressAMAP) {
-        $this->adressAMAP = $adressAMAP;
-
-        return $this;
-    }
-
-    /**
-     * Get adressAMAP
-     *
-     * @return string
-     */
-    public function getAdressAMAP() {
-        return $this->adressAMAP;
     }
 
     /**
@@ -151,4 +107,52 @@ class AMAP {
         return $this->users;
     }
 
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return AMAP
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set adress
+     *
+     * @param string $adress
+     *
+     * @return AMAP
+     */
+    public function setAdress($adress)
+    {
+        $this->adress = $adress;
+
+        return $this;
+    }
+
+    /**
+     * Get adress
+     *
+     * @return string
+     */
+    public function getAdress()
+    {
+        return $this->adress;
+    }
 }

@@ -38,6 +38,66 @@
                 <source>Basket</source>
                 <target>Panier</target>
             </trans-unit>
+			<trans-unit id="list.label_name_a_m_a_p">
+                <source>list.label_name_a_m_a_p</source>
+                <target>Nom</target>
+            </trans-unit>
+			<trans-unit id="list.label_adress_a_m_a_p">
+                <source>list.label_adress_a_m_a_p</source>
+                <target>Adresse</target>
+            </trans-unit>
+			<trans-unit id="list.label_nb_members">
+                <source>list.label_nb_members</source>
+                <target>Nombre d'adhérents</target>
+            </trans-unit>
+			<trans-unit id="breadcrumb.link_a_m_a_p_list">
+                <source>breadcrumb.link_a_m_a_p_list</source>
+                <target>Liste AMAP</target>
+            </trans-unit>
+			<trans-unit id="list.label_name">
+                <source>list.label_name</source>
+                <target>Nom</target>
+            </trans-unit>
+			<trans-unit id="list.label_price">
+                <source>list.label_price</source>
+                <target>Prix (en €)</target>
+            </trans-unit>
+			<trans-unit id="list.label_description">
+                <source>list.label_description</source>
+                <target>Description</target>
+            </trans-unit>
+			<trans-unit id="list.label_baskets">
+                <source>list.label_baskets</source>
+                <target>Liste AMAP</target>
+            </trans-unit>
+			<trans-unit id="breadcrumb.link_basket_list">
+                <source>breadcrumb.link_basket_list</source>
+                <target>Liste des paniers</target>
+            </trans-unit>
+			<trans-unit id="list.label_bar_code">
+                <source>list.label_bar_code</source>
+                <target>Code barre</target>
+            </trans-unit>
+			<trans-unit id="list.label_weight">
+                <source>list.label_weight</source>
+                <target>Poids (en kg)</target>
+            </trans-unit>
+			<trans-unit id="list.label_expiration_date">
+                <source>list.label_expiration_date</source>
+                <target>Date d'expiration</target>
+            </trans-unit>
+			<trans-unit id="list.label_store_date">
+                <source>list.label_store_date</source>
+                <target>Date de mise en magasin</target>
+            </trans-unit>
+			<trans-unit id="list.label_rep_i_m_g">
+                <source>list.label_rep_i_m_g</source>
+                <target>Répertoire Images</target>
+            </trans-unit>
+			<trans-unit id="breadcrumb.link_product_list">
+                <source>breadcrumb.link_product_list</source>
+                <target>Liste des produits</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

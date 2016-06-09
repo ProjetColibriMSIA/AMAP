@@ -38,7 +38,7 @@ class UserAdmin extends Admin {
                 ->add('amap', null, array(
                     'class' => 'AMAPBundle:AMAP\AMAP',
                     'associated_property' => function ($amap) {
-                        return $amap->getNameAMAP();
+                        return $amap->getName();
                     }))
                 ->add('adress')
                 ->add('locale')

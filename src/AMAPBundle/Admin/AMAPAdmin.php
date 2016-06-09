@@ -23,8 +23,8 @@ class AMAPAdmin extends Admin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-                ->addIdentifier('nameAMAP')
-                ->add('adressAMAP')
+                ->addIdentifier('name')
+                ->add('adress')
                 ->add('nbMembers')
         ;
     }
