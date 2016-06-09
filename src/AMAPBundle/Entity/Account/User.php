@@ -37,7 +37,7 @@ class User extends BaseUser {
     protected $firstName;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Account\Group")
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Account\Group",mappedBy="users")
      * @ORM\JoinTable(name="fos_user_user_group",
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
@@ -46,7 +46,7 @@ class User extends BaseUser {
     protected $groups;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\AMAP\AMAP")
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\AMAP\AMAP", mappedBy="users")
      * @ORM\JoinTable(name="fos_user_amap",
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="amap_id", referencedColumnName="id")}
@@ -67,6 +67,10 @@ class User extends BaseUser {
      * @ORM\Column(name="locale", type="string", length=50)
      */
     protected $locale;
+    /**
+     * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\Contract\Contract", inversedBy="users")
+     */
+    protected $contract;
     /**
      * Get id
      *
@@ -207,5 +211,29 @@ class User extends BaseUser {
     public function getLocale()
     {
         return $this->locale;
+    }
+
+    /**
+     * Set contract
+     *
+     * @param \AMAPBundle\Entity\Contract\Contract $contract
+     *
+     * @return User
+     */
+    public function setContract(\AMAPBundle\Entity\Contract\Contract $contract = null)
+    {
+        $this->contract = $contract;
+
+        return $this;
+    }
+
+    /**
+     * Get contract
+     *
+     * @return \AMAPBundle\Entity\Contract\Contract
+     */
+    public function getContract()
+    {
+        return $this->contract;
     }
 }

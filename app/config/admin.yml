@@ -45,7 +45,7 @@ services:
             - [ setLabelTranslatorStrategy, [ "@sonata.admin.label.strategy.underscore" ]]
     admin.product:
         class: AMAPBundle\Admin\ProductAdmin
-        arguments: [~, AMAPBundle\Entity\Basket\Prodct, ~]
+        arguments: [~, AMAPBundle\Entity\Basket\Product, ~]
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Basket", label: "Product", label_catalogue: "AMAPBundle" }
         calls:

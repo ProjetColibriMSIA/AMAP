@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="contract")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Contract\ContractRepository")
  */
-class Contract
-{
+class Contract {
+
     /**
      * @var int
      *
@@ -36,20 +36,23 @@ class Contract
     private $expirationDate;
 
     /**
+     * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Account\User", mappedBy="contract")
+     */
+    private $users;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="repPDF", type="text")
      */
     private $repPDF;
 
-
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -60,8 +63,7 @@ class Contract
      *
      * @return Contract
      */
-    public function setSignDate($signDate)
-    {
+    public function setSignDate($signDate) {
         $this->signDate = $signDate;
 
         return $this;
@@ -72,8 +74,7 @@ class Contract
      *
      * @return \DateTime
      */
-    public function getSignDate()
-    {
+    public function getSignDate() {
         return $this->signDate;
     }
 
@@ -84,8 +85,7 @@ class Contract
      *
      * @return Contract
      */
-    public function setExpirationDate($expirationDate)
-    {
+    public function setExpirationDate($expirationDate) {
         $this->expirationDate = $expirationDate;
 
         return $this;
@@ -96,8 +96,7 @@ class Contract
      *
      * @return \DateTime
      */
-    public function getExpirationDate()
-    {
+    public function getExpirationDate() {
         return $this->expirationDate;
     }
 
@@ -108,8 +107,7 @@ class Contract
      *
      * @return Contract
      */
-    public function setRepPDF($repPDF)
-    {
+    public function setRepPDF($repPDF) {
         $this->repPDF = $repPDF;
 
         return $this;
@@ -120,8 +118,48 @@ class Contract
      *
      * @return string
      */
-    public function getRepPDF()
-    {
+    public function getRepPDF() {
         return $this->repPDF;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add user
+     *
+     * @param \AMAPBundle\Entity\Account\User $user
+     *
+     * @return Contract
+     */
+    public function addUser(\AMAPBundle\Entity\Account\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \AMAPBundle\Entity\Account\User $user
+     */
+    public function removeUser(\AMAPBundle\Entity\Account\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
     }
 }

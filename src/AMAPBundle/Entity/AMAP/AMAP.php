@@ -43,13 +43,13 @@ class AMAP {
     private $nbMembers;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Account\Group")
-     * @ORM\JoinTable(name="a_m_a_p_user_group",
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Account\User", inversedBy="amap")
+     * @ORM\JoinTable(name="fos_user_amap",
      *      joinColumns={@ORM\JoinColumn(name="amap_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")}
      * )
      */
-    private $listAccountStoreManager;
+    private $users;
 
     /**
      * Get id
@@ -60,13 +60,13 @@ class AMAP {
         return $this->id;
     }
 
-
     /**
-     * Constructor
+     * Get nbMembers
+     *
+     * @return int
      */
-    public function __construct()
-    {
-        $this->listAccountStoreManager = new \Doctrine\Common\Collections\ArrayCollection();
+    public function getNbMembers() {
+        return count($this->users);
     }
 
     /**
@@ -76,8 +76,7 @@ class AMAP {
      *
      * @return AMAP
      */
-    public function setNameAMAP($nameAMAP)
-    {
+    public function setNameAMAP($nameAMAP) {
         $this->nameAMAP = $nameAMAP;
 
         return $this;
@@ -88,8 +87,7 @@ class AMAP {
      *
      * @return string
      */
-    public function getNameAMAP()
-    {
+    public function getNameAMAP() {
         return $this->nameAMAP;
     }
 
@@ -100,8 +98,7 @@ class AMAP {
      *
      * @return AMAP
      */
-    public function setAdressAMAP($adressAMAP)
-    {
+    public function setAdressAMAP($adressAMAP) {
         $this->adressAMAP = $adressAMAP;
 
         return $this;
@@ -112,42 +109,46 @@ class AMAP {
      *
      * @return string
      */
-    public function getAdressAMAP()
-    {
+    public function getAdressAMAP() {
         return $this->adressAMAP;
     }
 
     /**
-     * Add listAccountStoreManager
+     * Constructor
+     */
+    public function __construct() {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add user
      *
-     * @param \AMAPBundle\Entity\Account\Group $listAccountStoreManager
+     * @param \AMAPBundle\Entity\Account\User $user
      *
      * @return AMAP
      */
-    public function addListAccountStoreManager(\AMAPBundle\Entity\Account\Group $listAccountStoreManager)
-    {
-        $this->listAccountStoreManager[] = $listAccountStoreManager;
+    public function addUser(\AMAPBundle\Entity\Account\User $user) {
+        $this->users[] = $user;
 
         return $this;
     }
 
     /**
-     * Remove listAccountStoreManager
+     * Remove user
      *
-     * @param \AMAPBundle\Entity\Account\Group $listAccountStoreManager
+     * @param \AMAPBundle\Entity\Account\User $user
      */
-    public function removeListAccountStoreManager(\AMAPBundle\Entity\Account\Group $listAccountStoreManager)
-    {
-        $this->listAccountStoreManager->removeElement($listAccountStoreManager);
+    public function removeUser(\AMAPBundle\Entity\Account\User $user) {
+        $this->users->removeElement($user);
     }
 
     /**
-     * Get listAccountStoreManager
+     * Get users
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getListAccountStoreManager()
-    {
-        return $this->listAccountStoreManager;
+    public function getUsers() {
+        return $this->users;
     }
+
 }
