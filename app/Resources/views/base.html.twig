@@ -1,167 +1,175 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
-        {% set titletab=((path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))|split('/'))|last) %}
-        <title>
-            {% block title %}AMAP - {{titletab|upper}}{% endblock %}
-        </title>
-        {% block stylesheets %}
-            <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-            <link rel="stylesheet" href="{{ asset('css/reset.css')}}" type="text/css" media="screen">
-            <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css" media="screen">
-            <link rel="stylesheet" href="{{ asset('css/layout.css')}}" type="text/css" media="screen">
-            <link rel="stylesheet" href="{{ asset('css/grid.css')}}" type="text/css" media="screen">
-            <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.min.css')}}">
+<!-- Block head-->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+    {% set titletab=((path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))|split('/'))|last) %}
+    <title>
+        {% block title %}AMAP - {{titletab|upper}}{% endblock %}
+    </title>
+    {% block stylesheets %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
-            <link href='http://fonts.googleapis.com/css?family=Adamina' rel='stylesheet' type='text/css'>
-        {% endblock %}
+    <!-- Especially well keep order : reset -> datatable -> bootstrap -> style -->
+    <link rel="stylesheet" href="{{ asset('css/reset.css')}}" type="text/css" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css')}}" media="screen" >
+    <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css" media="screen">
 
-        <script type="text/javascript" language="javascript" src="{{ asset('//code.jquery.com/jquery-1.12.3.min.js')}}">
-        </script>
-
-        <script type="text/javascript" language="javascript" src="{{ asset('js/jquery.dataTables.js')}}"></script>
-        <script src="{{ asset('js/script.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('js/bgSlider.js')}}" type="text/javascript"></script>
-        <!-- permet de gerer les diapo interne-->
-        <script src="{{ asset('js/tms-0.3.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('js/tms_presets.js')}}" type="text/javascript"></script>
-        <script type="text/javascript" language="javascript" class="init">
-            $(document).ready(function () {
-                $('#example').DataTable({
-                });
-            });
-        </script>
-    </head>
-    <body>
-        <div id="bgSlider"></div>
-        <section class="popup_block" id="popup_name">
-            <div class="login">
-                <h1>Connexion</h1>
-                <form method="post" action="index.html">
-                    <p><input type="text" name="login" value="" placeholder="Nom d'utilisateur"></p>
-                    <p><input type="password" name="password" value="" placeholder="Mot de passe"></p>
-                    <p class="remember_me">
-                        <label>
-                            <input type="checkbox" name="remember_me" id="remember_me">
-                            Se souvenir de moi
-                        </label>
-                    </p>
-                    <p class="submit"><input type="submit" name="commit" value="Connexion"></p>
-                </form>
+    <link href='http://fonts.googleapis.com/css?family=Adamina' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+        .col-lg-5 { line-height: 170px; }
+    </style>
+    {% endblock %}
+</head>
+<!-- End of Block Head -->
+<!-- Block body --> 
+<body>
+    <!-- Block for the page background image : carousel -->
+    <div class="carousel slide carousel-fade" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
             </div>
-            <div class="login-help">
-                <p>Mot de passe oublié? <a href="index.html">Cliquez ici pour le renouveller</a>.</p>
+            <div class="item">
             </div>
-        </section>
-        <div class="extra">
-            <!--==============================header=================================-->
-
-            <header>
-                <div class="top-row">
-                    <div id="Auth" class="Connect">
-                        <a href="#?w=500" rel="popup_name" class="poplight"><img src="{{ asset('./images/nav/co.png')}}" alt="connect" height="46.6" width="150"></a>
-                        <a href="#?w=500" rel="popup_name" class="poplight"><img src="{{ asset('./images/nav/co.png')}}" alt="connect" height="46.6" width="150"></a>
-                    </div>
-                    <div class="main">
-
-                        <div class="wrapper">
-                            <a href="accueil">
-                                <div class="logo">
-                                    <img src="{{ asset('./images/logo/logo.png')}}" width="375px" height="138px">
-                                </div>
-                            </a>
-                            <div id="nav" class="right">
-
-                                <ul id="navigation">
-                                    {% block navigation %}
-                                        {% include 'component/nav.html.twig' %}
-                                    {% endblock %}
-                                </ul>
-
-                            </div>
-                            <!-- Liste qui permet de faire le diapo -->
-                            <ul class="pagination ">
-                                <li class="current img1"><a href="{{ asset('images/bg-img6.jpg')}}"></a></li>
-                                <li><a href="{{ asset('images/bg-img3.jpg')}}"></a></li>
-                                <li><a href="{{ asset('images/bg-img1.jpg')}}"></a></li>
-                            </ul>
-                        </div>
-                    </div>
-            </header>
-
-            <div class="inner">
-                <div class="main centreblanc">
-                    <section id="content">
-                        <!--==============================content================================-->
-                    {% block contenu %}{% endblock %} 
-                    <!--==============================footer=================================-->
-                </section> 
+            <div class="item">
             </div>
         </div>
     </div>
+    <!-- End block carousel -->
+    <!-- Modal connection -->
+        <div class="modal fade " id="ModalConnect" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content popup_block">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="login">
+                            <h1>Connexion</h1>
+                            <!-- le action est provision en attendant la gestion utilisateur-->
+                            <form method="post" action="accueil">
+                                <p><input type="text" name="login" value="" placeholder="Nom d'utilisateur"></p>
+                                <p><input type="password" name="password" value="" placeholder="Mot de passe"></p>
+                                <p class="remember_me">
+                                    <label>
+                                        <input type="checkbox" name="remember_me" id="remember_me">
+                                        Se souvenir de moi
+                                    </label>
+                                </p>
+                                <p class="submit"><input type="submit" name="commit" value="Connexion"></p>
+                            </form>
+                        </div>
+                        <div class="login-help">
+                            <p>Mot de passe oublié? <a href="index.html">Cliquez ici pour le renouveller</a>.</p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- End of Block Modal connection -->
+<!-- Block Header in Body : logo, menu-->
+        <header>
+        <div class="line_header">
+            <!-- Button Connection -->
+            <div id="Auth" class="Connect">
+                <a href="" data-toggle="modal" data-target="#ModalConnect"><img src="{{ asset('./images/nav/co.png')}}" alt="connect" height="46.6" width="150"></a>
+            </div>
+            <!-- End of div for button connect -->
 
-    <!--  {% block javascripts %}{% endblock %} -->
+            <!-- Use container in Header for use Bootstrap grid to adjust the menu in function of the device size -->
+            <div class="container">
+                <!-- Row is the element use in the grid, here we need just 1 row and 12 columns-->
+                <div class="row">
+                    <!-- Section logo, explain class: lg :>1200px ; md :>992px ; sm :>768px ; xs :<768px -->
+                    <section class="col-lg-5 col-md-4 col-sm-12 col-xs-12 ">
+                        
+                        <a href="accueil">
+                            <div class="logo">
+                                <img src="{{ asset('./images/logo/logo.png')}}" >
+                            </div>
+                        </a>
+                    </section>
+                    <!-- End of section logo -->
+
+                    <!-- Block nav -->
+                    <nav class="navbar navbar-default marginMenu col-lg-7 col-md-8 col-sm-12 col-xs-12 ">
+
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-default navbar-header smallMenu" style="cursor:pointer;"  data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <a class="navbar-brand">Menu</a>
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <!-- End of first div : better mobile display-->
+                        
+                        <!-- In this block there is the 2 menu possible-->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            {% block navigation %}
+                            {% include 'component/nav.html.twig' %}
+                            {% endblock %}
+
+                        </div>
+                        <!-- /.navbar-collapse -->
+                    </nav>
+                    <!-- End of block navigation --> 
+                </div>
+                <!-- End of block row -->
+            </div>
+            <!-- End of block Container -->
+        </div>
+
+    </header>       
+    <!-- End of block Header of Body -->
+    <div class="container marginContainer">
+        <div class="row">
+            <section id="content">
+                <!--==============================content================================-->
+                            {% block contenu %}{% endblock %} 
+                            <!--==============================footer=================================-->
+            </section> 
+        </div>
+    </div>
+    {% block javascripts %}
+    <script type="text/javascript" language="javascript" src="{{ asset('//code.jquery.com/jquery-1.12.3.min.js')}}">
+    </script>
+
+    <script type="text/javascript" language="javascript" src="{{ asset('js/jquery.dataTables.js')}}"></script>
+    
+    <!-- permet de gerer les diapo interne-->
+    <script src="{{ asset('js/tms-0.3.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('js/tms_presets.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.js')}}" type="text/javascript"></script>
+
+    <script src="{{ asset('js/script.js')}}" type="text/javascript"></script>
+    {% endblock %}
 
 </body>
-
-
 {% block footer %}
     <footer>
-        <div class="padding">
-            <div class="main">
-                <div class="wrapper">
-                    <div class="fleft footer-text"> Copyright &copy; <a href="#">Domain Name</a> All Rights Reserved <strong> Design by <a target="_blank" href="http://www.templatemonster.com/">TemplateMonster.com</a></strong>
-
-                    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 footer-text">Design by <strong><span>Isma Team</span></strong></div>
+                <div class="col-md-4 col-md-offset-4">
                     <ul class="list-services">
                         <li>Link to Us:</li>
                         <li><a class="tooltips" href="#"></a></li>
                         <li class="item-1"><a class="tooltips" href="#"></a></li>
                         <li class="item-2"><a class="tooltips" href="#"></a></li>
                     </ul>
-                </div>
+                </div>  
             </div>
         </div>
-        <script>
-
-            $('a.poplight').click(function () {
-                var popID = $(this).attr('rel'); //Trouver la pop-up correspondante
-                var popURL = $(this).attr('href'); //Retrouver la largeur dans le href
-
-                //Récupérer les variables depuis le lien
-
-                var query = popURL.split('?');
-                var dim = query[1].split('&amp;');
-                var popWidth = dim[0].split('=')[1]; //La première valeur du lien
-
-                //Faire apparaitre la pop-up et ajouter le bouton de fermeture
-                $('#' + popID).fadeIn().css({
-                    'width': Number(popWidth)
-                })
-                        .prepend('<a href="" class="close"><img src="{{ asset('./images/close_pop.png')}}" class="btn_close" title="Fermer" alt="Fermer" /></a>');
-
-                //Récupération du margin, qui permettra de centrer la fenêtre - on ajuste de 80px en conformité avec le CSS
-                var popMargTop = ($('#' + popID).height() + 80) / 2;
-                var popMargLeft = ($('#' + popID).width() + 80) / 2;
-
-                //On affecte le margin
-                $('#' + popID).css({
-                    'margin-top': -popMargTop,
-                    'margin-left': -popMargLeft
-                });
-
-                //Effet fade-in du fond opaque
-                $('body').append('<div id="fade"></div>'); //Ajout du fond opaque noir
-                //Apparition du fond - .css({'filter' : 'alpha(opacity=80)'}) pour corriger les bogues de IE
-                $('#fade').css({'filter': 'alpha(opacity=80)'}).fadeIn();
-
-                return false;
-
-            });
-
-        </script>
     </footer>
 {% endblock %}
 </html>

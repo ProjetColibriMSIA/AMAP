@@ -1,47 +1,97 @@
 {% block navigation %}
-    							<li {% if titletab=="accueil" %}
-								class="navAccueilActif"
-								{% else %}
-								class="navAccueil"
-								{% endif %}>
-								<a href="accueil">Accueil</a>
-							</li>
-							
-							<li {% if titletab=="actualites" %}
-								class="navActusActif"
-								{% else %}
-								class="navActus"
-								{% endif %}>
-								<a href="actualites">Actualités</a>
-							</li>
-							<li {% if titletab=="producteurs" %}
-								class="navProducteursActif" 
-								{% else %}
-								class="navProducteurs" 
-								{% endif %}>
-								<a href="producteurs">Producteurs</a>
-							</li>
-							<li {% if titletab=="amap" %}
-								class="navAMAPActif"
-								{% else %}
-								class="navAMAP"
-								{% endif %}>
-								<a href="amap">L'AMAP</a>
-							</li>
-							<li {% if titletab=="produit" %}
-								class="navRecettesActif"
-								{% else %}
-								class="navRecettes"
-								{% endif %}>
-								<a href="produit">Produits</a>
-							</li>
-                                                        {%if is_granted("ROLE_FARMER")%}
-                                                        <li {% if app.request.attributes.get('_route')=="amap_produit" %}
-                                                        class="navRecettesActif"
-                                                        {% else %}
-                                                            class="navRecettes"
-                                                        {% endif %}>
-                                                            <a href="produit">Gestion</a>
-                                                        </li>
-                                                        {% endif %}
+	    <!-- valable quand l'écran est inférieur à 768 px-->
+							      	<ul class="nav navbar-nav smallMenu words" >
+										<li {% if titletab=="accueil" %}
+											class="navHomeActive"
+											{% else %}
+											class="navHome"
+											{% endif %}>
+											<a href="accueil">Accueil</a>
+										</li>
+										
+										<li {% if titletab=="actualites" %}
+											class="navNewsActive"
+											{% else %}
+											class="navNews"
+											{% endif %}>
+											<a href="actualites">Actualités</a>
+										</li>
+										<li {% if titletab=="producteurs" %}
+											class="navFarmersActive" 
+											{% else %}
+											class="navFarmers" 
+											{% endif %}>
+											<a href="producteurs">Producteurs</a>
+										</li>
+										<li {% if titletab=="amap" %}
+											class="navAMAPActive"
+											{% else %}
+											class="navAMAP"
+											{% endif %}>
+											<a href="amap">L'AMAP</a>
+										</li>
+										<li {% if titletab=="produit" %}
+											class="navProductsActive"
+											{% else %}
+											class="navProducts"
+											{% endif %}>
+											<a href="produit">Produits</a>
+										</li>
+										<li class="navConnect">
+											<a data-toggle="modal" data-target="#myModal">Se connecter</a>
+
+										</li>
+									</ul>
+									
+
+									<!-- valable quand l'écran est supérieur à 768px -->
+							      	<ul class="mediumMenu">
+										<li {% if titletab=="accueil" %}
+											class="navHomeActive"
+											{% else %}
+											class="navHome"
+											{% endif %}>
+											<a href="accueil">Accueil</a>
+										</li>
+										
+										<li {% if titletab=="actualites" %}
+											class="navNewsActive"
+											{% else %}
+											class="navNews"
+											{% endif %}>
+											<a href="actualites">Actualités</a>
+										</li>
+										<li {% if titletab=="producteurs" %}
+											class="navFarmersActive" 
+											{% else %}
+											class="navFarmers" 
+											{% endif %}>
+											<a href="producteurs">Producteurs</a>
+										</li>
+										<li {% if titletab=="amap" %}
+											class="navAMAPActive"
+											{% else %}
+											class="navAMAP"
+											{% endif %}>
+											<a href="amap">L'AMAP</a>
+										</li>
+										<li {% if titletab=="produit" %}
+											class="navProductsActive"
+											{% else %}
+											class="navProducts"
+											{% endif %}>
+											<a href="produit">Produits</a>
+										</li>
+						{%if is_granted("ROLE_FARMER")%}
+                                        <li {% if app.request.attributes.get('_route')=="amap_produit" %}
+                                            class="navRecettesActif"
+                                            {% else %}
+                                            class="navRecettes"
+                                            {% endif %}>
+                                            <a href="produit">Gestion</a>
+                                        </li>
+                        {% endif %}
+
+
+									</ul>
 {% endblock %}
