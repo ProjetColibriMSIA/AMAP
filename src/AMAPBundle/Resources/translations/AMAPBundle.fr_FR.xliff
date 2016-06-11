@@ -84,7 +84,7 @@
             </trans-unit>
             <trans-unit id="list.label_baskets">
                 <source>list.label_baskets</source>
-                <target>Liste AMAP</target>
+                <target>Liste Paniers</target>
             </trans-unit>
             <trans-unit id="breadcrumb.link_basket_list">
                 <source>breadcrumb.link_basket_list</source>
@@ -128,7 +128,7 @@
             </trans-unit>    
             <trans-unit id="list.label_id">
                 <source>list.label_id</source>
-                <target>Identifiants</target>
+                <target>ID</target>
             </trans-unit>
             
             <trans-unit id="list.label_sign_date">

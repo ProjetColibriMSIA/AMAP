@@ -60,25 +60,20 @@ class User extends BaseUser {
      * @ORM\Column(name="adress", type="text")
      */
     protected $adress;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="locale", type="string", length=50)
      */
     protected $locale;
+
     /**
-     * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\Contract\Contract", inversedBy="users")
+     * consumer + farmer
+     * 
+     * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\Account\Contract", inversedBy="users")
      */
-    protected $contract;
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId() {
-        return $this->id;
-    }
+    protected $contract_user;
 
     /**
      *
@@ -86,6 +81,17 @@ class User extends BaseUser {
     public function __construct() {
         parent::__construct();
         // your own logic
+    }
+    public function __toString() {
+        return $this->email;
+    }
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId() {
+        return $this->id;
     }
 
     /**
@@ -154,7 +160,6 @@ class User extends BaseUser {
         return $this->adress;
     }
 
-
     /**
      * Add amap
      *
@@ -162,8 +167,7 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function addAmap(\AMAPBundle\Entity\AMAP\AMAP $amap)
-    {
+    public function addAmap(\AMAPBundle\Entity\AMAP\AMAP $amap) {
         $this->amap[] = $amap;
 
         return $this;
@@ -174,8 +178,7 @@ class User extends BaseUser {
      *
      * @param \AMAPBundle\Entity\AMAP\AMAP $amap
      */
-    public function removeAmap(\AMAPBundle\Entity\AMAP\AMAP $amap)
-    {
+    public function removeAmap(\AMAPBundle\Entity\AMAP\AMAP $amap) {
         $this->amap->removeElement($amap);
     }
 
@@ -184,8 +187,7 @@ class User extends BaseUser {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getAmap()
-    {
+    public function getAmap() {
         return $this->amap;
     }
 
@@ -196,8 +198,7 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function setLocale($locale)
-    {
+    public function setLocale($locale) {
         $this->locale = $locale;
 
         return $this;
@@ -208,32 +209,30 @@ class User extends BaseUser {
      *
      * @return string
      */
-    public function getLocale()
-    {
+    public function getLocale() {
         return $this->locale;
     }
 
     /**
-     * Set contract
+     * Set contractUser
      *
-     * @param \AMAPBundle\Entity\Contract\Contract $contract
+     * @param \AMAPBundle\Entity\Account\Contract $contractUser
      *
      * @return User
      */
-    public function setContract(\AMAPBundle\Entity\Contract\Contract $contract = null)
-    {
-        $this->contract = $contract;
+    public function setContractUser(\AMAPBundle\Entity\Account\Contract $contractUser = null) {
+        $this->contract_user = $contractUser;
 
         return $this;
     }
 
     /**
-     * Get contract
+     * Get contractUser
      *
-     * @return \AMAPBundle\Entity\Contract\Contract
+     * @return \AMAPBundle\Entity\Account\Contract
      */
-    public function getContract()
-    {
-        return $this->contract;
+    public function getContractUser() {
+        return $this->contract_user;
     }
+
 }

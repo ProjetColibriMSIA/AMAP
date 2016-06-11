@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Entity\Contract;
+namespace AMAPBundle\Entity\Account;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Contract
  *
  * @ORM\Table(name="contract")
- * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Contract\ContractRepository")
+ * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Account\ContractRepository")
  */
 class Contract {
 
@@ -20,6 +20,20 @@ class Contract {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rules", type="text")
+     */
+    private $rules;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
 
     /**
      * @var \DateTime
@@ -36,9 +50,14 @@ class Contract {
     private $expirationDate;
 
     /**
-     * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Account\User", mappedBy="contract")
+     * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Account\User", mappedBy="contract_user")
      */
     private $users;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\AMAP\AMAP", inversedBy="contracts_amap")
+     */
+    private $amap;
 
     /**
      * @var string
@@ -121,12 +140,56 @@ class Contract {
     public function getRepPDF() {
         return $this->repPDF;
     }
+
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set rules
+     *
+     * @param string $rules
+     *
+     * @return Contract
+     */
+    public function setRules($rules) {
+        $this->rules = $rules;
+
+        return $this;
+    }
+
+    /**
+     * Get rules
+     *
+     * @return string
+     */
+    public function getRules() {
+        return $this->rules;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Contract
+     */
+    public function setDescription($description) {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription() {
+        return $this->description;
     }
 
     /**
@@ -136,8 +199,7 @@ class Contract {
      *
      * @return Contract
      */
-    public function addUser(\AMAPBundle\Entity\Account\User $user)
-    {
+    public function addUser(\AMAPBundle\Entity\Account\User $user) {
         $this->users[] = $user;
 
         return $this;
@@ -148,8 +210,7 @@ class Contract {
      *
      * @param \AMAPBundle\Entity\Account\User $user
      */
-    public function removeUser(\AMAPBundle\Entity\Account\User $user)
-    {
+    public function removeUser(\AMAPBundle\Entity\Account\User $user) {
         $this->users->removeElement($user);
     }
 
@@ -158,8 +219,31 @@ class Contract {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getUsers()
-    {
+    public function getUsers() {
         return $this->users;
     }
+
+    /**
+     * Set amap
+     *
+     * @param \AMAPBundle\Entity\AMAP\AMAP $amap
+     *
+     * @return Contract
+     */
+    public function setAmap(\AMAPBundle\Entity\AMAP\AMAP $amap = null) {
+        $this->amap = $amap;
+
+        return $this;
+    }
+
+    /**
+     * Get amap
+     *
+     * @return \AMAPBundle\Entity\AMAP\AMAP
+     */
+    public function getAmap() {
+        return $this->amap;
+    }
+
+
 }

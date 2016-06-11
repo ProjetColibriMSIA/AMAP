@@ -1,6 +1,6 @@
 <?php
 
-namespace AMAPBundle\Repository\Contract;
+namespace AMAPBundle\Repository\Account;
 
 /**
  * ContractRepository

@@ -29,7 +29,7 @@ class DefaultController extends Controller {
     /**
      * @Route("/producteurs")
      */
-    public function farmerAction() {
+    public function farmersAction() {
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository("AMAPBundle:Account\User");
         $users = $rep->findAll();

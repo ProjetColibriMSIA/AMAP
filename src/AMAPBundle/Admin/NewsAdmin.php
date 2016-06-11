@@ -40,4 +40,28 @@ class NewsAdmin extends Admin {
         ;
     }
 
+    /**
+     * @param \Sonata\AdminBundle\Form\FormMapper $formMapper
+     *
+     * @return void
+     */
+    protected function configureFormFields(FormMapper $formMapper) {
+        $formMapper
+                ->with('General')
+                ->add('name')
+                ->add('description')
+                ->add('dateDebut')
+                ->add('dateFin', null, array('required' => false))
+                ->add('isAfficher', null, array('required' => false))
+                ->end()
+                ->with('System Information', array('collapsed' => true))
+                ->add('date', null, array(
+                    'format' => 'Y-m-d H:i',
+                    'timezone' => 'America/New_York'
+                ))
+                ->end()
+
+        ;
+    }
+
 }

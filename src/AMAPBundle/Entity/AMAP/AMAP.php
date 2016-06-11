@@ -36,8 +36,8 @@ class AMAP {
     private $adress;
 
     /**
-     * @var int
-     *
+     * @var integer
+     * 
      * Nombre de membre dans l'AMAP
      */
     private $nbMembers;
@@ -50,6 +50,13 @@ class AMAP {
      * )
      */
     private $users;
+
+    /**
+     * consumer + farmer
+     * 
+     * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Account\Contract", mappedBy="amap")
+     */
+    private $contracts_amap;
 
     /**
      * Get id
@@ -107,7 +114,6 @@ class AMAP {
         return $this->users;
     }
 
-
     /**
      * Set name
      *
@@ -115,8 +121,7 @@ class AMAP {
      *
      * @return AMAP
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -127,8 +132,7 @@ class AMAP {
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -139,8 +143,7 @@ class AMAP {
      *
      * @return AMAP
      */
-    public function setAdress($adress)
-    {
+    public function setAdress($adress) {
         $this->adress = $adress;
 
         return $this;
@@ -151,8 +154,42 @@ class AMAP {
      *
      * @return string
      */
-    public function getAdress()
-    {
+    public function getAdress() {
         return $this->adress;
+    }
+
+
+    /**
+     * Add contractsAmap
+     *
+     * @param \AMAPBundle\Entity\Account\Contract $contractsAmap
+     *
+     * @return AMAP
+     */
+    public function addContractsAmap(\AMAPBundle\Entity\Account\Contract $contractsAmap)
+    {
+        $this->contracts_amap[] = $contractsAmap;
+
+        return $this;
+    }
+
+    /**
+     * Remove contractsAmap
+     *
+     * @param \AMAPBundle\Entity\Account\Contract $contractsAmap
+     */
+    public function removeContractsAmap(\AMAPBundle\Entity\Account\Contract $contractsAmap)
+    {
+        $this->contracts_amap->removeElement($contractsAmap);
+    }
+
+    /**
+     * Get contractsAmap
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getContractsAmap()
+    {
+        return $this->contracts_amap;
     }
 }

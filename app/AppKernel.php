@@ -15,7 +15,6 @@ class AppKernel extends Kernel {
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AMAPBundle\AMAPBundle(),
-            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             // Add your dependencies
             new Sonata\CoreBundle\SonataCoreBundle(),

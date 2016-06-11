@@ -86,7 +86,7 @@ class Basket
     /**
      * @var Arraycollection
      * 
-     * @ORM\ManyToMany(targetEntity="Product", inversedBy="baskets")
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Basket\Product", inversedBy="baskets")
      */
     private $products;
     

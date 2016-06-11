@@ -1,48 +1,103 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace AMAPBundle\Admin;
 
-use Sonata\AdminBundle\Admin\AbstractAdmin as Admin;
-use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
-class BasketAdmin extends Admin {
+class BasketAdmin extends AbstractAdmin {
 
     /**
-     * @param \Sonata\AdminBundle\Datagrid\ListMapper $listMapper
-     *
-     * @return void
+     * @param DatagridMapper $datagridMapper
      */
-    protected function configureListFields(ListMapper $listMapper) {
-        $listMapper
-                ->addIdentifier('name')
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper) {
+        $datagridMapper
+                ->add('id')
+                ->add('name')
                 ->add('price')
-                ->add('description')
                 ->add('barCode')
                 ->add('weight')
                 ->add('expirationDate')
+                ->add('supplyDate')
                 ->add('storeDate')
+                ->add('description')
+                ->add('repIMG')
+        ;
+    }
+
+    /**
+     * @param ListMapper $listMapper
+     */
+    protected function configureListFields(ListMapper $listMapper) {
+        $listMapper
+                ->add('id')
+                ->add('name')
+                ->add('price')
+                ->add('barCode')
+                ->add('weight')
+                ->add('expirationDate')
+                ->add('supplyDate')
+                ->add('storeDate')
+                ->add('description')
                 ->add('repIMG')
                 ->add('products', null, array(
                     'class' => 'AMAPBundle:Basket\Product',
                     'associated_property' => function ($products) {
                         return $products->getName();
                     }))
-                ->add('_action', 'actions', array(
+                ->add('_action', null, array(
                     'actions' => array(
                         'show' => array(),
                         'edit' => array(),
                         'delete' => array(),
                     )
                 ))
+        ;
+    }
+
+    /**
+     * @param FormMapper $formMapper
+     */
+    protected function configureFormFields(FormMapper $formMapper) {
+        $formMapper
+                ->add('id', null, array('required' => false))
+                ->add('name')
+                ->add('price')
+                ->add('barCode')
+                ->add('weight')
+                ->add('expirationDate')
+                ->add('supplyDate')
+                ->add('storeDate')
+                ->add('description')
+                ->add('repIMG')
+                ->add('products', 'sonata_type_collection', array(), array(
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                    'sortable' => 'position',
+                    'limit' => 10,
+                    'link_parameters' => array('id' => $this->getSubject()->getId())))
+                
+        ;
+    }
+
+    /**
+     * @param ShowMapper $showMapper
+     */
+    protected function configureShowFields(ShowMapper $showMapper) {
+        $showMapper
+                ->add('id')
+                ->add('name')
+                ->add('price')
+                ->add('barCode')
+                ->add('weight')
+                ->add('expirationDate')
+                ->add('supplyDate')
+                ->add('storeDate')
+                ->add('description')
+                ->add('repIMG')
         ;
     }
 
