@@ -20,6 +20,11 @@
         <li class="navConnect">
             <a data-toggle="modal" data-target="#myModal">Se connecter</a>
         </li>
+        {%if is_granted("ROLE_FARMER")%}
+            <li class="navRecettes{% if app.request.attributes.get('_route')=="amap_produit" %}{{classActive}}{% endif %}">
+                <a href="{{path('amap_farmer_index')}}">Gestion</a>
+            </li>
+        {% endif %}
     </ul>
 
 
@@ -41,7 +46,7 @@
             <a href="{{path('amap_default_product')}}">Produits</a>
         </li>
         {%if is_granted("ROLE_FARMER")%}
-            <li class="navRecettes{% if app.request.attributes.get('_route')=="amap_produit" %}{{classActive}}{% endif %}">
+            <li class="navProducts{% if app.request.attributes.get('_route')=="amap_produit" %}{{classActive}}{% endif %}">
                 <a href="{{path('amap_farmer_index')}}">Gestion</a>
             </li>
         {% endif %}
