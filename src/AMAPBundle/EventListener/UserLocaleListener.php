@@ -18,25 +18,34 @@ use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 class UserLocaleListener {
 
     /**
-     * @var Session
+     * kernel.request event. If a guest user doesn't have an opened session, locale is equal to
+     * "undefined" as configured by default in parameters.ini. If so, set as a locale the user's
+     * preferred language.
+     *
+     * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
      */
-    private $session;
-
-    public function __construct(Session $session) {
-        $this->session = $session;
-    }
-
-    /**
-     * @param InteractiveLoginEvent $event
-     */
-    public function onInteractiveLogin(InteractiveLoginEvent $event) {
-        $user = $event->getAuthenticationToken()->getUser();
-
-        if ($user->getLocale() == null) {
-            $this->session->set('locale', $this->get('request')->getLocale());
-        } else {
-            $this->session->set('locale', $user->getLocale());
+    public function setLocaleForUnauthenticatedUser(GetResponseEvent $event)
+    {
+        if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()) {
+            return;
+        }
+        $request = $event->getRequest();
+        if ('undefined' == $request->getLocale()) {
+            $request->setLocale($request->getPreferredLanguage());
         }
     }
-
+    /**
+     * security.interactive_login event. If a user chose a locale in preferences, it would be set,
+     * if not, a locale that was set by setLocaleForUnauthenticatedUser remains.
+     *
+     * @param \Symfony\Component\Security\Http\Event\InteractiveLoginEvent $event
+     */
+    public function setLocaleForAuthenticatedUser(InteractiveLoginEvent $event)
+    {
+        /** @var \Application\Sonata\UserBundle\Entity\User $user  */
+        $user = $event->getAuthenticationToken()->getUser();
+        if ($user->getLocale()) {
+            $event->getRequest()->setLocale($user->getLocale());
+        }
+    }
 }
