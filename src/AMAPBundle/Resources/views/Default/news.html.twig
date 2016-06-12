@@ -8,15 +8,15 @@
 				<br/>
 				<ul class="lesactus">
 					{% for n in news %}				
-						{% if n.getisAfficher == 1 %}
+						{% if n.getIsDisplay == 1 %}
 							<li class='uneactu actu{{ n.getId }}'> 
 								<a href="actualites?id={{ n.getId }}">
 									<h6>{{ n.getName }}</h6>
 									<p>
-										{% if not n.getDateFin is null %} 
-											Du {{ n.getDateDebut|date("l j F Y", "Europe/Paris") }} au {{ n.getDateFin|date("l j F Y", "Europe/Paris")}}
+										{% if not n.getEndDate is null %} 
+											Du {{ n.getStartDate|date("l j F Y", "Europe/Paris") }} au {{ n.getEndDate|date("l j F Y", "Europe/Paris")}}
 											{% else %} 
-												Le {{ n.getDateDebut|date("l j F Y", "Europe/Paris") }}	
+												Le {{ n.getStartDate|date("l j F Y", "Europe/Paris") }}	
 										{% endif %}	
 										
 									</p>
@@ -28,10 +28,10 @@
 			{% else %}	
 				<h6>{{ new.getName }}</h6>
 				<p>
-					{% if not new.getDateFin is null %} 
-						Du {{ new.getDateDebut|date("l j F Y", "Europe/Paris") }} au {{ new.getDateFin|date("l j F Y", "Europe/Paris")}}
+					{% if not new.getEndDate is null %} 
+						Du {{ new.getStartDate|date("l j F Y", "Europe/Paris") }} au {{ new.getEndDate|date("l j F Y", "Europe/Paris")}}
 						{% else %} 
-							Le {{ new.getDateDebut|date("l j F Y", "Europe/Paris") }}	
+							Le {{ new.getStartDate|date("l j F Y", "Europe/Paris") }}	
 					{% endif %}	
 					
 				</p>

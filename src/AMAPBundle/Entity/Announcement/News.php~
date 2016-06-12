@@ -38,151 +38,23 @@ class News
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateDebut", type="date", nullable=true)
+     * @ORM\Column(name="startDate", type="date", nullable=true)
      */
-    private $dateDebut;
+    private $startDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateFin", type="date", nullable=true)
+     * @ORM\Column(name="endDate", type="date", nullable=true)
      */
-    private $dateFin;
+    private $endDate;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="isAfficher", type="boolean")
+     * @ORM\Column(name="isDisplay", type="boolean")
      */
-    private $isAfficher;
+    private $isDisplay;
     
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return News
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return News
-     */
-    public function setDescription($description)
-    {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
-
-    /**
-     * Set dateDebut
-     *
-     * @param \DateTime $dateDebut
-     *
-     * @return News
-     */
-    public function setDateDebut($dateDebut)
-    {
-        $this->dateDebut = $dateDebut;
-
-        return $this;
-    }
-
-    /**
-     * Get dateDebut
-     *
-     * @return \DateTime
-     */
-    public function getDateDebut()
-    {
-        return $this->dateDebut;
-    }
-
-    /**
-     * Set dateFin
-     *
-     * @param \DateTime $dateFin
-     *
-     * @return News
-     */
-    public function setDateFin($dateFin)
-    {
-        $this->dateFin = $dateFin;
-
-        return $this;
-    }
-
-    /**
-     * Get dateFin
-     *
-     * @return \DateTime
-     */
-    public function getDateFin()
-    {
-        return $this->dateFin;
-    }
-
-    /**
-     * Set isAfficher
-     *
-     * @param boolean $isAfficher
-     *
-     * @return News
-     */
-    public function setIsAfficher($isAfficher)
-    {
-        $this->isAfficher = $isAfficher;
-
-        return $this;
-    }
-
-    /**
-     * Get isAfficher
-     *
-     * @return boolean
-     */
-    public function getIsAfficher()
-    {
-        return $this->isAfficher;
-    }
+  
 }

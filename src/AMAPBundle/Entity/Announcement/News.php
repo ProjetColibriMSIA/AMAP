@@ -38,28 +38,29 @@ class News
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateDebut", type="date", nullable=true)
+     * @ORM\Column(name="startDate", type="date", nullable=true)
      */
-    private $dateDebut;
+    private $startDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateFin", type="date", nullable=true)
+     * @ORM\Column(name="endDate", type="date", nullable=true)
      */
-    private $dateFin;
+    private $endDate;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="isAfficher", type="boolean")
+     * @ORM\Column(name="isDisplay", type="boolean")
      */
-    private $isAfficher;
-    
+    private $isDisplay;
+   
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -115,74 +116,74 @@ class News
     }
 
     /**
-     * Set dateDebut
+     * Set startDate
      *
-     * @param \DateTime $dateDebut
+     * @param \DateTime $startDate
      *
      * @return News
      */
-    public function setDateDebut($dateDebut)
+    public function setStartDate($startDate)
     {
-        $this->dateDebut = $dateDebut;
+        $this->startDate = $startDate;
 
         return $this;
     }
 
     /**
-     * Get dateDebut
+     * Get startDate
      *
      * @return \DateTime
      */
-    public function getDateDebut()
+    public function getStartDate()
     {
-        return $this->dateDebut;
+        return $this->startDate;
     }
 
     /**
-     * Set dateFin
+     * Set endDate
      *
-     * @param \DateTime $dateFin
+     * @param \DateTime $endDate
      *
      * @return News
      */
-    public function setDateFin($dateFin)
+    public function setEndDate($endDate)
     {
-        $this->dateFin = $dateFin;
+        $this->endDate = $endDate;
 
         return $this;
     }
 
     /**
-     * Get dateFin
+     * Get endDate
      *
      * @return \DateTime
      */
-    public function getDateFin()
+    public function getEndDate()
     {
-        return $this->dateFin;
+        return $this->endDate;
     }
 
     /**
-     * Set isAfficher
+     * Set isDisplay
      *
-     * @param boolean $isAfficher
+     * @param boolean $isDisplay
      *
      * @return News
      */
-    public function setIsAfficher($isAfficher)
+    public function setIsDisplay($isDisplay)
     {
-        $this->isAfficher = $isAfficher;
+        $this->isDisplay = $isDisplay;
 
         return $this;
     }
 
     /**
-     * Get isAfficher
+     * Get isDisplay
      *
      * @return boolean
      */
-    public function getIsAfficher()
+    public function getIsDisplay()
     {
-        return $this->isAfficher;
+        return $this->isDisplay;
     }
 }
