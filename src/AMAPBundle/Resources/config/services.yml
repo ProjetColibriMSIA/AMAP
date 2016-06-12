@@ -61,4 +61,13 @@ services:
         calls:
             - [ setTranslationDomain, [AMAPBundle]]
             - [ setLabelTranslatorStrategy, [ "@sonata.admin.label.strategy.underscore" ]]
+    amap.security.interactive_login_listener:
+        class: AMAPBundle\EventListener\UserLocaleListener
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login, method: setLocaleForAuthenticatedUser }
+    amap.security.kernel_request_listener:
+        class: AMAPBundle\EventListener\UserLocaleListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: setLocaleForUnauthenticatedUser }
+
 
