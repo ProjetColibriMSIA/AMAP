@@ -48,6 +48,7 @@
                         <div class="login">
                             <h1>Connexion</h1>
                             <!-- le action est provision en attendant la gestion utilisateur-->
+                            {% trans_default_domain 'FOSUserBundle' %}
                             <form method="post" action="{{ path("fos_user_security_check") }}">
                                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
                                 <p><input type="text" name="_username" id="username" value="" placeholder="{{ 'security.login.username'|trans }}" required="required"></p>
