@@ -52,6 +52,15 @@ class AMAP {
     private $users;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Announcement\News", inversedBy="news_amap")
+     * @ORM\JoinTable(name="news_amap",
+     *      joinColumns={@ORM\JoinColumn(name="amap_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="news_id", referencedColumnName="id")}
+     * )
+     */
+    protected $news;
+
+    /**
      * consumer + farmer
      * 
      * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Account\Contract", mappedBy="amap")
@@ -74,13 +83,6 @@ class AMAP {
      */
     public function getNbMembers() {
         return count($this->users);
-    }
-
-    /**
-     * Constructor
-     */
-    public function __construct() {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -158,7 +160,6 @@ class AMAP {
         return $this->adress;
     }
 
-
     /**
      * Add contractsAmap
      *
@@ -166,8 +167,7 @@ class AMAP {
      *
      * @return AMAP
      */
-    public function addContractsAmap(\AMAPBundle\Entity\Account\Contract $contractsAmap)
-    {
+    public function addContractsAmap(\AMAPBundle\Entity\Account\Contract $contractsAmap) {
         $this->contracts_amap[] = $contractsAmap;
 
         return $this;
@@ -178,8 +178,7 @@ class AMAP {
      *
      * @param \AMAPBundle\Entity\Account\Contract $contractsAmap
      */
-    public function removeContractsAmap(\AMAPBundle\Entity\Account\Contract $contractsAmap)
-    {
+    public function removeContractsAmap(\AMAPBundle\Entity\Account\Contract $contractsAmap) {
         $this->contracts_amap->removeElement($contractsAmap);
     }
 
@@ -188,8 +187,8 @@ class AMAP {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getContractsAmap()
-    {
+    public function getContractsAmap() {
         return $this->contracts_amap;
     }
+
 }

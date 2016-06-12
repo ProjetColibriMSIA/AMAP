@@ -65,8 +65,8 @@ class UserAdmin extends AbstractAdmin {
                     }))
                 ->add('contract_user', 'entity', array(
                     'class' => 'AMAPBundle:Account\Contract',
-                    'associated_property' => function ($amap) {
-                        return $amap->getId();
+                    'associated_property' => function ($contract) {
+                        return $contract->getId();
                     }))
                 ->add('enabled')
                 ->add('salt')

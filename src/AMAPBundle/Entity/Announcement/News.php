@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="news")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Announcement\NewsRepository")
  */
-class News
-{
+class News {
+
     /**
      * @var int
      *
@@ -55,15 +55,22 @@ class News
      * @ORM\Column(name="isDisplay", type="boolean")
      */
     private $isDisplay;
-   
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\AMAP\AMAP", mappedBy="news")
+     * @ORM\JoinTable(name="news_amap",
+     *      joinColumns={@ORM\JoinColumn(name="news_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="amap_id", referencedColumnName="id")}
+     * )
+     */
+    protected $news_amap;
 
     /**
      * Get id
      *
      * @return integer
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -74,8 +81,7 @@ class News
      *
      * @return News
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -86,8 +92,7 @@ class News
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -98,8 +103,7 @@ class News
      *
      * @return News
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -110,8 +114,7 @@ class News
      *
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -122,8 +125,7 @@ class News
      *
      * @return News
      */
-    public function setStartDate($startDate)
-    {
+    public function setStartDate($startDate) {
         $this->startDate = $startDate;
 
         return $this;
@@ -134,8 +136,7 @@ class News
      *
      * @return \DateTime
      */
-    public function getStartDate()
-    {
+    public function getStartDate() {
         return $this->startDate;
     }
 
@@ -146,8 +147,7 @@ class News
      *
      * @return News
      */
-    public function setEndDate($endDate)
-    {
+    public function setEndDate($endDate) {
         $this->endDate = $endDate;
 
         return $this;
@@ -158,8 +158,7 @@ class News
      *
      * @return \DateTime
      */
-    public function getEndDate()
-    {
+    public function getEndDate() {
         return $this->endDate;
     }
 
@@ -170,8 +169,7 @@ class News
      *
      * @return News
      */
-    public function setIsDisplay($isDisplay)
-    {
+    public function setIsDisplay($isDisplay) {
         $this->isDisplay = $isDisplay;
 
         return $this;
@@ -182,8 +180,46 @@ class News
      *
      * @return boolean
      */
-    public function getIsDisplay()
-    {
+    public function getIsDisplay() {
         return $this->isDisplay;
     }
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->news_amap = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add newsAmap
+     *
+     * @param \AMAPBundle\Entity\AMAP\AMAP $newsAmap
+     *
+     * @return News
+     */
+    public function addNewsAmap(\AMAPBundle\Entity\AMAP\AMAP $newsAmap) {
+        $this->news_amap[] = $newsAmap;
+
+        return $this;
+    }
+
+    /**
+     * Remove newsAmap
+     *
+     * @param \AMAPBundle\Entity\AMAP\AMAP $newsAmap
+     */
+    public function removeNewsAmap(\AMAPBundle\Entity\AMAP\AMAP $newsAmap) {
+        $this->news_amap->removeElement($newsAmap);
+    }
+
+    /**
+     * Get newsAmap
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNewsAmap() {
+        return $this->news_amap;
+    }
+
 }

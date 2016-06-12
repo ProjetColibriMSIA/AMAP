@@ -1,36 +1,46 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace AMAPBundle\Admin;
 
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Sonata\AdminBundle\Admin\AbstractAdmin as Admin;
-use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Validator\ErrorElement;
+use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Show\ShowMapper;
 
-class NewsAdmin extends Admin {
+class NewsAdmin extends AbstractAdmin {
 
     /**
-     * @param \Sonata\AdminBundle\Datagrid\ListMapper $listMapper
-     *
-     * @return void
+     * @param DatagridMapper $datagridMapper
+     */
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper) {
+        $datagridMapper
+                ->add('id')
+                ->add('name')
+                ->add('description')
+                ->add('startDate')
+                ->add('endDate')
+                ->add('isDisplay')
+        ;
+    }
+
+    /**
+     * @param ListMapper $listMapper
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-                ->addIdentifier('id')
+                ->add('id')
                 ->add('name')
                 ->add('description')
-                ->add('dateDebut')
-                ->add('dateFin')
-                ->add('isAfficher')
-                ->add('_action', 'actions', array(
+                ->add('startDate')
+                ->add('endDate')
+                ->add('isDisplay')
+                ->add('news_amap', null, array(
+                    'class' => 'AMAPBundle:AMAP\AMAP',
+                    'associated_property' => function ($amap) {
+                        return $amap->getName();
+                    }))
+                ->add('_action', null, array(
                     'actions' => array(
                         'show' => array(),
                         'edit' => array(),
@@ -41,26 +51,36 @@ class NewsAdmin extends Admin {
     }
 
     /**
-     * @param \Sonata\AdminBundle\Form\FormMapper $formMapper
-     *
-     * @return void
+     * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
-                ->with('General')
+                ->add('id')
                 ->add('name')
                 ->add('description')
-                ->add('dateDebut')
-                ->add('dateFin', null, array('required' => false))
-                ->add('isAfficher', null, array('required' => false))
-                ->end()
-                ->with('System Information', array('collapsed' => true))
-                ->add('date', null, array(
-                    'format' => 'Y-m-d H:i',
-                    'timezone' => 'America/New_York'
+                ->add('startDate')
+                ->add('endDate', null, array('required' => false))
+                ->add('isDisplay', null, array('required' => false))
+                ->add('news_amap', 'sonata_type_collection', array(), array(
+                    'edit' => 'inline',
+                    'inline' => 'table',
+                    'sortable' => 'position',
+                    'limit' => 10
                 ))
-                ->end()
+        ;
+    }
 
+    /**
+     * @param ShowMapper $showMapper
+     */
+    protected function configureShowFields(ShowMapper $showMapper) {
+        $showMapper
+                ->add('id')
+                ->add('name')
+                ->add('description')
+                ->add('startDate')
+                ->add('endDate')
+                ->add('isDisplay')
         ;
     }
 

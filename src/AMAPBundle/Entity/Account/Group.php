@@ -4,14 +4,15 @@ namespace AMAPBundle\Entity\Account;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\Group as BaseGroup;
+
 /**
  * Group
  *
  * @ORM\Table(name="fos_group")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Account\GroupRepository")
  */
-class Group extends BaseGroup
-{
+class Group extends BaseGroup {
+
     /**
      * @var int
      *
@@ -19,7 +20,7 @@ class Group extends BaseGroup
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    protected  $id;
+    protected $id;
 
     /**
      * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Account\User", inversedBy="groups")
@@ -29,21 +30,21 @@ class Group extends BaseGroup
      *  )    
      */
     private $users;
-    
     private $nbUsers;
+
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
-    public function getNbUsers()
-    {
+
+    public function getNbUsers() {
         return count($this->users);
     }
+
     public function __construct($name, $roles = array()) {
         parent::__construct($name, $roles);
     }
@@ -55,8 +56,7 @@ class Group extends BaseGroup
      *
      * @return Group
      */
-    public function addUser(\AMAPBundle\Entity\Account\User $user)
-    {
+    public function addUser(\AMAPBundle\Entity\Account\User $user) {
         $this->users[] = $user;
 
         return $this;
@@ -67,8 +67,7 @@ class Group extends BaseGroup
      *
      * @param \AMAPBundle\Entity\Account\User $user
      */
-    public function removeUser(\AMAPBundle\Entity\Account\User $user)
-    {
+    public function removeUser(\AMAPBundle\Entity\Account\User $user) {
         $this->users->removeElement($user);
     }
 
@@ -77,8 +76,8 @@ class Group extends BaseGroup
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getUsers()
-    {
+    public function getUsers() {
         return $this->users;
     }
+
 }
