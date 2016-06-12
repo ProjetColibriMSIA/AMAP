@@ -1,45 +1,42 @@
 <!DOCTYPE html>
 <html>
-<!-- Block head-->
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
-    {% set titletab=((path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))|split('/'))|last) %}
-    <title>
-        {% block title %}AMAP - {{titletab|upper}}{% endblock %}
-    </title>
-    {% block stylesheets %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <!-- Block head-->
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+        {% set titletab=((path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))|split('/'))|last) %}
+        <title>
+            {% block title %}AMAP - {{titletab|upper}}{% endblock %}
+        </title>
+        {% block stylesheets %}
+            <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/web_amap.ico') }}" />
 
-    <!-- Especially well keep order : reset -> datatable -> bootstrap -> style -->
-    <link rel="stylesheet" href="{{ asset('css/reset.css')}}" type="text/css" media="screen">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.min.css')}}">
-    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css')}}" media="screen" >
-    <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css" media="screen">
+            <!-- Especially well keep order : reset -> datatable -> bootstrap -> style -->
+            <link rel="stylesheet" href="{{ asset('css/reset.css')}}" type="text/css" media="screen">
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.min.css')}}">
+            <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css')}}" media="screen" >
+            <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css" media="screen">
 
-    <link href='http://fonts.googleapis.com/css?family=Adamina' rel='stylesheet' type='text/css'>
-    <style type="text/css">
-        .col-lg-5 { line-height: 170px; }
-    </style>
-    {% endblock %}
-</head>
-<!-- End of Block Head -->
-<!-- Block body --> 
-<body>
-    <!-- Block for the page background image : carousel -->
-    <div class="carousel slide carousel-fade" data-ride="carousel">
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" role="listbox">
-            <div class="item active">
-            </div>
-            <div class="item">
-            </div>
-            <div class="item">
+            <link href='http://fonts.googleapis.com/css?family=Adamina' rel='stylesheet' type='text/css'>
+        {% endblock %}
+    </head>
+    <!-- End of Block Head -->
+    <!-- Block body --> 
+    <body>
+        <!-- Block for the page background image : carousel -->
+        <div class="carousel slide carousel-fade" data-ride="carousel">
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                </div>
+                <div class="item">
+                </div>
+                <div class="item">
+                </div>
             </div>
         </div>
-    </div>
-    <!-- End block carousel -->
-    <!-- Modal connection -->
+        <!-- End block carousel -->
+        <!-- Modal connection -->
         <div class="modal fade " id="ModalConnect" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
@@ -73,86 +70,86 @@
                 </div>
             </div>
         </div>
-    <!-- End of Block Modal connection -->
-<!-- Block Header in Body : logo, menu-->
+        <!-- End of Block Modal connection -->
+        <!-- Block Header in Body : logo, menu-->
         <header>
             {% block header %}
-        <div class="line_header">
-            <!-- Button Connection -->
-            <div id="Auth" class="Connect">
-                <a href="" data-toggle="modal" data-target="#ModalConnect"><img src="{{ asset('./images/nav/co.png')}}" alt="connect" height="46.6" width="150"></a>
-            </div>
-            <!-- End of div for button connect -->
+                <div class="line_header">
+                    <!-- Button Connection -->
+                    <div id="Auth" class="Connect">
+                        <a href="" data-toggle="modal" data-target="#ModalConnect"><img src="{{ asset('./images/nav/co.png')}}" alt="connect" height="46.6" width="150"></a>
+                    </div>
+                    <!-- End of div for button connect -->
 
-            <!-- Use container in Header for use Bootstrap grid to adjust the menu in function of the device size -->
-            <div class="container">
-                <!-- Row is the element use in the grid, here we need just 1 row and 12 columns-->
-                <div class="row">
-                    <!-- Section logo, explain class: lg :>1200px ; md :>992px ; sm :>768px ; xs :<768px -->
-                    <section class="col-lg-5 col-md-4 col-sm-12 col-xs-12 ">
-                        
-                        <a href="accueil">
-                            <div class="logo">
-                                <img src="{{ asset('./images/logo/logo.png')}}" >
-                            </div>
-                        </a>
-                    </section>
-                    <!-- End of section logo -->
+                    <!-- Use container in Header for use Bootstrap grid to adjust the menu in function of the device size -->
+                    <div class="container">
+                        <!-- Row is the element use in the grid, here we need just 1 row and 12 columns-->
+                        <div class="row">
+                            <!-- Section logo, explain class: lg :>1200px ; md :>992px ; sm :>768px ; xs :<768px -->
+                            <section class="col-lg-5 col-md-4 col-sm-12 col-xs-12 ">
 
-                    <!-- Block nav -->
-                    <nav class="navbar navbar-default marginMenu col-lg-7 col-md-8 col-sm-12 col-xs-12 ">
+                                <a href="accueil">
+                                    <div class="logo">
+                                        <img src="{{ asset('./images/logo/logo.png')}}" >
+                                    </div>
+                                </a>
+                            </section>
+                            <!-- End of section logo -->
 
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-default navbar-header smallMenu" style="cursor:pointer;"  data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                            <a class="navbar-brand">Menu</a>
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
+                            <!-- Block nav -->
+                            <nav class="navbar navbar-default marginMenu col-lg-7 col-md-8 col-sm-12 col-xs-12 ">
+
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-default navbar-header smallMenu" style="cursor:pointer;"  data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <a class="navbar-brand">Menu</a>
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                </div>
+                                <!-- End of first div : better mobile display-->
+
+                                <!-- In this block there is the 2 menu possible-->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    {% block navigation %}
+                                        {% include 'component/menu.html.twig' %}
+                                    {% endblock %}
+
+                                </div>
+                                <!-- /.navbar-collapse -->
+                            </nav>
+                            <!-- End of block navigation --> 
                         </div>
-                        <!-- End of first div : better mobile display-->
-                        
-                        <!-- In this block there is the 2 menu possible-->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            {% block navigation %}
-                            {% include 'component/nav.html.twig' %}
-                            {% endblock %}
-
-                        </div>
-                        <!-- /.navbar-collapse -->
-                    </nav>
-                    <!-- End of block navigation --> 
+                        <!-- End of block row -->
+                    </div>
+                    <!-- End of block Container -->
                 </div>
-                <!-- End of block row -->
-            </div>
-            <!-- End of block Container -->
-        </div>
-        {% endblock %}
-    </header>       
-    <!-- End of block Header of Body -->
-    <div class="container marginContainer">
-        <div class="row">
-            <section id="content">
-                <!--==============================content================================-->
-                            {% block contenu %}{% endblock %} 
-                            <!--==============================footer=================================-->
+            {% endblock %}
+        </header>       
+        <!-- End of block Header of Body -->
+        <div class="container marginContainer">
+            <div class="row">
+                <section id="content">
+                    <!--==============================content================================-->
+                {% block contenu %}{% endblock %} 
+                <!--==============================footer=================================-->
             </section> 
         </div>
     </div>
     {% block javascripts %}
-    <script type="text/javascript" language="javascript" src="{{ asset('//code.jquery.com/jquery-1.12.3.min.js')}}">
-    </script>
+        <script type="text/javascript" language="javascript" src="{{ asset('//code.jquery.com/jquery-1.12.3.min.js')}}">
+        </script>
 
-    <script type="text/javascript" language="javascript" src="{{ asset('js/jquery.dataTables.js')}}"></script>
-    
-    <!-- permet de gerer les diapo interne-->
-    <script src="{{ asset('js/tms-0.3.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('js/tms_presets.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('bootstrap/js/bootstrap.js')}}" type="text/javascript"></script>
+        <script type="text/javascript" language="javascript" src="{{ asset('js/jquery.dataTables.js')}}"></script>
 
-    <script src="{{ asset('js/script.js')}}" type="text/javascript"></script>
+        <!-- permet de gerer les diapo interne-->
+        <script src="{{ asset('js/tms-0.3.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('js/tms_presets.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('bootstrap/js/bootstrap.js')}}" type="text/javascript"></script>
+
+        <script src="{{ asset('js/script.js')}}" type="text/javascript"></script>
     {% endblock %}
 
 </body>
