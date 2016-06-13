@@ -149,9 +149,10 @@ sonata_doctrine_orm_admin:
                 url:        SonataAdminBundle:CRUD:show_url.html.twig
 sonata_admin:
     title:      MIRAMAP
-    title_logo: images/web-logo.png    
+    title_logo: images/logo/web_amap.ico
     templates:
         dashboard: SonataAdminBundle:Core:dashboard.html.twig
+        layout: AMAPBundle:Admin:menu.html.twig
     security:
         # the default value
         handler: sonata.admin.security.handler.role

@@ -1,0 +1,22 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}  
+
+{% block side_bar_nav %}  
+    {{parent()}}
+    <ul class="nav navbar-nav smallMenu words" >
+        <li class="navHome">
+            <a href="{{path('amap_default_home')}}">Accueil</a>
+        </li>
+        <li class="navNews">
+            <a href="{{path('amap_default_news')}}">Actualités</a>
+        </li>
+        <li class="navFarmers">
+            <a href="{{path('amap_default_farmers')}}">Producteurs</a>
+        </li>
+        <li class="navAMAP">
+            <a href="{{path('amap_default_amap')}}">L'AMAP</a>
+        </li>
+        <li class="navProducts">
+            <a href="{{path('amap_default_product')}}">Produits</a>
+        </li>
+    </ul>
+{% endblock %}
