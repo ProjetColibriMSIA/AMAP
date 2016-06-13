@@ -1,22 +1,39 @@
-{% extends 'SonataAdminBundle::standard_layout.html.twig' %}  
-
-{% block side_bar_nav %}  
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %} 
+{% trans_default_domain "AMAPBundle" %}
+{% block side_bar_nav %} 
+        <p class="text-center small" style="border-top: 1px solid #444444; padding-top: 1px">
     {{parent()}}
-    <ul class="nav navbar-nav smallMenu words" >
-        <li class="navHome">
-            <a href="{{path('amap_default_home')}}">Accueil</a>
-        </li>
-        <li class="navNews">
-            <a href="{{path('amap_default_news')}}">Actualités</a>
-        </li>
-        <li class="navFarmers">
-            <a href="{{path('amap_default_farmers')}}">Producteurs</a>
-        </li>
-        <li class="navAMAP">
-            <a href="{{path('amap_default_amap')}}">L'AMAP</a>
-        </li>
-        <li class="navProducts">
-            <a href="{{path('amap_default_product')}}">Produits</a>
+    <p class="text-center small" style="border-top: 1px solid #444444; padding-top: 1px">
+    <ul class="sidebar-menu">
+        <li class="treeview"> 
+            <a href="#"> 
+                <i class="fa fa-home"></i>
+                <span>
+                    {{'label_webamap'|trans}}
+                </span> 
+                <i class="fa pull-right fa-angle-left"></i> 
+            </a> 
+            <ul class="treeview-menu">
+                <li class="first">
+                    <a href="{{path('amap_default_home')}}"><i class="fa fa-angle-double-right"></i>Accueil</a>
+                </li>
+                <li>
+                    <a href="{{path('amap_default_news')}}"><i class="fa fa-angle-double-right"></i>Actualités</a>
+                </li>
+                <li>
+                    <a href="{{path('amap_default_farmers')}}"><i class="fa fa-angle-double-right"></i>Producteurs</a>
+                </li>
+                <li>
+                    <a href="{{path('amap_default_amap')}}"><i class="fa fa-angle-double-right"></i>L'AMAP</a>
+                </li>
+                <li class="last treeview">
+                    <a href="{{path('amap_default_product')}}"><i class="fa fa-angle-double-right"></i>Produits</a>
+                </li>
+            </ul> 
+
         </li>
     </ul>
+{% endblock %}
+{% block side_bar_after_nav_content %}
+    <a href="http://www.reseau-amap.org/" rel="noreferrer" target="_blank">{{'label_isma_project'|trans}}</a>
 {% endblock %}
