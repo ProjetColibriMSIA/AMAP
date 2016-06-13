@@ -1,8 +1,8 @@
 {% extends 'SonataAdminBundle::standard_layout.html.twig' %} 
 {% trans_default_domain "AMAPBundle" %}
 {% block side_bar_nav %} 
-        <p class="text-center small" style="border-top: 1px solid #444444; padding-top: 1px">
-    {{parent()}}
+    <p class="text-center small" style="border-top: 1px solid #444444; padding-top: 1px">
+        {{parent()}}
     <p class="text-center small" style="border-top: 1px solid #444444; padding-top: 1px">
     <ul class="sidebar-menu">
         <li class="treeview"> 
@@ -15,19 +15,19 @@
             </a> 
             <ul class="treeview-menu">
                 <li class="first">
-                    <a href="{{path('amap_default_home')}}"><i class="fa fa-angle-double-right"></i>Accueil</a>
+                    <a href="{{path('amap_default_home')}}"><i class="fa fa-angle-double-right"></i>{{((path('amap_default_home')|split('/'))|last)|capitalize }}</a>
                 </li>
                 <li>
-                    <a href="{{path('amap_default_news')}}"><i class="fa fa-angle-double-right"></i>Actualités</a>
+                    <a href="{{path('amap_default_news')}}"><i class="fa fa-angle-double-right"></i>{{((path('amap_default_news')|split('/'))|last)|capitalize }}</a>
                 </li>
                 <li>
-                    <a href="{{path('amap_default_farmers')}}"><i class="fa fa-angle-double-right"></i>Producteurs</a>
+                    <a href="{{path('amap_default_farmers')}}"><i class="fa fa-angle-double-right"></i>{{((path('amap_default_farmers')|split('/'))|last)|capitalize }}</a>
                 </li>
                 <li>
-                    <a href="{{path('amap_default_amap')}}"><i class="fa fa-angle-double-right"></i>L'AMAP</a>
+                    <a href="{{path('amap_default_amaps')}}"><i class="fa fa-angle-double-right"></i>{{((path('amap_default_amaps')|split('/'))|last)|capitalize }}</a>
                 </li>
                 <li class="last treeview">
-                    <a href="{{path('amap_default_product')}}"><i class="fa fa-angle-double-right"></i>Produits</a>
+                    <a href="{{path('amap_default_products')}}"><i class="fa fa-angle-double-right"></i>{{((path('amap_default_products')|split('/'))|last)|capitalize }}</a>
                 </li>
             </ul> 
 

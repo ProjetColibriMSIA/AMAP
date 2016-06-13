@@ -27,9 +27,9 @@ class Builder implements ContainerAwareInterface
         ));
 
         // create another menu item
-        $menu->addChild('Produit', array('route' => 'amap_default_product'));
+        $menu->addChild('Produit', array('route' => 'amap_default_products'));
         // you can also add sub level's to your menu's as follows
-        $menu['Produit']->addChild('Amap', array('route' => 'amap_default_amap'));
+        $menu['Produit']->addChild('Amap', array('route' => 'amap_default_amaps'));
 
         // ... add more children
 

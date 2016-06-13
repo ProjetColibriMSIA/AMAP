@@ -10,7 +10,7 @@ services:
         class: AMAPBundle\Admin\NewsAdmin
         arguments: [~, AMAPBundle\Entity\Announcement\News, SonataAdminBundle:CRUD]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: "label_news", label: "label_news", label_catalogue: "AMAPBundle", icon: "<i class=\"fa fa-book\"></i>"}
+            - { name: sonata.admin, manager_type: orm, group: "label_news", label: "label_news", label_catalogue: "AMAPBundle", icon: "<i class=\"fa fa-newspaper-o\"></i>"}
         calls:
             - [ setTranslationDomain, [AMAPBundle]]
             - [ setLabelTranslatorStrategy, [ "@sonata.admin.label.strategy.underscore" ]]

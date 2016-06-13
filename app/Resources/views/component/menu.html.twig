@@ -11,11 +11,11 @@
         <li class="navFarmers{% if titletab=="producteurs" %}{{classActive}}{% endif %}">
             <a href="{{path('amap_default_farmers')}}">Producteurs</a>
         </li>
-        <li class="navAMAP{% if titletab=="amap" %}{{classActive}}{% endif %}">
-            <a href="{{path('amap_default_amap')}}">L'AMAP</a>
+        <li class="navAMAP{% if titletab=="amaps" %}{{classActive}}{% endif %}">
+            <a href="{{path('amap_default_amaps')}}">L'AMAP</a>
         </li>
-        <li class="navProducts{% if titletab=="produit" %}{{classActive}}{% endif %}">
-            <a href="{{path('amap_default_product')}}">Produits</a>
+        <li class="navProducts{% if titletab=="produits" %}{{classActive}}{% endif %}">
+            <a href="{{path('amap_default_products')}}">Produits</a>
         </li>
         <li class="navConnect">
             <a data-toggle="modal" data-target="#myModal">Se connecter</a>
@@ -39,14 +39,14 @@
         <li class="navFarmers{% if titletab=="producteurs" %}{{classActive}}{% endif %}">
             <a href="{{path('amap_default_farmers')}}">Producteurs</a>
         </li>
-        <li class="navAMAP{% if titletab=="amap" %}{{classActive}}{% endif %}">
-            <a href="{{path('amap_default_amap')}}">L'AMAP</a>
+        <li class="navAMAP{% if titletab=="amaps" %}{{classActive}}{% endif %}">
+            <a href="{{path('amap_default_amaps')}}">L'AMAP</a>
         </li>
-        <li class="navProducts{% if titletab=="produit" %}{{classActive}}{% endif %}">
-            <a href="{{path('amap_default_product')}}">Produits</a>
+        <li class="navProducts{% if titletab=="produits" %}{{classActive}}{% endif %}">
+            <a href="{{path('amap_default_products')}}">Produits</a>
         </li>
         {%if is_granted("ROLE_FARMER")%}
-            <li class="navProducts{% if app.request.attributes.get('_route')=="amap_produit" %}{{classActive}}{% endif %}">
+            <li class="navProducts{% if app.request.attributes.get('_route')=="produits" %}{{classActive}}{% endif %}">
                 <a href="{{path('amap_farmer_index')}}">Gestion</a>
             </li>
         {% endif %}

@@ -2,13 +2,11 @@
 
 namespace AMAPBundle\Controller;
 
-
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AppBundle\Form\UserType;
 use AppBundle\Entity\Account\User;
 use Symfony\Component\HttpFoundation\Request;
-
 
 class DefaultController extends Controller {
 
@@ -59,20 +57,20 @@ class DefaultController extends Controller {
     }
 
     /**
-     * @Route("/amap")
+     * @Route("/amaps")
      */
-    public function amapAction() {
+    public function amapsAction() {
         $em = $this->getDoctrine()->getManager();
-	    $rep = $em->getRepository("AMAPBundle:AMAP\AMAP");
-	    $amaps = $rep->findAll();
-		
-		return $this->render('AMAPBundle:Default:amap.html.twig', array('amaps' => $amaps));
+        $rep = $em->getRepository("AMAPBundle:AMAP\AMAP");
+        $amaps = $rep->findAll();
+
+        return $this->render('AMAPBundle:Default:amap.html.twig', array('amaps' => $amaps));
     }
 
     /**
-     * @Route("/produit")
+     * @Route("/produits")
      */
-    public function productAction() {
+    public function productsAction() {
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository("AMAPBundle:Basket\Product");
         $products = $rep->findAll();
@@ -81,12 +79,11 @@ class DefaultController extends Controller {
 
         return $this->render('AMAPBundle:Default:product.html.twig', array('products' => $products));
     }
-	
-	  /**
+
+    /**
      * @Route("/register")
      */
-    public function registerAction(Request $request)
-    {
+    public function registerAction(Request $request) {
         // 1) build the form
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -97,7 +94,7 @@ class DefaultController extends Controller {
 
             // 3) Encode the password (you could also do this via Doctrine listener)
             $password = $this->get('security.password_encoder')
-                ->encodePassword($user, $user->getPlainPassword());
+                    ->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
 
             // 4) save the User!
@@ -112,10 +109,8 @@ class DefaultController extends Controller {
         }
 
         return $this->render(
-            'registration/register.html.twig',
-            array('form' => $form->createView())
+                        'registration/register.html.twig', array('form' => $form->createView())
         );
     }
-    
-	
+
 }
