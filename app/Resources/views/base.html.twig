@@ -11,11 +11,14 @@
         {% block stylesheets %}
             <link rel="icon" type="image/x-icon" href="{{ asset('images/logo/web_amap.ico') }}" />
 
-            <!-- Especially well keep order : reset -> datatable -> bootstrap -> style -->
+            <!-- Especially well keep order : reset -> datatable -> bootstrap -> font-awesome -> style -->
             <link rel="stylesheet" href="{{ asset('css/reset.css')}}" type="text/css" media="screen">
             <link rel="stylesheet" type="text/css" href="{{ asset('css/jquery.dataTables.min.css')}}">
             <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css')}}" media="screen" >
+            <link rel="stylesheet" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.css')}}" type="text/css" media="screen">
+
             <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css" media="screen">
+
 
             <link href='http://fonts.googleapis.com/css?family=Adamina' rel='stylesheet' type='text/css'>
         {% endblock %}
@@ -115,6 +118,9 @@
 
                                 <!-- In this block there is the 2 menu possible-->
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    {{ knp_menu_render('AMAPBundle:Builder:mainMenu') }}
+
+
                                     {% block navigation %}
                                         {% include 'component/menu.html.twig' %}
                                     {% endblock %}
@@ -122,6 +128,7 @@
                                 </div>
                                 <!-- /.navbar-collapse -->
                             </nav>
+
                             <!-- End of block navigation --> 
                         </div>
                         <!-- End of block row -->
@@ -135,10 +142,13 @@
             <div class="row">
                 <section id="content">
                     <!--==============================content================================-->
-                {% block contenu %}{% endblock %} 
+                {% block contenu %}
+                {% endblock %} 
                 <!--==============================footer=================================-->
-            </section> 
-        </div>
+               
+        
+            </section>
+         </div>
     </div>
     {% block javascripts %}
         <script type="text/javascript" language="javascript" src="{{ asset('//code.jquery.com/jquery-1.12.3.min.js')}}">
