@@ -683,6 +683,70 @@
                 <source>breadcrumb.link_a_m_a_p_delete</source>
                 <target>Supprimer AMAP</target>
             </trans-unit>
+			<trans-unit id="form.label_start_date">
+                <source>form.label_start_date</source>
+                <target>Date de début</target>
+            </trans-unit>
+			<trans-unit id="form.label_end_date">
+                <source>form.label_end_date</source>
+                <target>Date de fin</target>
+            </trans-unit>
+			<trans-unit id="form.label_is_display">
+                <source>form.label_is_display</source>
+                <target>Afficher</target>
+            </trans-unit>
+			<trans-unit id="form.label_news_amap">
+                <source>form.label_news_amap</source>
+                <target>Actualité AMAP</target>
+            </trans-unit>
+			<trans-unit id="breadcrumb.link_news_create">
+                <source>breadcrumb.link_news_create</source>
+                <target>Création Actualité</target>
+            </trans-unit>
+			<trans-unit id="list.label_start_date">
+                <source>list.label_start_date</source>
+                <target>Date de début</target>
+            </trans-unit>
+			<trans-unit id="list.label_end_date">
+                <source>list.label_end_date</source>
+                <target>Date de fin</target>
+            </trans-unit>
+			<trans-unit id="list.label_is_display">
+                <source>list.label_is_display</source>
+                <target>Afficher</target>
+            </trans-unit>
+			<trans-unit id="list.label_news_amap">
+                <source>list.label_news_amap</source>
+                <target>Actualité AMAP</target>
+            </trans-unit>
+			<trans-unit id="filter.label_start_date">
+                <source>filter.label_start_date</source>
+                <target>Date de début</target>
+            </trans-unit>
+			<trans-unit id="filter.label_end_date">
+                <source>filter.label_end_date</source>
+                <target>Date de fin</target>
+            </trans-unit>
+			<trans-unit id="filter.label_is_display">
+                <source>filter.label_is_display</source>
+                <target>Afficher</target>
+            </trans-unit>
+			<trans-unit id="show.label_start_date">
+                <source>show.label_start_date</source>
+                <target>Date de début</target>
+            </trans-unit>
+			<trans-unit id="show.label_end_date">
+                <source>show.label_end_date</source>
+                <target>Date de fin</target>
+            </trans-unit>
+			<trans-unit id="show.label_is_display">
+                <source>show.label_is_display</source>
+                <target>Afficher</target>
+            </trans-unit>
+			<trans-unit id="breadcrumb.link_news_delete">
+                <source>breadcrumb.link_news_delete</source>
+                <target>Supprimer Actualité</target>
+            </trans-unit>
 		</body>
     </file>
 </xliff>
