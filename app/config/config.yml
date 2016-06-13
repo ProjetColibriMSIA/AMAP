@@ -80,6 +80,9 @@ fos_user:
     user_class: AMAPBundle\Entity\Account\User
     group:
         group_class: AMAPBundle\Entity\Account\Group
+    registration:
+        form:
+            type: AMAPBundle\Form\UserType
 # knp menu
 knp_menu:
     # use "twig: false" to disable the Twig extension and the TwigRenderer
