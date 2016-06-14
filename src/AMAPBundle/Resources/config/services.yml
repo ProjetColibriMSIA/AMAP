@@ -71,5 +71,8 @@ services:
         class: AMAPBundle\EventListener\UserLocaleListener
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: setLocaleForUnauthenticatedUser }
+    amap.redirect.after.login:
+        class: AMAPBundle\EventListener\AfterLoginRedirection
+        arguments: ["@router"]
 
 

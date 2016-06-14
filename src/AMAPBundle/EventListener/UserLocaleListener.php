@@ -32,13 +32,20 @@ class UserLocaleListener {
      * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
      */
     public function setLocaleForUnauthenticatedUser(GetResponseEvent $event) {
+        $request = $event->getRequest();
         if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()) {
             return;
         }
-        $request = $event->getRequest();
+        
         if ($request->getLocale() != 'fr_FR') {
             $request->setLocale($this->defaultLocale);
         }
+        /*if ($this->securityContext->isGranted('ROLE_ADMIN')) {
+            $url = $this->router->generate('sonata_admin_dashboard');
+            
+            return new RedirectResponse($url);
+        }
+         */
     }
 
     /**
@@ -53,8 +60,7 @@ class UserLocaleListener {
         $request = $event->getRequest();
         if (($user->getLocale() != $request->getLocale()) and ( $user->getLocale() !== null)) {
             $request->setLocale($user->getLocale());
-        }
-        else if(is_null($user->getLocale())){
+        } else if (is_null($user->getLocale())) {
             $user->setLocale($request->getLocale());
         }
     }

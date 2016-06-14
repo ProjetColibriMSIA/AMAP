@@ -191,4 +191,47 @@ class AMAP {
         return $this->contracts_amap;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->news = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->contracts_amap = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add news
+     *
+     * @param \AMAPBundle\Entity\Announcement\News $news
+     *
+     * @return AMAP
+     */
+    public function addNews(\AMAPBundle\Entity\Announcement\News $news)
+    {
+        $this->news[] = $news;
+
+        return $this;
+    }
+
+    /**
+     * Remove news
+     *
+     * @param \AMAPBundle\Entity\Announcement\News $news
+     */
+    public function removeNews(\AMAPBundle\Entity\Announcement\News $news)
+    {
+        $this->news->removeElement($news);
+    }
+
+    /**
+     * Get news
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getNews()
+    {
+        return $this->news;
+    }
 }
