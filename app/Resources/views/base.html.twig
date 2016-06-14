@@ -19,8 +19,6 @@
 
             <link rel="stylesheet" href="{{ asset('css/style.css')}}" type="text/css" media="screen">
 
-
-            <link href='http://fonts.googleapis.com/css?family=Adamina' rel='stylesheet' type='text/css'>
         {% endblock %}
     </head>
     <!-- End of Block Head -->
@@ -118,12 +116,13 @@
 
                                 <!-- In this block there is the 2 menu possible-->
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                    {{ knp_menu_render('AMAPBundle:Builder:mainMenu') }}
+                                    {% set mediumMenu = knp_menu_get('AMAPBundle:Builder:mainMenu', [], {'route': app.request.attributes.get('_route')}) %}
+                                    {% set smallMenu = knp_menu_get('AMAPBundle:Builder:secondMenu', [], {'route': app.request.attributes.get('_route')}) %}
 
+                                   {{ knp_menu_render(mediumMenu) }}
+                                   {{ knp_menu_render(smallMenu) }}
 
-                                    {% block navigation %}
-                                        {% include 'component/menu.html.twig' %}
-                                    {% endblock %}
+                                    
 
                                 </div>
                                 <!-- /.navbar-collapse -->
@@ -151,8 +150,9 @@
          </div>
     </div>
     {% block javascripts %}
-        <script type="text/javascript" language="javascript" src="{{ asset('//code.jquery.com/jquery-1.12.3.min.js')}}">
-        </script>
+        <!--<script type="text/javascript" language="javascript" src="{{ asset('//code.jquery.com/jquery-1.12.3.min.js')}}">
+        </script>-->
+        <script type="text/javascript" language="javascript" src="{{ asset('js/jquery-2.2.3.min.js')}}"></script>
 
         <script type="text/javascript" language="javascript" src="{{ asset('js/jquery.dataTables.js')}}"></script>
 

@@ -3,18 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Admin/PostAdmin.php</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/app/config/routing_dev.yml</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/app/config/routing.yml</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/AMAPBundle.php</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/app/autoload.php</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/app/config/admin.yml</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/app/config/config.yml</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Entity/Sonata/BlogPost.php</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/app/AppKernel.php</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/DependencyInjection/AppExtension.php</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/app/config/services.yml</file>
-            <file>file:/D:/Logiciel/wamp/www/AMAP/src/AMAPBundle/Entity/Sonata/Category.php</file>
+            <file>file:/C:/wamp/www/AMAP/src/AMAPBundle/Menu/Builder.php</file>
+            <file>file:/C:/wamp/www/AMAP/app/Resources/views/component/menu.html.twig</file>
+            <file>file:/C:/wamp/www/AMAP/web/css/style.css</file>
+            <file>file:/C:/wamp/www/AMAP/app/Resources/views/base.html.twig</file>
         </group>
     </open-files>
 </project-private>

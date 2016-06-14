@@ -59,16 +59,21 @@ a .logo img{
         margin:auto;
     }
 
-    .words > li >a{
+    .words > li{
         text-transform: uppercase;
-        color:white;
+        color: #777;
         font-weight: bold;
     }
     .words > li:hover{
         background-color:green; 
+        cursor: pointer;
     }
-
-
+   .navbar-nav > li > span{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 20px;
+    display:block
+    }
 
     .marginMenu{
         margin-top:15px;
@@ -174,7 +179,7 @@ a .logo img{
 .smallMenu > li.navProductsActive > a, .smallMenu > li.navProducts > a:hover,
 .smallMenu > li.navFarmersActive > a, .smallMenu > li.navFarmers > a:hover,
 .smallMenu > li.navAMAPActive > a, .smallMenu > li.navAMAP > a:hover,
-.smallMenu > li.navConnect > a:hover {
+.smallMenu > li.navConnect:hover {
     background: RGB(111,143,91);
     color:white;  
 }
