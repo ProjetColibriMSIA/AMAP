@@ -84,7 +84,9 @@ class GroupAdmin extends AbstractAdmin {
                     'choices' => $rolesChoices,
                     'multiple' => true))
                 ->add('users', 'sonata_type_model_autocomplete', array(
-                    'property' => 'username', 'required' => false))
+                    'property' => 'username',
+                    'required' => false,
+                    'multiple' => true))
         ;
     }
 
