@@ -24,9 +24,9 @@ class Builder implements ContainerAwareInterface{
 
         $menu->addChild('Producteurs', array('route' => 'amap_default_farmers', 'attributes' => array('id'=>'amap_default_farmers','class'=> 'navFarmers')));
 
-        $menu->addChild('L\'AMAP', array('route' => 'amap_default_amap', 'attributes' => array('id'=>'amap_default_amap','class'=> 'navAMAP')));
+        $menu->addChild('L\'AMAP', array('route' => 'amap_default_amaps', 'attributes' => array('id'=>'amap_default_amaps','class'=> 'navAMAP')));
 
-        $menu->addChild('Produits', array('route' => 'amap_default_product', 'attributes' => array('id'=>'amap_default_product','class'=> 'navProducts')));
+        $menu->addChild('Produits', array('route' => 'amap_default_products', 'attributes' => array('id'=>'amap_default_products','class'=> 'navProducts')));
 
         Foreach ($menu as $child)
         {
@@ -53,9 +53,9 @@ class Builder implements ContainerAwareInterface{
 
         $menu->addChild('Producteurs', array('route' => 'amap_default_farmers', 'attributes' => array('id'=>'amap_default_farmers','class'=> 'navFarmers')));
 
-        $menu->addChild('L\'AMAP', array('route' => 'amap_default_amap', 'attributes' => array('id'=>'amap_default_amap','class'=> 'navAMAP')));
+        $menu->addChild('L\'AMAP', array('route' => 'amap_default_amaps', 'attributes' => array('id'=>'amap_default_amaps','class'=> 'navAMAP')));
 
-        $menu->addChild('Produits', array('route' => 'amap_default_product', 'attributes' => array('id'=>'amap_default_product','class'=> 'navProducts')));
+        $menu->addChild('Produits', array('route' => 'amap_default_products', 'attributes' => array('id'=>'amap_default_products','class'=> 'navProducts')));
 
         $menu->addChild('Se connecter', array('attributes' => array('class'=> 'navConnect','data-toggle'=>'modal','data-target'=>'#ModalConnect')));
         //$menu['Se connecter']->setUri('');
