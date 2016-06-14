@@ -2,6 +2,14 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
+            <trans-unit id="label_webamap">
+                <source>label_webamap</source>
+                <target>Site AMAP</target>
+            </trans-unit>
+            <trans-unit id="label_isma_project">
+                <source>label_isma_project</source>
+                <target>Projet ISMA</target>
+            </trans-unit>          
             <trans-unit id="label_news">
                 <source>label_news</source>
                 <target>Actualités</target>
@@ -139,15 +147,15 @@
                 <source>list.label_rep_p_d_f</source>
                 <target>Chemin d'accés PDF</target>
             </trans-unit>
-                        <trans-unit id="list.label_groups">
+            <trans-unit id="list.label_groups">
                 <source>list.label_groups</source>
                 <target>Liste des groupes</target>
             </trans-unit>
-                        <trans-unit id="list.label_amap">
+            <trans-unit id="list.label_amap">
                 <source>list.label_amap</source>
                 <target>Liste des AMAP</target>
             </trans-unit>
-                                    <trans-unit id="list.label_locale">
+            <trans-unit id="list.label_locale">
                 <source>list.label_locale</source>
                 <target>Langue du navigateur</target>
             </trans-unit>
@@ -167,67 +175,67 @@
                 <source>breadcrumb.link_news_list</source>
                 <target>Configuration Actualités</target>
             </trans-unit>
-			<trans-unit id="form.label_id">
+            <trans-unit id="form.label_id">
                 <source>form.label_id</source>
                 <target>Id</target>
             </trans-unit>
-			<trans-unit id="form.label_username">
+            <trans-unit id="form.label_username">
                 <source>form.label_username</source>
                 <target>Pseudonyme</target>
             </trans-unit>
-			<trans-unit id="form.label_username_canonical">
+            <trans-unit id="form.label_username_canonical">
                 <source>form.label_username_canonical</source>
                 <target>Pseudonyme canonique</target>
             </trans-unit>
-			<trans-unit id="form.label_name">
+            <trans-unit id="form.label_name">
                 <source>form.label_name</source>
                 <target>Nom</target>
             </trans-unit>
-			<trans-unit id="form.label_first_name">
+            <trans-unit id="form.label_first_name">
                 <source>form.label_first_name</source>
                 <target>Prénom</target>
             </trans-unit>
-			<trans-unit id="form.label_email">
+            <trans-unit id="form.label_email">
                 <source>form.label_email</source>
                 <target>Email</target>
             </trans-unit>
-			<trans-unit id="form.label_email_canonical">
+            <trans-unit id="form.label_email_canonical">
                 <source>form.label_email_canonical</source>
                 <target>Email canonique</target>
             </trans-unit>
-			<trans-unit id="form.label_enabled">
+            <trans-unit id="form.label_enabled">
                 <source>form.label_enabled</source>
                 <target>Actif</target>
             </trans-unit>
-			<trans-unit id="form.label_salt">
+            <trans-unit id="form.label_salt">
                 <source>form.label_salt</source>
                 <target>Salt</target>
             </trans-unit>
-			<trans-unit id="form.label_password">
+            <trans-unit id="form.label_password">
                 <source>form.label_password</source>
                 <target>Mot de passe</target>
             </trans-unit>
-			<trans-unit id="label_option">
+            <trans-unit id="label_option">
                 <source>label_option</source>
                 <target>Options</target>
             </trans-unit>
-			<trans-unit id="form.label_credentials_expired">
+            <trans-unit id="form.label_credentials_expired">
                 <source>form.label_credentials_expired</source>
                 <target>Expiration des droits</target>
             </trans-unit>
-			<trans-unit id="form.label_locale">
+            <trans-unit id="form.label_locale">
                 <source>form.label_locale</source>
                 <target>Locale</target>
             </trans-unit>
-			<trans-unit id="form.label_last_login">
+            <trans-unit id="form.label_last_login">
                 <source>form.label_last_login</source>
                 <target>Dernière date de connexion</target>
             </trans-unit>
-			<trans-unit id="form.label_locked">
+            <trans-unit id="form.label_locked">
                 <source>form.label_locked</source>
                 <target>Verrouillé</target>
             </trans-unit>
-			<trans-unit id="form.label_expired">
+            <trans-unit id="form.label_expired">
                 <source>form.label_expired</source>
                 <target>Expiré</target>
             </trans-unit>
@@ -235,518 +243,518 @@
                 <source>form.label_confirmation_token</source>
                 <target>Confirmation du token</target>
             </trans-unit>
-			<trans-unit id="form.label_password_requested_at">
+            <trans-unit id="form.label_password_requested_at">
                 <source>form.label_password_requested_at</source>
                 <target>Date des demandes de mot de passe</target>
             </trans-unit>
-			<trans-unit id="form.label_roles">
+            <trans-unit id="form.label_roles">
                 <source>form.label_roles</source>
                 <target>Rôle</target>
             </trans-unit>
-			<trans-unit id="form.label_groups">
+            <trans-unit id="form.label_groups">
                 <source>form.label_groups</source>
                 <target>Groupes</target>
             </trans-unit>
-			<trans-unit id="form.label_amap">
+            <trans-unit id="form.label_amap">
                 <source>form.label_amap</source>
                 <target>AMAP</target>
             </trans-unit>
-			<trans-unit id="form.label_contract_user">
+            <trans-unit id="form.label_contract_user">
                 <source>form.label_contract_user</source>
                 <target>Contrats</target>
             </trans-unit>	
-			<trans-unit id="form.label_adress">
+            <trans-unit id="form.label_adress">
                 <source>form.label_adress</source>
                 <target>Adresse</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_user_create">
+            <trans-unit id="breadcrumb.link_user_create">
                 <source>breadcrumb.link_user_create</source>
                 <target>Création Utilisateur</target>
             </trans-unit>
-			<trans-unit id="label_needed">
+            <trans-unit id="label_needed">
                 <source>label_needed</source>
                 <target>Obligatoire</target>
             </trans-unit>
-			<trans-unit id="list.label_username_canonical">
+            <trans-unit id="list.label_username_canonical">
                 <source>list.label_username_canonical</source>
                 <target>Pseudonyme canonique</target>
             </trans-unit>	
-			<trans-unit id="list.label_email_canonical">
+            <trans-unit id="list.label_email_canonical">
                 <source>list.label_email_canonical</source>
                 <target>Email canonique</target>
             </trans-unit>	
-			<trans-unit id="list.label_contract_user">
+            <trans-unit id="list.label_contract_user">
                 <source>list.label_contract_user</source>
                 <target>Contrat</target>
             </trans-unit>	
-			<trans-unit id="list.label_enabled">
+            <trans-unit id="list.label_enabled">
                 <source>list.label_enabled</source>
                 <target>Actif</target>
             </trans-unit>	
-			<trans-unit id="list.label_salt">
+            <trans-unit id="list.label_salt">
                 <source>list.label_salt</source>
                 <target>Salt</target>
             </trans-unit>	
-			<trans-unit id="list.label_last_login">
+            <trans-unit id="list.label_last_login">
                 <source>list.label_last_login</source>
                 <target>Dernière connexion</target>
             </trans-unit>	
-			<trans-unit id="list.label_locked">
+            <trans-unit id="list.label_locked">
                 <source>list.label_locked</source>
                 <target>Verrouillé</target>
             </trans-unit>	
-			<trans-unit id="list.label_expired">
+            <trans-unit id="list.label_expired">
                 <source>list.label_expired</source>
                 <target>Expiré</target>
             </trans-unit>	
-			<trans-unit id="list.label_expires_at">
+            <trans-unit id="list.label_expires_at">
                 <source>list.label_expires_at</source>
                 <target>Date d'expiration</target>
             </trans-unit>
-			<trans-unit id="list.label_confirmation_token">
+            <trans-unit id="list.label_confirmation_token">
                 <source>list.label_confirmation_token</source>
                 <target>Confirmation token</target>
             </trans-unit>
-			<trans-unit id="list.label_password_requested_at">
+            <trans-unit id="list.label_password_requested_at">
                 <source>list.label_password_requested_at</source>
                 <target>Date de demande de mot de passe</target>
             </trans-unit>
-			<trans-unit id="list.label_credentials_expired">
+            <trans-unit id="list.label_credentials_expired">
                 <source>list.label_credentials_expired</source>
                 <target>Expiration des droits</target>
             </trans-unit>
-			<trans-unit id="list.label_credentials_expire_at">
+            <trans-unit id="list.label_credentials_expire_at">
                 <source>list.label_credentials_expire_at</source>
                 <target>Date d'expiration des droits</target>
             </trans-unit>
-			<trans-unit id="filter.label_username">
+            <trans-unit id="filter.label_username">
                 <source>filter.label_username</source>
                 <target>Pseudonyme</target>
             </trans-unit>
-			<trans-unit id="filter.label_username_canonical">
+            <trans-unit id="filter.label_username_canonical">
                 <source>filter.label_username_canonical</source>
                 <target>Pseudonyme canonique</target>
             </trans-unit>
-			<trans-unit id="filter.label_email">
+            <trans-unit id="filter.label_email">
                 <source>filter.label_email</source>
                 <target>Email</target>
             </trans-unit>
-			<trans-unit id="filter.label_email_canonical">
+            <trans-unit id="filter.label_email_canonical">
                 <source>filter.label_email_canonical</source>
                 <target>Email canonique</target>
             </trans-unit>
-			<trans-unit id="filter.label_enabled">
+            <trans-unit id="filter.label_enabled">
                 <source>filter.label_enabled</source>
                 <target>Actif</target>
             </trans-unit>
-			<trans-unit id="filter.label_salt">
+            <trans-unit id="filter.label_salt">
                 <source>filter.label_salt</source>
                 <target>Salt</target>
             </trans-unit>
-			<trans-unit id="filter.label_password">
+            <trans-unit id="filter.label_password">
                 <source>filter.label_password</source>
                 <target>Mot de passe</target>
             </trans-unit>
-			<trans-unit id="filter.label_last_login">
+            <trans-unit id="filter.label_last_login">
                 <source>filter.label_last_login</source>
                 <target>Dernière connexion</target>
             </trans-unit>
-			<trans-unit id="filter.label_locked">
+            <trans-unit id="filter.label_locked">
                 <source>filter.label_locked</source>
                 <target>Verrouillé</target>
             </trans-unit>
-			<trans-unit id="filter.label_expired">
+            <trans-unit id="filter.label_expired">
                 <source>filter.label_expired</source>
                 <target>Expiré</target>
             </trans-unit>
-			<trans-unit id="filter.label_expires_at">
+            <trans-unit id="filter.label_expires_at">
                 <source>filter.label_expires_at</source>
                 <target>Date d'expiration</target>
             </trans-unit>
-			<trans-unit id="filter.label_roles">
+            <trans-unit id="filter.label_roles">
                 <source>filter.label_roles</source>
                 <target>Rôle</target>
             </trans-unit>
-			<trans-unit id="filter.label_id">
+            <trans-unit id="filter.label_id">
                 <source>filter.label_id</source>
                 <target>Id</target>
             </trans-unit>
-			<trans-unit id="filter.label_name">
+            <trans-unit id="filter.label_name">
                 <source>filter.label_name</source>
                 <target>Nom</target>
             </trans-unit>
-			<trans-unit id="filter.label_first_name">
+            <trans-unit id="filter.label_first_name">
                 <source>filter.label_first_name</source>
                 <target>Prénom</target>
             </trans-unit>
-			<trans-unit id="filter.label_adress">
+            <trans-unit id="filter.label_adress">
                 <source>filter.label_adress</source>
                 <target>Adresse</target>
             </trans-unit>
-			<trans-unit id="filter.label_locale">
+            <trans-unit id="filter.label_locale">
                 <source>filter.label_locale</source>
                 <target>Locale</target>
             </trans-unit>
-			<trans-unit id="filter.label_confirmation_token">
+            <trans-unit id="filter.label_confirmation_token">
                 <source>filter.label_confirmation_token</source>
                 <target>Confirmation du token</target>
             </trans-unit>
-			<trans-unit id="filter.label_password_requested_at">
+            <trans-unit id="filter.label_password_requested_at">
                 <source>filter.label_password_requested_at</source>
                 <target>Date de demande du mot de passe</target>
             </trans-unit>
-			<trans-unit id="filter.label_credentials_expired">
+            <trans-unit id="filter.label_credentials_expired">
                 <source>filter.label_credentials_expired</source>
                 <target>Droits expirés</target>
             </trans-unit>
-			<trans-unit id="filter.label_credentials_expire_at">
+            <trans-unit id="filter.label_credentials_expire_at">
                 <source>filter.label_credentials_expire_at</source>
                 <target>Date d'expiration des droits</target>
             </trans-unit>
-			<trans-unit id="show.label_username">
+            <trans-unit id="show.label_username">
                 <source>show.label_username</source>
                 <target>Pseudonyme</target>
             </trans-unit>
-			<trans-unit id="show.label_username_canonical">
+            <trans-unit id="show.label_username_canonical">
                 <source>show.label_username_canonical</source>
                 <target>Pseudonyme canonique</target>
             </trans-unit>
-			<trans-unit id="show.label_email">
+            <trans-unit id="show.label_email">
                 <source>show.label_email</source>
                 <target>Email</target>
             </trans-unit>
-			<trans-unit id="show.label_email_canonical">
+            <trans-unit id="show.label_email_canonical">
                 <source>show.label_email_canonical</source>
                 <target>Email canonique</target>
             </trans-unit>
-			<trans-unit id="show.label_enabled">
+            <trans-unit id="show.label_enabled">
                 <source>show.label_enabled</source>
                 <target>Actif</target>
             </trans-unit>
-			<trans-unit id="show.label_salt">
+            <trans-unit id="show.label_salt">
                 <source>show.label_salt</source>
                 <target>Salt</target>
             </trans-unit>
-			<trans-unit id="show.label_password">
+            <trans-unit id="show.label_password">
                 <source>show.label_password</source>
                 <target>Mot de passe</target>
             </trans-unit>
-			<trans-unit id="show.label_last_login">
+            <trans-unit id="show.label_last_login">
                 <source>show.label_last_login</source>
                 <target>Date de dernière connexion</target>
             </trans-unit>
-			<trans-unit id="show.label_locked">
+            <trans-unit id="show.label_locked">
                 <source>show.label_locked</source>
                 <target>Verrouillé</target>
             </trans-unit>
-			<trans-unit id="show.label_expired">
+            <trans-unit id="show.label_expired">
                 <source>show.label_expired</source>
                 <target>Expiré</target>
             </trans-unit>
-			<trans-unit id="show.label_expires_at">
+            <trans-unit id="show.label_expires_at">
                 <source>show.label_expires_at</source>
                 <target>Date d'expiration</target>
             </trans-unit>
-			<trans-unit id="show.label_confirmation_token">
+            <trans-unit id="show.label_confirmation_token">
                 <source>show.label_confirmation_token</source>
                 <target>Confirmation token</target>
             </trans-unit>
-			<trans-unit id="show.label_password_requested_at">
+            <trans-unit id="show.label_password_requested_at">
                 <source>show.label_password_requested_at</source>
                 <target>Date de demande de mot de passe</target>
             </trans-unit>
-			<trans-unit id="show.label_roles">
+            <trans-unit id="show.label_roles">
                 <source>show.label_roles</source>
                 <target>Rôle</target>
             </trans-unit>
-			<trans-unit id="show.label_credentials_expired">
+            <trans-unit id="show.label_credentials_expired">
                 <source>show.label_credentials_expired</source>
                 <target>Droits expirés</target>
             </trans-unit>
-			<trans-unit id="show.label_credentials_expire_at">
+            <trans-unit id="show.label_credentials_expire_at">
                 <source>show.label_credentials_expire_at</source>
                 <target>Date des droits d'expiration</target>
             </trans-unit>
-			<trans-unit id="show.label_id">
+            <trans-unit id="show.label_id">
                 <source>show.label_id</source>
                 <target>Id</target>
             </trans-unit>
-			<trans-unit id="show.label_name">
+            <trans-unit id="show.label_name">
                 <source>show.label_name</source>
                 <target>Nom</target>
             </trans-unit>
-			<trans-unit id="show.label_first_name">
+            <trans-unit id="show.label_first_name">
                 <source>show.label_first_name</source>
                 <target>Prénom</target>
             </trans-unit>
-			<trans-unit id="show.label_adress">
+            <trans-unit id="show.label_adress">
                 <source>show.label_adress</source>
                 <target>Adresse</target>
             </trans-unit>
-			<trans-unit id="show.label_locale">
+            <trans-unit id="show.label_locale">
                 <source>show.label_locale</source>
                 <target>Locale</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_user_delete">
+            <trans-unit id="breadcrumb.link_user_delete">
                 <source>breadcrumb.link_user_delete</source>
                 <target>Supprimer Utilisateur</target>
             </trans-unit>
-			<trans-unit id="form.label_users">
+            <trans-unit id="form.label_users">
                 <source>form.label_users</source>
                 <target>Utilisateurs</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_group_create">
+            <trans-unit id="breadcrumb.link_group_create">
                 <source>breadcrumb.link_group_create</source>
                 <target>Création Groupe</target>
             </trans-unit>
-			<trans-unit id="form.label_description">
+            <trans-unit id="form.label_description">
                 <source>form.label_description</source>
                 <target>Description</target>
             </trans-unit>
-			<trans-unit id="form.label_sign_date">
+            <trans-unit id="form.label_sign_date">
                 <source>form.label_sign_date</source>
                 <target>Date de signature</target>
             </trans-unit>
-			<trans-unit id="form.label_expiration_date">
+            <trans-unit id="form.label_expiration_date">
                 <source>form.label_expiration_date</source>
                 <target>Date d'expiration</target>
             </trans-unit>
-			<trans-unit id="form.label_rep_p_d_f">
+            <trans-unit id="form.label_rep_p_d_f">
                 <source>form.label_rep_p_d_f</source>
                 <target>Répertoire PDF</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_contract_create">
+            <trans-unit id="breadcrumb.link_contract_create">
                 <source>breadcrumb.link_contract_create</source>
                 <target>Création Contrat</target>
             </trans-unit>
-			<trans-unit id="form.label_rules">
+            <trans-unit id="form.label_rules">
                 <source>form.label_rules</source>
                 <target>Règles</target>
             </trans-unit>
-			<trans-unit id="filter.label_rules">
+            <trans-unit id="filter.label_rules">
                 <source>filter.label_rules</source>
                 <target>Règles</target>
             </trans-unit>
-			<trans-unit id="filter.label_description">
+            <trans-unit id="filter.label_description">
                 <source>filter.label_description</source>
                 <target>Description</target>
             </trans-unit>
-			<trans-unit id="filter.label_sign_date">
+            <trans-unit id="filter.label_sign_date">
                 <source>filter.label_sign_date</source>
                 <target>Date de signature</target>
             </trans-unit>
-			<trans-unit id="filter.label_expiration_date">
+            <trans-unit id="filter.label_expiration_date">
                 <source>filter.label_expiration_date</source>
                 <target>Date d'expiration</target>
             </trans-unit>
-			<trans-unit id="filter.label_rep_p_d_f">
+            <trans-unit id="filter.label_rep_p_d_f">
                 <source>filter.label_rep_p_d_f</source>
                 <target>Répertoire PDF</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_a_m_a_p_create">
+            <trans-unit id="breadcrumb.link_a_m_a_p_create">
                 <source>breadcrumb.link_a_m_a_p_create</source>
                 <target>Création AMAP</target>
             </trans-unit>
-			<trans-unit id="form.label_price">
+            <trans-unit id="form.label_price">
                 <source>form.label_price</source>
                 <target>Prix</target>
             </trans-unit>
-			<trans-unit id="form.label_bar_code">
+            <trans-unit id="form.label_bar_code">
                 <source>form.label_bar_code</source>
                 <target>Code barre</target>
             </trans-unit>
-			<trans-unit id="form.label_weight">
+            <trans-unit id="form.label_weight">
                 <source>form.label_weight</source>
                 <target>Poids</target>
             </trans-unit>
-			<trans-unit id="form.label_supply_date">
+            <trans-unit id="form.label_supply_date">
                 <source>form.label_supply_date</source>
                 <target>Date de distribution</target>
             </trans-unit>
-			<trans-unit id="form.label_store_date">
+            <trans-unit id="form.label_store_date">
                 <source>form.label_store_date</source>
                 <target>Date en magasin</target>
             </trans-unit>
-			<trans-unit id="form.label_rep_i_m_g">
+            <trans-unit id="form.label_rep_i_m_g">
                 <source>form.label_rep_i_m_g</source>
                 <target>Répertoire Image</target>
             </trans-unit>
-			<trans-unit id="form.label_products">
+            <trans-unit id="form.label_products">
                 <source>form.label_products</source>
                 <target>Produits</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_basket_create">
+            <trans-unit id="breadcrumb.link_basket_create">
                 <source>breadcrumb.link_basket_create</source>
                 <target>Création Panier</target>
             </trans-unit>
-			<trans-unit id="list.label_supply_date">
+            <trans-unit id="list.label_supply_date">
                 <source>list.label_supply_date</source>
                 <target>Date de distribution</target>
             </trans-unit>
-			<trans-unit id="filter.label_price">
+            <trans-unit id="filter.label_price">
                 <source>filter.label_price</source>
                 <target>Prix</target>
             </trans-unit>
-			<trans-unit id="filter.label_bar_code">
+            <trans-unit id="filter.label_bar_code">
                 <source>filter.label_bar_code</source>
                 <target>Code barre</target>
             </trans-unit>
-			<trans-unit id="filter.label_weight">
+            <trans-unit id="filter.label_weight">
                 <source>filter.label_weight</source>
                 <target>Poids</target>
             </trans-unit>
-			<trans-unit id="filter.label_supply_date">
+            <trans-unit id="filter.label_supply_date">
                 <source>filter.label_supply_date</source>
                 <target>Date de distribution</target>
             </trans-unit>
-			<trans-unit id="filter.label_store_date">
+            <trans-unit id="filter.label_store_date">
                 <source>filter.label_store_date</source>
                 <target>Date en magasin</target>
             </trans-unit>
-			<trans-unit id="filter.label_rep_i_m_g">
+            <trans-unit id="filter.label_rep_i_m_g">
                 <source>filter.label_rep_i_m_g</source>
                 <target>Répertoire Images</target>
             </trans-unit>
-			<trans-unit id="show.label_price">
+            <trans-unit id="show.label_price">
                 <source>show.label_price</source>
                 <target>Prix</target>
             </trans-unit>
-			<trans-unit id="show.label_bar_code">
+            <trans-unit id="show.label_bar_code">
                 <source>show.label_bar_code</source>
                 <target>Code barre</target>
             </trans-unit>
-			<trans-unit id="show.label_weight">
+            <trans-unit id="show.label_weight">
                 <source>show.label_weight</source>
                 <target>Poids</target>
             </trans-unit>
-			<trans-unit id="show.label_expiration_date">
+            <trans-unit id="show.label_expiration_date">
                 <source>show.label_expiration_date</source>
                 <target>Date d'expiration</target>
             </trans-unit>
-			<trans-unit id="show.label_supply_date">
+            <trans-unit id="show.label_supply_date">
                 <source>show.label_supply_date</source>
                 <target>Date de distribution</target>
             </trans-unit>
-			<trans-unit id="show.label_store_date">
+            <trans-unit id="show.label_store_date">
                 <source>show.label_store_date</source>
                 <target>Date de mise en magasin</target>
             </trans-unit>
-			<trans-unit id="show.label_description">
+            <trans-unit id="show.label_description">
                 <source>show.label_description</source>
                 <target>Description</target>
             </trans-unit>
-			<trans-unit id="show.label_rep_i_m_g">
+            <trans-unit id="show.label_rep_i_m_g">
                 <source>show.label_rep_i_m_g</source>
                 <target>Répertoire Images</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_basket_delete">
+            <trans-unit id="breadcrumb.link_basket_delete">
                 <source>breadcrumb.link_basket_delete</source>
                 <target>Supprimer Panier</target>
             </trans-unit>
-			<trans-unit id="form.label_baskets">
+            <trans-unit id="form.label_baskets">
                 <source>form.label_baskets</source>
                 <target>Paniers</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_product_create">
+            <trans-unit id="breadcrumb.link_product_create">
                 <source>breadcrumb.link_product_create</source>
                 <target>Création Produit</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_product_delete">
+            <trans-unit id="breadcrumb.link_product_delete">
                 <source>breadcrumb.link_product_delete</source>
                 <target>Supprimer Produit</target>
             </trans-unit>
-			<trans-unit id="list.label_rules">
+            <trans-unit id="list.label_rules">
                 <source>list.label_rules</source>
                 <target>Règles</target>
             </trans-unit>
-			<trans-unit id="list.label_users">
+            <trans-unit id="list.label_users">
                 <source>list.label_users</source>
                 <target>Utilisateurs</target>
             </trans-unit>
-			<trans-unit id="show.label_rules">
+            <trans-unit id="show.label_rules">
                 <source>show.label_rules</source>
                 <target>Règles</target>
             </trans-unit>
-			<trans-unit id="show.label_sign_date">
+            <trans-unit id="show.label_sign_date">
                 <source>show.label_sign_date</source>
                 <target>Date de signature</target>
             </trans-unit>
-			<trans-unit id="show.label_rep_p_d_f">
+            <trans-unit id="show.label_rep_p_d_f">
                 <source>show.label_rep_p_d_f</source>
                 <target>Répertoire PDF</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_contract_delete">
+            <trans-unit id="breadcrumb.link_contract_delete">
                 <source>breadcrumb.link_contract_delete</source>
                 <target>Supprimer Contrat</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_a_m_a_p_delete">
+            <trans-unit id="breadcrumb.link_a_m_a_p_delete">
                 <source>breadcrumb.link_a_m_a_p_delete</source>
                 <target>Supprimer AMAP</target>
             </trans-unit>
-			<trans-unit id="form.label_start_date">
+            <trans-unit id="form.label_start_date">
                 <source>form.label_start_date</source>
                 <target>Date de début</target>
             </trans-unit>
-			<trans-unit id="form.label_end_date">
+            <trans-unit id="form.label_end_date">
                 <source>form.label_end_date</source>
                 <target>Date de fin</target>
             </trans-unit>
-			<trans-unit id="form.label_is_display">
+            <trans-unit id="form.label_is_display">
                 <source>form.label_is_display</source>
                 <target>Afficher</target>
             </trans-unit>
-			<trans-unit id="form.label_news_amap">
+            <trans-unit id="form.label_news_amap">
                 <source>form.label_news_amap</source>
                 <target>Actualité AMAP</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_news_create">
+            <trans-unit id="breadcrumb.link_news_create">
                 <source>breadcrumb.link_news_create</source>
                 <target>Création Actualité</target>
             </trans-unit>
-			<trans-unit id="list.label_start_date">
+            <trans-unit id="list.label_start_date">
                 <source>list.label_start_date</source>
                 <target>Date de début</target>
             </trans-unit>
-			<trans-unit id="list.label_end_date">
+            <trans-unit id="list.label_end_date">
                 <source>list.label_end_date</source>
                 <target>Date de fin</target>
             </trans-unit>
-			<trans-unit id="list.label_is_display">
+            <trans-unit id="list.label_is_display">
                 <source>list.label_is_display</source>
                 <target>Afficher</target>
             </trans-unit>
-			<trans-unit id="list.label_news_amap">
+            <trans-unit id="list.label_news_amap">
                 <source>list.label_news_amap</source>
                 <target>Actualité AMAP</target>
             </trans-unit>
-			<trans-unit id="filter.label_start_date">
+            <trans-unit id="filter.label_start_date">
                 <source>filter.label_start_date</source>
                 <target>Date de début</target>
             </trans-unit>
-			<trans-unit id="filter.label_end_date">
+            <trans-unit id="filter.label_end_date">
                 <source>filter.label_end_date</source>
                 <target>Date de fin</target>
             </trans-unit>
-			<trans-unit id="filter.label_is_display">
+            <trans-unit id="filter.label_is_display">
                 <source>filter.label_is_display</source>
                 <target>Afficher</target>
             </trans-unit>
-			<trans-unit id="show.label_start_date">
+            <trans-unit id="show.label_start_date">
                 <source>show.label_start_date</source>
                 <target>Date de début</target>
             </trans-unit>
-			<trans-unit id="show.label_end_date">
+            <trans-unit id="show.label_end_date">
                 <source>show.label_end_date</source>
                 <target>Date de fin</target>
             </trans-unit>
-			<trans-unit id="show.label_is_display">
+            <trans-unit id="show.label_is_display">
                 <source>show.label_is_display</source>
                 <target>Afficher</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_news_delete">
+            <trans-unit id="breadcrumb.link_news_delete">
                 <source>breadcrumb.link_news_delete</source>
                 <target>Supprimer Actualité</target>
             </trans-unit>
-		</body>
+        </body>
     </file>
 </xliff>

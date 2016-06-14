@@ -18,6 +18,13 @@ class FarmerController extends Controller {
     }
 
     /**
+     * @Route("/home")
+     */
+    public function homeAction() {
+        return $this->render('AMAPBundle:Farmer:index.html.twig');
+    }
+
+    /**
      * @Route("/gestion_AMAP")
      */
     public function amapAction() {

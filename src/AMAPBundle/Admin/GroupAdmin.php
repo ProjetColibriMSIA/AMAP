@@ -10,6 +10,29 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class GroupAdmin extends AbstractAdmin {
 
+    /**
+     * Turns the role's array keys into string <ROLES_NAME> keys.
+     * @todo Move to convenience or make it recursive ? ;-)
+     */
+    protected static function flattenRoles($rolesHierarchy) {
+        $flatRoles = array();
+        foreach ($rolesHierarchy as $roles) {
+
+            if (empty($roles)) {
+                continue;
+            }
+
+            foreach ($roles as $role) {
+                if (!isset($flatRoles[$role])) {
+                    $flatRoles[$role] = $role;
+                }
+            }
+        }
+
+
+        return $flatRoles;
+    }
+
     public function getNewInstance() {
         $class = $this->getClass();
         return new $class('', array());
@@ -32,7 +55,7 @@ class GroupAdmin extends AbstractAdmin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-                ->add('id')
+                ->add('id', null, array('required' => false))
                 ->add('name')
                 ->add('roles')
                 ->add('users', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
@@ -50,13 +73,18 @@ class GroupAdmin extends AbstractAdmin {
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper) {
+        $container = $this->getConfigurationPool()->getContainer();
+        $roles = $container->getParameter('security.role_hierarchy.roles');
+
+        $rolesChoices = self::flattenRoles($roles);
         $formMapper
                 ->add('id', null, array('required' => false))
                 ->add('name')
-                ->add('roles')
+                ->add('roles', 'choice', array(
+                    'choices' => $rolesChoices,
+                    'multiple' => true))
                 ->add('users', 'sonata_type_model_autocomplete', array(
-                    'property' => 'email'))
-
+                    'property' => 'username', 'required' => false))
         ;
     }
 

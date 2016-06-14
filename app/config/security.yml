@@ -26,10 +26,11 @@ security:
             anonymous: ~
             http_basic: ~
             pattern: ^/
+            logout: true
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
-            logout: true
+                success_handler: amap.redirect.after.login
             logout:
                 path:   logout
                 target: /accueil
