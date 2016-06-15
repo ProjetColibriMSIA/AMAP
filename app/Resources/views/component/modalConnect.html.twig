@@ -1,0 +1,39 @@
+{% block modal %}
+<!-- Modal connection -->
+                <div class="modal fade " id="ModalConnect" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content popup_block">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="login">
+                                    <h1>Connexion</h1>
+                                    <!-- le action est provision en attendant la gestion utilisateur-->
+                                    {% trans_default_domain 'FOSUserBundle' %}
+                                    <form method="post" action="{{ path("fos_user_security_check") }}">
+                                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+                                        <p><input type="text" name="_username" id="username" value="" placeholder="{{ 'security.login.username'|trans }}" required="required"></p>
+                                        <p><input type="password" name="_password" id="password" value="" placeholder="{{ 'security.login.password'|trans }}" required="required"></p>
+                                        <p class="remember_me">
+                                            <label>
+                                                <input type="checkbox" name="remember_me" id="remember_me">
+                                                Se souvenir de moi
+                                            </label>
+                                        </p>
+                                        <p class="submit"><input type="submit" name="commit" value="Connexion"></p>
+                                    </form>
+                                </div>
+                                <div class="login-help">
+                                    <p>Mot de passe oublié? <a href="index.html">Cliquez ici pour le renouveller</a>.</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ <!-- End of Block Modal connection -->
+{% endblock %}

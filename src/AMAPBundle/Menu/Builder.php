@@ -41,6 +41,7 @@ class Builder implements ContainerAwareInterface{
 
         if ($menuClass=='smallMenu')
         {
+            
              $menu->addChild('Se connecter', array('attributes' => array('class'=> 'navConnect','data-toggle'=>'modal','data-target'=>'#ModalConnect')));
         }
         

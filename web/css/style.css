@@ -209,7 +209,9 @@ a .logo{
 }
 
 /******************************module de connexion ****************/
-
+.buttonModalTexte{
+    color:white;
+}
 .Connect{
     bottom:-40px;
     right: 0;

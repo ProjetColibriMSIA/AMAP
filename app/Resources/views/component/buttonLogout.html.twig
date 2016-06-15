@@ -1,0 +1,6 @@
+{% block buttonModal %}
+    <span class="buttonModalTexte">Connecté en tant que <strong><i> {{app.user.username}} </i></strong></span>
+    <a href="{{ path('fos_user_security_logout') }}">
+        <img src="{{ asset('./images/nav/logout.png')}}" alt="connect" height="46.6">
+    </a>
+{% endblock %}
