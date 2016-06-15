@@ -755,6 +755,38 @@
                 <source>breadcrumb.link_news_delete</source>
                 <target>Supprimer Actualité</target>
             </trans-unit>
+			<trans-unit id="label_name">
+                <source>label_name</source>
+                <target>Nom</target>
+            </trans-unit>
+			<trans-unit id="label_firstname">
+                <source>label_firstname</source>
+                <target>Prénom</target>
+            </trans-unit>
+			<trans-unit id="label_email">
+                <source>label_email</source>
+                <target>Email</target>
+            </trans-unit>
+			<trans-unit id="label_adress">
+                <source>label_adress</source>
+                <target>Adresse</target>
+            </trans-unit>
+			<trans-unit id="label_locale">
+                <source>label_locale</source>
+                <target>Locale</target>
+            </trans-unit>
+			<trans-unit id="label_username">
+                <source>label_username</source>
+                <target>Pseudonyme</target>
+            </trans-unit>
+			<trans-unit id="label_password">
+                <source>label_password</source>
+                <target>Mot de passe</target>
+            </trans-unit>
+			<trans-unit id="label_confirmpassword">
+                <source>label_confirmpassword</source>
+                <target>Confirmation</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
