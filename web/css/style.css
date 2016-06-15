@@ -546,3 +546,7 @@ html {
 .col-lg-5 { 
     line-height: 170px; 
 }
+.width300{
+	width:300px!important;
+	margin-top:5px;
+}
