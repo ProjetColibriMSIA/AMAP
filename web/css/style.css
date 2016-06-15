@@ -446,7 +446,6 @@ html, body {
 }*/
 .lesactus{
     border-radius: 10px;
-    background: #d9dfd9; 
 }
 .actu{
     text-align:center;
@@ -454,17 +453,21 @@ html, body {
     float: none;
 
 }
-.uneactu:hover{
-    background:#E6E2AF;
-}
-.uneactu{
-    margin:5px 10px 0 10px;
+li.uneactu{
+    margin:0px 10px 0 10px;
     border-bottom:1px dashed green;
     background: #d9dfd9; 
 }
+li.uneactu:nth-child(2n+2){
+	background:#D1E2AF;
+}
 
-
-
+.uneactu:hover, li.uneactu:nth-child(2n+2):hover{
+    background:#E6E2AF;
+}
+li.uneactu p{
+    color:black;
+}
 /************************************PART ON THE CAROUSSEL**************************************************/
 /* Adding more to the file Bootstrap.css */
 html {
