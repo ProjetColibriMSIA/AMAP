@@ -48,7 +48,6 @@ class AMAPAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id', null, array('required' => false))
             ->add('name')
             ->add('adress')
             ->add('users', 'sonata_type_collection', array(), array(

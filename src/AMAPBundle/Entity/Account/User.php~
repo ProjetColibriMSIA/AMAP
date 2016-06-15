@@ -46,7 +46,7 @@ class User extends BaseUser {
     protected $groups;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\AMAP\AMAP", mappedBy="users")
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\AMAP\AMAP", mappedBy="users",cascade={"remove"})
      * @ORM\JoinTable(name="fos_user_amap",
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="amap_id", referencedColumnName="id")}
@@ -82,9 +82,11 @@ class User extends BaseUser {
         parent::__construct();
         // your own logic
     }
+
     public function __toString() {
         return $this->email;
     }
+
     /**
      * Get id
      *

@@ -29,7 +29,6 @@ class NewsAdmin extends AbstractAdmin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-                ->add('id')
                 ->add('name')
                 ->add('description')
                 ->add('startDate')

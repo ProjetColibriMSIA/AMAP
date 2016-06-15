@@ -10,27 +10,11 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class GroupAdmin extends AbstractAdmin {
 
-    /**
-     * Turns the role's array keys into string <ROLES_NAME> keys.
-     * @todo Move to convenience or make it recursive ? ;-)
-     */
-    protected static function flattenRoles($rolesHierarchy) {
-        $flatRoles = array();
-        foreach ($rolesHierarchy as $roles) {
+    private $roles;
 
-            if (empty($roles)) {
-                continue;
-            }
-
-            foreach ($roles as $role) {
-                if (!isset($flatRoles[$role])) {
-                    $flatRoles[$role] = $role;
-                }
-            }
-        }
-
-
-        return $flatRoles;
+    public function __construct($code, $class, $baseControllerName) {
+        parent::__construct($code, $class, $baseControllerName);
+        $this->roles = new Roles();
     }
 
     public function getNewInstance() {
@@ -55,10 +39,13 @@ class GroupAdmin extends AbstractAdmin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-                ->add('id', null, array('required' => false))
                 ->add('name')
                 ->add('roles')
-                ->add('users', 'sonata_type_model', array('multiple' => true, 'by_reference' => false))
+                ->add('users', 'entity', array(
+                    'class' => 'AMAPBundle:Account\User',
+                    'associated_property' => function ($amap) {
+                        return $amap->getUsername();
+                    }))
                 ->add('_action', null, array(
                     'actions' => array(
                         'show' => array(),
@@ -73,21 +60,41 @@ class GroupAdmin extends AbstractAdmin {
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper) {
-        $container = $this->getConfigurationPool()->getContainer();
-        $roles = $container->getParameter('security.role_hierarchy.roles');
-
-        $rolesChoices = self::flattenRoles($roles);
         $formMapper
-                ->add('id', null, array('required' => false))
                 ->add('name')
-                ->add('roles', 'choice', array(
-                    'choices' => $rolesChoices,
-                    'multiple' => true))
-                ->add('users', 'sonata_type_model_autocomplete', array(
-                    'property' => 'username',
-                    'required' => false,
-                    'multiple' => true))
         ;
+// Name field will be added only when create an item
+        if ($this->isCurrentRoute('create')) {
+            $container = $this->getConfigurationPool()->getContainer();
+            $roles = $container->getParameter('security.role_hierarchy.roles');
+
+            $rolesChoices = $this->roles->flattenRoles($roles);
+            $formMapper
+                    ->add('roles', 'choice', array(
+                        'choices' => $rolesChoices,
+                        'multiple' => true))
+                    ->add('users', 'sonata_type_model_autocomplete', array(
+                        'property' => 'username',
+                        'to_string_callback' => function($entity, $property) {
+                            return $entity->getUsername();
+                        },
+                        'required' => false,
+                        'multiple' => true
+            ));
+        }
+
+// The foo field will added when current action is related acme.demo.admin.code Admin's edit form
+        if ($this->isCurrentRoute('edit')) {
+            $formMapper
+                    ->add('roles')
+                    ->add('users', 'sonata_type_model', array(
+                        'expanded' => true,
+                        'by_reference' => false,
+                        'required' => false,
+                        'multiple' => true
+                    ))
+            ;
+        }
     }
 
     /**

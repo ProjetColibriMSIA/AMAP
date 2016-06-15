@@ -16,7 +16,7 @@
 										{% if not n.getEndDate is null %} 
 											Du {{ n.getStartDate|date("l j F Y", "Europe/Paris") }} au {{ n.getEndDate|date("l j F Y", "Europe/Paris")}}
 											{% else %} 
-												Le {{ n.getStartDate|date("l j F Y", "Europe/Paris") }}	
+												Le {{ (n.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }}	
 										{% endif %}	
 										
 									</p>

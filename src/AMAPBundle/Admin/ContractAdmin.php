@@ -60,7 +60,6 @@ class ContractAdmin extends AbstractAdmin {
      */
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
-                ->add('id', null, array('required' => false))
                 ->add('rules')
                 ->add('description')
                 ->add('signDate')
@@ -75,6 +74,7 @@ class ContractAdmin extends AbstractAdmin {
                 ->add('amap', 'sonata_type_model_autocomplete', array(
                 'property' => 'email'
             ))
+                
         ;
     }
 

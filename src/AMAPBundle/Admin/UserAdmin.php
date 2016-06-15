@@ -10,6 +10,13 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class UserAdmin extends AbstractAdmin {
 
+    private $roles;
+
+    public function __construct($code, $class, $baseControllerName) {
+        parent::__construct($code, $class, $baseControllerName);
+        $this->roles = new Roles();
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
@@ -44,8 +51,7 @@ class UserAdmin extends AbstractAdmin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-                ->addIdentifier('id')
-                ->add('username')
+                ->addIdentifier('username')
                 ->add('usernameCanonical')
                 ->add('email')
                 ->add('emailCanonical')
@@ -94,6 +100,11 @@ class UserAdmin extends AbstractAdmin {
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper) {
+        $container = $this->getConfigurationPool()->getContainer();
+        $roles = $container->getParameter('security.role_hierarchy.roles');
+
+        $rolesChoices = $this->roles->flattenRoles($roles);
+
         $formMapper
                 ->with('label_needed')
                 ->add('id', null, array('required' => false))
@@ -118,7 +129,9 @@ class UserAdmin extends AbstractAdmin {
                 ->add('passwordRequestedAt')
                 ->end()
                 ->with('label_group')
-                ->add('roles')
+                ->add('roles', 'choice', array(
+                    'choices' => $rolesChoices,
+                    'multiple' => true))
                 ->add('groups', 'sonata_type_collection', array(), array(
                     'edit' => 'inline',
                     'inline' => 'table',

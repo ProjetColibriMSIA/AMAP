@@ -63,7 +63,6 @@ class BasketAdmin extends AbstractAdmin {
      */
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
-                ->add('id', null, array('required' => false))
                 ->add('name')
                 ->add('price')
                 ->add('barCode')

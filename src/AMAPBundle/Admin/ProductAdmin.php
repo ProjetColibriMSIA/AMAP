@@ -52,7 +52,6 @@ class ProductAdmin extends AbstractAdmin {
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
                 ->with('label_needed')
-                ->add('id')
                 ->add('name')
                 ->add('price')
                 ->add('description')
