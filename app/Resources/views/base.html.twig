@@ -116,8 +116,8 @@
 
                                 <!-- In this block there is the 2 menu possible-->
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                    {% set mediumMenu = knp_menu_get('AMAPBundle:Builder:mainMenu', [], {'route': app.request.attributes.get('_route')}) %}
-                                    {% set smallMenu = knp_menu_get('AMAPBundle:Builder:secondMenu', [], {'route': app.request.attributes.get('_route')}) %}
+                                    {% set mediumMenu = knp_menu_get('AMAPBundle:Builder:mainMenu', [], {'route': app.request.attributes.get('_route'), 'menu':'mediumMenu'}) %}
+                                    {% set smallMenu = knp_menu_get('AMAPBundle:Builder:mainMenu', [], {'route': app.request.attributes.get('_route'), 'menu':'smallMenu'}) %}
 
                                    {{ knp_menu_render(mediumMenu) }}
                                    {{ knp_menu_render(smallMenu) }}
