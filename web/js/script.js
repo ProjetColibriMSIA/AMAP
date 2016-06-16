@@ -11,6 +11,17 @@ $(document).ready(function () {
                "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/French.json"
            }
     });
+    $('#amap').DataTable({
+		"language": {
+               "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/French.json"
+           },
+		fnDrawCallback: function () {
+		  $('#amap tbody tr').click(function () {
+			window.location.href = $(this).attr('href');
+		  });
+
+		}	
+	});
 });
 
 //on fait 1000 pour 1s *20pour changer toutes les 20s
