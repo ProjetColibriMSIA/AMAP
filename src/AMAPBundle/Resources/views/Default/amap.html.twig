@@ -2,25 +2,42 @@
 {% block contenu %}
     <div class="container">
 
-        <h1>AMAP</h1>
-        <section>
-            <table id="example" class="display" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th>Nom</th>
-                        <th>Adresse</th>
-                    </tr>
-                </thead>
-                <tbody>   
-                    {% for amap in amaps %}
-                        <tr>
-                            <td> {{ amap.getName() }}</td>
-                            <td> {{ amap.getAdress() }}</td>
-                        </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </section>
+		{% if amaps is defined %}
+			<h1>AMAP</h1>
+			<section>
+				<table id="amap" class="display" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th>Nom</th>
+							<th>Adresse</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>   
+						{% for amap in amaps %}
+							<tr href="amaps?id={{ amap.getId }}">
+								<td> {{ amap.getName() }}</td>
+								<td> {{ amap.getAdress()|nl2br }}</td>
+								<td> {{ amap.getDescription() | truncate(100, false, '') |nl2br}} ...</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</section>
+		{% else %}
+			<section>
+				<h2>{{ amap.getName }}</h2>
+				<div class='imgdroit'>
+					{% if amap.getrepIMG() !='' %}
+						<img src='/AMAP/web/./images/{{amap.getrepIMG()}}' alt="{{amap.getName()}}"/>
+					{% endif %}
+				</div>
+				<p>{{ amap.getDescription|nl2br }}</p>
+				
+				<input type="button" value="Retour" onclick="history.go(-1)">
+			</section>
+		{% endif %}
     </div>
+
 {% endblock %}
 
