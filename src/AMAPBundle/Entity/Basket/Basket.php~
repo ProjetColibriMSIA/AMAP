@@ -3,14 +3,15 @@
 namespace AMAPBundle\Entity\Basket;
 
 use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Basket
  *
  * @ORM\Table(name="basket")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Basket\BasketRepository")
  */
-class Basket
-{
+class Basket {
+
     /**
      * @var int
      *
@@ -75,7 +76,7 @@ class Basket
      * @ORM\Column(name="description", type="text")
      */
     private $description;
-    
+
     /**
      * @var string
      *
@@ -89,7 +90,7 @@ class Basket
      * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Basket\Product", inversedBy="baskets")
      */
     private $products;
-    
+
     /**
      * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Account\Group")
      * @ORM\JoinTable(name="basket_consumer",
@@ -107,31 +108,34 @@ class Basket
      * )
      */
     private $productBy;
-    
+
     /**
      * @var Arraycollection
      *
      * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\Farmer\Inventory", inversedBy="inventoryBaskets")
      */
     private $inventory;
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ownerConsumer = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->productBy = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString() {
+        return strval($this->getId());
+    }
+
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
-    }
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->ownerConsumer = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->productBy = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -141,8 +145,7 @@ class Basket
      *
      * @return Basket
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -153,8 +156,7 @@ class Basket
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -165,8 +167,7 @@ class Basket
      *
      * @return Basket
      */
-    public function setPrice($price)
-    {
+    public function setPrice($price) {
         $this->price = $price;
 
         return $this;
@@ -177,8 +178,7 @@ class Basket
      *
      * @return string
      */
-    public function getPrice()
-    {
+    public function getPrice() {
         return $this->price;
     }
 
@@ -189,8 +189,7 @@ class Basket
      *
      * @return Basket
      */
-    public function setBarCode($barCode)
-    {
+    public function setBarCode($barCode) {
         $this->barCode = $barCode;
 
         return $this;
@@ -201,8 +200,7 @@ class Basket
      *
      * @return integer
      */
-    public function getBarCode()
-    {
+    public function getBarCode() {
         return $this->barCode;
     }
 
@@ -213,8 +211,7 @@ class Basket
      *
      * @return Basket
      */
-    public function setWeight($weight)
-    {
+    public function setWeight($weight) {
         $this->weight = $weight;
 
         return $this;
@@ -225,8 +222,7 @@ class Basket
      *
      * @return string
      */
-    public function getWeight()
-    {
+    public function getWeight() {
         return $this->weight;
     }
 
@@ -237,8 +233,7 @@ class Basket
      *
      * @return Basket
      */
-    public function setExpirationDate($expirationDate)
-    {
+    public function setExpirationDate($expirationDate) {
         $this->expirationDate = $expirationDate;
 
         return $this;
@@ -249,8 +244,7 @@ class Basket
      *
      * @return \DateTime
      */
-    public function getExpirationDate()
-    {
+    public function getExpirationDate() {
         return $this->expirationDate;
     }
 
@@ -261,8 +255,7 @@ class Basket
      *
      * @return Basket
      */
-    public function setSupplyDate($supplyDate)
-    {
+    public function setSupplyDate($supplyDate) {
         $this->supplyDate = $supplyDate;
 
         return $this;
@@ -273,8 +266,7 @@ class Basket
      *
      * @return \DateTime
      */
-    public function getSupplyDate()
-    {
+    public function getSupplyDate() {
         return $this->supplyDate;
     }
 
@@ -285,8 +277,7 @@ class Basket
      *
      * @return Basket
      */
-    public function setStoreDate($storeDate)
-    {
+    public function setStoreDate($storeDate) {
         $this->storeDate = $storeDate;
 
         return $this;
@@ -297,8 +288,7 @@ class Basket
      *
      * @return \DateTime
      */
-    public function getStoreDate()
-    {
+    public function getStoreDate() {
         return $this->storeDate;
     }
 
@@ -309,8 +299,7 @@ class Basket
      *
      * @return Basket
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -321,8 +310,7 @@ class Basket
      *
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -333,8 +321,7 @@ class Basket
      *
      * @return Basket
      */
-    public function setRepIMG($repIMG)
-    {
+    public function setRepIMG($repIMG) {
         $this->repIMG = $repIMG;
 
         return $this;
@@ -345,8 +332,7 @@ class Basket
      *
      * @return string
      */
-    public function getRepIMG()
-    {
+    public function getRepIMG() {
         return $this->repIMG;
     }
 
@@ -357,8 +343,7 @@ class Basket
      *
      * @return Basket
      */
-    public function addProduct(\AMAPBundle\Entity\Basket\Product $product)
-    {
+    public function addProduct(\AMAPBundle\Entity\Basket\Product $product) {
         $this->products[] = $product;
 
         return $this;
@@ -369,8 +354,7 @@ class Basket
      *
      * @param \AMAPBundle\Entity\Basket\Product $product
      */
-    public function removeProduct(\AMAPBundle\Entity\Basket\Product $product)
-    {
+    public function removeProduct(\AMAPBundle\Entity\Basket\Product $product) {
         $this->products->removeElement($product);
     }
 
@@ -379,8 +363,7 @@ class Basket
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getProducts()
-    {
+    public function getProducts() {
         return $this->products;
     }
 
@@ -391,8 +374,7 @@ class Basket
      *
      * @return Basket
      */
-    public function addOwnerConsumer(\AMAPBundle\Entity\Account\Group $ownerConsumer)
-    {
+    public function addOwnerConsumer(\AMAPBundle\Entity\Account\Group $ownerConsumer) {
         $this->ownerConsumer[] = $ownerConsumer;
 
         return $this;
@@ -403,8 +385,7 @@ class Basket
      *
      * @param \AMAPBundle\Entity\Account\Group $ownerConsumer
      */
-    public function removeOwnerConsumer(\AMAPBundle\Entity\Account\Group $ownerConsumer)
-    {
+    public function removeOwnerConsumer(\AMAPBundle\Entity\Account\Group $ownerConsumer) {
         $this->ownerConsumer->removeElement($ownerConsumer);
     }
 
@@ -413,8 +394,7 @@ class Basket
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getOwnerConsumer()
-    {
+    public function getOwnerConsumer() {
         return $this->ownerConsumer;
     }
 
@@ -425,8 +405,7 @@ class Basket
      *
      * @return Basket
      */
-    public function addProductBy(\AMAPBundle\Entity\Account\Group $productBy)
-    {
+    public function addProductBy(\AMAPBundle\Entity\Account\Group $productBy) {
         $this->productBy[] = $productBy;
 
         return $this;
@@ -437,8 +416,7 @@ class Basket
      *
      * @param \AMAPBundle\Entity\Account\Group $productBy
      */
-    public function removeProductBy(\AMAPBundle\Entity\Account\Group $productBy)
-    {
+    public function removeProductBy(\AMAPBundle\Entity\Account\Group $productBy) {
         $this->productBy->removeElement($productBy);
     }
 
@@ -447,8 +425,7 @@ class Basket
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getProductBy()
-    {
+    public function getProductBy() {
         return $this->productBy;
     }
 
@@ -459,8 +436,7 @@ class Basket
      *
      * @return Basket
      */
-    public function setInventory(\AMAPBundle\Entity\Farmer\Inventory $inventory = null)
-    {
+    public function setInventory(\AMAPBundle\Entity\Farmer\Inventory $inventory = null) {
         $this->inventory = $inventory;
 
         return $this;
@@ -471,8 +447,8 @@ class Basket
      *
      * @return \AMAPBundle\Entity\Farmer\Inventory
      */
-    public function getInventory()
-    {
+    public function getInventory() {
         return $this->inventory;
     }
+
 }

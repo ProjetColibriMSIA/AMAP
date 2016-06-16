@@ -50,6 +50,8 @@ class Contract {
     private $expirationDate;
 
     /**
+     * @var array users
+     * 
      * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Account\User", mappedBy="contract_user")
      */
     private $users;
@@ -65,6 +67,10 @@ class Contract {
      * @ORM\Column(name="repPDF", type="text")
      */
     private $repPDF;
+
+    public function __toString() {
+        return strval($this->getId());
+    }
 
     /**
      * Get id
@@ -244,6 +250,5 @@ class Contract {
     public function getAmap() {
         return $this->amap;
     }
-
 
 }

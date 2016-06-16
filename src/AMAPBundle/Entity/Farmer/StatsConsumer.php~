@@ -20,9 +20,7 @@ class StatsConsumer {
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-    
     private $AMAPConsumers;
-    
     private $AMAPFarmer;
 
     /**
@@ -34,5 +32,8 @@ class StatsConsumer {
         return $this->id;
     }
 
+    public function __toString() {
+        return strval($this->id);
+    }
 
 }

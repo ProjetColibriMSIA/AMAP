@@ -58,6 +58,10 @@ class WarehouseInfos {
         return $this->id;
     }
 
+    public function __toString() {
+        return $this->getName();
+    }
+
     /**
      * Set name
      *
@@ -131,8 +135,7 @@ class WarehouseInfos {
      *
      * @return WarehouseInfos
      */
-    public function setWarehouse(\AMAPBundle\Entity\SupplyManager\Warehouse $warehouse = null)
-    {
+    public function setWarehouse(\AMAPBundle\Entity\SupplyManager\Warehouse $warehouse = null) {
         $this->warehouse = $warehouse;
 
         return $this;
@@ -143,8 +146,8 @@ class WarehouseInfos {
      *
      * @return \AMAPBundle\Entity\SupplyManager\Warehouse
      */
-    public function getWarehouse()
-    {
+    public function getWarehouse() {
         return $this->warehouse;
     }
+
 }

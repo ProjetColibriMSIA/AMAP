@@ -10,16 +10,21 @@
 					{% for n in news %}				
 						{% if n.getIsDisplay == 1 %}
 							<li class='uneactu list-group-item actu{{ n.getId }}'> 
+								
 								<a href="actualites?id={{ n.getId }}">
-									<h3>{{ n.getName }}</h3>
-									<p>
-										{% if not n.getEndDate is null %} 
-											Du {{ (n.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }} au {{ (n.getEndDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none')}}
-											{% else %} 
-												Le {{ (n.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }}	
-										{% endif %}	
+									<div class='txtgauche'>
+										<h3>{{ n.getName }}</h3>
+										<p>
+											{% if not n.getEndDate is null %} 
+												Du {{ (n.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }} au {{ (n.getEndDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none')}}
+												{% else %} 
+													Le {{ (n.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }}	
+											{% endif %}	
+											
+										</p>
 										
-									</p>
+										<p> {{ n.getDescription() | truncate(100, false, '') |nl2br}} ...</p>
+									</div>
 								</a>
 							</li>
 						{% endif %}
@@ -27,6 +32,11 @@
 				</ul>
 			{% else %}	
 				<h2>{{ new.getName }}</h2>
+				<div class='imgdroit'>
+					{% if new.getrepIMG() !='' %}
+						<img src='/AMAP/web/./images/{{new.getrepIMG()}}' alt="{{new.getName()}}"/>
+					{% endif %}
+				</div>
 				<p>
 					{% if not new.getEndDate is null %} 
 						Du {{ (new.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }} au {{ (new.getEndDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none')}}
@@ -35,6 +45,7 @@
 					{% endif %}	
 					
 				</p>
+				
 				<p>{{ new.getDescription|nl2br }}</p>
 				<input type="button" value="Retour" onclick="history.go(-1)">
 			{% endif %}

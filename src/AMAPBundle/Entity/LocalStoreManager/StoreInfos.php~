@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="store_infos")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\LocalStoreManager\StoreInfosRepository")
  */
-class StoreInfos
-{
+class StoreInfos {
+
     /**
      * @var int
      *
@@ -48,14 +48,18 @@ class StoreInfos
      * @ORM\OneToOne(targetEntity="Store", inversedBy="storeInfos")
      */
     private $store;
+
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
+    }
+
+    public function __toString() {
+        return $this->getName();
     }
 
     /**
@@ -65,8 +69,7 @@ class StoreInfos
      *
      * @return StoreInfos
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -77,8 +80,7 @@ class StoreInfos
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -89,8 +91,7 @@ class StoreInfos
      *
      * @return StoreInfos
      */
-    public function setAdress($adress)
-    {
+    public function setAdress($adress) {
         $this->adress = $adress;
 
         return $this;
@@ -101,8 +102,7 @@ class StoreInfos
      *
      * @return string
      */
-    public function getAdress()
-    {
+    public function getAdress() {
         return $this->adress;
     }
 
@@ -113,8 +113,7 @@ class StoreInfos
      *
      * @return StoreInfos
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -125,8 +124,7 @@ class StoreInfos
      *
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
 
@@ -137,8 +135,7 @@ class StoreInfos
      *
      * @return StoreInfos
      */
-    public function setStore(\AMAPBundle\Entity\LocalStoreManager\Store $store = null)
-    {
+    public function setStore(\AMAPBundle\Entity\LocalStoreManager\Store $store = null) {
         $this->store = $store;
 
         return $this;
@@ -149,8 +146,8 @@ class StoreInfos
      *
      * @return \AMAPBundle\Entity\LocalStoreManager\Store
      */
-    public function getStore()
-    {
+    public function getStore() {
         return $this->store;
     }
+
 }

@@ -37,6 +37,9 @@ class Store {
         return $this->id;
     }
 
+    public function __toString() {
+        return strval($this->getId());
+    }
 
     /**
      * Set storeInfos
@@ -45,8 +48,7 @@ class Store {
      *
      * @return Store
      */
-    public function setStoreInfos(\AMAPBundle\Entity\LocalStoreManager\StoreInfos $storeInfos = null)
-    {
+    public function setStoreInfos(\AMAPBundle\Entity\LocalStoreManager\StoreInfos $storeInfos = null) {
         $this->storeInfos = $storeInfos;
 
         return $this;
@@ -57,8 +59,8 @@ class Store {
      *
      * @return \AMAPBundle\Entity\LocalStoreManager\StoreInfos
      */
-    public function getStoreInfos()
-    {
+    public function getStoreInfos() {
         return $this->storeInfos;
     }
+
 }

@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="internet_payment")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Buying\InternetPaymentRepository")
  */
-class InternetPayment extends Payment
-{
+class InternetPayment extends Payment {
+
     /**
      * @var int
      *
@@ -21,14 +21,17 @@ class InternetPayment extends Payment
      */
     private $id;
 
-
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
+    public function __toString() {
+        return strval($this->id);
+    }
+
 }

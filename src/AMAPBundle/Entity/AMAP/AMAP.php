@@ -36,6 +36,20 @@ class AMAP {
     private $adress;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="repIMG", type="text")
+     */
+    private $repIMG;
+
+    /**
      * @var integer
      * 
      * Nombre de membre dans l'AMAP
@@ -74,6 +88,10 @@ class AMAP {
      */
     public function getId() {
         return $this->id;
+    }
+
+    public function __toString() {
+        return $this->getName();
     }
 
     /**
@@ -194,8 +212,7 @@ class AMAP {
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
         $this->news = new \Doctrine\Common\Collections\ArrayCollection();
         $this->contracts_amap = new \Doctrine\Common\Collections\ArrayCollection();
@@ -208,8 +225,7 @@ class AMAP {
      *
      * @return AMAP
      */
-    public function addNews(\AMAPBundle\Entity\Announcement\News $news)
-    {
+    public function addNews(\AMAPBundle\Entity\Announcement\News $news) {
         $this->news[] = $news;
 
         return $this;
@@ -220,8 +236,7 @@ class AMAP {
      *
      * @param \AMAPBundle\Entity\Announcement\News $news
      */
-    public function removeNews(\AMAPBundle\Entity\Announcement\News $news)
-    {
+    public function removeNews(\AMAPBundle\Entity\Announcement\News $news) {
         $this->news->removeElement($news);
     }
 
@@ -230,8 +245,52 @@ class AMAP {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getNews()
-    {
+    public function getNews() {
         return $this->news;
     }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return AMAP
+     */
+    public function setDescription($description) {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription() {
+        return $this->description;
+    }
+
+    /**
+     * Set repIMG
+     *
+     * @param string $repIMG
+     *
+     * @return AMAP
+     */
+    public function setRepIMG($repIMG) {
+        $this->repIMG = $repIMG;
+
+        return $this;
+    }
+
+    /**
+     * Get repIMG
+     *
+     * @return string
+     */
+    public function getRepIMG() {
+        return $this->repIMG;
+    }
+
 }

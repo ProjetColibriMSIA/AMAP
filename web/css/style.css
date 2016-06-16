@@ -468,6 +468,7 @@ li.uneactu{
     margin:0px 10px 0 10px;
     border-bottom:1px dashed green;
     background: #d9dfd9; 
+	height:auto;
 }
 li.uneactu:nth-child(2n+2){
 	background:#D1E2AF;
@@ -563,4 +564,24 @@ html {
 .width300{
 	width:300px!important;
 	margin-top:5px;
+}
+.imgdroit{
+	margin:0 10px 10px;
+	float:right;
+	max-height:100%;
+	text-align:center;
+}
+.txtgauche{
+    width:100%;
+	height:auto;
+	display:inline-block;
+}
+.imgdroit img{
+	width:auto;
+	height:100%;
+	margin:auto
+}
+
+#amap tr{
+	cursor:pointer;
 }

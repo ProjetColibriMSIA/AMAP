@@ -38,9 +38,16 @@ class GroupAdmin extends AbstractAdmin {
      * @param ListMapper $listMapper
      */
     protected function configureListFields(ListMapper $listMapper) {
+        $container = $this->getConfigurationPool()->getContainer();
+        $roles = $container->getParameter('security.role_hierarchy.roles');
+
+        $rolesChoices = $this->roles->flattenRoles($roles);
         $listMapper
                 ->add('name')
-                ->add('roles')
+                ->add('roles', 'choice', array(
+                    'choices' => $rolesChoices,
+                    'multiple' => true
+                ))
                 ->add('users', 'entity', array(
                     'class' => 'AMAPBundle:Account\User',
                     'associated_property' => function ($amap) {
@@ -73,26 +80,41 @@ class GroupAdmin extends AbstractAdmin {
                     ->add('roles', 'choice', array(
                         'choices' => $rolesChoices,
                         'multiple' => true))
-                    ->add('users', 'sonata_type_model_autocomplete', array(
-                        'property' => 'username',
-                        'to_string_callback' => function($entity, $property) {
-                            return $entity->getUsername();
-                        },
+                    ->add('users', 'sonata_type_model', array(
                         'required' => false,
-                        'multiple' => true
+                        'multiple' => true,
+                        'by_reference' => false,
+                        'class' => 'AMAPBundle:Account\User',
+                        'property' => 'username'
             ));
         }
 
 // The foo field will added when current action is related acme.demo.admin.code Admin's edit form
-        if ($this->isCurrentRoute('edit')) {
-            $formMapper
-                    ->add('roles')
-                    ->add('users', 'sonata_type_model', array(
-                        'expanded' => true,
-                        'by_reference' => false,
-                        'required' => false,
-                        'multiple' => true
-                    ))
+        elseif ($this->isCurrentRoute('edit')) {
+            if (!empty(array_filter($this->getRoot()->getSubject()->getRoles())) && count($this->getRoot()->getSubject()->getRoles()) == 1) {
+                $formMapper
+                        ->add('roles', 'text', array(
+                            'property_path' => 'roles[0]',
+                ));
+            } else {
+                $container = $this->getConfigurationPool()->getContainer();
+                $roles = $container->getParameter('security.role_hierarchy.roles');
+
+                $rolesChoices = $this->roles->flattenRoles($roles);
+                $formMapper
+                        ->add('roles', 'choice', array(
+                            'choices' => $rolesChoices,
+                            'multiple' => true
+                ));
+            }
+            $formMapper->add('users', 'sonata_type_model', array(
+                'expanded' => true,
+                'by_reference' => false,
+                'required' => false,
+                'multiple' => true,
+                'class' => 'AMAPBundle:Account\User',
+                'property' => 'username'
+            ))
             ;
         }
     }
@@ -105,7 +127,6 @@ class GroupAdmin extends AbstractAdmin {
                 ->add('id')
                 ->add('name')
                 ->add('roles')
-
         ;
     }
 

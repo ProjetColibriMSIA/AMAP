@@ -34,6 +34,13 @@ class News {
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
+	
+	 /**
+     * @var string
+     *
+     * @ORM\Column(name="repIMG", type="text")
+     */
+    private $repIMG;
 
     /**
      * @var \DateTime
@@ -72,6 +79,10 @@ class News {
      */
     public function getId() {
         return $this->id;
+    }
+
+    public function __toString() {
+        return $this->getName();
     }
 
     /**
@@ -222,4 +233,28 @@ class News {
         return $this->news_amap;
     }
 
+
+    /**
+     * Set repIMG
+     *
+     * @param string $repIMG
+     *
+     * @return News
+     */
+    public function setRepIMG($repIMG)
+    {
+        $this->repIMG = $repIMG;
+
+        return $this;
+    }
+
+    /**
+     * Get repIMG
+     *
+     * @return string
+     */
+    public function getRepIMG()
+    {
+        return $this->repIMG;
+    }
 }

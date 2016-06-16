@@ -10,8 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="warehouse")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\SupplyManager\WarehouseRepository")
  */
-class Warehouse /*implements InterfaceWarehouse */
-{
+class Warehouse /* implements InterfaceWarehouse */ {
 
     /**
      * @var int
@@ -25,7 +24,7 @@ class Warehouse /*implements InterfaceWarehouse */
     /**
      * @var Arraycollection
      * 
-     * @ORM\OneToOne(targetEntity="Warehouse", mappedBy="warehouseInfos")
+     * @ORM\OneToOne(targetEntity="WarehouseInfos", mappedBy="warehouse")
      */
     private $warehouseInfos;
 
@@ -38,15 +37,18 @@ class Warehouse /*implements InterfaceWarehouse */
         return $this->id;
     }
 
+    public function __toString() {
+        return strval($this->id);
+    }
+
     /**
      * Set warehouseInfos
      *
-     * @param \AMAPBundle\Entity\SupplyManager\Warehouse $warehouseInfos
+     * @param \AMAPBundle\Entity\SupplyManager\WarehouseInfos $warehouseInfos
      *
      * @return Warehouse
      */
-    public function setWarehouseInfos(\AMAPBundle\Entity\SupplyManager\Warehouse $warehouseInfos = null)
-    {
+    public function setWarehouseInfos(\AMAPBundle\Entity\SupplyManager\WarehouseInfos $warehouseInfos = null) {
         $this->warehouseInfos = $warehouseInfos;
 
         return $this;
@@ -55,10 +57,10 @@ class Warehouse /*implements InterfaceWarehouse */
     /**
      * Get warehouseInfos
      *
-     * @return \AMAPBundle\Entity\SupplyManager\Warehouse
+     * @return \AMAPBundle\Entity\SupplyManager\WarehouseInfos
      */
-    public function getWarehouseInfos()
-    {
+    public function getWarehouseInfos() {
         return $this->warehouseInfos;
     }
+
 }
