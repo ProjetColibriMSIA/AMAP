@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="cash_payment")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Buying\CashPaymentRepository")
  */
-class CashPayment extends Payment
-{
+class CashPayment extends Payment {
+
     /**
      * @var int
      *
@@ -21,14 +21,17 @@ class CashPayment extends Payment
      */
     private $id;
 
-
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
+
+    public function __toString() {
+        return ((new \ReflectionClass($this))->getShortName() . ':' . strval($this->id));
+    }
+
 }

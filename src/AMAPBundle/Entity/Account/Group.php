@@ -41,6 +41,10 @@ class Group extends BaseGroup {
         return $this->id;
     }
 
+    public function __toString() {
+        return ((new \ReflectionClass($this))->getShortName() . ':' . $this->getName());
+    }
+
     public function getNbUsers() {
         return count($this->users);
     }

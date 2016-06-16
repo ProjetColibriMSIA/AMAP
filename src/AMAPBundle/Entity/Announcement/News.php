@@ -81,6 +81,10 @@ class News {
         return $this->id;
     }
 
+    public function __toString() {
+        return ((new \ReflectionClass($this))->getShortName() . ':' . $this->getName());
+    }
+
     /**
      * Set name
      *

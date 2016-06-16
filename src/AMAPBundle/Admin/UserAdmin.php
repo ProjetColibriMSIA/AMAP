@@ -50,6 +50,10 @@ class UserAdmin extends AbstractAdmin {
      * @param ListMapper $listMapper
      */
     protected function configureListFields(ListMapper $listMapper) {
+        $container = $this->getConfigurationPool()->getContainer();
+        $roles = $container->getParameter('security.role_hierarchy.roles');
+
+        $rolesChoices = $this->roles->flattenRoles($roles);
         $listMapper
                 ->addIdentifier('username')
                 ->add('usernameCanonical')
@@ -61,8 +65,8 @@ class UserAdmin extends AbstractAdmin {
                 ->add('locale')
                 ->add('groups', 'entity', array(
                     'class' => 'AMAPBundle:Account\Group',
-                    'associated_property' => function ($groups) {
-                        return $groups->getName();
+                    'associated_property' => function ($amap) {
+                        return $amap->getName();
                     }))
                 ->add('amap', 'entity', array(
                     'class' => 'AMAPBundle:AMAP\AMAP',
@@ -71,8 +75,8 @@ class UserAdmin extends AbstractAdmin {
                     }))
                 ->add('contract_user', 'entity', array(
                     'class' => 'AMAPBundle:Account\Contract',
-                    'associated_property' => function ($contract) {
-                        return $contract->getId();
+                    'associated_property' => function ($amap) {
+                        return $amap->getId();
                     }))
                 ->add('enabled')
                 ->add('salt')
@@ -83,7 +87,10 @@ class UserAdmin extends AbstractAdmin {
                 ->add('expiresAt')
                 ->add('confirmationToken')
                 ->add('passwordRequestedAt')
-                ->add('roles')
+                ->add('roles', 'choice', array(
+                    'choices' => $rolesChoices,
+                    'multiple' => true
+                ))
                 ->add('credentialsExpired')
                 ->add('credentialsExpireAt')
                 ->add('_action', null, array(
@@ -104,10 +111,8 @@ class UserAdmin extends AbstractAdmin {
         $roles = $container->getParameter('security.role_hierarchy.roles');
 
         $rolesChoices = $this->roles->flattenRoles($roles);
-
         $formMapper
                 ->with('label_needed')
-                ->add('id', null, array('required' => false))
                 ->add('username')
                 ->add('usernameCanonical', null, array('required' => false))
                 ->add('name')
@@ -128,26 +133,73 @@ class UserAdmin extends AbstractAdmin {
                 ->add('confirmationToken', null, array('required' => false))
                 ->add('passwordRequestedAt')
                 ->end()
-                ->with('label_group')
-                ->add('roles', 'choice', array(
-                    'choices' => $rolesChoices,
-                    'multiple' => true))
-                ->add('groups', 'sonata_type_collection', array(), array(
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                    'sortable' => 'position',
-                    'limit' => 10
-                ))
-                ->add('amap', 'sonata_type_collection', array(), array(
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                    'sortable' => 'position',
-                    'limit' => 10
-                ))
-                ->add('contract_user', 'sonata_type_model_autocomplete', array(
-                    'property' => 'id'))
-                ->end()
+
         ;
+        if ($this->isCurrentRoute('create')) {
+            $formMapper->with('label_group')
+                    ->add('roles', 'choice', array(
+                        'choices' => $rolesChoices,
+                        'multiple' => true
+                    ))
+                    ->add('groups', 'sonata_type_model', array(
+                        'required' => false,
+                        'multiple' => true,
+                        'by_reference' => false,
+                        'class' => 'AMAPBundle:Account\Group',
+                        'property' => 'name'))
+                    ->add('amap', 'sonata_type_model', array(
+                        'required' => false,
+                        'multiple' => true,
+                        'by_reference' => false,
+                        'class' => 'AMAPBundle:AMAP\AMAP',
+                        'property' => 'name'))
+                    ->add('contract_user', 'sonata_type_model', array(
+                        'required' => false,
+                        'multiple' => true,
+                        'by_reference' => false,
+                        'class' => 'AMAPBundle:Account\Contract',
+                        'property' => 'id'))
+                    ->end();
+        } elseif ($this->isCurrentRoute('edit')) {
+            $formMapper->with('label_group')
+                    ->add('groups', 'sonata_type_model', array(
+                        'expanded' => true,
+                        'by_reference' => false,
+                        'required' => false,
+                        'multiple' => true,
+                        'class' => 'AMAPBundle:Account\Group',
+                        'property' => 'name'
+                    ))
+                    ->add('amap', 'sonata_type_model', array(
+                        'expanded' => true,
+                        'by_reference' => false,
+                        'required' => false,
+                        'multiple' => true,
+                        'class' => 'AMAPBundle:AMAP\AMAP',
+                        'property' => 'name'
+                    ))
+                    ->add('contract_user', 'sonata_type_model', array(
+                        'expanded' => true,
+                        'by_reference' => false,
+                        'required' => false,
+                        'multiple' => true,
+                        'class' => 'AMAPBundle:Account\Contract',
+                        'property' => 'id'
+            ));
+            if (!empty(array_filter($this->getRoot()->getSubject()->getRoles())) && count($this->getRoot()->getSubject()->getRoles()) == 1) {
+                $formMapper
+                        ->add('roles', 'text', array(
+                            'property_path' => 'roles[0]',
+                ));
+            } else {
+                $formMapper
+                        ->add('roles', 'choice', array(
+                            'choices' => $rolesChoices,
+                            'multiple' => true
+                ));
+            }
+            $formMapper->end();
+        }
     }
 
     /**
