@@ -120,13 +120,12 @@ class UserAdmin extends AbstractAdmin {
                 ->add('email')
                 ->add('emailCanonical', null, array('required' => false))
                 ->add('enabled')
-                ->add('salt', null, array('required' => false))
                 ->add('password')
                 ->end()
                 ->with('label_option', array('collapsed' => true))
                 ->add('credentialsExpired', null, array('required' => false))
                 ->add('adress', null, array('required' => false))
-                ->add('locale', null, array('required' => false))
+                ->add('locale')
                 ->add('lastLogin', null, array('required' => false))
                 ->add('locked', null, array('required' => false))
                 ->add('expired', null, array('required' => false))
@@ -155,12 +154,10 @@ class UserAdmin extends AbstractAdmin {
                         'class' => 'AMAPBundle:AMAP\AMAP',
                         'property' => 'name'
                     ))
-                    ->add('contract_user', 'sonata_type_model', array(
-                        'required' => false,
-                        'multiple' => true,
+                    ->add('contract_user', 'sonata_type_model_list', array(
                         'by_reference' => false,
-                        'class' => 'AMAPBundle:Account\Contract',
-                        'property' => 'id'
+                        'required' => false), array(
+                        'placeholder' => 'No author selected'
                     ))
                     ->end();
         } elseif ($this->isCurrentRoute('edit')) {
@@ -185,10 +182,11 @@ class UserAdmin extends AbstractAdmin {
                         'class' => 'AMAPBundle:AMAP\AMAP',
                         'property' => 'name'
                     ))
-                    ->add('contract_user', 'sonata_type_model', array(
+                    ->add('contract_user', 'sonata_type_model_list', array(
                         'by_reference' => false,
-                        'required' => false,
-                        'property' => 'id'))
+                        'required' => false), array(
+                        'placeholder' => 'No author selected'
+                    ))
                     ->end();
         }
     }
@@ -220,18 +218,6 @@ class UserAdmin extends AbstractAdmin {
                 ->add('adress')
                 ->add('locale')
         ;
-    }
-
-    public function prePersist($object) {
-        foreach ($object->getContractUser() as $user) {
-            $user->setContractUser($object);
-        }
-    }
-
-    public function preUpdate($object) {
-        foreach ($object->getContractUser() as $user) {
-            $user->setContractUser($object);
-        }
     }
 
 }

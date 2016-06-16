@@ -24,7 +24,7 @@ class Group extends BaseGroup {
 
     /**
      * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Account\User", inversedBy="groups")
-     * @ORM\JoinTable(name="fos_user_user_group",
+     * @ORM\JoinTable(name="fos_user_group",
      *      joinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")}
      *  )    

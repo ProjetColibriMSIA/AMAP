@@ -31,7 +31,7 @@ class Payment {
     }
 
     public function __toString() {
-        return strval($this->id);
+        return ((new \ReflectionClass($this))->getShortName() . ':' .strval($this->id));
     }
 
 }

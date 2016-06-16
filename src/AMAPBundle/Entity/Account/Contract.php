@@ -52,7 +52,7 @@ class Contract {
     /**
      * @var array users
      * 
-     * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Account\User", mappedBy="contract_user")
+     * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Account\User",mappedBy="contract_user", cascade={"persist"})
      */
     private $users;
 
@@ -69,7 +69,7 @@ class Contract {
     private $repPDF;
 
     public function __toString() {
-        return strval($this->getId());
+        return ((new \ReflectionClass($this))->getShortName() . ':' .strval($this->getId()));
     }
 
     /**
@@ -79,6 +79,57 @@ class Contract {
      */
     public function getId() {
         return $this->id;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set rules
+     *
+     * @param string $rules
+     *
+     * @return Contract
+     */
+    public function setRules($rules) {
+        $this->rules = $rules;
+
+        return $this;
+    }
+
+    /**
+     * Get rules
+     *
+     * @return string
+     */
+    public function getRules() {
+        return $this->rules;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Contract
+     */
+    public function setDescription($description) {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription() {
+        return $this->description;
     }
 
     /**
@@ -148,54 +199,14 @@ class Contract {
     }
 
     /**
-     * Constructor
-     */
-    public function __construct() {
-        $this->users = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Set rules
+     * Set user
      *
-     * @param string $rules
+     * @param \AMAPBundle\Entity\Account\User $user
      *
      * @return Contract
      */
-    public function setRules($rules) {
-        $this->rules = $rules;
-
+    public function setUser(\AMAPBundle\Entity\Account\User $user) {
         return $this;
-    }
-
-    /**
-     * Get rules
-     *
-     * @return string
-     */
-    public function getRules() {
-        return $this->rules;
-    }
-
-    /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Contract
-     */
-    public function setDescription($description) {
-        $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * Get description
-     *
-     * @return string
-     */
-    public function getDescription() {
-        return $this->description;
     }
 
     /**
@@ -206,8 +217,8 @@ class Contract {
      * @return Contract
      */
     public function addUser(\AMAPBundle\Entity\Account\User $user) {
+        $user->setContractUser($this); // !important
         $this->users[] = $user;
-
         return $this;
     }
 

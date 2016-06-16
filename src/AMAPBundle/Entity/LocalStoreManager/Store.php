@@ -38,7 +38,7 @@ class Store {
     }
 
     public function __toString() {
-        return strval($this->getId());
+        return ((new \ReflectionClass($this))->getShortName() . ':' .strval($this->id));
     }
 
     /**
