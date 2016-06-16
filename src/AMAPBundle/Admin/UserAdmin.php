@@ -107,7 +107,6 @@ class UserAdmin extends AbstractAdmin {
 
         $formMapper
                 ->with('label_needed')
-                ->add('id', null, array('required' => false))
                 ->add('username')
                 ->add('usernameCanonical', null, array('required' => false))
                 ->add('name')

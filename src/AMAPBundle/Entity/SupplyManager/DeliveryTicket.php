@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="delivery_ticket")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\SupplyManager\DeliveryTicketRepository")
  */
-class DeliveryTicket
-{
+class DeliveryTicket {
+
     /**
      * @var int
      *
@@ -21,24 +21,24 @@ class DeliveryTicket
      */
     private $id;
 
-
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
+    public function __toString() {
+        return ((new \ReflectionClass($this))->getShortName() . ':' . strval($this->id));
+    }
 
     /**
      * @param int $idConsumer
      * @return \Consumer Package\AccountConsumer
      */
-    public function getDelivryTicketByID($idConsumer)
-    {
+    public function getDelivryTicketByID($idConsumer) {
         // TODO: implement here
         return null;
     }
@@ -48,8 +48,7 @@ class DeliveryTicket
      * @param string $firstNameConsumer
      * @return \Consumer Package\AccountConsumer
      */
-    public function getDelivryTicketByName($nameConsumer, $firstNameConsumer)
-    {
+    public function getDelivryTicketByName($nameConsumer, $firstNameConsumer) {
         // TODO: implement here
         return null;
     }
@@ -58,9 +57,9 @@ class DeliveryTicket
      * @param int $barCode
      * @return \Consumer Package\AccountConsumer
      */
-    public function getDelivryTicketByBarCode($barCode)
-    {
+    public function getDelivryTicketByBarCode($barCode) {
         // TODO: implement here
         return null;
     }
+
 }

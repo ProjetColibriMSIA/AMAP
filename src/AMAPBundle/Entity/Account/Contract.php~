@@ -66,6 +66,10 @@ class Contract {
      */
     private $repPDF;
 
+    public function __toString() {
+        return ((new \ReflectionClass($this))->getShortName() . ':' . strval($this->getId()));
+    }
+
     /**
      * Get id
      *
@@ -244,6 +248,5 @@ class Contract {
     public function getAmap() {
         return $this->amap;
     }
-
 
 }

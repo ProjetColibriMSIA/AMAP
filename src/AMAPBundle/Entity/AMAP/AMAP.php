@@ -67,6 +67,10 @@ class AMAP {
      */
     private $contracts_amap;
 
+    public function __toString() {
+        return ((new \ReflectionClass($this))->getShortName() . ':' . $this->getName());
+    }
+
     /**
      * Get id
      *
@@ -194,8 +198,7 @@ class AMAP {
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
         $this->news = new \Doctrine\Common\Collections\ArrayCollection();
         $this->contracts_amap = new \Doctrine\Common\Collections\ArrayCollection();
@@ -208,8 +211,7 @@ class AMAP {
      *
      * @return AMAP
      */
-    public function addNews(\AMAPBundle\Entity\Announcement\News $news)
-    {
+    public function addNews(\AMAPBundle\Entity\Announcement\News $news) {
         $this->news[] = $news;
 
         return $this;
@@ -220,8 +222,7 @@ class AMAP {
      *
      * @param \AMAPBundle\Entity\Announcement\News $news
      */
-    public function removeNews(\AMAPBundle\Entity\Announcement\News $news)
-    {
+    public function removeNews(\AMAPBundle\Entity\Announcement\News $news) {
         $this->news->removeElement($news);
     }
 
@@ -230,8 +231,8 @@ class AMAP {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getNews()
-    {
+    public function getNews() {
         return $this->news;
     }
+
 }

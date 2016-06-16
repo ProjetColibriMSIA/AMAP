@@ -82,9 +82,11 @@ class User extends BaseUser {
         parent::__construct();
         // your own logic
     }
+
     public function __toString() {
-        return $this->email;
+        return ((new \ReflectionClass($this))->getShortName() . ':' . $this->getUsername());
     }
+
     /**
      * Get id
      *

@@ -5,10 +5,21 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
     
     role_hierarchy:
+        ROLE_AUTOR:               [ROLE_USER]
+        # Role producteur
+        ROLE_AMAP_MANAGER:        [ROLE_ADMIN]
+        # Role producteur
+        ROLE_STORE_MANAGER:       [ROLE_ADMIN]
+        # Role producteur
+        ROLE_WAREHOUSE_MANAGER:   [ROLE_ADMIN]
+        # Role producteur
+        ROLE_CONSUMER:    [ROLE_AUTOR]
+        # Role producteur
+        ROLE_FARMER:      [ROLE_AUTOR]
         # Un admin hérite des droits d'auteur et de modérateur
-        ROLE_ADMIN:       [ROLE_AUTEUR, ROLE_MODERATEUR, ROLE_SONATA_ADMIN]
+        ROLE_ADMIN:       [ROLE_MODERATOR, ROLE_SONATA_ADMIN,ROLE_FARMER,ROLE_CONSUMER]
         # On garde ce rôle superadmin, il nous resservira par la suite
-        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH,ROLE_WAREHOUSE_MANAGER,ROLE_STORE_MANAGER,ROLE_AMAP_MANAGER]
             
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
@@ -40,7 +51,11 @@ security:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/farmer, role: ROLE_FARMER }
+        - { path: ^/responsable_amap, role: ROLE_AMAP_MANAGER }
+        - { path: ^/responsable_entrepot, role: ROLE_WAREHOUSE_MANAGER }
+        - { path: ^/responsable_magasin, role: ROLE_STORE_MANAGER }
+        - { path: ^/producteur, role: ROLE_FARMER }
+        - { path: ^/consommateur, role: ROLE_CONSUMER }
         - { path: ^/admin, role: ROLE_ADMIN }
 
             # activate different ways to authenticate
