@@ -1,0 +1,31 @@
+
+{% block modal %}
+<!-- Modal connection -->
+                <div class="modal fade " id="ModalLogout" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content popup_block">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="login center">
+                                    <h1>Déconnexion</h1>
+                                    
+                                    <p> Vous êtes sur le point de vous déconnecter de votre compte </p> 
+                                    <form method="get" action="{{ path('fos_user_security_logout') }}" class="marginTop">
+                                        <p class="submit inline"><input type="submit" id="commit" name="commit" value="OK"></p>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                    </form>
+                                    
+                                </div>
+                                    
+                            </div>
+                            <div class="modal-footer">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ <!-- End of Block Modal connection -->
+{% endblock %}

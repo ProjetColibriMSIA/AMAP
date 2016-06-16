@@ -38,7 +38,9 @@
         </div>
         <!-- End block carousel -->
 
-        {% if app.user==false %}
+        {% if app.user %}
+                {% include 'component/modalLogout.html.twig' %}
+        {% else %}
                 {% include 'component/modalConnect.html.twig' %}
         {% endif %}
         
@@ -93,11 +95,19 @@
 
                                 <!-- In this block there is the 2 menu possible-->
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                    {% set mediumMenu = knp_menu_get('AMAPBundle:Builder:mainMenu', [], {'route': app.request.attributes.get('_route'), 'menu':'mediumMenu'}) %}
-                                    {% set smallMenu = knp_menu_get('AMAPBundle:Builder:mainMenu', [], {'route': app.request.attributes.get('_route'), 'menu':'smallMenu'}) %}
+                                   
+                                    {% if app.user %}
+                                            {% set user = app.user.username %}
+                                    {% else %}
+                                            {% set user = false %}
+                                    {% endif %}  
+                                    {% set mediumMenu = knp_menu_get('AMAPBundle:Builder:mainMenu', [], {'route': app.request.attributes.get('_route'), 'menu':'mediumMenu','user':user}) %}
+                                    {% set smallMenu = knp_menu_get('AMAPBundle:Builder:mainMenu', [], {'route': app.request.attributes.get('_route'), 'menu':'smallMenu','user':user}) %}
 
                                     {{ knp_menu_render(mediumMenu) }}
                                     {{ knp_menu_render(smallMenu) }}
+                                    
+                                    
 
 
 

@@ -7,6 +7,9 @@ $(window).load(function() {
 
 $(document).ready(function () {
     $('#example').DataTable({
+           "language": {
+               "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/French.json"
+           }
     });
 });
 
@@ -15,3 +18,10 @@ $('.carousel').carousel({
     interval: 1000*20
 });
 
+$('#ModalConnect').on('shown.bs.modal', function () {
+    $('#username').focus();
+})
+
+$('#ModalLogout').on('shown.bs.modal', function () {
+    $('#commit').focus();
+})

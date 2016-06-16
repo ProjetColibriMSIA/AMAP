@@ -349,6 +349,15 @@ img.btn_close {
 .login p.submit {
     text-align: right;
 }
+.login p.inline{
+    display:inline;
+}
+.login .marginTop{
+    margin-top:20px;
+}
+.center{
+    text-align:center;
+}
 .login p {
     margin: 20px 0 0;
 }
