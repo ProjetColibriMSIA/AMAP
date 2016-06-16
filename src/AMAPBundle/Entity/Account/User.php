@@ -69,22 +69,16 @@ class User extends BaseUser {
     protected $locale;
 
     /**
+     * @var array contract_user
      * consumer + farmer
      * 
-     * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\Account\Contract", inversedBy="users")
+     * @ORM\ManyToOne(targetEntity="AMAPBundle\Entity\Account\Contract", inversedBy="users", cascade={"persist"})
+     * @ORM\JoinColumn(name="contract_user_id", referencedColumnName="id")
      */
     protected $contract_user;
 
-    /**
-     *
-     */
-    public function __construct() {
-        parent::__construct();
-        // your own logic
-    }
-
     public function __toString() {
-        return ((new \ReflectionClass($this))->getShortName() . ':' . $this->getUsername());
+        return $this->getUsername();
     }
 
     /**
@@ -96,12 +90,19 @@ class User extends BaseUser {
         return $this->id;
     }
 
+    public function __construct() {
+        parent::__construct();
+        $this->groups = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->amap = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->contract_user = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     /**
      * Set name
      *
      * @param string $name
      *
-     * @return Account
+     * @return User
      */
     public function setName($name) {
         $this->name = $name;
@@ -123,7 +124,7 @@ class User extends BaseUser {
      *
      * @param string $firstName
      *
-     * @return Account
+     * @return User
      */
     public function setFirstName($firstName) {
         $this->firstName = $firstName;
@@ -145,7 +146,7 @@ class User extends BaseUser {
      *
      * @param string $adress
      *
-     * @return Account
+     * @return User
      */
     public function setAdress($adress) {
         $this->adress = $adress;
@@ -160,6 +161,28 @@ class User extends BaseUser {
      */
     public function getAdress() {
         return $this->adress;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     *
+     * @return User
+     */
+    public function setLocale($locale) {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string
+     */
+    public function getLocale() {
+        return $this->locale;
     }
 
     /**
@@ -191,28 +214,6 @@ class User extends BaseUser {
      */
     public function getAmap() {
         return $this->amap;
-    }
-
-    /**
-     * Set locale
-     *
-     * @param string $locale
-     *
-     * @return User
-     */
-    public function setLocale($locale) {
-        $this->locale = $locale;
-
-        return $this;
-    }
-
-    /**
-     * Get locale
-     *
-     * @return string
-     */
-    public function getLocale() {
-        return $this->locale;
     }
 
     /**

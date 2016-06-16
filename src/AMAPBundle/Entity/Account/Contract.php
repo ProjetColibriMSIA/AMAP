@@ -50,6 +50,8 @@ class Contract {
     private $expirationDate;
 
     /**
+     * @var array users
+     * 
      * @ORM\OneToMany(targetEntity="AMAPBundle\Entity\Account\User", mappedBy="contract_user")
      */
     private $users;
@@ -67,7 +69,7 @@ class Contract {
     private $repPDF;
 
     public function __toString() {
-        return ((new \ReflectionClass($this))->getShortName() . ':' . strval($this->getId()));
+        return strval($this->getId());
     }
 
     /**

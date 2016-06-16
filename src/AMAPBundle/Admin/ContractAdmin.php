@@ -38,7 +38,7 @@ class ContractAdmin extends AbstractAdmin {
                 ->add('users', 'entity', array(
                     'class' => 'AMAPBundle:Account\User',
                     'associated_property' => function ($amap) {
-                        return $amap->getName();
+                        return $amap->getUsername();
                     }))
                 ->add('amap', 'entity', array(
                     'class' => 'AMAPBundle:AMAP\AMAP',
@@ -64,18 +64,47 @@ class ContractAdmin extends AbstractAdmin {
                 ->add('description')
                 ->add('signDate')
                 ->add('expirationDate')
-                ->add('repPDF')
-                ->add('users', 'sonata_type_collection', array(), array(
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                    'sortable' => 'position',
-                    'limit' => 10
-                ))
-                ->add('amap', 'sonata_type_model_autocomplete', array(
-                'property' => 'email'
-            ))
-                
-        ;
+                ->add('repPDF');
+        if ($this->isCurrentRoute('create')) {
+            $formMapper
+                    ->add('users', 'sonata_type_collection', array(
+                        'by_reference' => false,
+                    ))
+                    ->add('amap', 'sonata_type_model_list', array(
+                        'by_reference' => false,
+            ));
+        } elseif ($this->isCurrentRoute('edit')) {
+            $formMapper
+                    /* ->add('users', 'sonata_type_collection', array(
+                      'by_reference' => false), array(
+                      'edit' => 'inline',
+                      'inline' => 'table'
+                      ))
+                     */
+                    /*
+                      ->add('users', null, array('by_reference' => false), array(
+                      'edit' => 'inline',
+                      'inline' => 'table',
+                      'sortable' => 'position'
+                      ))
+                     * */
+                    ->add('users', 'sonata_type_model', array(
+                        'by_reference' => false, 'expanded' => true, 'multiple' => true
+                    ))
+
+
+                    /* ->add('users', null, array('property_path' => 'username'), array(
+                      'edit' => 'inline',
+                      'inline' => 'table',
+                      'sortable' => 'position',
+                      'limit' => 2
+                      ))
+                     */
+                    ->add('amap', 'sonata_type_model', array(
+                        'by_reference' => false,
+                        'property' => 'name'
+            ));
+        }
     }
 
     /**

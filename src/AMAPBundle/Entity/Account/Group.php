@@ -42,7 +42,7 @@ class Group extends BaseGroup {
     }
 
     public function __toString() {
-        return ((new \ReflectionClass($this))->getShortName() . ':' . $this->getName());
+        return $this->getName();
     }
 
     public function getNbUsers() {

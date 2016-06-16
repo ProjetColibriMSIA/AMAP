@@ -146,22 +146,29 @@ class UserAdmin extends AbstractAdmin {
                         'multiple' => true,
                         'by_reference' => false,
                         'class' => 'AMAPBundle:Account\Group',
-                        'property' => 'name'))
+                        'property' => 'name'
+                    ))
                     ->add('amap', 'sonata_type_model', array(
                         'required' => false,
                         'multiple' => true,
                         'by_reference' => false,
                         'class' => 'AMAPBundle:AMAP\AMAP',
-                        'property' => 'name'))
+                        'property' => 'name'
+                    ))
                     ->add('contract_user', 'sonata_type_model', array(
                         'required' => false,
                         'multiple' => true,
                         'by_reference' => false,
                         'class' => 'AMAPBundle:Account\Contract',
-                        'property' => 'id'))
+                        'property' => 'id'
+                    ))
                     ->end();
         } elseif ($this->isCurrentRoute('edit')) {
             $formMapper->with('label_group')
+                    ->add('roles', 'choice', array(
+                        'choices' => $rolesChoices,
+                        'multiple' => true
+                    ))
                     ->add('groups', 'sonata_type_model', array(
                         'expanded' => true,
                         'by_reference' => false,
@@ -179,26 +186,10 @@ class UserAdmin extends AbstractAdmin {
                         'property' => 'name'
                     ))
                     ->add('contract_user', 'sonata_type_model', array(
-                        'expanded' => true,
                         'by_reference' => false,
                         'required' => false,
-                        'multiple' => true,
-                        'class' => 'AMAPBundle:Account\Contract',
-                        'property' => 'id'
-            ));
-            if (!empty(array_filter($this->getRoot()->getSubject()->getRoles())) && count($this->getRoot()->getSubject()->getRoles()) == 1) {
-                $formMapper
-                        ->add('roles', 'text', array(
-                            'property_path' => 'roles[0]',
-                ));
-            } else {
-                $formMapper
-                        ->add('roles', 'choice', array(
-                            'choices' => $rolesChoices,
-                            'multiple' => true
-                ));
-            }
-            $formMapper->end();
+                        'property' => 'id'))
+                    ->end();
         }
     }
 
@@ -229,6 +220,18 @@ class UserAdmin extends AbstractAdmin {
                 ->add('adress')
                 ->add('locale')
         ;
+    }
+
+    public function prePersist($object) {
+        foreach ($object->getContractUser() as $user) {
+            $user->setContractUser($object);
+        }
+    }
+
+    public function preUpdate($object) {
+        foreach ($object->getContractUser() as $user) {
+            $user->setContractUser($object);
+        }
     }
 
 }

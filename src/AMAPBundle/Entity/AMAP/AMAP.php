@@ -91,7 +91,7 @@ class AMAP {
     }
 
     public function __toString() {
-        return ((new \ReflectionClass($this))->getShortName() . ':' . $this->getName());
+        return $this->getName();
     }
 
     /**

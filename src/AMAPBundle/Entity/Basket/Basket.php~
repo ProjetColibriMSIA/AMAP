@@ -126,7 +126,7 @@ class Basket {
     }
 
     public function __toString() {
-        return ((new \ReflectionClass($this))->getShortName() . ':' . $this->getName());
+        return strval($this->getId());
     }
 
     /**
