@@ -85,22 +85,26 @@ class GroupAdmin extends AbstractAdmin {
                         'multiple' => true,
                         'by_reference' => false,
                         'class' => 'AMAPBundle:Account\User',
-                        'property' => 'username',
+                        'property' => 'username'
             ));
         }
 
 // The foo field will added when current action is related acme.demo.admin.code Admin's edit form
-        if ($this->isCurrentRoute('edit')) {
+        elseif ($this->isCurrentRoute('edit')) {
             if (!empty(array_filter($this->getRoot()->getSubject()->getRoles())) && count($this->getRoot()->getSubject()->getRoles()) == 1) {
                 $formMapper
                         ->add('roles', 'text', array(
                             'property_path' => 'roles[0]',
                 ));
             } else {
+                $container = $this->getConfigurationPool()->getContainer();
+                $roles = $container->getParameter('security.role_hierarchy.roles');
+
+                $rolesChoices = $this->roles->flattenRoles($roles);
                 $formMapper
                         ->add('roles', 'choice', array(
                             'choices' => $rolesChoices,
-                            'multiple' => false
+                            'multiple' => true
                 ));
             }
             $formMapper->add('users', 'sonata_type_model', array(

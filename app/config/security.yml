@@ -54,8 +54,8 @@ security:
         - { path: ^/responsable_amap, role: ROLE_AMAP_MANAGER }
         - { path: ^/responsable_entrepot, role: ROLE_WAREHOUSE_MANAGER }
         - { path: ^/responsable_magasin, role: ROLE_STORE_MANAGER }
-        - { path: ^/producteur, role: ROLE_FARMER }
-        - { path: ^/consommateur, role: ROLE_CONSUMER }
+        - { path: ^/utilisateur_producteur, role: ROLE_FARMER }
+        - { path: ^/utilisateur_consommateur, role: ROLE_CONSUMER }
         - { path: ^/admin, role: ROLE_ADMIN }
 
             # activate different ways to authenticate
