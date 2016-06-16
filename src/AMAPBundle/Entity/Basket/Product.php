@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="product")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\Basket\ProductRepository")
  */
-class Product
-{
+class Product {
+
     /**
      * @var int
      *
@@ -41,8 +41,8 @@ class Product
      * @ORM\Column(name="description", type="text")
      */
     private $description;
-	
-	 /**
+
+    /**
      * @var string
      *
      * @ORM\Column(name="repIMG", type="text")
@@ -53,15 +53,18 @@ class Product
      * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Basket\Basket", mappedBy="products")
      */
     private $baskets;
-    
+
     /**
      * Get id
      *
      * @return int
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
+    }
+
+    public function __toString() {
+        return ((new \ReflectionClass($this))->getShortName() . ':' . $this->getName());
     }
 
     /**
@@ -71,8 +74,7 @@ class Product
      *
      * @return Product
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -83,8 +85,7 @@ class Product
      *
      * @return string
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -95,8 +96,7 @@ class Product
      *
      * @return Product
      */
-    public function setPrice($price)
-    {
+    public function setPrice($price) {
         $this->price = $price;
 
         return $this;
@@ -107,8 +107,7 @@ class Product
      *
      * @return string
      */
-    public function getPrice()
-    {
+    public function getPrice() {
         return $this->price;
     }
 
@@ -119,8 +118,7 @@ class Product
      *
      * @return Product
      */
-    public function setDescription($description)
-    {
+    public function setDescription($description) {
         $this->description = $description;
 
         return $this;
@@ -131,15 +129,14 @@ class Product
      *
      * @return string
      */
-    public function getDescription()
-    {
+    public function getDescription() {
         return $this->description;
     }
+
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->baskets = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -150,8 +147,7 @@ class Product
      *
      * @return Product
      */
-    public function addBasket(\AMAPBundle\Entity\Basket\Basket $basket)
-    {
+    public function addBasket(\AMAPBundle\Entity\Basket\Basket $basket) {
         $this->baskets[] = $basket;
 
         return $this;
@@ -162,8 +158,7 @@ class Product
      *
      * @param \AMAPBundle\Entity\Basket\Basket $basket
      */
-    public function removeBasket(\AMAPBundle\Entity\Basket\Basket $basket)
-    {
+    public function removeBasket(\AMAPBundle\Entity\Basket\Basket $basket) {
         $this->baskets->removeElement($basket);
     }
 
@@ -172,8 +167,7 @@ class Product
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getBaskets()
-    {
+    public function getBaskets() {
         return $this->baskets;
     }
 
@@ -184,8 +178,7 @@ class Product
      *
      * @return Product
      */
-    public function setRepIMG($repIMG)
-    {
+    public function setRepIMG($repIMG) {
         $this->repIMG = $repIMG;
 
         return $this;
@@ -196,8 +189,8 @@ class Product
      *
      * @return string
      */
-    public function getRepIMG()
-    {
+    public function getRepIMG() {
         return $this->repIMG;
     }
+
 }
