@@ -41,6 +41,13 @@ class Product
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+	
+	 /**
+     * @var string
+     *
+     * @ORM\Column(name="repIMG", type="text")
+     */
+    private $repIMG;
 
     /**
      * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Basket\Basket", mappedBy="products")
@@ -168,5 +175,29 @@ class Product
     public function getBaskets()
     {
         return $this->baskets;
+    }
+
+    /**
+     * Set repIMG
+     *
+     * @param string $repIMG
+     *
+     * @return Product
+     */
+    public function setRepIMG($repIMG)
+    {
+        $this->repIMG = $repIMG;
+
+        return $this;
+    }
+
+    /**
+     * Get repIMG
+     *
+     * @return string
+     */
+    public function getRepIMG()
+    {
+        return $this->repIMG;
     }
 }

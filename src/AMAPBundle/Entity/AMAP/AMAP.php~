@@ -34,7 +34,21 @@ class AMAP {
      * @ORM\Column(name="adress", type="string", length=255)
      */
     private $adress;
-
+	
+	/**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="repIMG", type="text")
+     */
+    private $repIMG;
+	
     /**
      * @var integer
      * 
@@ -233,5 +247,53 @@ class AMAP {
     public function getNews()
     {
         return $this->news;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return AMAP
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set repIMG
+     *
+     * @param string $repIMG
+     *
+     * @return AMAP
+     */
+    public function setRepIMG($repIMG)
+    {
+        $this->repIMG = $repIMG;
+
+        return $this;
+    }
+
+    /**
+     * Get repIMG
+     *
+     * @return string
+     */
+    public function getRepIMG()
+    {
+        return $this->repIMG;
     }
 }

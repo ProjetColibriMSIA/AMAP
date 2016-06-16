@@ -34,6 +34,13 @@ class News {
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
+	
+	 /**
+     * @var string
+     *
+     * @ORM\Column(name="repIMG", type="text")
+     */
+    private $repIMG;
 
     /**
      * @var \DateTime
