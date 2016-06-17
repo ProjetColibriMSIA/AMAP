@@ -5,7 +5,9 @@
 		{% if amaps is defined %}
 			<h1>AMAP</h1>
 			<section>
-				<table id="amap" class="display" cellspacing="0" width="100%">
+                            
+                            <!-- table table-striped table-bordered dt-responsive nowrap  -->
+				<table id="amap" class="table table-striped table-bordered display " cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th>Nom</th>
@@ -19,7 +21,8 @@
 								<td> {{ amap.getName() }}</td>
 								<td> {{ amap.getAdress()|nl2br }}</td>
 								<td> {{ amap.getDescription() | truncate(100, false, '') |nl2br}} ...</td>
-							</tr>
+                                                                
+                                                        </tr>
 						{% endfor %}
 					</tbody>
 				</table>

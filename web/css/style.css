@@ -430,9 +430,10 @@ footer {
 .list-services li.item-1 a {
     background-position:-40px 0;
 }
-.list-services li.item-2 a {
+/* pour linkedin*/
+/*.list-services li.item-2 a {
     background-position:-80px 0;
-}
+}*/
 
 /*********extra***********/
 .block {
