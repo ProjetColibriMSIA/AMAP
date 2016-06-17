@@ -45,7 +45,7 @@ class Inventory {
     }
 
     public function __toString() {
-        return strval($this->id);
+        return ((new \ReflectionClass($this))->getShortName() . ':' .strval($this->id));
     }
 
     /**

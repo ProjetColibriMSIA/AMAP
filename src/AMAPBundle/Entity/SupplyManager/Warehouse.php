@@ -38,7 +38,7 @@ class Warehouse /* implements InterfaceWarehouse */ {
     }
 
     public function __toString() {
-        return strval($this->id);
+        return ((new \ReflectionClass($this))->getShortName() . ':' .strval($this->id));
     }
 
     /**

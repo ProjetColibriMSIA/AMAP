@@ -67,8 +67,10 @@ class ContractAdmin extends AbstractAdmin {
                 ->add('repPDF');
         if ($this->isCurrentRoute('create')) {
             $formMapper
-                    ->add('users', 'sonata_type_collection', array(
+                    ->add('users', 'sonata_type_model', array(
+                        'expanded' => true,
                         'by_reference' => false,
+                        'multiple' => true
                     ))
                     ->add('amap', 'sonata_type_model_list', array(
                         'by_reference' => false,
@@ -87,10 +89,13 @@ class ContractAdmin extends AbstractAdmin {
                       'inline' => 'table',
                       'sortable' => 'position'
                       ))
-                     * */
+                     */
                     ->add('users', 'sonata_type_model', array(
-                        'by_reference' => false, 'expanded' => true, 'multiple' => true
+                        'expanded' => true,
+                        'by_reference' => false,
+                        'multiple' => true
                     ))
+
 
 
                     /* ->add('users', null, array('property_path' => 'username'), array(

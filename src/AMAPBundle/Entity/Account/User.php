@@ -38,7 +38,7 @@ class User extends BaseUser {
 
     /**
      * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Account\Group",mappedBy="users")
-     * @ORM\JoinTable(name="fos_user_user_group",
+     * @ORM\JoinTable(name="fos_user_group",
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
      * )
@@ -77,6 +77,12 @@ class User extends BaseUser {
      */
     protected $contract_user;
 
+    public function __construct() {
+        parent::__construct();
+        $this->groups = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->amap = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     public function __toString() {
         return $this->getUsername();
     }
@@ -88,13 +94,6 @@ class User extends BaseUser {
      */
     public function getId() {
         return $this->id;
-    }
-
-    public function __construct() {
-        parent::__construct();
-        $this->groups = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->amap = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->contract_user = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
