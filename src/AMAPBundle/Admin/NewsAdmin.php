@@ -18,6 +18,7 @@ class NewsAdmin extends AbstractAdmin {
                 ->add('id')
                 ->add('name')
                 ->add('description')
+                ->add('repIMG')
                 ->add('startDate')
                 ->add('endDate')
                 ->add('isDisplay')
@@ -29,12 +30,14 @@ class NewsAdmin extends AbstractAdmin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
+                ->add('id')
                 ->add('name')
                 ->add('description')
+                ->add('repIMG')
                 ->add('startDate')
                 ->add('endDate')
                 ->add('isDisplay')
-                ->add('news_amap', null, array(
+                ->add('news_amap', 'entity', array(
                     'class' => 'AMAPBundle:AMAP\AMAP',
                     'associated_property' => function ($amap) {
                         return $amap->getName();
@@ -54,18 +57,20 @@ class NewsAdmin extends AbstractAdmin {
      */
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
-                ->add('id')
                 ->add('name')
                 ->add('description')
+                ->add('repIMG')
                 ->add('startDate')
-                ->add('endDate', null, array('required' => false))
-                ->add('isDisplay', null, array('required' => false))
-                ->add('news_amap', 'sonata_type_collection', array(), array(
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                    'sortable' => 'position',
-                    'limit' => 10
+                ->add('endDate')
+                ->add('isDisplay')
+                ->add('news_amap', 'sonata_type_model', array(
+                    'required' => false,
+                    'multiple' => true,
+                    'by_reference' => false,
+                    'class' => 'AMAPBundle:AMAP\AMAP',
+                    'property' => 'name'
                 ))
+
         ;
     }
 
@@ -77,6 +82,7 @@ class NewsAdmin extends AbstractAdmin {
                 ->add('id')
                 ->add('name')
                 ->add('description')
+                ->add('repIMG')
                 ->add('startDate')
                 ->add('endDate')
                 ->add('isDisplay')

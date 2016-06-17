@@ -18,6 +18,7 @@ class ContractAdmin extends AbstractAdmin {
                 ->add('id')
                 ->add('rules')
                 ->add('description')
+                ->add('adressDelivery')
                 ->add('signDate')
                 ->add('expirationDate')
                 ->add('repPDF')
@@ -32,6 +33,7 @@ class ContractAdmin extends AbstractAdmin {
                 ->add('id')
                 ->add('rules')
                 ->add('description')
+                ->add('adressDelivery')
                 ->add('signDate')
                 ->add('expirationDate')
                 ->add('repPDF')
@@ -40,7 +42,7 @@ class ContractAdmin extends AbstractAdmin {
                     'associated_property' => function ($amap) {
                         return $amap->getUsername();
                     }))
-                ->add('amap', 'entity', array(
+                ->add('amap', 'contracts_amap', array(
                     'class' => 'AMAPBundle:AMAP\AMAP',
                     'associated_property' => function ($amap) {
                         return $amap->getName();
@@ -62,6 +64,7 @@ class ContractAdmin extends AbstractAdmin {
         $formMapper
                 ->add('rules')
                 ->add('description')
+                ->add('adressDelivery')
                 ->add('signDate')
                 ->add('expirationDate')
                 ->add('repPDF');
@@ -107,6 +110,7 @@ class ContractAdmin extends AbstractAdmin {
                      */
                     ->add('amap', 'sonata_type_model', array(
                         'by_reference' => false,
+                        'expanded' => true,
                         'property' => 'name'
             ));
         }
@@ -120,6 +124,7 @@ class ContractAdmin extends AbstractAdmin {
                 ->add('id')
                 ->add('rules')
                 ->add('description')
+                ->add('adressDelivery')
                 ->add('signDate')
                 ->add('expirationDate')
                 ->add('repPDF')

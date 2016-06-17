@@ -34,7 +34,14 @@ class Contract {
      * @ORM\Column(name="description", type="text")
      */
     private $description;
-
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="adressDelivery", type="text")
+     */
+    private $adressDelivery;
+    
     /**
      * @var \DateTime
      *
@@ -69,7 +76,7 @@ class Contract {
     private $repPDF;
 
     public function __toString() {
-        return ((new \ReflectionClass($this))->getShortName() . ':' .strval($this->getId()));
+        return ((new \ReflectionClass($this))->getShortName() . ':' . strval($this->getId()));
     }
 
     /**
@@ -262,4 +269,28 @@ class Contract {
         return $this->amap;
     }
 
+
+    /**
+     * Set adressDelivery
+     *
+     * @param string $adressDelivery
+     *
+     * @return Contract
+     */
+    public function setAdressDelivery($adressDelivery)
+    {
+        $this->adressDelivery = $adressDelivery;
+
+        return $this;
+    }
+
+    /**
+     * Get adressDelivery
+     *
+     * @return string
+     */
+    public function getAdressDelivery()
+    {
+        return $this->adressDelivery;
+    }
 }

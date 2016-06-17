@@ -31,6 +31,13 @@ class AMAP {
     /**
      * @var string
      *
+     * @ORM\Column(name="phone", type="string", length=50)
+     */
+    private $phone;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="adress", type="string", length=255)
      */
     private $adress;
@@ -293,4 +300,28 @@ class AMAP {
         return $this->repIMG;
     }
 
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     *
+     * @return AMAP
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
 }

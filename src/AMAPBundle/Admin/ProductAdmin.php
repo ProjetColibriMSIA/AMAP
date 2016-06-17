@@ -18,7 +18,9 @@ class ProductAdmin extends AbstractAdmin {
                 ->add('id')
                 ->add('name')
                 ->add('price')
+                ->add('weight')
                 ->add('description')
+                ->add('repIMG')
         ;
     }
 
@@ -27,14 +29,15 @@ class ProductAdmin extends AbstractAdmin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-                ->add('id', null, array('required' => false))
-                ->add('name')
+                ->addIdentifier('name')
                 ->add('price')
+                ->add('weight')
                 ->add('description')
+                ->add('repIMG')
                 ->add('baskets', 'entity', array(
                     'class' => 'AMAPBundle:Basket\Basket',
-                    'associated_property' => function ($baskets) {
-                        return $baskets->getName();
+                    'associated_property' => function ($amap) {
+                        return $amap->getName();
                     }))
                 ->add('_action', null, array(
                     'actions' => array(
@@ -51,17 +54,19 @@ class ProductAdmin extends AbstractAdmin {
      */
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
-                ->with('label_needed')
                 ->add('name')
                 ->add('price')
+                ->add('weight')
                 ->add('description')
-                ->add('baskets', 'sonata_type_collection', array(), array(
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                    'sortable' => 'position',
-                    'limit' => 10
+                ->add('repIMG')
+                ->add('baskets', 'sonata_type_model', array(
+                    'expanded' => true,
+                    'by_reference' => false,
+                    'required' => false,
+                    'multiple' => true,
+                    'class' => 'AMAPBundle:Basket\Basket',
+                    'property' => 'name'
                 ))
-                ->end()
         ;
     }
 
@@ -73,7 +78,9 @@ class ProductAdmin extends AbstractAdmin {
                 ->add('id')
                 ->add('name')
                 ->add('price')
+                ->add('weight')
                 ->add('description')
+                ->add('repIMG')
         ;
     }
 

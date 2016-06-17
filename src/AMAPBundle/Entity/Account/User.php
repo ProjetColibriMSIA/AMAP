@@ -60,7 +60,13 @@ class User extends BaseUser {
      * @ORM\Column(name="adress", type="text")
      */
     protected $adress;
-
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=50)
+     */
+    protected $phone;
     /**
      * @var string
      *
@@ -237,4 +243,28 @@ class User extends BaseUser {
         return $this->contract_user;
     }
 
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     *
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
 }

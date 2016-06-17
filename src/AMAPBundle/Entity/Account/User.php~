@@ -60,7 +60,13 @@ class User extends BaseUser {
      * @ORM\Column(name="adress", type="text")
      */
     protected $adress;
-
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=50)
+     */
+    protected $phone;
     /**
      * @var string
      *
@@ -76,4 +82,189 @@ class User extends BaseUser {
      * @ORM\JoinColumn(name="contract_user_id", referencedColumnName="id")
      */
     protected $contract_user;
+
+    public function __construct() {
+        parent::__construct();
+        $this->groups = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->amap = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString() {
+        return $this->getUsername();
+    }
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return User
+     */
+    public function setName($name) {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName() {
+        return $this->name;
+    }
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return User
+     */
+    public function setFirstName($firstName) {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName() {
+        return $this->firstName;
+    }
+
+    /**
+     * Set adress
+     *
+     * @param string $adress
+     *
+     * @return User
+     */
+    public function setAdress($adress) {
+        $this->adress = $adress;
+
+        return $this;
+    }
+
+    /**
+     * Get adress
+     *
+     * @return string
+     */
+    public function getAdress() {
+        return $this->adress;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     *
+     * @return User
+     */
+    public function setLocale($locale) {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string
+     */
+    public function getLocale() {
+        return $this->locale;
+    }
+
+    /**
+     * Add amap
+     *
+     * @param \AMAPBundle\Entity\AMAP\AMAP $amap
+     *
+     * @return User
+     */
+    public function addAmap(\AMAPBundle\Entity\AMAP\AMAP $amap) {
+        $this->amap[] = $amap;
+
+        return $this;
+    }
+
+    /**
+     * Remove amap
+     *
+     * @param \AMAPBundle\Entity\AMAP\AMAP $amap
+     */
+    public function removeAmap(\AMAPBundle\Entity\AMAP\AMAP $amap) {
+        $this->amap->removeElement($amap);
+    }
+
+    /**
+     * Get amap
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAmap() {
+        return $this->amap;
+    }
+
+    /**
+     * Set contractUser
+     *
+     * @param \AMAPBundle\Entity\Account\Contract $contractUser
+     *
+     * @return User
+     */
+    public function setContractUser(\AMAPBundle\Entity\Account\Contract $contractUser = null) {
+        $this->contract_user = $contractUser;
+
+        return $this;
+    }
+
+    /**
+     * Get contractUser
+     *
+     * @return \AMAPBundle\Entity\Account\Contract
+     */
+    public function getContractUser() {
+        return $this->contract_user;
+    }
+
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     *
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
 }

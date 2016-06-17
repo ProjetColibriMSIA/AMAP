@@ -31,7 +31,7 @@ class Basket {
     /**
      * @var string
      *
-     * @ORM\Column(name="price", type="decimal", precision=10, scale=0)
+     * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
      */
     private $price;
 
@@ -45,7 +45,7 @@ class Basket {
     /**
      * @var string
      *
-     * @ORM\Column(name="weight", type="decimal", precision=10, scale=0)
+     * @ORM\Column(name="weight", type="decimal", precision=10, scale=2)
      */
     private $weight;
 
@@ -92,7 +92,7 @@ class Basket {
     private $products;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Account\Group")
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Account\Group", inversedBy="consumer")
      * @ORM\JoinTable(name="basket_consumer",
      *      joinColumns={@ORM\JoinColumn(name="basket_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
@@ -101,7 +101,7 @@ class Basket {
     private $ownerConsumer;
 
     /**
-     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Account\Group")
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Account\Group", inversedBy="farmer")
      * @ORM\JoinTable(name="basket_farmer",
      *      joinColumns={@ORM\JoinColumn(name="basket_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
@@ -126,7 +126,7 @@ class Basket {
     }
 
     public function __toString() {
-        return strval($this->getId());
+        return ((new \ReflectionClass($this))->getShortName() . ':' . strval($this->getId()));
     }
 
     /**

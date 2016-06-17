@@ -33,8 +33,7 @@ class BasketAdmin extends AbstractAdmin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-                ->add('id')
-                ->add('name')
+                ->addIdentifier('name')
                 ->add('price')
                 ->add('barCode')
                 ->add('weight')
@@ -48,6 +47,21 @@ class BasketAdmin extends AbstractAdmin {
                     'associated_property' => function ($products) {
                         return $products->getName();
                     }))
+                ->add('ownerConsumer', null, array(
+                    'class' => 'AMAPBundle:Basket\Product',
+                    'associated_property' => function ($products) {
+                        return $products->getUsername();
+                    }))
+                ->add('productBy', null, array(
+                    'class' => 'AMAPBundle:Basket\Product',
+                    'associated_property' => function ($products) {
+                        return $products->getUsername();
+                    }))
+                ->add('inventory', 'sonata_type_model_list', array(
+                    'by_reference' => false,
+                    'required' => false), array(
+                    'placeholder' => 'No basket selected'
+                ))
                 ->add('_action', null, array(
                     'actions' => array(
                         'show' => array(),
@@ -55,6 +69,7 @@ class BasketAdmin extends AbstractAdmin {
                         'delete' => array(),
                     )
                 ))
+
         ;
     }
 
@@ -72,13 +87,35 @@ class BasketAdmin extends AbstractAdmin {
                 ->add('storeDate')
                 ->add('description')
                 ->add('repIMG')
-                ->add('products', 'sonata_type_collection', array(), array(
-                    'edit' => 'inline',
-                    'inline' => 'table',
-                    'sortable' => 'position',
-                    'limit' => 10,
-                    'link_parameters' => array('id' => $this->getSubject()->getId())))
-                
+                ->add('products', 'sonata_type_model', array(
+                    'expanded' => true,
+                    'by_reference' => false,
+                    'multiple' => true,
+                    'class' => 'AMAPBundle:Basket\Product',
+                    'property' => 'name'
+                ))
+                ->add('ownerConsumer', 'sonata_type_model', array(
+                    'expanded' => true,
+                    'by_reference' => false,
+                    'required' => false,
+                    'multiple' => true,
+                    'class' => 'AMAPBundle:Account\Group',
+                    'property' => 'name'
+                ))
+                ->add('productBy', 'sonata_type_model', array(
+                    'expanded' => true,
+                    'by_reference' => false,
+                    'required' => false,
+                    'multiple' => true,
+                    'class' => 'AMAPBundle:Account\Group',
+                    'property' => 'name'
+                ))
+                /* TODO
+                ->add('inventory', 'sonata_type_model_list', array(
+                ), array(
+                    'placeholder' => 'No author selected'
+                ))
+                */
         ;
     }
 

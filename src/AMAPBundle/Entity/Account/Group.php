@@ -30,6 +30,24 @@ class Group extends BaseGroup {
      *  )    
      */
     private $users;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Basket\Basket", mappedBy="ownerConsumer")
+     * @ORM\JoinTable(name="basket_consumer",
+     *      joinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="basket_id", referencedColumnName="id")}
+     * )
+     */
+    private $consumer;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\Basket\Basket", mappedBy="productBy")
+     * @ORM\JoinTable(name="basket_farmer",
+     *      joinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="basket_id", referencedColumnName="id")}
+     * )
+     */
+    private $farmer;
     private $nbUsers;
 
     /**
@@ -84,4 +102,71 @@ class Group extends BaseGroup {
         return $this->users;
     }
 
+    /**
+     * Add consumer
+     *
+     * @param \AMAPBundle\Entity\Basket\Basket $consumer
+     *
+     * @return Group
+     */
+    public function addConsumer(\AMAPBundle\Entity\Basket\Basket $consumer)
+    {
+        $this->consumer[] = $consumer;
+
+        return $this;
+    }
+
+    /**
+     * Remove consumer
+     *
+     * @param \AMAPBundle\Entity\Basket\Basket $consumer
+     */
+    public function removeConsumer(\AMAPBundle\Entity\Basket\Basket $consumer)
+    {
+        $this->consumer->removeElement($consumer);
+    }
+
+    /**
+     * Get consumer
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getConsumer()
+    {
+        return $this->consumer;
+    }
+
+    /**
+     * Add farmer
+     *
+     * @param \AMAPBundle\Entity\Basket\Basket $farmer
+     *
+     * @return Group
+     */
+    public function addFarmer(\AMAPBundle\Entity\Basket\Basket $farmer)
+    {
+        $this->farmer[] = $farmer;
+
+        return $this;
+    }
+
+    /**
+     * Remove farmer
+     *
+     * @param \AMAPBundle\Entity\Basket\Basket $farmer
+     */
+    public function removeFarmer(\AMAPBundle\Entity\Basket\Basket $farmer)
+    {
+        $this->farmer->removeElement($farmer);
+    }
+
+    /**
+     * Get farmer
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFarmer()
+    {
+        return $this->farmer;
+    }
 }

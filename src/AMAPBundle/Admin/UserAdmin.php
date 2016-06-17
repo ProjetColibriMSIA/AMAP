@@ -42,6 +42,7 @@ class UserAdmin extends AbstractAdmin {
                 ->add('name')
                 ->add('firstName')
                 ->add('adress')
+                ->add('phone')
                 ->add('locale')
         ;
     }
@@ -56,12 +57,11 @@ class UserAdmin extends AbstractAdmin {
         $rolesChoices = $this->roles->flattenRoles($roles);
         $listMapper
                 ->addIdentifier('username')
-                ->add('usernameCanonical')
                 ->add('email')
-                ->add('emailCanonical')
                 ->add('name')
                 ->add('firstName')
                 ->add('adress')
+                ->add('phone')
                 ->add('locale')
                 ->add('groups', 'entity', array(
                     'class' => 'AMAPBundle:Account\Group',
@@ -79,9 +79,8 @@ class UserAdmin extends AbstractAdmin {
                         return $amap->getId();
                     }))
                 ->add('enabled')
-                ->add('salt')
-                ->add('password')
-                ->add('lastLogin')
+                ->add('password', 'password')
+                ->add('lastLogin')      
                 ->add('locked')
                 ->add('expired')
                 ->add('expiresAt')
@@ -114,27 +113,41 @@ class UserAdmin extends AbstractAdmin {
         $formMapper
                 ->with('label_needed')
                 ->add('username')
-                ->add('usernameCanonical', null, array('required' => false))
                 ->add('name')
                 ->add('firstName')
                 ->add('email')
-                ->add('emailCanonical', null, array('required' => false))
                 ->add('enabled')
-                ->add('password')
+                ->add('locale', 'choice', array(
+                    'choices' => array(
+                        'English' => 'en',
+                        'Spanish' => 'es',
+                        'Français' => 'fr_FR',
+                        'Pirate' => 'arr'
+                    ),
+                    'preferred_choices' => array('Français', 'fr_FR')))
+                ->add('adress')
+                ->add('phone')
                 ->end()
                 ->with('label_option', array('collapsed' => true))
+                ->add('confirmationToken', null, array('required' => false))
                 ->add('credentialsExpired', null, array('required' => false))
-                ->add('adress', null, array('required' => false))
-                ->add('locale')
-                ->add('lastLogin', null, array('required' => false))
                 ->add('locked', null, array('required' => false))
                 ->add('expired', null, array('required' => false))
-                ->add('confirmationToken', null, array('required' => false))
-                ->add('passwordRequestedAt')
+                
                 ->end()
 
         ;
         if ($this->isCurrentRoute('create')) {
+            $formMapper
+                    ->with('label_needed')
+                    ->add('plainPassword', 'repeated', array(
+                        'type' => 'password',
+                        'options' => array('translation_domain' => 'FOSUserBundle'),
+                        'first_options' => array('label' => 'form.password'),
+                        'second_options' => array('label' => 'form.password_confirmation'),
+                        'invalid_message' => 'fos_user.password.mismatch',
+                    ))
+                    ->end();
             $formMapper->with('label_group')
                     ->add('roles', 'choice', array(
                         'choices' => $rolesChoices,
@@ -161,6 +174,18 @@ class UserAdmin extends AbstractAdmin {
                     ))
                     ->end();
         } elseif ($this->isCurrentRoute('edit')) {
+            $formMapper
+                    ->with('label_needed')
+                    ->add('plainPassword', 'repeated', array(
+                        'required' => false,
+                        'type' => 'password',
+                        'options' => array('translation_domain' => 'FOSUserBundle'),
+                        'first_options' => array('label' => 'form.password'),
+                        'second_options' => array('label' => 'form.password_confirmation'),
+                        'invalid_message' => 'fos_user.password.mismatch',
+                    ))
+                    ->end();
+
             $formMapper->with('label_group')
                     ->add('roles', 'choice', array(
                         'choices' => $rolesChoices,
@@ -216,8 +241,17 @@ class UserAdmin extends AbstractAdmin {
                 ->add('name')
                 ->add('firstName')
                 ->add('adress')
+                ->add('phone')
                 ->add('locale')
         ;
+    }
+
+    public function prePersist($object) {
+        parent::prePersist($object);
+    }
+
+    public function preUpdate($object) {
+        parent::preUpdate($object);
     }
 
 }

@@ -31,9 +31,16 @@ class Product {
     /**
      * @var string
      *
-     * @ORM\Column(name="price", type="decimal", precision=10, scale=0)
+     * @ORM\Column(name="price", type="decimal", precision=10, scale=2)
      */
     private $price;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="weight", type="decimal", precision=10, scale=2)
+     */
+    private $weight;
 
     /**
      * @var string
@@ -193,4 +200,28 @@ class Product {
         return $this->repIMG;
     }
 
+
+    /**
+     * Set weight
+     *
+     * @param string $weight
+     *
+     * @return Product
+     */
+    public function setWeight($weight)
+    {
+        $this->weight = $weight;
+
+        return $this;
+    }
+
+    /**
+     * Get weight
+     *
+     * @return string
+     */
+    public function getWeight()
+    {
+        return $this->weight;
+    }
 }

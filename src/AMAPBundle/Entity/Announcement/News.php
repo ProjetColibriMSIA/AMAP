@@ -31,7 +31,7 @@ class News {
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text", nullable=true)
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
 	
@@ -45,14 +45,14 @@ class News {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startDate", type="date", nullable=true)
+     * @ORM\Column(name="startDate", type="date")
      */
     private $startDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="endDate", type="date", nullable=true)
+     * @ORM\Column(name="endDate", type="date")
      */
     private $endDate;
 
