@@ -20,7 +20,7 @@
 										</div>	
 										<h3>{{ n.getName }}</h3>
 										<p>
-											{% if not n.getEndDate is null %} 
+											{% if n.getEndDate != n.getStartDate %} 
 												Du {{ (n.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }} au {{ (n.getEndDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none')}}
 												{% else %} 
 													Le {{ (n.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }}	
@@ -43,7 +43,7 @@
 					{% endif %}
 				</div>
 				<p>
-					{% if not new.getEndDate is null %} 
+					{% if new.getEndDate != new.getStartDate %} 
 						Du {{ (new.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }} au {{ (new.getEndDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none')}}
 						{% else %} 
 							Le {{ (new.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }}	
