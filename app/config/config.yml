@@ -167,7 +167,7 @@ sonata_admin:
     dashboard:
         blocks:
             # display a dashboard block
-            - { position: left, type: sonata.admin.block.admin_list, settings: {groups:[amap.admin.group.user,amap.admin.group.news,amap.admin.group.amap,amap.admin.group.basket]}}
+            - { position: left, type: sonata.admin.block.admin_list, settings: {groups:[amap.admin.group.user,amap.admin.group.news,amap.admin.group.amap,amap.admin.group.basket,amap.admin.group.delivery]}}
         groups:
             amap.admin.group.news:
                 label_catalogue: AMAPBundle
@@ -196,3 +196,10 @@ sonata_admin:
                 items:
                     - amap.admin.basket
                     - amap.admin.product
+            amap.admin.group.delivery:
+                label_catalogue: AMAPBundle
+                label: label_delivry
+                icon: "<i class=\"fa fa-building\"></i>"
+                items:
+                    - amap.admin.store
+                    - amap.admin.warehouse

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * AMAP
  *
- * @ORM\Table(name="a_m_a_p")
+ * @ORM\Table(name="amap")
  * @ORM\Entity(repositoryClass="AMAPBundle\Repository\AMAP\AMAPRepository")
  */
 class AMAP {

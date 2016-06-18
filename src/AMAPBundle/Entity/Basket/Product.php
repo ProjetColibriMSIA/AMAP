@@ -62,6 +62,14 @@ class Product {
     private $baskets;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\SupplyManager\Warehouse",inversedBy="products")
+     * @ORM\JoinTable(name="product_warehouse",
+     *      joinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="warehouse_id", referencedColumnName="id")}
+     * )
+     */
+    protected $productsWarehouse;
+    /**
      * Get id
      *
      * @return int
@@ -223,5 +231,39 @@ class Product {
     public function getWeight()
     {
         return $this->weight;
+    }
+
+    /**
+     * Add productsWarehouse
+     *
+     * @param \AMAPBundle\Entity\LocalStoreManager\Store $productsWarehouse
+     *
+     * @return Product
+     */
+    public function addProductsWarehouse(\AMAPBundle\Entity\LocalStoreManager\Store $productsWarehouse)
+    {
+        $this->productsWarehouse[] = $productsWarehouse;
+
+        return $this;
+    }
+
+    /**
+     * Remove productsWarehouse
+     *
+     * @param \AMAPBundle\Entity\LocalStoreManager\Store $productsWarehouse
+     */
+    public function removeProductsWarehouse(\AMAPBundle\Entity\LocalStoreManager\Store $productsWarehouse)
+    {
+        $this->productsWarehouse->removeElement($productsWarehouse);
+    }
+
+    /**
+     * Get productsWarehouse
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProductsWarehouse()
+    {
+        return $this->productsWarehouse;
     }
 }

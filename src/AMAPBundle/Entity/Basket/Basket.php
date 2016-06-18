@@ -117,13 +117,13 @@ class Basket {
     private $inventory;
 
     /**
-     * Constructor
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\LocalStoreManager\Store",inversedBy="baskets")
+     * @ORM\JoinTable(name="basket_store",
+     *      joinColumns={@ORM\JoinColumn(name="basket_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="store_id", referencedColumnName="id")}
+     * )
      */
-    public function __construct() {
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->ownerConsumer = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->productBy = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    protected $basketsStore;
 
     public function __toString() {
         return ((new \ReflectionClass($this))->getShortName() . ':' . strval($this->getId()));
@@ -450,5 +450,48 @@ class Basket {
     public function getInventory() {
         return $this->inventory;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ownerConsumer = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->productBy = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->basketsStore = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add basketsStore
+     *
+     * @param \AMAPBundle\Entity\LocalStoreManager\Store $basketsStore
+     *
+     * @return Basket
+     */
+    public function addBasketsStore(\AMAPBundle\Entity\LocalStoreManager\Store $basketsStore)
+    {
+        $this->basketsStore[] = $basketsStore;
+
+        return $this;
+    }
+
+    /**
+     * Remove basketsStore
+     *
+     * @param \AMAPBundle\Entity\LocalStoreManager\Store $basketsStore
+     */
+    public function removeBasketsStore(\AMAPBundle\Entity\LocalStoreManager\Store $basketsStore)
+    {
+        $this->basketsStore->removeElement($basketsStore);
+    }
+
+    /**
+     * Get basketsStore
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBasketsStore()
+    {
+        return $this->basketsStore;
+    }
 }

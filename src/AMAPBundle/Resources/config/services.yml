@@ -62,6 +62,22 @@ services:
         calls:
             - [ setTranslationDomain, [AMAPBundle]]
             - [ setLabelTranslatorStrategy, [ "@sonata.admin.label.strategy.underscore" ]]
+    amap.admin.store:
+        class: AMAPBundle\Admin\StoreAdmin
+        arguments: [~, AMAPBundle\Entity\LocalStoreManager\Store, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "label_store" }
+        calls:
+            - [ setTranslationDomain, [AMAPBundle]]
+            - [ setLabelTranslatorStrategy, [ "@sonata.admin.label.strategy.underscore" ]]
+    amap.admin.warehouse:
+        class: AMAPBundle\Admin\WarehouseAdmin
+        arguments: [~, AMAPBundle\Entity\SupplyManager\Warehouse, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: "label_warehouse" }
+        calls:
+            - [ setTranslationDomain, [AMAPBundle]]
+            - [ setLabelTranslatorStrategy, [ "@sonata.admin.label.strategy.underscore" ]]
 #login
     amap.security.interactive_login_listener:
         class: AMAPBundle\EventListener\UserLocaleListener
