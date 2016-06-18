@@ -99,20 +99,20 @@ sonata_block:
     default_contexts: [cms]
     blocks:
         # enable the SonataAdminBundle block
-        sonata.admin.block.admin_list:
-            contexts: [admin]
-        sonata.user.block.menu:    # used to display the menu in profile pages
-        sonata.user.block.account: # used to display menu option (login option)
+        sonata.admin.block.admin_list: 
+            contexts:   [admin]
+        # used to display the menu in profile pages
+        sonata.user.block.menu: ~
+        # used to display menu option (login option)
+        sonata.user.block.account: ~
         #search menu
         sonata.admin.block.search_result:
             contexts: [admin]
 sonata_doctrine_orm_admin:
     # default value is null, so doctrine uses the value defined in the configuration
     entity_manager: ~
-
     audit:
         force: true
-
     templates:
         form:
             - SonataDoctrineORMAdminBundle:Form:form_admin_fields.html.twig
@@ -164,3 +164,35 @@ sonata_admin:
     security:
         # the default value
         handler: sonata.admin.security.handler.role
+    dashboard:
+        blocks:
+            # display a dashboard block
+            - { position: left, type: sonata.admin.block.admin_list, settings: {groups:[amap.admin.group.user,amap.admin.group.news,amap.admin.group.amap,amap.admin.group.basket]}}
+        groups:
+            amap.admin.group.news:
+                label_catalogue: AMAPBundle
+                label: label_news
+                icon: "<i class=\"fa fa-newspaper-o\"></i>"
+                items:
+                    - amap.admin.news
+            amap.admin.group.user:
+                label_catalogue: AMAPBundle
+                label: label_users
+                icon: "<i class=\"fa fa-users\"></i>"
+                items:
+                    - amap.admin.user
+                    - amap.admin.group
+                    - amap.admin.contract
+            amap.admin.group.amap:
+                label_catalogue: AMAPBundle
+                label: label_amap
+                icon: "<i class=\"fa fa-cutlery\"></i>"
+                items:
+                    - amap.admin.amap
+            amap.admin.group.basket:
+                label_catalogue: AMAPBundle
+                label: label_basket
+                icon: "<i class=\"fa fa-shopping-basket\"></i>"
+                items:
+                    - amap.admin.basket
+                    - amap.admin.product

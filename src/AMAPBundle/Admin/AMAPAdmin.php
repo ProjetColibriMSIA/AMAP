@@ -86,6 +86,7 @@ class AMAPAdmin extends AbstractAdmin {
                     'property' => 'name'
                 ))
                 ->add('contracts_amap', 'sonata_type_model', array(
+                    'required' => false,
                     'expanded' => true,
                     'by_reference' => false,
                     'multiple' => true

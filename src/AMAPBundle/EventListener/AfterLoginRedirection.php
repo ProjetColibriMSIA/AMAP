@@ -41,7 +41,7 @@ class AfterLoginRedirection implements AuthenticationSuccessHandlerInterface {
             return $role->getRole();
         }, $roles);
         // If is a admin or super admin we redirect to the backoffice area
-        if (in_array('ROLE_ADMIN', $rolesTab, true) || in_array('ROLE_SUPER_ADMIN', $rolesTab, true)) {
+        if (in_array('ROLE_ADMIN', $rolesTab, true) || in_array('ROLE_SUPER_ADMIN', $rolesTab, true) || in_array('ROLE_WAREHOUSE_MANAGER', $rolesTab, true) || in_array('ROLE_STORE_MANAGER', $rolesTab, true) || in_array('ROLE_AMAP_MANAGER', $rolesTab, true)) {
             $redirection = new RedirectResponse($this->router->generate('sonata_admin_dashboard'));
         }
         // otherwise, if is a commercial user we redirect to the crm area

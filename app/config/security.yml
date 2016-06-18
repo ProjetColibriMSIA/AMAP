@@ -5,22 +5,122 @@ security:
         FOS\UserBundle\Model\UserInterface: bcrypt
     
     role_hierarchy:
+        # for convenience, I decided to gather AMAP roles here
+        # accés module news
+        ROLE_AMAP_NEWS_READER:
+            - ROLE_AMAP_ADMIN_NEWS_LIST
+            - ROLE_AMAP_ADMIN_NEWS_LIST_VIEW
+        ROLE_AMAP_NEWS_EDITOR:
+            - ROLE_AMAP_ADMIN_NEWS_CREATE
+            - ROLE_AMAP_ADMIN_NEWS_EDIT
+        ROLE_AMAP_NEWS_ADMIN:
+            - ROLE_AMAP_ADMIN_NEWS_LIST
+            - ROLE_AMAP_ADMIN_NEWS_LIST_VIEW
+            - ROLE_AMAP_ADMIN_NEWS_CREATE
+            - ROLE_AMAP_ADMIN_NEWS_EDIT
+            - ROLE_AMAP_ADMIN_NEWS_DELETE
+            - ROLE_AMAP_ADMIN_NEWS_EXPORT
+        # accés module user
+        ROLE_AMAP_USER_READER:
+            - ROLE_AMAP_ADMIN_USER_LIST
+            - ROLE_AMAP_ADMIN_USER_LIST_VIEW
+        ROLE_AMAP_USER_EDITOR:
+            - ROLE_AMAP_ADMIN_USER_CREATE
+            - ROLE_AMAP_ADMIN_USER_EDIT
+        ROLE_AMAP_USER_ADMIN:
+            - ROLE_AMAP_ADMIN_USER_LIST
+            - ROLE_AMAP_ADMIN_USER_LIST_VIEW
+            - ROLE_AMAP_ADMIN_USER_CREATE
+            - ROLE_AMAP_ADMIN_USER_EDIT
+            - ROLE_AMAP_ADMIN_USER_DELETE
+            - ROLE_AMAP_ADMIN_USER_EXPORT
+        # accés module group
+        ROLE_AMAP_GROUP_READER:
+            - ROLE_AMAP_ADMIN_GROUP_LIST
+            - ROLE_AMAP_ADMIN_GROUP_LIST_VIEW
+        ROLE_AMAP_GROUP_EDITOR:
+            - ROLE_AMAP_ADMIN_GROUP_CREATE
+            - ROLE_AMAP_ADMIN_GROUP_EDIT
+        ROLE_AMAP_GROUP_ADMIN:
+            - ROLE_AMAP_ADMIN_GROUP_LIST
+            - ROLE_AMAP_ADMIN_GROUP_LIST_VIEW
+            - ROLE_AMAP_ADMIN_GROUP_CREATE
+            - ROLE_AMAP_ADMIN_GROUP_EDIT
+            - ROLE_AMAP_ADMIN_GROUP_DELETE
+            - ROLE_AMAP_ADMIN_GROUP_EXPORT
+        # accés module contract
+        ROLE_AMAP_CONTRACT_READER:
+            - ROLE_AMAP_ADMIN_CONTRACT_LIST
+            - ROLE_AMAP_ADMIN_CONTRACT_LIST_VIEW
+        ROLE_AMAP_CONTRACT_EDITOR:
+            - ROLE_AMAP_ADMIN_CONTRACT_CREATE
+            - ROLE_AMAP_ADMIN_CONTRACT_EDIT
+        ROLE_AMAP_CONTRACT_ADMIN:
+            - ROLE_AMAP_ADMIN_CONTRACT_LIST
+            - ROLE_AMAP_ADMIN_CONTRACT_LIST_VIEW
+            - ROLE_AMAP_ADMIN_CONTRACT_CREATE
+            - ROLE_AMAP_ADMIN_CONTRACT_EDIT
+            - ROLE_AMAP_ADMIN_CONTRACT_DELETE
+            - ROLE_AMAP_ADMIN_CONTRACT_EXPORT
+        # accés module amap
+        ROLE_AMAP_AMAP_READER:
+            - ROLE_AMAP_ADMIN_AMAP_LIST
+            - ROLE_AMAP_ADMIN_AMAP_LIST_VIEW
+        ROLE_AMAP_AMAP_EDITOR:
+            - ROLE_AMAP_ADMIN_AMAP_CREATE
+            - ROLE_AMAP_ADMIN_AMAP_EDIT
+        ROLE_AMAP_AMAP_ADMIN:
+            - ROLE_AMAP_ADMIN_AMAP_LIST
+            - ROLE_AMAP_ADMIN_AMAP_LIST_VIEW
+            - ROLE_AMAP_ADMIN_AMAP_CREATE
+            - ROLE_AMAP_ADMIN_AMAP_EDIT
+            - ROLE_AMAP_ADMIN_AMAP_DELETE
+            - ROLE_AMAP_ADMIN_AMAP_EXPORT
+        # accés module basket
+        ROLE_AMAP_BASKET_READER:
+            - ROLE_AMAP_ADMIN_BASKET_LIST
+            - ROLE_AMAP_ADMIN_BASKET_LIST_VIEW
+        ROLE_AMAP_BASKET_EDITOR:
+            - ROLE_AMAP_ADMIN_BASKET_CREATE
+            - ROLE_AMAP_ADMIN_BASKET_EDIT
+        ROLE_AMAP_BASKET_ADMIN:
+            - ROLE_AMAP_ADMIN_BASKET_LIST
+            - ROLE_AMAP_ADMIN_BASKET_LIST_VIEW
+            - ROLE_AMAP_ADMIN_BASKET_CREATE
+            - ROLE_AMAP_ADMIN_BASKET_EDIT
+            - ROLE_AMAP_ADMIN_BASKET_DELETE
+            - ROLE_AMAP_ADMIN_BASKET_EXPORT
+        # accés module product
+        ROLE_AMAP_PRODUCT_READER:
+            - ROLE_AMAP_ADMIN_PRODUCT_LIST
+            - ROLE_AMAP_ADMIN_PRODUCT_LIST_VIEW
+        ROLE_AMAP_PRODUCT_EDITOR:
+            - ROLE_AMAP_ADMIN_PRODUCT_CREATE
+            - ROLE_AMAP_ADMIN_PRODUCT_EDIT
+        ROLE_AMAP_PRODUCT_ADMIN:
+            - ROLE_AMAP_ADMIN_PRODUCT_LIST
+            - ROLE_AMAP_ADMIN_PRODUCT_LIST_VIEW
+            - ROLE_AMAP_ADMIN_PRODUCT_CREATE
+            - ROLE_AMAP_ADMIN_PRODUCT_EDIT
+            - ROLE_AMAP_ADMIN_PRODUCT_DELETE
+            - ROLE_AMAP_ADMIN_PRODUCT_EXPORT
+        # those are the roles I will use (less verbose)
+        # Role auteur
         ROLE_AUTOR:               [ROLE_USER]
-        # Role producteur
-        ROLE_AMAP_MANAGER:        [ROLE_ADMIN]
-        # Role producteur
-        ROLE_STORE_MANAGER:       [ROLE_ADMIN]
-        # Role producteur
-        ROLE_WAREHOUSE_MANAGER:   [ROLE_ADMIN]
-        # Role producteur
+        # Role responsable amap
+        ROLE_AMAP_MANAGER:        [ROLE_SONATA_ADMIN,ROLE_AUTOR,ROLE_AMAP_NEWS_ADMIN,ROLE_AMAP_AMAP_ADMIN,ROLE_AMAP_CONTRACT_ADMIN,ROLE_AMAP_USER_READER,ROLE_AMAP_GROUP_READER,ROLE_AMAP_BASKET_READER,ROLE_AMAP_PRODUCT_READER]
+        # Role responsable store
+        ROLE_STORE_MANAGER:       [ROLE_SONATA_ADMIN,ROLE_AUTOR,ROLE_AMAP_BASKET_ADMIN,ROLE_AMAP_PRODUCT_ADMIN,ROLE_AMAP_NEWS_READER,ROLE_AMAP_USER_READER,ROLE_AMAP_GROUP_READER,ROLE_AMAP_CONTRACT_READER,ROLE_AMAP_AMAP_READER]
+        # Role responsable entrepot
+        ROLE_WAREHOUSE_MANAGER:   [ROLE_SONATA_ADMIN,ROLE_AUTOR,ROLE_AMAP_BASKET_ADMIN,ROLE_AMAP_PRODUCT_ADMIN,ROLE_AMAP_NEWS_READER,ROLE_AMAP_USER_READER,ROLE_AMAP_GROUP_READER,ROLE_AMAP_CONTRACT_READER,ROLE_AMAP_AMAP_READER]
+        # Role consommateur
         ROLE_CONSUMER:    [ROLE_AUTOR]
         # Role producteur
         ROLE_FARMER:      [ROLE_AUTOR]
         # Un admin hérite des droits d'auteur et de modérateur
-        ROLE_ADMIN:       [ROLE_MODERATOR, ROLE_ALLOWED_TO_SWITCH, ROLE_SONATA_ADMIN,ROLE_FARMER,ROLE_CONSUMER]
+        ROLE_ADMIN:       [ROLE_MODERATOR, ROLE_ALLOWED_TO_SWITCH, ROLE_SONATA_ADMIN,ROLE_FARMER,ROLE_CONSUMER,ROLE_AMAP_NEWS_ADMIN,ROLE_AMAP_USER_ADMIN,ROLE_AMAP_GROUP_ADMIN,ROLE_AMAP_CONTRACT_ADMIN,ROLE_AMAP_AMAP_ADMIN,ROLE_AMAP_BASKET_ADMIN,ROLE_AMAP_PRODUCT_ADMIN]
         # On garde ce rôle superadmin, il nous resservira par la suite
-        ROLE_SUPER_ADMIN: [ROLE_ADMIN,ROLE_WAREHOUSE_MANAGER,ROLE_STORE_MANAGER,ROLE_AMAP_MANAGER]
-            
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN]       
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         fos_userbundle:
@@ -56,7 +156,7 @@ security:
         - { path: ^/responsable_magasin, role: ROLE_STORE_MANAGER }
         - { path: ^/utilisateur_producteur, role: ROLE_FARMER }
         - { path: ^/utilisateur_consommateur, role: ROLE_CONSUMER }
-        - { path: ^/admin, role: ROLE_ADMIN }
+        - { path: ^/admin, role: [ROLE_ADMIN , ROLE_SONATA_ADMIN, ROLE_WAREHOUSE_MANAGER, ROLE_STORE_MANAGER, ROLE_AMAP_MANAGER] }
 
             # activate different ways to authenticate
 
