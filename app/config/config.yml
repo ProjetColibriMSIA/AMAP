@@ -101,10 +101,7 @@ sonata_block:
         # enable the SonataAdminBundle block
         sonata.admin.block.admin_list: 
             contexts:   [admin]
-        # used to display the menu in profile pages
-        sonata.user.block.menu: ~
-        # used to display menu option (login option)
-        sonata.user.block.account: ~
+        sonata.block.service.text: ~
         #search menu
         sonata.admin.block.search_result:
             contexts: [admin]
@@ -167,7 +164,8 @@ sonata_admin:
     dashboard:
         blocks:
             # display a dashboard block
-            - { position: left, type: sonata.admin.block.admin_list, settings: {groups:[amap.admin.group.user,amap.admin.group.news,amap.admin.group.amap,amap.admin.group.basket,amap.admin.group.delivery]}}
+            - { position: top, type: sonata.block.service.text,class: col-md-10 col-md-offset-1, settings: {content: "<div align=\"center\"><h2>Bienvenue sur le panneau d'administration du site AMAPPlanet'</h2></div><p>L'outil d'administration du projet <code>ISMA</code> vous permet d'administrer le contenu des pages du site web <code>AMAPPlanet'</code>.</p> <br />" }}
+            - { position: top, type: sonata.admin.block.admin_list,class: col-md-10 col-md-offset-1,settings: {groups:[amap.admin.group.user,amap.admin.group.news,amap.admin.group.amap,amap.admin.group.basket,amap.admin.group.delivery]}}
         groups:
             amap.admin.group.news:
                 label_catalogue: AMAPBundle
@@ -198,7 +196,7 @@ sonata_admin:
                     - amap.admin.product
             amap.admin.group.delivery:
                 label_catalogue: AMAPBundle
-                label: label_delivry
+                label: label_delivery
                 icon: "<i class=\"fa fa-building\"></i>"
                 items:
                     - amap.admin.store
