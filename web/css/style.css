@@ -372,12 +372,12 @@ img.btn_close {
 
 /*********************************content*************************************/
 #content {
-    width:100%;
-    padding:30px 0 43px;
+    /*width:100%;*/
+    /*padding:30px 0 43px;*/
     background:url(../images/content-tail.png) left top repeat;
-    position:relative;
+    /*position:relative;
     z-index:1;
-    min-height: 300px;
+    min-height: 300px;*/
 }
 /****************************footer************************/
 body {

@@ -127,17 +127,14 @@
             {% endblock %}
         </header>       
         <!-- End of block Header of Body -->
-        <div class="container marginContainer">
-            <div class="row">
-                <section id="content">
+        <div id="content" class="container marginContainer">
+           
                     <!--==============================content================================-->
                     {% block contenu %}
                     {% endblock %} 
                     <!--==============================footer=================================-->
-
-
-                </section>
-            </div>
+           
+                   
         </div>
         {% block javascripts %}
             <!--<script type="text/javascript" language="javascript" src="{{ asset('//code.jquery.com/jquery-1.12.3.min.js')}}">
