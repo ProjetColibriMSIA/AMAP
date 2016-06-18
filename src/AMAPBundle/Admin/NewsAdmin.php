@@ -86,6 +86,11 @@ class NewsAdmin extends AbstractAdmin {
                 ->add('startDate')
                 ->add('endDate')
                 ->add('isDisplay')
+				->add('news_amap', 'entity', array(
+                    'class' => 'AMAPBundle:AMAP\AMAP',
+                    'associated_property' => function ($amap) {
+                        return $amap->getName();
+                    }))
         ;
     }
 

@@ -128,6 +128,16 @@ class ContractAdmin extends AbstractAdmin {
                 ->add('signDate')
                 ->add('expirationDate')
                 ->add('repPDF')
+				->add('users', 'entity', array(
+                    'class' => 'AMAPBundle:Account\User',
+                    'associated_property' => function ($amap) {
+                        return $amap->getUsername();
+                    }))
+                ->add('amap', 'contracts_amap', array(
+                    'class' => 'AMAPBundle:AMAP\AMAP',
+                    'associated_property' => function ($amap) {
+                        return $amap->getName();
+                    }))
         ;
     }
 

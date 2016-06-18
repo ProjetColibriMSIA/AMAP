@@ -105,6 +105,21 @@ class AMAPAdmin extends AbstractAdmin {
                 ->add('adress')
                 ->add('description')
                 ->add('repIMG')
+				->add('users', 'entity', array(
+                    'class' => 'AMAPBundle:Account\User',
+                    'associated_property' => function ($amap) {
+                        return $amap->getUsername();
+                    }))
+                ->add('news', 'entity', array(
+                    'class' => 'AMAPBundle:Announcement\News',
+                    'associated_property' => function ($amap) {
+                        return $amap->getName();
+                    }))
+                ->add('contracts_amap', 'entity', array(
+                    'class' => 'AMAPBundle:Account\Contract',
+                    'associated_property' => function ($amap) {
+                        return $amap->getId();
+                    }))
         ;
     }
 

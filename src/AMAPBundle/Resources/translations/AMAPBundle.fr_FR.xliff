@@ -787,6 +787,114 @@
                 <source>label_confirmpassword</source>
                 <target>Confirmation</target>
             </trans-unit>
+			<trans-unit id="form.label_phone">
+                <source>form.label_phone</source>
+                <target>Téléphone</target>
+            </trans-unit>
+			<trans-unit id="list.label_phone">
+                <source>list.label_phone</source>
+                <target>Téléphone</target>
+            </trans-unit>
+			<trans-unit id="filter.label_phone">
+                <source>filter.label_phone</source>
+                <target>Téléphone</target>
+            </trans-unit>
+			<trans-unit id="show.label_phone">
+                <source>show.label_phone</source>
+                <target>Téléphone</target>
+            </trans-unit>
+			<trans-unit id="list.label_adress_delivery">
+                <source>list.label_adress_delivery</source>
+                <target>Adresse de livraison</target>
+            </trans-unit>
+			<trans-unit id="filter.label_adress_delivery">
+                <source>filter.label_adress_delivery</source>
+                <target>Adresse de livraison</target>
+            </trans-unit>
+			<trans-unit id="show.label_adress_delivery">
+                <source>show.label_adress_delivery</source>
+                <target>Adresse de livraison</target>
+            </trans-unit>
+			<trans-unit id="form.label_adress_delivery">
+                <source>form.label_adress_delivery</source>
+                <target>Adresse de livraison</target>
+            </trans-unit>
+			<trans-unit id="list.label_news">
+                <source>list.label_news</source>
+                <target>Actualités</target>
+            </trans-unit>
+			<trans-unit id="list.label_contracts_amap">
+                <source>list.label_contracts_amap</source>
+                <target>Contrats</target>
+            </trans-unit>
+			<trans-unit id="form.label_news">
+                <source>form.label_news</source>
+                <target>Actualités</target>
+            </trans-unit>
+			<trans-unit id="form.label_contracts_amap">
+                <source>form.label_contracts_amap</source>
+                <target>Contrats</target>
+            </trans-unit>
+			<trans-unit id="list.label_owner_consumer">
+                <source>list.label_owner_consumer</source>
+                <target>Consommateurs</target>
+            </trans-unit>
+			<trans-unit id="list.label_product_by">
+                <source>list.label_product_by</source>
+                <target>Producteurs</target>
+            </trans-unit>
+			<trans-unit id="list.label_inventory">
+                <source>list.label_inventory</source>
+                <target>Inventaire</target>
+            </trans-unit>
+			<trans-unit id="form.label_owner_consumer">
+                <source>form.label_owner_consumer</source>
+                <target>Consommateurs</target>
+            </trans-unit>
+			<trans-unit id="form.label_product_by">
+                <source>form.label_product_by</source>
+                <target>Producteurs</target>
+            </trans-unit>
+			<trans-unit id="show.label_news_amap">
+                <source>show.label_news_amap</source>
+                <target>Amap</target>
+            </trans-unit>
+			<trans-unit id="show.label_users">
+                <source>show.label_users</source>
+                <target>Utilisateurs</target>
+            </trans-unit>
+			<trans-unit id="show.label_amap">
+                <source>show.label_amap</source>
+                <target>Amap</target>
+            </trans-unit>
+			<trans-unit id="show.label_news">
+                <source>show.label_news</source>
+                <target>Actualités</target>
+            </trans-unit>
+			<trans-unit id="show.label_contracts_amap">
+                <source>show.label_contracts_amap</source>
+                <target>Contrats</target>
+            </trans-unit>
+			<trans-unit id="show.label_products">
+                <source>show.label_products</source>
+                <target>Produits</target>
+            </trans-unit>
+			<trans-unit id="show.label_owner_consumer">
+                <source>show.label_owner_consumer</source>
+                <target>Consommateurs</target>
+            </trans-unit>
+			<trans-unit id="show.label_product_by">
+                <source>show.label_product_by</source>
+                <target>Producteurs</target>
+            </trans-unit>
+			<trans-unit id="show.label_inventory">
+                <source>show.label_inventory</source>
+                <target>Inventaire</target>
+            </trans-unit>
+			<trans-unit id="show.label_baskets">
+                <source>show.label_baskets</source>
+                <target>Paniers</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

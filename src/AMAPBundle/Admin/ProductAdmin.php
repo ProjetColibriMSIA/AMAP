@@ -81,6 +81,14 @@ class ProductAdmin extends AbstractAdmin {
                 ->add('weight')
                 ->add('description')
                 ->add('repIMG')
+				->add('baskets', 'sonata_type_model', array(
+                    'expanded' => true,
+                    'by_reference' => false,
+                    'required' => false,
+                    'multiple' => true,
+                    'class' => 'AMAPBundle:Basket\Basket',
+                    'property' => 'name'
+                ))
         ;
     }
 

@@ -127,6 +127,11 @@ class GroupAdmin extends AbstractAdmin {
                 ->add('id')
                 ->add('name')
                 ->add('roles')
+				->add('users', 'entity', array(
+                    'class' => 'AMAPBundle:Account\User',
+                    'associated_property' => function ($amap) {
+                        return $amap->getUsername();
+                    }))
         ;
     }
 
