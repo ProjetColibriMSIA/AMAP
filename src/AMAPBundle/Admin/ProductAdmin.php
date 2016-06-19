@@ -32,7 +32,7 @@ class ProductAdmin extends AbstractAdmin {
                 ->addIdentifier('name')
                 ->add('price')
                 ->add('weight')
-                ->add('description')
+                ->add('description','html')
                 ->add('repIMG')
                 ->add('baskets', 'entity', array(
                     'class' => 'AMAPBundle:Basket\Basket',
@@ -57,7 +57,9 @@ class ProductAdmin extends AbstractAdmin {
                 ->add('name')
                 ->add('price')
                 ->add('weight')
-                ->add('description')
+                ->add('description', 'ckeditor', array(
+                    'config' => array('toolbar' => 'full'),
+                ))
                 ->add('repIMG')
                 ->add('baskets', 'sonata_type_model', array(
                     'expanded' => true,
@@ -81,7 +83,7 @@ class ProductAdmin extends AbstractAdmin {
                 ->add('weight')
                 ->add('description')
                 ->add('repIMG')
-				->add('baskets', 'sonata_type_model', array(
+                ->add('baskets', 'sonata_type_model', array(
                     'expanded' => true,
                     'by_reference' => false,
                     'required' => false,

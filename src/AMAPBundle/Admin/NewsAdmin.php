@@ -32,7 +32,7 @@ class NewsAdmin extends AbstractAdmin {
         $listMapper
                 ->add('id')
                 ->add('name')
-                ->add('description')
+                ->add('description','html')
                 ->add('repIMG')
                 ->add('startDate')
                 ->add('endDate')
@@ -58,7 +58,9 @@ class NewsAdmin extends AbstractAdmin {
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
                 ->add('name')
-                ->add('description')
+                ->add('description', 'ckeditor', array(
+                    'config' => array('toolbar' => 'full'),
+                ))
                 ->add('repIMG')
                 ->add('startDate')
                 ->add('endDate')

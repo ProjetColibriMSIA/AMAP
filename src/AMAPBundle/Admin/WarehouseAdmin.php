@@ -19,7 +19,7 @@ class WarehouseAdmin extends AbstractAdmin
             ->add('id')
             ->add('name')
             ->add('adress')
-            ->add('description')
+            ->add('description','html')
             ->add('phone')
         ;
     }
@@ -33,7 +33,9 @@ class WarehouseAdmin extends AbstractAdmin
             ->add('id')
             ->add('name')
             ->add('adress')
-            ->add('description')
+            ->add('description', 'ckeditor', array(
+                    'config' => array('toolbar' => 'full'),
+                ))
             ->add('phone')
             ->add('_action', null, array(
                 'actions' => array(

@@ -32,7 +32,7 @@ class ContractAdmin extends AbstractAdmin {
         $listMapper
                 ->add('id')
                 ->add('rules')
-                ->add('description')
+                ->add('description','html')
                 ->add('adressDelivery')
                 ->add('signDate')
                 ->add('expirationDate')
@@ -63,7 +63,9 @@ class ContractAdmin extends AbstractAdmin {
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
                 ->add('rules')
-                ->add('description')
+                ->add('description', 'ckeditor', array(
+                    'config' => array('toolbar' => 'full'),
+                ))
                 ->add('adressDelivery')
                 ->add('signDate')
                 ->add('expirationDate')

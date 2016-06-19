@@ -13,7 +13,7 @@
 
             <!-- Especially well keep order : reset -> datatable -> bootstrap -> font-awesome -> style -->
             <link rel="stylesheet" href="{{ asset('css/reset.css')}}" type="text/css" media="screen">
-           
+
             <!-- <link rel="stylesheet" type="text/css" href="{  asset('css/jquery.dataTables.min.css')}}">-->
             <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css')}}" media="screen" >
             <link rel="stylesheet" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.css')}}" type="text/css" media="screen">
@@ -27,26 +27,28 @@
     <!-- End of Block Head -->
     <!-- Block body --> 
     <body>
-        <!-- Block for the page background image : carousel -->
-        <div class="carousel slide carousel-fade" data-ride="carousel">
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                </div>
-                <div class="item">
-                </div>
-                <div class="item">
+        {% block carousel %}
+            <!-- Block for the page background image : carousel -->
+            <div class="carousel slide carousel-fade" data-ride="carousel">
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                    </div>
+                    <div class="item">
+                    </div>
+                    <div class="item">
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- End block carousel -->
-
-        {% if app.user %}
+            <!-- End block carousel -->
+        {% endblock %}
+        {% block basemodal %}
+            {% if app.user %}
                 {% include 'component/modalLogout.html.twig' %}
-        {% else %}
+            {% else %}
                 {% include 'component/modalConnect.html.twig' %}
-        {% endif %}
-        
+            {% endif %}
+        {% endblock %}
 
 
 
@@ -57,13 +59,13 @@
                     <!-- Button Connection -->
                     <div id="Auth" class="Connect">
                         {% if app.user %}
-                                {% include 'component/buttonLogout.html.twig' %}
+                            {% include 'component/buttonLogout.html.twig' %}
                         {% else %}
-                                {% include 'component/buttonConnect.html.twig' %}
+                            {% include 'component/buttonConnect.html.twig' %}
                         {% endif %}
-                        
+
                     </div>                
-                    
+
                     <!-- End of div for button connect -->
 
                     <!-- Use container in Header for use Bootstrap grid to adjust the menu in function of the device size -->
@@ -73,7 +75,7 @@
                             <!-- Section logo, explain class: lg :>1200px ; md :>992px ; sm :>768px ; xs :<768px -->
                             <section class="col-lg-5 col-md-4 col-sm-12 col-xs-12 ">
 
-                                <a href="accueil">
+                                <a href="{{path('amap_default_home')}}">
                                     <div class="logo">
                                         <img src="{{ asset('./images/logo/logo.png')}}" >
                                     </div>
@@ -98,19 +100,19 @@
 
                                 <!-- In this block there is the 2 menu possible-->
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                   
+
                                     {% if app.user %}
-                                            {% set user = app.user.username %}
+                                        {% set user = app.user.username %}
                                     {% else %}
-                                            {% set user = false %}
+                                        {% set user = false %}
                                     {% endif %}  
                                     {% set mediumMenu = knp_menu_get('AMAPBundle:Builder:mainMenu', [], {'route': app.request.attributes.get('_route'), 'menu':'mediumMenu','user':user}) %}
                                     {% set smallMenu = knp_menu_get('AMAPBundle:Builder:mainMenu', [], {'route': app.request.attributes.get('_route'), 'menu':'smallMenu','user':user}) %}
 
                                     {{ knp_menu_render(mediumMenu) }}
                                     {{ knp_menu_render(smallMenu) }}
-                                    
-                                    
+
+
 
 
 
@@ -151,11 +153,11 @@
             <script src="{{ asset('js/tms_presets.js')}}" type="text/javascript"></script>
             <script src="{{ asset('bootstrap/js/bootstrap.js')}}" type="text/javascript"></script>
             <script src="//cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
-           <!-- <script src="//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js" type="text/javascript"></script>
-            <script src="//cdn.datatables.net/responsive/2.1.0/js/responsive.bootstrap.min.js" type="text/javascript"></script>
-           -->
-           <script src="{{ asset('js/script.js')}}" type="text/javascript"></script>
-           
+            <!-- <script src="//cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js" type="text/javascript"></script>
+             <script src="//cdn.datatables.net/responsive/2.1.0/js/responsive.bootstrap.min.js" type="text/javascript"></script>
+            -->
+            <script src="{{ asset('js/script.js')}}" type="text/javascript"></script>
+
         {% endblock %}
 
     </body>

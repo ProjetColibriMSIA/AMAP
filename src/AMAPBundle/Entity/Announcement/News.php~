@@ -34,6 +34,7 @@ class News {
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+    
 	
 	 /**
      * @var string

@@ -18,7 +18,7 @@ class StoreAdmin extends AbstractAdmin
         $datagridMapper
             ->add('id')
             ->add('name')
-            ->add('adress')
+            ->add('adress','html')
             ->add('description')
             ->add('phone')
         ;
@@ -54,7 +54,9 @@ class StoreAdmin extends AbstractAdmin
             ->add('id')
             ->add('name')
             ->add('adress')
-            ->add('description')
+            ->add('description', 'ckeditor', array(
+                    'config' => array('toolbar' => 'full'),
+                ))
             ->add('phone')
         ;
     }
