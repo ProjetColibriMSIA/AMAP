@@ -20,7 +20,7 @@
 							<tr href="amaps?id={{ amap.getId }}">
 								<td> {{ amap.getName() }}</td>
 								<td> {{ amap.getAdress()|nl2br }}</td>
-								<td> {{ amap.getDescription() | truncate(100, false, '') |nl2br}} ...</td>
+								<td> {{ amap.getDescription() | raw}}</td>
                                                                 
                                                         </tr>
 						{% endfor %}
@@ -35,7 +35,7 @@
 						<img src='/AMAP/web/./images/{{amap.getrepIMG()}}' alt="{{amap.getName()}}"/>
 					{% endif %}
 				</div>
-				<p>{{ amap.getDescription|nl2br }}</p>
+				<p>{{ amap.getDescription|raw }}</p>
 				
 				<input type="button" value="Retour" onclick="history.go(-1)">
 			</section>

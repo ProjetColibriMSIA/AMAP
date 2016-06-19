@@ -32,7 +32,7 @@ class AMAPAdmin extends AbstractAdmin {
                 ->addIdentifier('name')
                 ->add('phone')
                 ->add('adress')
-                ->add('description')
+                ->add('description', 'html')
                 ->add('repIMG')
                 ->add('users', 'entity', array(
                     'class' => 'AMAPBundle:Account\User',
@@ -67,7 +67,9 @@ class AMAPAdmin extends AbstractAdmin {
                 ->add('name')
                 ->add('phone')
                 ->add('adress')
-                ->add('description')
+                ->add('description', 'ckeditor', array(
+                    'config' => array('toolbar' => 'full'),
+                ))
                 ->add('repIMG')
                 ->add('users', 'sonata_type_model', array(
                     'expanded' => true,
@@ -105,7 +107,7 @@ class AMAPAdmin extends AbstractAdmin {
                 ->add('adress')
                 ->add('description')
                 ->add('repIMG')
-				->add('users', 'entity', array(
+                ->add('users', 'entity', array(
                     'class' => 'AMAPBundle:Account\User',
                     'associated_property' => function ($amap) {
                         return $amap->getUsername();

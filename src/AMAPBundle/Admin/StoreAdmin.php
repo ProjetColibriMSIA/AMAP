@@ -18,7 +18,7 @@ class StoreAdmin extends AbstractAdmin
         $datagridMapper
             ->add('id')
             ->add('name')
-            ->add('adress','html')
+            ->add('adress')
             ->add('description')
             ->add('phone')
         ;
@@ -30,10 +30,9 @@ class StoreAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
             ->add('name')
             ->add('adress')
-            ->add('description')
+            ->add('description','html')
             ->add('phone')
             ->add('_action', null, array(
                 'actions' => array(
@@ -51,7 +50,6 @@ class StoreAdmin extends AbstractAdmin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
             ->add('name')
             ->add('adress')
             ->add('description', 'ckeditor', array(
