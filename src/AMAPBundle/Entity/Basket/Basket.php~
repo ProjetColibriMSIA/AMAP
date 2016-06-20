@@ -52,21 +52,21 @@ class Basket {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="expirationDate", type="date")
+     * @ORM\Column(name="expirationDate", type="datetime")
      */
     private $expirationDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="supplyDate", type="date")
+     * @ORM\Column(name="supplyDate", type="datetime", nullable=true)
      */
     private $supplyDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="storeDate", type="date")
+     * @ORM\Column(name="storeDate", type="datetime", nullable=true)
      */
     private $storeDate;
 
@@ -126,7 +126,7 @@ class Basket {
     protected $basketsStore;
 
     public function __toString() {
-        return ((new \ReflectionClass($this))->getShortName() . ':' . strval($this->getId()));
+        return $this->name;
     }
 
     /**
@@ -224,72 +224,6 @@ class Basket {
      */
     public function getWeight() {
         return $this->weight;
-    }
-
-    /**
-     * Set expirationDate
-     *
-     * @param \DateTime $expirationDate
-     *
-     * @return Basket
-     */
-    public function setExpirationDate($expirationDate) {
-        $this->expirationDate = $expirationDate;
-
-        return $this;
-    }
-
-    /**
-     * Get expirationDate
-     *
-     * @return \DateTime
-     */
-    public function getExpirationDate() {
-        return $this->expirationDate;
-    }
-
-    /**
-     * Set supplyDate
-     *
-     * @param \DateTime $supplyDate
-     *
-     * @return Basket
-     */
-    public function setSupplyDate($supplyDate) {
-        $this->supplyDate = $supplyDate;
-
-        return $this;
-    }
-
-    /**
-     * Get supplyDate
-     *
-     * @return \DateTime
-     */
-    public function getSupplyDate() {
-        return $this->supplyDate;
-    }
-
-    /**
-     * Set storeDate
-     *
-     * @param \DateTime $storeDate
-     *
-     * @return Basket
-     */
-    public function setStoreDate($storeDate) {
-        $this->storeDate = $storeDate;
-
-        return $this;
-    }
-
-    /**
-     * Get storeDate
-     *
-     * @return \DateTime
-     */
-    public function getStoreDate() {
-        return $this->storeDate;
     }
 
     /**
@@ -450,15 +384,17 @@ class Basket {
     public function getInventory() {
         return $this->inventory;
     }
+
     /**
      * Constructor
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->products = new \Doctrine\Common\Collections\ArrayCollection();
         $this->ownerConsumer = new \Doctrine\Common\Collections\ArrayCollection();
         $this->productBy = new \Doctrine\Common\Collections\ArrayCollection();
         $this->basketsStore = new \Doctrine\Common\Collections\ArrayCollection();
+
+        $this->expirationDate = new \DateTime();
     }
 
     /**
@@ -468,8 +404,7 @@ class Basket {
      *
      * @return Basket
      */
-    public function addBasketsStore(\AMAPBundle\Entity\LocalStoreManager\Store $basketsStore)
-    {
+    public function addBasketsStore(\AMAPBundle\Entity\LocalStoreManager\Store $basketsStore) {
         $this->basketsStore[] = $basketsStore;
 
         return $this;
@@ -480,8 +415,7 @@ class Basket {
      *
      * @param \AMAPBundle\Entity\LocalStoreManager\Store $basketsStore
      */
-    public function removeBasketsStore(\AMAPBundle\Entity\LocalStoreManager\Store $basketsStore)
-    {
+    public function removeBasketsStore(\AMAPBundle\Entity\LocalStoreManager\Store $basketsStore) {
         $this->basketsStore->removeElement($basketsStore);
     }
 
@@ -490,8 +424,74 @@ class Basket {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getBasketsStore()
-    {
+    public function getBasketsStore() {
         return $this->basketsStore;
     }
+
+    /**
+     * Set expirationDate
+     *
+     * @param \DateTime $expirationDate
+     *
+     * @return Basket
+     */
+    public function setExpirationDate($expirationDate) {
+        $this->expirationDate = $expirationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get expirationDate
+     *
+     * @return \DateTime
+     */
+    public function getExpirationDate() {
+        return $this->expirationDate;
+    }
+
+    /**
+     * Set supplyDate
+     *
+     * @param \DateTime $supplyDate
+     *
+     * @return Basket
+     */
+    public function setSupplyDate($supplyDate) {
+        $this->supplyDate = $supplyDate;
+
+        return $this;
+    }
+
+    /**
+     * Get supplyDate
+     *
+     * @return \DateTime
+     */
+    public function getSupplyDate() {
+        return $this->supplyDate;
+    }
+
+    /**
+     * Set storeDate
+     *
+     * @param \DateTime $storeDate
+     *
+     * @return Basket
+     */
+    public function setStoreDate($storeDate) {
+        $this->storeDate = $storeDate;
+
+        return $this;
+    }
+
+    /**
+     * Get storeDate
+     *
+     * @return \DateTime
+     */
+    public function getStoreDate() {
+        return $this->storeDate;
+    }
+
 }

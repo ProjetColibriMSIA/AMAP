@@ -17,11 +17,13 @@ class Roles {
             if (empty($roles)) {
                 continue;
             }
-
             foreach ($roles as $role) {
                 if (!isset($flatRoles[$role])) {
-                    $flatRoles[$role] = $role;
+                    if (strpos($role, "ROLE_AMAP") === false || strpos($role, "ROLE_AMAP_MANAGER") !== false) {
+                        $flatRoles[$role] = $role;
+                    }
                 }
+                
             }
         }
 

@@ -30,7 +30,7 @@ class StoreAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('name')
+            ->addIdentifier('name')
             ->add('adress')
             ->add('description','html')
             ->add('phone')

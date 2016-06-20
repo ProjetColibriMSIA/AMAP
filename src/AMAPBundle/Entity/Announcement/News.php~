@@ -46,14 +46,14 @@ class News {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="startDate", type="date")
+     * @ORM\Column(name="startDate", type="datetime")
      */
     private $startDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="endDate", type="date")
+     * @ORM\Column(name="endDate", type="datetime")
      */
     private $endDate;
 
@@ -131,50 +131,6 @@ class News {
     }
 
     /**
-     * Set startDate
-     *
-     * @param \DateTime $startDate
-     *
-     * @return News
-     */
-    public function setStartDate($startDate) {
-        $this->startDate = $startDate;
-
-        return $this;
-    }
-
-    /**
-     * Get startDate
-     *
-     * @return \DateTime
-     */
-    public function getStartDate() {
-        return $this->startDate;
-    }
-
-    /**
-     * Set endDate
-     *
-     * @param \DateTime $endDate
-     *
-     * @return News
-     */
-    public function setEndDate($endDate) {
-        $this->endDate = $endDate;
-
-        return $this;
-    }
-
-    /**
-     * Get endDate
-     *
-     * @return \DateTime
-     */
-    public function getEndDate() {
-        return $this->endDate;
-    }
-
-    /**
      * Set isDisplay
      *
      * @param boolean $isDisplay
@@ -201,6 +157,9 @@ class News {
      */
     public function __construct() {
         $this->news_amap = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->startDate = new \DateTime();
+        $this->endDate = new \DateTime();
+        $this->isDisplay=true;
     }
 
     /**
@@ -257,5 +216,53 @@ class News {
     public function getRepIMG()
     {
         return $this->repIMG;
+    }
+
+    /**
+     * Set startDate
+     *
+     * @param \DateTime $startDate
+     *
+     * @return News
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * Get startDate
+     *
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * Set endDate
+     *
+     * @param \DateTime $endDate
+     *
+     * @return News
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get endDate
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
     }
 }

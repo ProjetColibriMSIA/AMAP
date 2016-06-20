@@ -40,7 +40,7 @@ class BasketAdmin extends AbstractAdmin {
                 ->add('expirationDate')
                 ->add('supplyDate')
                 ->add('storeDate')
-                ->add('description','html')
+                ->add('description', 'html')
                 ->add('repIMG')
                 ->add('products', null, array(
                     'class' => 'AMAPBundle:Basket\Product',
@@ -82,9 +82,15 @@ class BasketAdmin extends AbstractAdmin {
                 ->add('price')
                 ->add('barCode')
                 ->add('weight')
-                ->add('expirationDate')
-                ->add('supplyDate')
-                ->add('storeDate')
+                ->add('expirationDate', 'sonata_type_date_picker',array('format'=>'dd/MM/yyyy'))
+                ->add('supplyDate', 'sonata_type_date_picker', array(
+                    'required' => false,
+                    'format'=>'dd/MM/yyyy'
+                ))
+                ->add('storeDate', 'sonata_type_date_picker', array(
+                    'required' => false,
+                    'format'=>'dd/MM/yyyy'
+                ))
                 ->add('description', 'ckeditor', array(
                     'config' => array('toolbar' => 'full'),
                 ))

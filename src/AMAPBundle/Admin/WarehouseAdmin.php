@@ -28,7 +28,7 @@ class WarehouseAdmin extends AbstractAdmin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-                ->add('name')
+                ->addIdentifier('name')
                 ->add('adress', 'html')
                 ->add('description')
                 ->add('phone')

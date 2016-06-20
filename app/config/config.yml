@@ -44,7 +44,7 @@ twig:
     strict_variables: "%kernel.debug%"
     #sonata
     form_themes:
-        #- 'SonataCoreBundle:Form:datepicker.html.twig'
+        - 'SonataCoreBundle:Form:datepicker.html.twig'
         - 'SonataFormatterBundle:Form:formatter.html.twig'
 # Doctrine Configuration
 doctrine:
@@ -218,7 +218,7 @@ sonata_admin:
     dashboard:
         blocks:
             # display a dashboard block
-            - { position: top, type: sonata.block.service.text,class: col-md-10 col-md-offset-1, settings: {content: "<div align=\"center\"><h2>Bienvenue sur le panneau d'administration du site AMAPPlanet'</h2></div><p>L'outil d'administration du projet <code>ISMA</code> vous permet d'administrer le contenu des pages du site web <code>AMAPPlanet'</code>.</p> <br />" }}
+            - { position: top, type: sonata.block.service.text,class: col-md-10 col-md-offset-1, settings: {content: "<div align=\"center\"><h2>Bienvenue sur le panneau d'administration du site <b>AMAPPlanet'</b></h2></div><p>L'outil d'administration du projet <code>ISMA</code> vous permet d'administrer le contenu des pages du site web <code>AMAPPlanet'</code>.</p> <br />" }}
             - { position: top, type: sonata.admin.block.admin_list,class: col-md-10 col-md-offset-1,settings: {groups:[amap.admin.group.user,amap.admin.group.news,amap.admin.group.amap,amap.admin.group.basket,amap.admin.group.delivery]}}
         groups:
             amap.admin.group.news:

@@ -903,39 +903,39 @@
                 <source>label_phone</source>
                 <target>Téléphone</target>
             </trans-unit>
-			<trans-unit id="label_delivery">
+            <trans-unit id="label_delivery">
                 <source>label_delivery</source>
                 <target>Livraison</target>
             </trans-unit>
-			<trans-unit id="label_store">
+            <trans-unit id="label_store">
                 <source>label_store</source>
                 <target>Magasins</target>
             </trans-unit>
-			<trans-unit id="label_warehouse">
+            <trans-unit id="label_warehouse">
                 <source>label_warehouse</source>
                 <target>Entrepôts</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_store_list">
+            <trans-unit id="breadcrumb.link_store_list">
                 <source>breadcrumb.link_store_list</source>
                 <target>Magasins</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_store_create">
+            <trans-unit id="breadcrumb.link_store_create">
                 <source>breadcrumb.link_store_create</source>
                 <target>Création Magasin</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_warehouse_list">
+            <trans-unit id="breadcrumb.link_warehouse_list">
                 <source>breadcrumb.link_warehouse_list</source>
                 <target>Entrepôts</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_warehouse_create">
+            <trans-unit id="breadcrumb.link_warehouse_create">
                 <source>breadcrumb.link_warehouse_create</source>
                 <target>Création Entrepôt</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_warehouse_delete">
+            <trans-unit id="breadcrumb.link_warehouse_delete">
                 <source>breadcrumb.link_warehouse_delete</source>
                 <target>Suppression Entrepôt</target>
             </trans-unit>
-			<trans-unit id="breadcrumb.link_store_delete">
+            <trans-unit id="breadcrumb.link_store_delete">
                 <source>breadcrumb.link_store_delete</source>
                 <target>Suppression Magasin</target>
             </trans-unit>

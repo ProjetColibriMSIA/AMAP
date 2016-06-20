@@ -62,7 +62,7 @@ class DefaultController extends Controller {
     public function amapsAction() {
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository("AMAPBundle:AMAP\AMAP");
-   
+
         if (isset($_GET["id"])) {
             $id = $_GET["id"];
             $amap = $rep->find($id);
@@ -71,7 +71,6 @@ class DefaultController extends Controller {
             $amaps = $rep->findAll();
             return $this->render('AMAPBundle:Default:amap.html.twig', array('amaps' => $amaps));
         }
-		
     }
 
     /**

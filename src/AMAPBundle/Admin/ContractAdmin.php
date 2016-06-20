@@ -30,9 +30,9 @@ class ContractAdmin extends AbstractAdmin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-                ->add('id')
+                ->addIdentifier('id')
                 ->add('rules')
-                ->add('description','html')
+                ->add('description', 'html')
                 ->add('adressDelivery')
                 ->add('signDate')
                 ->add('expirationDate')
@@ -67,8 +67,8 @@ class ContractAdmin extends AbstractAdmin {
                     'config' => array('toolbar' => 'full'),
                 ))
                 ->add('adressDelivery')
-                ->add('signDate')
-                ->add('expirationDate')
+                ->add('signDate', 'sonata_type_date_picker',array('format'=>'dd/MM/yyyy'))
+                ->add('expirationDate', 'sonata_type_date_picker',array('format'=>'dd/MM/yyyy'))
                 ->add('repPDF');
         if ($this->isCurrentRoute('create')) {
             $formMapper
@@ -76,46 +76,26 @@ class ContractAdmin extends AbstractAdmin {
                         'expanded' => true,
                         'by_reference' => false,
                         'multiple' => true
-                    ))
-                    ->add('amap', 'sonata_type_model_list', array(
-                        'by_reference' => false,
             ));
         } elseif ($this->isCurrentRoute('edit')) {
             $formMapper
-                    /* ->add('users', 'sonata_type_collection', array(
-                      'by_reference' => false), array(
-                      'edit' => 'inline',
-                      'inline' => 'table'
-                      ))
-                     */
-                    /*
-                      ->add('users', null, array('by_reference' => false), array(
-                      'edit' => 'inline',
-                      'inline' => 'table',
-                      'sortable' => 'position'
-                      ))
-                     */
                     ->add('users', 'sonata_type_model', array(
                         'expanded' => true,
                         'by_reference' => false,
                         'multiple' => true
-                    ))
-
-
-
-                    /* ->add('users', null, array('property_path' => 'username'), array(
-                      'edit' => 'inline',
-                      'inline' => 'table',
-                      'sortable' => 'position',
-                      'limit' => 2
-                      ))
-                     */
-                    ->add('amap', 'sonata_type_model', array(
-                        'by_reference' => false,
-                        'expanded' => true,
-                        'property' => 'name'
             ));
         }
+        $formMapper
+                ->add('amap', 'sonata_type_model_list', array(
+                    'by_reference' => false,
+                    'required' => true,
+                    'btn_delete'    => false,
+                    'btn_add'    => false, ), array(
+                    'placeholder' => 'Aucune AMAP séléctionné',
+                    'associated_property' => function ($amap) {
+                        return $amap->getName();
+                    }
+                ));
     }
 
     /**
@@ -130,7 +110,7 @@ class ContractAdmin extends AbstractAdmin {
                 ->add('signDate')
                 ->add('expirationDate')
                 ->add('repPDF')
-				->add('users', 'entity', array(
+                ->add('users', 'entity', array(
                     'class' => 'AMAPBundle:Account\User',
                     'associated_property' => function ($amap) {
                         return $amap->getUsername();
