@@ -17,7 +17,7 @@
                 <tbody>
                     {% for user in users%}
                         {% for group in user.getGroupNames() %}
-                            {%if group=='farmer'%}    
+                            {%if group=='FARMER'%}    
                                 <tr>
                                     <td> {{ user.getName }}</td>
                                     <td> {{ user.getFirstName }}</td>

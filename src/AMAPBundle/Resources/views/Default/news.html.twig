@@ -28,7 +28,7 @@
 											
 										</p>
 										
-										<p> {{ n.getDescription() | truncate(100, false, '') |nl2br}} ...</p>
+										<p> {{ n.getDescription() | raw}} ...</p>
 									</div>
 								</a>
 							</li>
@@ -51,7 +51,7 @@
 					
 				</p>
 				
-				<p>{{ new.getDescription|nl2br }}</p>
+				<p>{{ new.getDescription|raw }}</p>
 				<input type="button" value="Retour" onclick="history.go(-1)">
 			{% endif %}
 		</section>
