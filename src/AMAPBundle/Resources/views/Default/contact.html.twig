@@ -5,30 +5,31 @@
 		<div class="post w500">
 			<div id="map" style="width: 500px; height: 500px;"></div>
 			<h3>Pour nous contacter...</h3>
-			<p>Adresse :</p>
-			<p>16 Place Saint-Cyran</p>
+                        <p><strong>Adresse :</strong></p>
+			<p>Site Balsan, 2 allée Jean Vaillé</p>
 			<p>36000 Châteauroux</p>
-			<p>Téléphone :<a href="tel:+33(0)123456789">+33(0)123456789 </a></p>
-			<p>Mail :<a href="mailto:amapplanet@gmail.com"> amapplanet@gmail.com </a></p>
+                        <p><strong>Téléphone :</strong><a href="tel:+33(0)123456789">+33(0)123456789 </a></p>
+                        <p><strong>Mail :</strong><a href="mailto:amapplanet@gmail.com"> amapplanet@gmail.com </a></p>
 		</div>	
 	</body>
 	
  {% endblock %}
-{% block specifjavascript %}
+{% block javascripts %}
+    {{parent()}}
 	<script type="text/javascript">
 
           var geocoder;
 		  var map;
 		  function initialize() {
 			geocoder = new google.maps.Geocoder();
-			var latlng = new google.maps.LatLng(46.812343, 1.694740);
+			var latlng = new google.maps.LatLng(46.8111865,1.6762087);
 			var mapOptions = {
 			  zoom: 16,
 			  center: latlng
 			}
 			map = new google.maps.Map(document.getElementById("map"), mapOptions);
 			
-			var address = "16 Place Saint-Cyran 36000 Châteauroux, France";
+			var address = "Site Balsan, 2 allée Jean Vaillé, 36000 Châteauroux";
 			geocoder.geocode( { 'address': address}, function(results, status) {
 				map.setCenter(results[0].geometry.location);
 				var marker = new google.maps.Marker({

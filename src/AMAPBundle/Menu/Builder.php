@@ -37,7 +37,7 @@ class Builder implements ContainerAwareInterface {
 
         $menu->addChild('Producteurs', array('route' => 'amap_default_farmers', 'attributes' => array('id' => 'amap_default_farmers', 'class' => 'navFarmers')));
 
-        $menu->addChild('L\'AMAP', array('route' => 'amap_default_amaps', 'attributes' => array('id' => 'amap_default_amaps', 'class' => 'navAMAP')));
+        $menu->addChild('AMAP', array('route' => 'amap_default_amaps', 'attributes' => array('id' => 'amap_default_amaps', 'class' => 'navAMAP')));
 
         $menu->addChild('Produits', array('route' => 'amap_default_products', 'attributes' => array('id' => 'amap_default_products', 'class' => 'navProducts')));
 

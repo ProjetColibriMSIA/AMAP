@@ -17,6 +17,11 @@ header {
     background-size: 100% 100% ;
     /*height:140px;*/
 }
+.header{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 .smallMenu {
     text-align:center;
 }
@@ -36,6 +41,30 @@ header {
 }
 
 
+ul#footerMention{
+    
+}
+ul#footerMention {
+    text-align:center;
+    padding-top:20px;
+}
+
+
+
+ul#footerMention li a {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px 4px 0 0;
+     padding:0 5px 0 0;
+    font-family: 'Adamina', serif;
+    font-size:19px;
+    line-height:2em;
+}
+
+ul#footerMention li a:hover {
+    background-color: RGB(111,143,91);
+}
 
 a .logo img{
     width:100%
@@ -54,7 +83,9 @@ a .logo img{
 }
 
 @media (max-width: 767px) {
-
+    .isXsDisplay{
+        display:none;
+    }
     .navbar-brand {
         margin:auto;
     }
@@ -81,9 +112,15 @@ a .logo img{
     .Connect{
         display:none;
     }
-
+    #imgPanierHome{
+    display:none;
+    }
 }
+
 @media (min-width: 768px) {
+    ul#footerMention li {
+    display: inline;
+}
     .mediumMenu {
         display: block;
         background-size: 65%;
@@ -98,6 +135,7 @@ a .logo img{
     a .logo img{
         width:65%
     }
+
 }
 @media (min-width: 992px) {
     .mediumMenu {
@@ -358,6 +396,7 @@ img.btn_close {
 .center{
     text-align:center;
 }
+
 .login p {
     margin: 20px 0 0;
 }
@@ -368,7 +407,24 @@ img.btn_close {
     text-align: center;
     text-shadow: 0 1px #2a85a1;
 }
-
+.titleHome{
+    font-size:2em;
+    text-align:center;
+}
+.imageHome{
+    width:80%;
+}
+.seeMore{
+    color:white;
+    text-decoration:underline;
+    text-align:right;
+}
+.textSize{
+    font-size:1.3em;
+}
+#imgPanierHome{
+    text-align:center;
+}
 
 /*********************************content*************************************/
 #content {
@@ -585,4 +641,42 @@ html {
 
 #amap tr{
 	cursor:pointer;
+}
+
+/**********************SLIDER INTERNE **************************/
+.marginTop{
+    margin-top:15px;
+}
+.marginBottom{
+    margin-bottom:15px;
+}
+
+
+.imgdroit, .post #map{
+    margin:0 10px 10px;
+    float:right;
+    max-height:100%;
+@@ -586,3 +586,23 @@ html {
+#amap tr{
+    cursor:pointer;
+}
+.post {
+    *zoom: 1;
+    padding: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    text-align:justify;
+    
+}
+.post h3 {
+    font-size: 25px;
+    line-height: 30px;
+    font-weight: 700;
+    z-index: 4;
+}
+.post h3 ~ p {
+    margin: 10px 0 0;
+}
+.w500{
+    height:500px;
 }

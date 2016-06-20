@@ -1,12 +1,4 @@
 {%extends '::base.html.twig' %}
-{% block stylesheets %}
-    {{ parent() }}
-
-    <link rel="stylesheet" href="{{ asset('bundles/sonataformatter/markitup/skins/sonata/style.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('bundles/sonataformatter/markitup/sets/markdown/style.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('bundles/sonataformatter/markitup/sets/html/style.css') }}" type="text/css" media="all" />
-    <link rel="stylesheet" href="{{ asset('bundles/sonataformatter/markitup/sets/textile/style.css') }}" type="text/css" media="all" />
-{% endblock %}
 {% block contenu %}
     <div class="container">
 		
@@ -19,7 +11,7 @@
 						{% if n.getIsDisplay == 1 %}
 							<li class='uneactu list-group-item actu{{ n.getId }}'> 
 								
-								<a href="actualites?id={{ n.getId }}">
+								<a href="{{path('amap_default_news')}}/{{ n.getId }}">
 									<div class='txtgauche'>
 										<div class='imgdroit'>
 											{% if n.getrepIMG() !='' %}
@@ -36,7 +28,7 @@
 											
 										</p>
 										
-										{{ (n.getDescription()|raw)}}
+										<p> {{ n.getDescription() | truncate(100, false, '') |nl2br}} ...</p>
 									</div>
 								</a>
 							</li>
@@ -58,18 +50,10 @@
 					{% endif %}	
 					
 				</p>
-                                {{ new.getDescription()|raw }}
+				
+				<p>{{ new.getDescription|nl2br }}</p>
 				<input type="button" value="Retour" onclick="history.go(-1)">
 			{% endif %}
 		</section>
 	</div>
-{% endblock %}
-{% block javascripts %}
-    {{ parent() }}
-
-    <script src="{{ asset('bundles/ivoryckeditor/ckeditor.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('bundles/sonataformatter/vendor/markitup-markitup/markitup/jquery.markitup.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('bundles/sonataformatter/markitup/sets/markdown/set.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('bundles/sonataformatter/markitup/sets/html/set.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('bundles/sonataformatter/markitup/sets/textile/set.js') }}" type="text/javascript"></script>
 {% endblock %}

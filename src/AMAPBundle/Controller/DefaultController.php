@@ -4,6 +4,7 @@ namespace AMAPBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use AppBundle\Form\UserType;
 use AppBundle\Entity\Account\User;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,19 +15,22 @@ class DefaultController extends Controller {
      * @Route("/accueil")
      */
     public function homeAction() {
+        $em = $this->getDoctrine()->getManager();
+        $rep = $em->getRepository("AMAPBundle:Announcement\News");
 
+        $result=$rep->findAllFirst();
         //exemple Anthony
         /* $em = $this->getDoctrine()->getManager();
           $rep = $em->getRepository("AMAPBundle:Basket\Basket");
 
           $bask = $rep->find(1);
 
-          var_dump($bask->getProducts()[0]);
+         
 
           return new \Symfony\Component\HttpFoundation\Response();
 
          */
-        return $this->render('AMAPBundle:Default:home.html.twig');
+        return $this->render('AMAPBundle:Default:home.html.twig', array('results' => $result));
     }
 
     /**
@@ -40,14 +44,13 @@ class DefaultController extends Controller {
     }
 
     /**
-     * @Route("/actualites")
+     * @Route("/actualites", defaults={"id" = -1})
+     * @Route("/actualites/{id}")
      */
-    public function newsAction() {
+    public function newsAction($id) {
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository("AMAPBundle:Announcement\News");
-
-        if (isset($_GET["id"])) {
-            $id = $_GET["id"];
+        if ($id!=-1) {
             $anew = $rep->find($id);
             return $this->render('AMAPBundle:Default:news.html.twig', array('new' => $anew));
         } else {
@@ -62,7 +65,7 @@ class DefaultController extends Controller {
     public function amapsAction() {
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository("AMAPBundle:AMAP\AMAP");
-
+   
         if (isset($_GET["id"])) {
             $id = $_GET["id"];
             $amap = $rep->find($id);
@@ -71,6 +74,7 @@ class DefaultController extends Controller {
             $amaps = $rep->findAll();
             return $this->render('AMAPBundle:Default:amap.html.twig', array('amaps' => $amaps));
         }
+		
     }
 
     /**
@@ -117,6 +121,20 @@ class DefaultController extends Controller {
         return $this->render(
                         'registration/register.html.twig', array('form' => $form->createView())
         );
+    }
+
+    /**
+     * @Route("/contact")
+     */
+    public function contactAction() {
+        return $this->render('AMAPBundle:Default:contact.html.twig');
+    }
+    
+    /**
+     * @Route("/conditions")
+     */
+    public function conditionsAction() {
+        return $this->render('AMAPBundle:Default:conditions.html.twig');
     }
 
 }
