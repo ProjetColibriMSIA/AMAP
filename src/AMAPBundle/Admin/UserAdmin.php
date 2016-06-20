@@ -80,7 +80,7 @@ class UserAdmin extends AbstractAdmin {
                     }))
                 ->add('enabled')
                 ->add('password', 'password')
-                ->add('lastLogin')      
+                ->add('lastLogin')
                 ->add('locked')
                 ->add('expired')
                 ->add('expiresAt')
@@ -133,7 +133,6 @@ class UserAdmin extends AbstractAdmin {
                 ->add('credentialsExpired', null, array('required' => false))
                 ->add('locked', null, array('required' => false))
                 ->add('expired', null, array('required' => false))
-                
                 ->end()
 
         ;
@@ -166,13 +165,7 @@ class UserAdmin extends AbstractAdmin {
                         'by_reference' => false,
                         'class' => 'AMAPBundle:AMAP\AMAP',
                         'property' => 'name'
-                    ))
-                    ->add('contract_user', 'sonata_type_model_list', array(
-                        'by_reference' => false,
-                        'required' => false), array(
-                        'placeholder' => 'No author selected'
-                    ))
-                    ->end();
+            ));
         } elseif ($this->isCurrentRoute('edit')) {
             $formMapper
                     ->with('label_needed')
@@ -206,14 +199,15 @@ class UserAdmin extends AbstractAdmin {
                         'multiple' => true,
                         'class' => 'AMAPBundle:AMAP\AMAP',
                         'property' => 'name'
-                    ))
-                    ->add('contract_user', 'sonata_type_model_list', array(
-                        'by_reference' => false,
-                        'required' => false), array(
-                        'placeholder' => 'No author selected'
-                    ))
-                    ->end();
+            ));
         }
+        $formMapper
+                ->add('contract_user', 'sonata_type_model_list', array(
+                    'by_reference' => false,
+                    'required' => false), array(
+                    'placeholder' => 'Pas de contrat séléctionné'
+                ))
+                ->end();
     }
 
     /**

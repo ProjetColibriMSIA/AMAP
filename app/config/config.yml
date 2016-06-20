@@ -42,8 +42,10 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    #sonata
     form_themes:
         - 'SonataCoreBundle:Form:datepicker.html.twig'
+        - 'SonataFormatterBundle:Form:formatter.html.twig'
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -65,14 +67,11 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
-
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
-    host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
-    spool:     { type: memory }
 #fos user /group
 fos_user:
     db_driver: orm
@@ -83,6 +82,22 @@ fos_user:
     registration:
         form:
             type: AMAPBundle\Form\UserType
+        confirmation:
+            enabled: true
+            from_email:
+                address:        "%mailer_user%"
+                sender_name:    Confirm Registration
+    resetting:
+        email:
+            from_email:
+                address:        "%mailer_user%"
+                sender_name:    Confirm Resetting
+    service:
+        mailer:               fos_user.mailer.twig_swift
+        email_canonicalizer:  fos_user.util.canonicalizer.default
+        token_generator:      fos_user.util.token_generator.default
+        username_canonicalizer:  fos_user.util.canonicalizer.default
+        user_manager:         fos_user.user_manager.default
 # knp menu
 knp_menu:
     # use "twig: false" to disable the Twig extension and the TwigRenderer
@@ -101,10 +116,7 @@ sonata_block:
         # enable the SonataAdminBundle block
         sonata.admin.block.admin_list: 
             contexts:   [admin]
-        # used to display the menu in profile pages
-        sonata.user.block.menu: ~
-        # used to display menu option (login option)
-        sonata.user.block.account: ~
+        sonata.block.service.text: ~
         #search menu
         sonata.admin.block.search_result:
             contexts: [admin]
@@ -155,8 +167,47 @@ sonata_doctrine_orm_admin:
                 percent:    SonataAdminBundle:CRUD:base_percent.html.twig
                 choice:     SonataAdminBundle:CRUD:show_choice.html.twig
                 url:        SonataAdminBundle:CRUD:show_url.html.twig
+sonata_formatter:
+    formatters:
+        markdown:
+            service: sonata.formatter.text.markdown
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+        #        - sonata.media.formatter.twig #keep this commented unless you are using media bundle.
+
+
+        text:
+            service: sonata.formatter.text.text
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+        #        - sonata.media.formatter.twig
+
+
+        rawhtml:
+            service: sonata.formatter.text.raw
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+        #        - sonata.media.formatter.twig
+
+
+        richhtml:
+            service: sonata.formatter.text.raw
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+        #        - sonata.media.formatter.twig
+        twig:
+            service: sonata.formatter.text.twigengine
+            extensions: [] # Twig formatter cannot have extensions
+    ckeditor:
+        templates:
+            browser: 'SonataFormatterBundle:Ckeditor:browser.html.twig'
+            upload: 'SonataFormatterBundle:Ckeditor:upload.html.twig'
 sonata_admin:
-    title:      MIRAMAP
+    title:      ISMA
     title_logo: images/logo/web_amap.ico
     templates:
         dashboard: SonataAdminBundle:Core:dashboard.html.twig
@@ -167,7 +218,8 @@ sonata_admin:
     dashboard:
         blocks:
             # display a dashboard block
-            - { position: left, type: sonata.admin.block.admin_list, settings: {groups:[amap.admin.group.user,amap.admin.group.news,amap.admin.group.amap,amap.admin.group.basket]}}
+            - { position: top, type: sonata.block.service.text,class: col-md-10 col-md-offset-1, settings: {content: "<div align=\"center\"><h2>Bienvenue sur le panneau d'administration du site <b>AMAPPlanet'</b></h2></div><p>L'outil d'administration du projet <code>ISMA</code> vous permet d'administrer le contenu des pages du site web <code>AMAPPlanet'</code>.</p> <br />" }}
+            - { position: top, type: sonata.admin.block.admin_list,class: col-md-10 col-md-offset-1,settings: {groups:[amap.admin.group.user,amap.admin.group.news,amap.admin.group.amap,amap.admin.group.basket,amap.admin.group.delivery]}}
         groups:
             amap.admin.group.news:
                 label_catalogue: AMAPBundle
@@ -196,3 +248,10 @@ sonata_admin:
                 items:
                     - amap.admin.basket
                     - amap.admin.product
+            amap.admin.group.delivery:
+                label_catalogue: AMAPBundle
+                label: label_delivery
+                icon: "<i class=\"fa fa-building\"></i>"
+                items:
+                    - amap.admin.store
+                    - amap.admin.warehouse

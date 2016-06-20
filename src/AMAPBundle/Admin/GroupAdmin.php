@@ -43,7 +43,7 @@ class GroupAdmin extends AbstractAdmin {
 
         $rolesChoices = $this->roles->flattenRoles($roles);
         $listMapper
-                ->add('name')
+                ->addIdentifier('name')
                 ->add('roles', 'choice', array(
                     'choices' => $rolesChoices,
                     'multiple' => true
@@ -127,7 +127,7 @@ class GroupAdmin extends AbstractAdmin {
                 ->add('id')
                 ->add('name')
                 ->add('roles')
-				->add('users', 'entity', array(
+                ->add('users', 'entity', array(
                     'class' => 'AMAPBundle:Account\User',
                     'associated_property' => function ($amap) {
                         return $amap->getUsername();

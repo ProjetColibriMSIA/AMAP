@@ -1,0 +1,43 @@
+{%extends '::base.html.twig' %}
+
+ {% block contenu %}
+	<body onload="initialize()">
+		<div class="post w500">
+			<div id="map" style="width: 500px; height: 500px;"></div>
+			<h3>Pour nous contacter...</h3>
+			<p>Adresse :</p>
+			<p>16 Place Saint-Cyran</p>
+			<p>36000 Châteauroux</p>
+			<p>Téléphone :<a href="tel:+33(0)123456789">+33(0)123456789 </a></p>
+			<p>Mail :<a href="mailto:amapplanet@gmail.com"> amapplanet@gmail.com </a></p>
+		</div>	
+	</body>
+	
+ {% endblock %}
+{% block specifjavascript %}
+	<script type="text/javascript">
+
+          var geocoder;
+		  var map;
+		  function initialize() {
+			geocoder = new google.maps.Geocoder();
+			var latlng = new google.maps.LatLng(46.812343, 1.694740);
+			var mapOptions = {
+			  zoom: 16,
+			  center: latlng
+			}
+			map = new google.maps.Map(document.getElementById("map"), mapOptions);
+			
+			var address = "16 Place Saint-Cyran 36000 Châteauroux, France";
+			geocoder.geocode( { 'address': address}, function(results, status) {
+				map.setCenter(results[0].geometry.location);
+				var marker = new google.maps.Marker({
+					map: map,
+					position: results[0].geometry.location
+				});
+			});
+		 }
+    </script>
+{% endblock %}
+ 
+

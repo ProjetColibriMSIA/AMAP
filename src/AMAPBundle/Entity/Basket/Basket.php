@@ -52,21 +52,21 @@ class Basket {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="expirationDate", type="date")
+     * @ORM\Column(name="expirationDate", type="datetime")
      */
     private $expirationDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="supplyDate", type="date")
+     * @ORM\Column(name="supplyDate", type="datetime", nullable=true)
      */
     private $supplyDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="storeDate", type="date")
+     * @ORM\Column(name="storeDate", type="datetime", nullable=true)
      */
     private $storeDate;
 
@@ -117,16 +117,16 @@ class Basket {
     private $inventory;
 
     /**
-     * Constructor
+     * @ORM\ManyToMany(targetEntity="AMAPBundle\Entity\LocalStoreManager\Store",inversedBy="baskets")
+     * @ORM\JoinTable(name="basket_store",
+     *      joinColumns={@ORM\JoinColumn(name="basket_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="store_id", referencedColumnName="id")}
+     * )
      */
-    public function __construct() {
-        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->ownerConsumer = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->productBy = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+    protected $basketsStore;
 
     public function __toString() {
-        return ((new \ReflectionClass($this))->getShortName() . ':' . strval($this->getId()));
+        return $this->name;
     }
 
     /**
@@ -224,72 +224,6 @@ class Basket {
      */
     public function getWeight() {
         return $this->weight;
-    }
-
-    /**
-     * Set expirationDate
-     *
-     * @param \DateTime $expirationDate
-     *
-     * @return Basket
-     */
-    public function setExpirationDate($expirationDate) {
-        $this->expirationDate = $expirationDate;
-
-        return $this;
-    }
-
-    /**
-     * Get expirationDate
-     *
-     * @return \DateTime
-     */
-    public function getExpirationDate() {
-        return $this->expirationDate;
-    }
-
-    /**
-     * Set supplyDate
-     *
-     * @param \DateTime $supplyDate
-     *
-     * @return Basket
-     */
-    public function setSupplyDate($supplyDate) {
-        $this->supplyDate = $supplyDate;
-
-        return $this;
-    }
-
-    /**
-     * Get supplyDate
-     *
-     * @return \DateTime
-     */
-    public function getSupplyDate() {
-        return $this->supplyDate;
-    }
-
-    /**
-     * Set storeDate
-     *
-     * @param \DateTime $storeDate
-     *
-     * @return Basket
-     */
-    public function setStoreDate($storeDate) {
-        $this->storeDate = $storeDate;
-
-        return $this;
-    }
-
-    /**
-     * Get storeDate
-     *
-     * @return \DateTime
-     */
-    public function getStoreDate() {
-        return $this->storeDate;
     }
 
     /**
@@ -449,6 +383,115 @@ class Basket {
      */
     public function getInventory() {
         return $this->inventory;
+    }
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->ownerConsumer = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->productBy = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->basketsStore = new \Doctrine\Common\Collections\ArrayCollection();
+
+        $this->expirationDate = new \DateTime();
+    }
+
+    /**
+     * Add basketsStore
+     *
+     * @param \AMAPBundle\Entity\LocalStoreManager\Store $basketsStore
+     *
+     * @return Basket
+     */
+    public function addBasketsStore(\AMAPBundle\Entity\LocalStoreManager\Store $basketsStore) {
+        $this->basketsStore[] = $basketsStore;
+
+        return $this;
+    }
+
+    /**
+     * Remove basketsStore
+     *
+     * @param \AMAPBundle\Entity\LocalStoreManager\Store $basketsStore
+     */
+    public function removeBasketsStore(\AMAPBundle\Entity\LocalStoreManager\Store $basketsStore) {
+        $this->basketsStore->removeElement($basketsStore);
+    }
+
+    /**
+     * Get basketsStore
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBasketsStore() {
+        return $this->basketsStore;
+    }
+
+    /**
+     * Set expirationDate
+     *
+     * @param \DateTime $expirationDate
+     *
+     * @return Basket
+     */
+    public function setExpirationDate($expirationDate) {
+        $this->expirationDate = $expirationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get expirationDate
+     *
+     * @return \DateTime
+     */
+    public function getExpirationDate() {
+        return $this->expirationDate;
+    }
+
+    /**
+     * Set supplyDate
+     *
+     * @param \DateTime $supplyDate
+     *
+     * @return Basket
+     */
+    public function setSupplyDate($supplyDate) {
+        $this->supplyDate = $supplyDate;
+
+        return $this;
+    }
+
+    /**
+     * Get supplyDate
+     *
+     * @return \DateTime
+     */
+    public function getSupplyDate() {
+        return $this->supplyDate;
+    }
+
+    /**
+     * Set storeDate
+     *
+     * @param \DateTime $storeDate
+     *
+     * @return Basket
+     */
+    public function setStoreDate($storeDate) {
+        $this->storeDate = $storeDate;
+
+        return $this;
+    }
+
+    /**
+     * Get storeDate
+     *
+     * @return \DateTime
+     */
+    public function getStoreDate() {
+        return $this->storeDate;
     }
 
 }

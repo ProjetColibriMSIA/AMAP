@@ -40,7 +40,7 @@ class BasketAdmin extends AbstractAdmin {
                 ->add('expirationDate')
                 ->add('supplyDate')
                 ->add('storeDate')
-                ->add('description')
+                ->add('description', 'html')
                 ->add('repIMG')
                 ->add('products', null, array(
                     'class' => 'AMAPBundle:Basket\Product',
@@ -82,10 +82,18 @@ class BasketAdmin extends AbstractAdmin {
                 ->add('price')
                 ->add('barCode')
                 ->add('weight')
-                ->add('expirationDate')
-                ->add('supplyDate')
-                ->add('storeDate')
-                ->add('description')
+                ->add('expirationDate', 'sonata_type_date_picker',array('format'=>'dd/MM/yyyy'))
+                ->add('supplyDate', 'sonata_type_date_picker', array(
+                    'required' => false,
+                    'format'=>'dd/MM/yyyy'
+                ))
+                ->add('storeDate', 'sonata_type_date_picker', array(
+                    'required' => false,
+                    'format'=>'dd/MM/yyyy'
+                ))
+                ->add('description', 'ckeditor', array(
+                    'config' => array('toolbar' => 'full'),
+                ))
                 ->add('repIMG')
                 ->add('products', 'sonata_type_model', array(
                     'expanded' => true,
@@ -110,12 +118,12 @@ class BasketAdmin extends AbstractAdmin {
                     'class' => 'AMAPBundle:Account\Group',
                     'property' => 'name'
                 ))
-                /* TODO
-                ->add('inventory', 'sonata_type_model_list', array(
-                ), array(
-                    'placeholder' => 'No author selected'
-                ))
-                */
+        /* TODO
+          ->add('inventory', 'sonata_type_model_list', array(
+          ), array(
+          'placeholder' => 'No author selected'
+          ))
+         */
         ;
     }
 
@@ -134,7 +142,7 @@ class BasketAdmin extends AbstractAdmin {
                 ->add('storeDate')
                 ->add('description')
                 ->add('repIMG')
-				->add('products', null, array(
+                ->add('products', null, array(
                     'class' => 'AMAPBundle:Basket\Product',
                     'associated_property' => function ($products) {
                         return $products->getName();

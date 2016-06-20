@@ -755,145 +755,189 @@
                 <source>breadcrumb.link_news_delete</source>
                 <target>Supprimer Actualité</target>
             </trans-unit>
-			<trans-unit id="label_name">
+            <trans-unit id="label_name">
                 <source>label_name</source>
                 <target>Nom</target>
             </trans-unit>
-			<trans-unit id="label_firstname">
+            <trans-unit id="label_firstname">
                 <source>label_firstname</source>
                 <target>Prénom</target>
             </trans-unit>
-			<trans-unit id="label_email">
+            <trans-unit id="label_email">
                 <source>label_email</source>
                 <target>Email</target>
             </trans-unit>
-			<trans-unit id="label_adress">
+            <trans-unit id="label_adress">
                 <source>label_adress</source>
                 <target>Adresse</target>
             </trans-unit>
-			<trans-unit id="label_locale">
+            <trans-unit id="label_locale">
                 <source>label_locale</source>
                 <target>Locale</target>
             </trans-unit>
-			<trans-unit id="label_username">
+            <trans-unit id="label_username">
                 <source>label_username</source>
                 <target>Pseudonyme</target>
             </trans-unit>
-			<trans-unit id="label_password">
+            <trans-unit id="label_password">
                 <source>label_password</source>
                 <target>Mot de passe</target>
             </trans-unit>
-			<trans-unit id="label_confirmpassword">
+            <trans-unit id="label_confirmpassword">
                 <source>label_confirmpassword</source>
                 <target>Confirmation</target>
             </trans-unit>
-			<trans-unit id="form.label_phone">
+            <trans-unit id="form.label_phone">
                 <source>form.label_phone</source>
                 <target>Téléphone</target>
             </trans-unit>
-			<trans-unit id="list.label_phone">
+            <trans-unit id="list.label_phone">
                 <source>list.label_phone</source>
                 <target>Téléphone</target>
             </trans-unit>
-			<trans-unit id="filter.label_phone">
+            <trans-unit id="filter.label_phone">
                 <source>filter.label_phone</source>
                 <target>Téléphone</target>
             </trans-unit>
-			<trans-unit id="show.label_phone">
+            <trans-unit id="show.label_phone">
                 <source>show.label_phone</source>
                 <target>Téléphone</target>
             </trans-unit>
-			<trans-unit id="list.label_adress_delivery">
+            <trans-unit id="list.label_adress_delivery">
                 <source>list.label_adress_delivery</source>
                 <target>Adresse de livraison</target>
             </trans-unit>
-			<trans-unit id="filter.label_adress_delivery">
+            <trans-unit id="filter.label_adress_delivery">
                 <source>filter.label_adress_delivery</source>
                 <target>Adresse de livraison</target>
             </trans-unit>
-			<trans-unit id="show.label_adress_delivery">
+            <trans-unit id="show.label_adress_delivery">
                 <source>show.label_adress_delivery</source>
                 <target>Adresse de livraison</target>
             </trans-unit>
-			<trans-unit id="form.label_adress_delivery">
+            <trans-unit id="form.label_adress_delivery">
                 <source>form.label_adress_delivery</source>
                 <target>Adresse de livraison</target>
             </trans-unit>
-			<trans-unit id="list.label_news">
+            <trans-unit id="list.label_news">
                 <source>list.label_news</source>
                 <target>Actualités</target>
             </trans-unit>
-			<trans-unit id="list.label_contracts_amap">
+            <trans-unit id="list.label_contracts_amap">
                 <source>list.label_contracts_amap</source>
                 <target>Contrats</target>
             </trans-unit>
-			<trans-unit id="form.label_news">
+            <trans-unit id="form.label_news">
                 <source>form.label_news</source>
                 <target>Actualités</target>
             </trans-unit>
-			<trans-unit id="form.label_contracts_amap">
+            <trans-unit id="form.label_contracts_amap">
                 <source>form.label_contracts_amap</source>
                 <target>Contrats</target>
             </trans-unit>
-			<trans-unit id="list.label_owner_consumer">
+            <trans-unit id="list.label_owner_consumer">
                 <source>list.label_owner_consumer</source>
                 <target>Consommateurs</target>
             </trans-unit>
-			<trans-unit id="list.label_product_by">
+            <trans-unit id="list.label_product_by">
                 <source>list.label_product_by</source>
                 <target>Producteurs</target>
             </trans-unit>
-			<trans-unit id="list.label_inventory">
+            <trans-unit id="list.label_inventory">
                 <source>list.label_inventory</source>
                 <target>Inventaire</target>
             </trans-unit>
-			<trans-unit id="form.label_owner_consumer">
+            <trans-unit id="form.label_owner_consumer">
                 <source>form.label_owner_consumer</source>
                 <target>Consommateurs</target>
             </trans-unit>
-			<trans-unit id="form.label_product_by">
+            <trans-unit id="form.label_product_by">
                 <source>form.label_product_by</source>
                 <target>Producteurs</target>
             </trans-unit>
-			<trans-unit id="show.label_news_amap">
+            <trans-unit id="show.label_news_amap">
                 <source>show.label_news_amap</source>
                 <target>Amap</target>
             </trans-unit>
-			<trans-unit id="show.label_users">
+            <trans-unit id="show.label_users">
                 <source>show.label_users</source>
                 <target>Utilisateurs</target>
             </trans-unit>
-			<trans-unit id="show.label_amap">
+            <trans-unit id="show.label_amap">
                 <source>show.label_amap</source>
                 <target>Amap</target>
             </trans-unit>
-			<trans-unit id="show.label_news">
+            <trans-unit id="show.label_news">
                 <source>show.label_news</source>
                 <target>Actualités</target>
             </trans-unit>
-			<trans-unit id="show.label_contracts_amap">
+            <trans-unit id="show.label_contracts_amap">
                 <source>show.label_contracts_amap</source>
                 <target>Contrats</target>
             </trans-unit>
-			<trans-unit id="show.label_products">
+            <trans-unit id="show.label_products">
                 <source>show.label_products</source>
                 <target>Produits</target>
             </trans-unit>
-			<trans-unit id="show.label_owner_consumer">
+            <trans-unit id="show.label_owner_consumer">
                 <source>show.label_owner_consumer</source>
                 <target>Consommateurs</target>
             </trans-unit>
-			<trans-unit id="show.label_product_by">
+            <trans-unit id="show.label_product_by">
                 <source>show.label_product_by</source>
                 <target>Producteurs</target>
             </trans-unit>
-			<trans-unit id="show.label_inventory">
+            <trans-unit id="show.label_inventory">
                 <source>show.label_inventory</source>
                 <target>Inventaire</target>
             </trans-unit>
-			<trans-unit id="show.label_baskets">
+            <trans-unit id="show.label_baskets">
                 <source>show.label_baskets</source>
                 <target>Paniers</target>
+            </trans-unit>
+            <trans-unit id="security.login.return">
+                <source>security.login.return</source>
+                <target>Retour</target>
+            </trans-unit>
+            <trans-unit id="label_phone">
+                <source>label_phone</source>
+                <target>Téléphone</target>
+            </trans-unit>
+            <trans-unit id="label_delivery">
+                <source>label_delivery</source>
+                <target>Livraison</target>
+            </trans-unit>
+            <trans-unit id="label_store">
+                <source>label_store</source>
+                <target>Magasins</target>
+            </trans-unit>
+            <trans-unit id="label_warehouse">
+                <source>label_warehouse</source>
+                <target>Entrepôts</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_store_list">
+                <source>breadcrumb.link_store_list</source>
+                <target>Magasins</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_store_create">
+                <source>breadcrumb.link_store_create</source>
+                <target>Création Magasin</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_warehouse_list">
+                <source>breadcrumb.link_warehouse_list</source>
+                <target>Entrepôts</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_warehouse_create">
+                <source>breadcrumb.link_warehouse_create</source>
+                <target>Création Entrepôt</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_warehouse_delete">
+                <source>breadcrumb.link_warehouse_delete</source>
+                <target>Suppression Entrepôt</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_store_delete">
+                <source>breadcrumb.link_store_delete</source>
+                <target>Suppression Magasin</target>
             </trans-unit>
         </body>
     </file>

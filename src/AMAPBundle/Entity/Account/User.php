@@ -64,7 +64,7 @@ class User extends BaseUser {
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=50)
+     * @ORM\Column(name="phone", type="string", length=50, nullable=true)
      */
     protected $phone;
     /**
@@ -109,7 +109,8 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
 
         return $this;
@@ -120,7 +121,8 @@ class User extends BaseUser {
      *
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
@@ -131,7 +133,8 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function setFirstName($firstName) {
+    public function setFirstName($firstName)
+    {
         $this->firstName = $firstName;
 
         return $this;
@@ -142,7 +145,8 @@ class User extends BaseUser {
      *
      * @return string
      */
-    public function getFirstName() {
+    public function getFirstName()
+    {
         return $this->firstName;
     }
 
@@ -153,7 +157,8 @@ class User extends BaseUser {
      *
      * @return User
      */
-    public function setAdress($adress) {
+    public function setAdress($adress)
+    {
         $this->adress = $adress;
 
         return $this;
@@ -164,85 +169,10 @@ class User extends BaseUser {
      *
      * @return string
      */
-    public function getAdress() {
+    public function getAdress()
+    {
         return $this->adress;
     }
-
-    /**
-     * Set locale
-     *
-     * @param string $locale
-     *
-     * @return User
-     */
-    public function setLocale($locale) {
-        $this->locale = $locale;
-
-        return $this;
-    }
-
-    /**
-     * Get locale
-     *
-     * @return string
-     */
-    public function getLocale() {
-        return $this->locale;
-    }
-
-    /**
-     * Add amap
-     *
-     * @param \AMAPBundle\Entity\AMAP\AMAP $amap
-     *
-     * @return User
-     */
-    public function addAmap(\AMAPBundle\Entity\AMAP\AMAP $amap) {
-        $this->amap[] = $amap;
-
-        return $this;
-    }
-
-    /**
-     * Remove amap
-     *
-     * @param \AMAPBundle\Entity\AMAP\AMAP $amap
-     */
-    public function removeAmap(\AMAPBundle\Entity\AMAP\AMAP $amap) {
-        $this->amap->removeElement($amap);
-    }
-
-    /**
-     * Get amap
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAmap() {
-        return $this->amap;
-    }
-
-    /**
-     * Set contractUser
-     *
-     * @param \AMAPBundle\Entity\Account\Contract $contractUser
-     *
-     * @return User
-     */
-    public function setContractUser(\AMAPBundle\Entity\Account\Contract $contractUser = null) {
-        $this->contract_user = $contractUser;
-
-        return $this;
-    }
-
-    /**
-     * Get contractUser
-     *
-     * @return \AMAPBundle\Entity\Account\Contract
-     */
-    public function getContractUser() {
-        return $this->contract_user;
-    }
-
 
     /**
      * Set phone
@@ -266,5 +196,87 @@ class User extends BaseUser {
     public function getPhone()
     {
         return $this->phone;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     *
+     * @return User
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * Add amap
+     *
+     * @param \AMAPBundle\Entity\AMAP\AMAP $amap
+     *
+     * @return User
+     */
+    public function addAmap(\AMAPBundle\Entity\AMAP\AMAP $amap)
+    {
+        $this->amap[] = $amap;
+
+        return $this;
+    }
+
+    /**
+     * Remove amap
+     *
+     * @param \AMAPBundle\Entity\AMAP\AMAP $amap
+     */
+    public function removeAmap(\AMAPBundle\Entity\AMAP\AMAP $amap)
+    {
+        $this->amap->removeElement($amap);
+    }
+
+    /**
+     * Get amap
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAmap()
+    {
+        return $this->amap;
+    }
+
+    /**
+     * Set contractUser
+     *
+     * @param \AMAPBundle\Entity\Account\Contract $contractUser
+     *
+     * @return User
+     */
+    public function setContractUser(\AMAPBundle\Entity\Account\Contract $contractUser = null)
+    {
+        $this->contract_user = $contractUser;
+
+        return $this;
+    }
+
+    /**
+     * Get contractUser
+     *
+     * @return \AMAPBundle\Entity\Account\Contract
+     */
+    public function getContractUser()
+    {
+        return $this->contract_user;
     }
 }

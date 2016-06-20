@@ -8,7 +8,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class ProductAdmin extends AbstractAdmin {
+class WarehouseAdmin extends AbstractAdmin {
 
     /**
      * @param DatagridMapper $datagridMapper
@@ -17,10 +17,9 @@ class ProductAdmin extends AbstractAdmin {
         $datagridMapper
                 ->add('id')
                 ->add('name')
-                ->add('price')
-                ->add('weight')
+                ->add('adress')
                 ->add('description')
-                ->add('repIMG')
+                ->add('phone')
         ;
     }
 
@@ -30,15 +29,9 @@ class ProductAdmin extends AbstractAdmin {
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
                 ->addIdentifier('name')
-                ->add('price')
-                ->add('weight')
-                ->add('description','html')
-                ->add('repIMG')
-                ->add('baskets', 'entity', array(
-                    'class' => 'AMAPBundle:Basket\Basket',
-                    'associated_property' => function ($amap) {
-                        return $amap->getName();
-                    }))
+                ->add('adress', 'html')
+                ->add('description')
+                ->add('phone')
                 ->add('_action', null, array(
                     'actions' => array(
                         'show' => array(),
@@ -55,20 +48,11 @@ class ProductAdmin extends AbstractAdmin {
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
                 ->add('name')
-                ->add('price')
-                ->add('weight')
-                ->add('description', 'ckeditor', array(
+                ->add('adress', 'ckeditor', array(
                     'config' => array('toolbar' => 'full'),
                 ))
-                ->add('repIMG')
-                ->add('baskets', 'sonata_type_model', array(
-                    'expanded' => true,
-                    'by_reference' => false,
-                    'required' => false,
-                    'multiple' => true,
-                    'class' => 'AMAPBundle:Basket\Basket',
-                    'property' => 'name'
-                ))
+                ->add('description')
+                ->add('phone')
         ;
     }
 
@@ -79,18 +63,9 @@ class ProductAdmin extends AbstractAdmin {
         $showMapper
                 ->add('id')
                 ->add('name')
-                ->add('price')
-                ->add('weight')
+                ->add('adress')
                 ->add('description')
-                ->add('repIMG')
-                ->add('baskets', 'sonata_type_model', array(
-                    'expanded' => true,
-                    'by_reference' => false,
-                    'required' => false,
-                    'multiple' => true,
-                    'class' => 'AMAPBundle:Basket\Basket',
-                    'property' => 'name'
-                ))
+                ->add('phone')
         ;
     }
 

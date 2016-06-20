@@ -30,9 +30,8 @@ class NewsAdmin extends AbstractAdmin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-                ->add('id')
-                ->add('name')
-                ->add('description')
+                ->addIdentifier('name')
+                ->add('description', 'html')
                 ->add('repIMG')
                 ->add('startDate')
                 ->add('endDate')
@@ -58,15 +57,24 @@ class NewsAdmin extends AbstractAdmin {
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
                 ->add('name')
-                ->add('description')
+                ->add('description', 'ckeditor', array(
+                    'config' => array('toolbar' => 'full'),
+                ))
                 ->add('repIMG')
-                ->add('startDate')
-                ->add('endDate')
-                ->add('isDisplay')
+                ->add('startDate', 'sonata_type_date_picker',array('format'=>'dd/MM/yyyy'))
+                ->add('endDate', 'sonata_type_date_picker',array('format'=>'dd/MM/yyyy'))
+                ->add('isDisplay', 'choice', array(
+                    'required' => true,
+                    'choices' => array(
+                        'Visible' => true,
+                        'Invisible' => false
+                    ),
+                    'expanded' => true,
+                    'choices_as_values' => true))
                 ->add('news_amap', 'sonata_type_model', array(
-                    'required' => false,
-                    'multiple' => true,
+                    'expanded' => true,
                     'by_reference' => false,
+                    'multiple' => true,
                     'class' => 'AMAPBundle:AMAP\AMAP',
                     'property' => 'name'
                 ))
@@ -86,7 +94,7 @@ class NewsAdmin extends AbstractAdmin {
                 ->add('startDate')
                 ->add('endDate')
                 ->add('isDisplay')
-				->add('news_amap', 'entity', array(
+                ->add('news_amap', 'entity', array(
                     'class' => 'AMAPBundle:AMAP\AMAP',
                     'associated_property' => function ($amap) {
                         return $amap->getName();

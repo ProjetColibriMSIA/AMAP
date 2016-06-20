@@ -45,14 +45,14 @@ class Contract {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="signDate", type="date")
+     * @ORM\Column(name="signDate", type="datetime")
      */
     private $signDate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="expirationDate", type="date")
+     * @ORM\Column(name="expirationDate", type="datetime")
      */
     private $expirationDate;
 
@@ -93,6 +93,8 @@ class Contract {
      */
     public function __construct() {
         $this->users = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->signDate = new \DateTime();
+        $this->expirationDate = new \DateTime();
     }
 
     /**
@@ -137,50 +139,6 @@ class Contract {
      */
     public function getDescription() {
         return $this->description;
-    }
-
-    /**
-     * Set signDate
-     *
-     * @param \DateTime $signDate
-     *
-     * @return Contract
-     */
-    public function setSignDate($signDate) {
-        $this->signDate = $signDate;
-
-        return $this;
-    }
-
-    /**
-     * Get signDate
-     *
-     * @return \DateTime
-     */
-    public function getSignDate() {
-        return $this->signDate;
-    }
-
-    /**
-     * Set expirationDate
-     *
-     * @param \DateTime $expirationDate
-     *
-     * @return Contract
-     */
-    public function setExpirationDate($expirationDate) {
-        $this->expirationDate = $expirationDate;
-
-        return $this;
-    }
-
-    /**
-     * Get expirationDate
-     *
-     * @return \DateTime
-     */
-    public function getExpirationDate() {
-        return $this->expirationDate;
     }
 
     /**
@@ -292,5 +250,53 @@ class Contract {
     public function getAdressDelivery()
     {
         return $this->adressDelivery;
+    }
+
+    /**
+     * Set signDate
+     *
+     * @param \DateTime $signDate
+     *
+     * @return Contract
+     */
+    public function setSignDate($signDate)
+    {
+        $this->signDate = $signDate;
+
+        return $this;
+    }
+
+    /**
+     * Get signDate
+     *
+     * @return \DateTime
+     */
+    public function getSignDate()
+    {
+        return $this->signDate;
+    }
+
+    /**
+     * Set expirationDate
+     *
+     * @param \DateTime $expirationDate
+     *
+     * @return Contract
+     */
+    public function setExpirationDate($expirationDate)
+    {
+        $this->expirationDate = $expirationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get expirationDate
+     *
+     * @return \DateTime
+     */
+    public function getExpirationDate()
+    {
+        return $this->expirationDate;
     }
 }
