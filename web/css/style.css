@@ -647,6 +647,11 @@ html {
 .marginTop{
     margin-top:15px;
 }
+
+.paddingTop{
+    padding-top:15px;
+}
+
 .marginBottom{
     margin-bottom:15px;
 }
