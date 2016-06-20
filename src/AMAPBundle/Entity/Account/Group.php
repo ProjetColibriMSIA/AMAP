@@ -66,42 +66,12 @@ class Group extends BaseGroup {
     public function getNbUsers() {
         return count($this->users);
     }
-
     public function __construct($name, $roles = array()) {
         parent::__construct($name, $roles);
+        $this->users= new \Doctrine\Common\Collections\ArrayCollection();
+        $this->consumer= new \Doctrine\Common\Collections\ArrayCollection();
+        $this->farmer= new \Doctrine\Common\Collections\ArrayCollection();
     }
-
-    /**
-     * Add user
-     *
-     * @param \AMAPBundle\Entity\Account\User $user
-     *
-     * @return Group
-     */
-    public function addUser(\AMAPBundle\Entity\Account\User $user) {
-        $this->users[] = $user;
-
-        return $this;
-    }
-
-    /**
-     * Remove user
-     *
-     * @param \AMAPBundle\Entity\Account\User $user
-     */
-    public function removeUser(\AMAPBundle\Entity\Account\User $user) {
-        $this->users->removeElement($user);
-    }
-
-    /**
-     * Get users
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getUsers() {
-        return $this->users;
-    }
-
     /**
      * Add consumer
      *
@@ -109,10 +79,9 @@ class Group extends BaseGroup {
      *
      * @return Group
      */
-    public function addConsumer(\AMAPBundle\Entity\Basket\Basket $consumer)
-    {
+    public function addConsumer(\AMAPBundle\Entity\Basket\Basket $consumer) {
         $this->consumer[] = $consumer;
-
+        
         return $this;
     }
 
@@ -121,8 +90,7 @@ class Group extends BaseGroup {
      *
      * @param \AMAPBundle\Entity\Basket\Basket $consumer
      */
-    public function removeConsumer(\AMAPBundle\Entity\Basket\Basket $consumer)
-    {
+    public function removeConsumer(\AMAPBundle\Entity\Basket\Basket $consumer) {
         $this->consumer->removeElement($consumer);
     }
 
@@ -131,9 +99,17 @@ class Group extends BaseGroup {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getConsumer()
-    {
+    public function getConsumer() {
         return $this->consumer;
+    }
+
+    /**
+     * Get farmer
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFarmer() {
+        return $this->farmer;
     }
 
     /**
@@ -150,6 +126,41 @@ class Group extends BaseGroup {
         return $this;
     }
 
+
+    /**
+     * Add user
+     *
+     * @param \AMAPBundle\Entity\Account\User $user
+     *
+     * @return Group
+     */
+    public function addUser(\AMAPBundle\Entity\Account\User $user)
+    {
+        $this->users[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \AMAPBundle\Entity\Account\User $user
+     */
+    public function removeUser(\AMAPBundle\Entity\Account\User $user)
+    {
+        $this->users->removeElement($user);
+    }
+
+    /**
+     * Get users
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
     /**
      * Remove farmer
      *
@@ -158,15 +169,5 @@ class Group extends BaseGroup {
     public function removeFarmer(\AMAPBundle\Entity\Basket\Basket $farmer)
     {
         $this->farmer->removeElement($farmer);
-    }
-
-    /**
-     * Get farmer
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getFarmer()
-    {
-        return $this->farmer;
     }
 }

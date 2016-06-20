@@ -240,12 +240,4 @@ class UserAdmin extends AbstractAdmin {
         ;
     }
 
-    public function prePersist($object) {
-        parent::prePersist($object);
-    }
-
-    public function preUpdate($object) {
-        parent::preUpdate($object);
-    }
-
 }
