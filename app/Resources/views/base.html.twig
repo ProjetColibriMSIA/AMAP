@@ -5,6 +5,8 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
         {% set titletab=((path(app.request.attributes.get('_route'),app.request.attributes.get('_route_params'))|split('/'))|last) %}
+        {% set url= app.request.attributes.get('_route') %}
+          
         <title>
             {% block title %}AMAP - {{titletab|upper}}{% endblock %}
         </title>
@@ -74,8 +76,8 @@
                         <!-- Row is the element use in the grid, here we need just 1 row and 12 columns-->
                         <div class="row">
                             <!-- Section logo, explain class: lg :>1200px ; md :>992px ; sm :>768px ; xs :<768px -->
+                            
                             <section class="col-lg-5 col-md-4 col-sm-12 col-xs-12 ">
-
                                 <a href="{{path('amap_default_home')}}">
                                     <div class="logo">
                                         <img src="{{ asset('./images/logo/logo.png')}}" >
@@ -161,12 +163,13 @@
         <footer>
             <div class="container">
                 <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-4 footer-text"><span class="isXsDisplay">Réaliser par </span><strong><span>Isma Team</span></strong></div>
-                    <div class="col-md-4 col-sm-4 col-xs-5">
+                    <div class="col-md-4 col-sm-4 col-xs-3 footer-text"><span class="isXsDisplay">Réaliser par </span><strong><span>Isma Team</span></strong></div>
+                    <div class="col-md-4 col-sm-4 col-xs-6">
                         <ul id="footerMention">
-                            <li><a href="{{path('amap_default_contact')}}">Contact</a></li>
+                            
+                            <li {% if 'amap_default_contact' in url %} class="footerMentionActive" {% endif %}><a href="{{path('amap_default_contact')}}">Contact</a></li>
 
-                            <li><a href="{{path('amap_default_conditions')}}">Mention Légales</a></li>
+                            <li {% if 'amap_default_conditions' in url %} class="footerMentionActive" {% endif %}><a href="{{path('amap_default_conditions')}}">Mention Légales</a></li>
                         </ul>
                     </div>  
                     <div class="col-md-4 col-sm-4 col-xs-3">

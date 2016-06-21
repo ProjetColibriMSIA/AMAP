@@ -18,14 +18,14 @@ class DefaultController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository("AMAPBundle:Announcement\News");
 
-        $result=$rep->findAllFirst();
+        $result = $rep->findAllFirst();
         //exemple Anthony
         /* $em = $this->getDoctrine()->getManager();
           $rep = $em->getRepository("AMAPBundle:Basket\Basket");
 
           $bask = $rep->find(1);
 
-         
+
 
           return new \Symfony\Component\HttpFoundation\Response();
 
@@ -34,13 +34,19 @@ class DefaultController extends Controller {
     }
 
     /**
-     * @Route("/producteurs")
+     * @Route("/producteurs", defaults={"id" = -1})
+     * @Route("/producteurs/{id}")
      */
-    public function farmersAction() {
+    public function farmersAction($id) {
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository("AMAPBundle:Account\User");
-        $users = $rep->findAll();
-        return $this->render('AMAPBundle:Default:farmer.html.twig', array('users' => $users));
+        if ($id != -1) {
+            $user = $rep->find($id);
+            return $this->render('AMAPBundle:Default:farmer.html.twig', array('user' => $user));
+        } else {
+            $users = $rep->findAll();
+            return $this->render('AMAPBundle:Default:farmer.html.twig', array('users' => $users));
+        }
     }
 
     /**
@@ -50,7 +56,7 @@ class DefaultController extends Controller {
     public function newsAction($id) {
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository("AMAPBundle:Announcement\News");
-        if ($id!=-1) {
+        if ($id != -1) {
             $anew = $rep->find($id);
             return $this->render('AMAPBundle:Default:news.html.twig', array('new' => $anew));
         } else {
@@ -60,34 +66,37 @@ class DefaultController extends Controller {
     }
 
     /**
-     * @Route("/amaps")
+     * @Route("/amaps", defaults={"id" = -1})
+     * @Route("/amaps/{id}")
      */
-    public function amapsAction() {
+    public function amapsAction($id) {
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository("AMAPBundle:AMAP\AMAP");
-   
-        if (isset($_GET["id"])) {
-            $id = $_GET["id"];
+
+        if ($id != -1) {
             $amap = $rep->find($id);
             return $this->render('AMAPBundle:Default:amap.html.twig', array('amap' => $amap));
         } else {
             $amaps = $rep->findAll();
             return $this->render('AMAPBundle:Default:amap.html.twig', array('amaps' => $amaps));
         }
-		
     }
 
     /**
-     * @Route("/produits")
+     * @Route("/produits", defaults={"id" = -1})
+     * @Route("/produits/{id}")
      */
-    public function productsAction() {
+    public function productsAction($id) {
         $em = $this->getDoctrine()->getManager();
         $rep = $em->getRepository("AMAPBundle:Basket\Product");
-        $products = $rep->findAll();
 
-        //ar_dump($product[0]->getName());
-
-        return $this->render('AMAPBundle:Default:product.html.twig', array('products' => $products));
+        if ($id != -1) {
+            $product = $rep->find($id);
+            return $this->render('AMAPBundle:Default:product.html.twig', array('product' => $product));
+        } else {
+            $products = $rep->findAll();
+            return $this->render('AMAPBundle:Default:product.html.twig', array('products' => $products));
+        }
     }
 
     /**
@@ -129,7 +138,7 @@ class DefaultController extends Controller {
     public function contactAction() {
         return $this->render('AMAPBundle:Default:contact.html.twig');
     }
-    
+
     /**
      * @Route("/conditions")
      */

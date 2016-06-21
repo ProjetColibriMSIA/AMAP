@@ -11,12 +11,12 @@ $(document).ready(function () {
                "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/French.json"
            }
     });
-    $('#amap').DataTable({
+    $('#DataTableShow').DataTable({
 		"language": {
                "url": "//cdn.datatables.net/plug-ins/1.10.11/i18n/French.json"
            },
 		fnDrawCallback: function () {
-		  $('#amap tbody tr').click(function () {
+		  $('#DataTableShow tbody tr').click(function () {
 			window.location.href = $(this).attr('href');
 		  });
 

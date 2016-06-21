@@ -55,7 +55,7 @@ class Builder implements ContainerAwareInterface {
 
 
         Foreach ($menu as $child) {
-            if ($child->GetAttribute('id') == $routeActive) {
+            if (strstr($routeActive, $child->GetAttribute('id'))) {
                 $child->setAttribute('class', $child->GetAttribute('class') . 'Active');
             }
         }

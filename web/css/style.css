@@ -62,7 +62,7 @@ ul#footerMention li a {
     line-height:2em;
 }
 
-ul#footerMention li a:hover {
+ul#footerMention li.footerMentionActive a, ul#footerMention li a:hover {
     background-color: RGB(111,143,91);
 }
 
@@ -83,6 +83,9 @@ a .logo img{
 }
 
 @media (max-width: 767px) {
+    #content{
+    width:100%;
+    }
     .isXsDisplay{
         display:none;
     }
@@ -116,7 +119,9 @@ a .logo img{
     display:none;
     }
 }
-
+.buttonReturn i{
+    display:inline;
+}
 @media (min-width: 768px) {
     ul#footerMention li {
     display: inline;
@@ -138,9 +143,9 @@ a .logo img{
 
 }
 @media (min-width: 992px) {
-    .mediumMenu {
+    /*.mediumMenu {
         background-size: 80%;
-    }
+    }*/
     a .logo img{
         width:120%
     }
@@ -407,8 +412,7 @@ img.btn_close {
     text-align: center;
     text-shadow: 0 1px #2a85a1;
 }
-.titleHome{
-    font-size:2em;
+.titleBlock{
     text-align:center;
 }
 .imageHome{
@@ -431,12 +435,12 @@ img.btn_close {
 
 /*********************************content*************************************/
 #content {
-    /*width:100%;*/
+    
     /*padding:30px 0 43px;*/
     background:url(../images/content-tail.png) left top repeat;
     /*position:relative;
-    z-index:1;
-    min-height: 300px;*/
+    z-index:1;*/
+    //min-height: 300px;
 }
 /****************************footer************************/
 body {
@@ -494,6 +498,18 @@ footer {
     background-position:-80px 0;
 }*/
 
+
+/*********personalisation datatable***********/
+.table-striped > thead > tr {
+    background-color: #F2F3F2;
+}
+.table-striped > tbody > tr:nth-of-type(even) {
+    background-color: #F2F3F2;
+}
+.table-striped > tbody > tr:hover{
+background-color:#E2EFDF;
+}
+
 /*********extra***********/
 .block {
     height:105px;
@@ -518,12 +534,10 @@ html, body {
 .lesactus{
     border-radius: 10px;
 }
-.actu{
-    text-align:center;
-    padding: 0 0 0 0px;
-    float: none;
-
+.lesactus p{
+    text-align:justify;
 }
+
 li.uneactu{
     margin:0px 10px 0 10px;
     border-bottom:1px dashed green;
@@ -625,6 +639,10 @@ html {
 	width:300px!important;
 	margin-top:5px;
 }
+.imgWidth img{
+    width:100%;
+    margin-bottom:15px;
+}
 .imgdroit{
 	margin:0 10px 10px;
 	float:right;
@@ -637,12 +655,12 @@ html {
 	display:inline-block;
 }
 .imgdroit img{
-	width:auto;
+	width:250px;
 	height:100%;
 	margin:auto
 }
 
-#amap tr{
+#DataTableShow tr{
 	cursor:pointer;
 }
 
@@ -664,10 +682,7 @@ html {
     margin:0 10px 10px;
     float:right;
     max-height:100%;
-@@ -586,3 +586,23 @@ html {
-#amap tr{
-    cursor:pointer;
-}
+
 .post {
     *zoom: 1;
     padding: 15px;

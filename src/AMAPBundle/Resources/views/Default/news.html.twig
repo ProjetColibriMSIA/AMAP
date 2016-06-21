@@ -1,59 +1,92 @@
 {%extends '::base.html.twig' %}
 {% block contenu %}
-    <div class="container">
-		
-		<section>
-			{% if news is defined %}
-				<h1 class="actu">Actualités</h1>
-				<br/>
-				<ul class="lesactus list-group">
-					{% for n in news|sort %}				
-						{% if n.getIsDisplay == 1 %}
-							<li class='uneactu list-group-item actu{{ n.getId }}'> 
-								
-								<a href="{{path('amap_default_news')}}/{{ n.getId }}">
-									<div class='txtgauche'>
-										<div class='imgdroit'>
-											{% if n.getrepIMG() !='' %}
-												<img src='/AMAP/web/./images/{{n.getrepIMG()}}' alt="{{n.getName()}}"/>
-											{% endif %}
-										</div>	
-										<h3>{{ n.getName }}</h3>
-										<p>
-											{% if n.getEndDate != n.getStartDate %} 
-												Du {{ (n.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }} au {{ (n.getEndDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none')}}
-												{% else %} 
-													Le {{ (n.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }}	
-											{% endif %}	
-											
-										</p>
-										
-										<p> {{ n.getDescription() | raw}} ...</p>
-									</div>
-								</a>
-							</li>
-						{% endif %}
-					{% endfor %}	
-				</ul>
-			{% else %}	
-				<h2>{{ new.getName }}</h2>
-				<div class='imgdroit'>
-					{% if new.getrepIMG() !='' %}
-						<img src='/AMAP/web/./images/{{new.getrepIMG()}}' alt="{{new.getName()}}"/>
-					{% endif %}
-				</div>
-				<p>
-					{% if new.getEndDate != new.getStartDate %} 
-						Du {{ (new.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }} au {{ (new.getEndDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none')}}
-						{% else %} 
-							Le {{ (new.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }}	
-					{% endif %}	
-					
-				</p>
-				
-				<p>{{ new.getDescription|raw }}</p>
-				<input type="button" value="Retour" onclick="history.go(-1)">
-			{% endif %}
-		</section>
-	</div>
+
+    {% if news is defined %}
+        <div class="row" >
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">  
+                <h2 class="titleBlock"><strong>Actualités</strong></h2>
+            </section>
+        </div>
+
+        <div class="row marginTop" >
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <ul class="lesactus list-group">
+                    {% for n in news|sort %}				
+                        {% if n.getIsDisplay == 1 %}
+                            <li class='uneactu list-group-item actu{{ n.getId }}'> 
+
+                                <a href="{{path('amap_default_news')}}/{{ n.getId }}">
+                                    <div class='txtgauche'>
+                                        <div class='imgdroit'>
+                                            {% if n.getrepIMG() !='' %}
+                                                <img src='/AMAP/web/./images/{{n.getrepIMG()}}' alt="{{n.getName()}}"/>
+                                            {% endif %}
+                                        </div>	
+                                        <h3>{{ n.getName }}</h3>
+                                        <p>
+                                            {% if n.getEndDate != n.getStartDate %} 
+                                                Du {{ (n.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }} au {{ (n.getEndDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none')}}
+                                            {% else %} 
+                                                Le {{ (n.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }}	
+                                            {% endif %}	
+
+                                        </p>
+
+                                        <p> {{ n.getDescription() | raw}} ...</p>
+                                    </div>
+                                </a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}	
+                </ul> 
+
+
+            </section>
+
+        </div>
+
+    {% else %}
+
+        <div class="row" >
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">  
+                <h2 class="titleBlock"><strong>Actualités : </strong>"<em>{{ new.getName }}</em>"  </h2>
+            </section>
+        </div>
+        <div class="row marginTop" >
+            <!-- Si il y a une image on met une deuxieme section-->
+            {% if new.getrepIMG() !='' %}
+                <section class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
+                {% else %}
+                    <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
+                    {% endif %}
+
+                    <p><strong>
+                            {% if new.getEndDate != new.getStartDate %} 
+                                Du {{ (new.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }} au {{ (new.getEndDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none')}}
+                            {% else %} 
+                                Le {{ (new.getStartDate|date("l j F Y", "Europe/Paris"))|localizeddate('full', 'none') }}	
+                            {% endif %}	
+                        </strong>
+                    </p>
+
+                    <p>{{ new.getDescription|raw }}</p>
+
+                </section>
+                {% if new.getrepIMG() !='' %}    
+                    <section class="col-lg-5 col-md-5 col-sm-offset-0 col-sm-5 col-xs-offset-2 col-xs-8">
+                        <div class='imgWidth'> 
+                            <img src='/AMAP/web/./images/{{new.getrepIMG()}}' alt="{{new.getName()}}"/>
+                        </div>
+                    </section>
+                {% endif %}
+
+
+        </div>
+        <div class="row marginBottom" >
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">  
+                <button class="buttonReturn" onclick="history.go(-1)"><i class="fa fa-reply"></i><span> Retour</span></button>
+            </section>
+        </div>   
+                
+    {% endif %} 
 {% endblock %}
