@@ -421,9 +421,12 @@ img.btn_close {
 }
 .textSize{
     font-size:1.3em;
+    text-align:justify;
+    margin-left:auto;
 }
 #imgPanierHome{
     text-align:center;
+    margin-top:20px;
 }
 
 /*********************************content*************************************/
