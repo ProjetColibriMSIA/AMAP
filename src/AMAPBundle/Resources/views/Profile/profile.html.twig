@@ -18,7 +18,7 @@
 				<p><strong>Prénom : </strong> {{ profile.getFirstname }}</p>
                 <p><strong>Adresse : </strong> {{ profile.getAdress }}</p>
                 <p><strong>Email : </strong> {{ profile.getEmail }}</p>
-				<ul><strong>Liste AMAP(s) : </strong>
+				<ul><strong>Liste AMAP : </strong>
 									{%if profile.getAmap()|length >0 %}
 										{% for amap in profile.getAmap() %}
 											{%if amap.getName() != null and amap.getName() is not empty and amap|length >0 %}
@@ -29,7 +29,7 @@
 										<li>Vous n'êtes lié à aucune AMAP</li>
 									{%endif%}
 				</ul>
-				<ul><strong>Liste des contrat(s) : </strong>
+				<ul><strong>Liste de(s) contrat(s) : </strong>
 									<br>
 									{%if profile.getContractUser()|length > 0 %}
 									<a href='/AMAP/web/./pdf/{{profile.getContractUser().getRepPDF()}}.pdf'>{{profile.getContractUser().getRepPDF()}}</a>
@@ -40,8 +40,16 @@
 				</ul>
             </section>
         </div>
-     
-
+		
+	    {% for group in profile.getGroupNames() %}
+            {%if group=='ADMINISTRATOR'%}    
+				<div class="row marginBottom" >
+					<section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">  
+						<button class="buttonReturn" onclick=location.href='{{path('sonata_admin_dashboard')}}'; ="><i class="fa fa-reply"></i><span> Accéder au panneau d'administration</span></button>
+					</section>
+				</div>  
+			{% endif %}
+		{% endfor %}
    {% endfor %}
 
 {% endblock %}
