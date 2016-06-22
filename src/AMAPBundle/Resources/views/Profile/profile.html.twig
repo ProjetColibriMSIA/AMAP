@@ -30,10 +30,10 @@
 									{%endif%}
 				</ul>
 				<ul><strong>Liste des contrat(s) : </strong>
-									{%if profile.getContractUser()|length >0 %}
-										{% for contract in profile.getContractUser() %}
-											<li>{{ contract.getDescription() }}</li> 			
-										{% endfor %}
+									<br>
+									{%if profile.getContractUser()|length > 0 %}
+									<a href='/AMAP/web/./pdf/{{profile.getContractUser().getRepPDF()}}.pdf'>{{profile.getContractUser().getRepPDF()}}</a>
+									
 									{% else %}
 										<li>Vous n'avez aucun contrat</li>
 									{%endif%}
