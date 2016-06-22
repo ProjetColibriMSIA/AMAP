@@ -184,6 +184,20 @@ a .logo img{
 
 }
 
+.mediumMenu > li.navRegisterActive > a, .mediumMenu > li.navRegister > a:hover {
+    background-image: url(../images/nav/navRegisterActive.png);
+
+}
+.mediumMenu > li.navRegister > a {
+    background-image: url(../images/nav/navRegister.png);
+}
+.mediumMenu > li.navProfilActive > a, .mediumMenu > li.navProfil > a:hover {
+    background-image: url(../images/nav/navProfilActive.png);
+
+}
+.mediumMenu > li.navProfil > a {
+    background-image: url(../images/nav/navProfil.png);
+}
 .mediumMenu > li.navHomeActive > a, .mediumMenu > li.navHome > a:hover {
     background-image: url(../images/nav/navHomeActive.png);
 

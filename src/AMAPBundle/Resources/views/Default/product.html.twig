@@ -36,10 +36,22 @@
             </section>
         </div>
          <div class="row marginTop" >
-            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+             {% if product.getrepIMG() !='' %}
+                <section class="col-lg-7 col-md-7 col-sm-7 col-xs-12 lesactus">
+                {% else %}
+                <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 lesactus"> 
+                {% endif %}
                 <p><strong>Prix : </strong>{{ product.getPrice }} €</p>
                 <p><strong>Description du Produit : </strong>{{ product.getDescription|raw }}</p>
              </section>
+             
+              {% if product.getrepIMG() !='' %}    
+                    <section class="col-lg-5 col-md-5 col-sm-offset-0 col-sm-5 col-xs-offset-2 col-xs-8">
+                        <div class='imgWidth'> 
+                            <img src='/AMAP/web/./images/product/{{product.getrepIMG()}}' alt="{{product.getName()}}"/>
+                        </div>
+                    </section>
+                {% endif %}
         </div>
                 <div class="row marginBottom" >
             <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">  

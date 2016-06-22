@@ -28,7 +28,7 @@ signer des contrats pour l'achat de produits dès leur disponibilité !</p>
  </div>
  <div class="row marginTop">
     <section class="col-lg-12">  
-         <h2 class="titleHome"><em>Les actualités du moment </em></h2>
+         <h2 class="titleBlock"><em>Les actualités du moment </em></h2>
             
     </section>
      <h3></h3>
@@ -41,7 +41,7 @@ signer des contrats pour l'achat de produits dès leur disponibilité !</p>
                     <li>
                          <a href="{{path('amap_default_news')}}/{{ n.getId }}">
                              {% if n.getrepIMG() !='' %}
-				<img src="/AMAP/web/./images/{{n.getrepIMG()}}" alt="{{n.getName}}" data-description="<p class='seeMore'>Voir Plus</p>"><span>{{n.getName}}</span>
+				<img src="/AMAP/web/./images/news/{{n.getrepIMG()}}" alt="{{n.getName}}" data-description="<p class='seeMore'>Voir Plus</p>"><span>{{n.getName}}</span>
                              {% else %}
                          	<img src='/AMAP/web/./images/actualites/no-picture.jpg' alt="{{n.getName()}}" data-description="<p class='seeMore'>Voir Plus</p>"/>
                             {% endif %}

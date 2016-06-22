@@ -22,8 +22,10 @@
                         {% for amap in amaps %}
                             <tr href="{{path('amap_default_amaps')}}/{{ amap.getId }}" title="Cliquez pour voir : {{ amap.getName() }}">	
                                 <td> {{ amap.getName() }}</td>
-                                <td> {{ amap.getAdress()|nl2br }}</td>
-                                <td> {{ amap.getDescription() | raw}}</td>
+                                {% set adrs = amap.getAdress()|split(',') %}
+                                <td> {% for adr in adrs %}{{ adr }}<br>{% endfor %}</td>
+                                
+                                <td> {{ amap.getDescription()|truncate(103, false, '')|raw}}...</td>
 
                             </tr>
                         {% endfor %}
@@ -37,19 +39,22 @@
                 <h2 class="titleBlock"><strong>AMAP : </strong>"<em>{{ amap.getName }}</em>"  </h2>
             </section>
         </div>
-        <div class="row marginTop" >
+        <div class="row marginTop textSize" >
              {% if amap.getrepIMG() !='' %}
                 <section class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
                 {% else %}
                     <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12"> 
                     {% endif %}
+                 
                     
+                    <p><strong>Adresse l'AMAP : </strong> {{ amap.getAdress() }}</p>
+                                
                 <p><strong>Description de l'AMAP : </strong>{{ amap.getDescription|raw }}</p>
                 </section>
                 {% if amap.getrepIMG() !='' %}
                     <section class="col-lg-5 col-md-5 col-sm-offset-0 col-sm-5 col-xs-offset-2 col-xs-8">
                         <div class='imgWidth'>
-                        <img src='/AMAP/web/./images/{{amap.getrepIMG()}}' alt="{{amap.getName()}}"/>
+                        <img src='/AMAP/web/./images/amap/{{amap.getrepIMG()}}' alt="{{amap.getName()}}"/>
                     </section>
                         {% endif %}
                 </div>
