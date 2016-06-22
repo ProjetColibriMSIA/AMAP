@@ -124,7 +124,7 @@ class DefaultController extends Controller {
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user
 
-            return $this->redirectToRoute('/acceuil');
+            return $this->redirectToRoute('/accueil');
         }
 
         return $this->render(
@@ -147,7 +147,7 @@ class DefaultController extends Controller {
     }
 	
 	 /**
-     * @Route("/profile")
+     * @Route("/profil")
      */
     public function profileAction() {
 		$em = $this->getDoctrine()->getManager();
