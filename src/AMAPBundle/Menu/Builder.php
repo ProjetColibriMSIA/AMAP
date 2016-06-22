@@ -40,6 +40,14 @@ class Builder implements ContainerAwareInterface {
         $menu->addChild('AMAP', array('route' => 'amap_default_amaps', 'attributes' => array('id' => 'amap_default_amaps', 'class' => 'navAMAP')));
 
         $menu->addChild('Produits', array('route' => 'amap_default_products', 'attributes' => array('id' => 'amap_default_products', 'class' => 'navProducts')));
+		
+		if ($user)
+		{
+			$menu->addChild('Profil', array('route' => 'amap_default_profile', 'attributes' => array('id' => 'amap_default_profile', 'class' => 'navProfile')));
+		}
+		else{
+			$menu->addChild('Inscription', array('route' => 'fos_user_registration_register', 'attributes' => array('id' => 'fos_user_registration_register', 'class' => 'navRegister')));
+		}
 
         if ($menuClass == 'smallMenu') {
             if ($user)

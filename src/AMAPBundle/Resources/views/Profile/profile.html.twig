@@ -1,0 +1,47 @@
+{%extends '::base.html.twig' %}
+
+
+{% block contenu %}
+
+   {% for profile in profiles %}
+
+	
+	   <div class="row" >
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">  
+                <h2 class="titleBlock"><strong>Profil</strong></h2>
+            </section>
+        </div>
+        <div class="row marginTop" >
+            <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<p><strong>Pseudonyme : </strong> {{ profile.getUsername }}</p>
+				<p><strong>Nom : </strong> {{ profile.getName }}</p>
+				<p><strong>Prénom : </strong> {{ profile.getFirstname }}</p>
+                <p><strong>Adresse : </strong> {{ profile.getAdress }}</p>
+                <p><strong>Email : </strong> {{ profile.getEmail }}</p>
+				<ul><strong>Liste AMAP(s) : </strong>
+									{%if profile.getAmap()|length >0 %}
+										{% for amap in profile.getAmap() %}
+											{%if amap.getName() != null and amap.getName() is not empty and amap|length >0 %}
+												<li>{{ amap.getName() }}</li> 
+											{%endif%}
+										{% endfor %}
+									{% else %}
+										<li>Vous n'êtes lié à aucune AMAP</li>
+									{%endif%}
+				</ul>
+				<ul><strong>Liste des contrat(s) : </strong>
+									{%if profile.getContractUser()|length >0 %}
+										{% for contract in profile.getContractUser() %}
+											<li>{{ contract.getDescription() }}</li> 			
+										{% endfor %}
+									{% else %}
+										<li>Vous n'avez aucun contrat</li>
+									{%endif%}
+				</ul>
+            </section>
+        </div>
+     
+
+   {% endfor %}
+
+{% endblock %}

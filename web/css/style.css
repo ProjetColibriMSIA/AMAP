@@ -128,7 +128,7 @@ a .logo img{
 }
     .mediumMenu {
         display: block;
-        background-size: 65%;
+		background-size: 73%;
     }
     .line_header { 
         line-height: 140px; 
@@ -143,18 +143,17 @@ a .logo img{
 
 }
 @media (min-width: 992px) {
-    /*.mediumMenu {
-        background-size: 80%;
-    }*/
+  
     a .logo img{
         width:120%
+    }
+	.mediumMenu {
+		background-size: 80%;
     }
 }
 
 @media (min-width: 1200px) {
-    .mediumMenu{
-        background-size: 70%;
-    }
+    
     a .logo img{
         width:100%
     }
@@ -162,7 +161,7 @@ a .logo img{
 
 .mediumMenu > li {
     display:inline-block;
-    margin: 1%;
+    margin: 3px;
     /*width: 100px;*/
     font-weight: 900;
     /*font-size: 1.3em;*/
@@ -191,12 +190,12 @@ a .logo img{
 .mediumMenu > li.navRegister > a {
     background-image: url(../images/nav/navRegister.png);
 }
-.mediumMenu > li.navProfilActive > a, .mediumMenu > li.navProfil > a:hover {
-    background-image: url(../images/nav/navProfilActive.png);
+.mediumMenu > li.navProfileActive > a, .mediumMenu > li.navProfile > a:hover {
+    background-image: url(../images/nav/navProfileActive.png);
 
 }
-.mediumMenu > li.navProfil > a {
-    background-image: url(../images/nav/navProfil.png);
+.mediumMenu > li.navProfile > a {
+    background-image: url(../images/nav/navProfile.png);
 }
 .mediumMenu > li.navHomeActive > a, .mediumMenu > li.navHome > a:hover {
     background-image: url(../images/nav/navHomeActive.png);

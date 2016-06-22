@@ -145,5 +145,23 @@ class DefaultController extends Controller {
     public function conditionsAction() {
         return $this->render('AMAPBundle:Default:conditions.html.twig');
     }
+	
+	 /**
+     * @Route("/profile")
+     */
+    public function profileAction() {
+		$em = $this->getDoctrine()->getManager();
+        $rep = $em->getRepository("AMAPBundle:Account\User");
+		$profile = $this->GetUser();
+		
+        $profiles = $rep->findBy(
+		array('username' => $profile->GetUsername())
+		);
+        return $this->render('AMAPBundle:Profile:profile.html.twig', array('profiles' => $profiles));
+     
+		
+    }
 
+	
+	
 }
